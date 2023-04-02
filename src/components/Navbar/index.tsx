@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   NavLink,
@@ -47,7 +46,15 @@ const Navbar = () => {
 
 export default Navbar;
 
-const LinkItem = ( props: any ) => {
+interface LinkItemProps {
+  el: {
+    id: number;
+    title: string;
+    to: string;
+  };
+}
+
+const LinkItem = ( props: LinkItemProps ) => {
   const { title, to } = props.el;
   return (
     <li className="m-3 lg:mx-5">
