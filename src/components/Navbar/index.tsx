@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   NavLink,
@@ -25,13 +24,14 @@ const navbarData = [
 const Navbar = () => {
   return (
     <Router>
-      {/* <nav className="md:mx-8 mb-3 px-6 py-2 z-10 sticky top-0 bg-white shadow rounded">
+      
+      <nav className="md:mx-8 mb-3 mt-1 px-6 py-2 z-10 sticky top-0 bg-white shadow rounded">
         <ul className="flex flex-wrap">
           {navbarData.map( ( el ) => (
             <LinkItem el={el} key={el.id} />
           ) )}
         </ul>
-      </nav> */}
+      </nav>
 
 
       <Routes>
@@ -46,7 +46,15 @@ const Navbar = () => {
 
 export default Navbar;
 
-const LinkItem = ( props: any ) => {
+interface LinkItemProps {
+  el: {
+    id: number;
+    title: string;
+    to: string;
+  };
+}
+
+const LinkItem = ( props: LinkItemProps ) => {
   const { title, to } = props.el;
   return (
     <li className="m-3 lg:mx-5">

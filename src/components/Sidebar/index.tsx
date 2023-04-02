@@ -1,6 +1,5 @@
 import {
   FaGithub,
-  FaGitlab,
   FaHackerrank,
   FaLinkedinIn,
 } from "react-icons/fa";
@@ -13,23 +12,23 @@ const socials = [
   {
     id: 1,
     icon: <FaGithub />,
-    link: "#0",
+    link: "https://github.com/ruivalente99",
   },
   {
     id: 2,
-    icon: <FaGitlab />,
-    link: "#0",
+    icon: <FaLinkedinIn />,
+    link: "https://www.linkedin.com/in/ruivalente99/",
   },
   {
     id: 3,
-    icon: <FaLinkedinIn />,
-    link: "#0",
+    icon: <FaHackerrank />,
+    link: "https://www.hackerrank.com/rui_valente99",
   },
   {
     id: 4,
     icon: <MdAlternateEmail />,
     link: "mailto:email@ruivalente.com",
-  }
+  },
 ];
 
 const Sidebar = () => {
@@ -66,7 +65,14 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-const SocialIcon = ( props: any ) => {
+interface SocialProps {
+  social: {
+    id: number;
+    icon: JSX.Element;
+    link: string;
+  };
+}
+const SocialIcon = ( props: SocialProps  ) => {
   const { icon, link } = props.social;
   return (
     <li className="m-2">
