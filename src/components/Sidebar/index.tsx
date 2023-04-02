@@ -1,4 +1,5 @@
 import {
+  FaDownload,
   FaGithub,
   FaHackerrank,
   FaLinkedinIn,
@@ -31,6 +32,7 @@ const socials = [
   },
 ];
 
+
 const Sidebar = () => {
   return (
     <aside className="sticky top-0 bg-white md:mx-8 lg:mx-4 mb-8 p-6 shadow-md rounded-md -mt-20">
@@ -49,7 +51,10 @@ const Sidebar = () => {
           {socials.map( ( social ) => (
             <SocialIcon social={social} key={social.id} />
           ) )}
+
         </ul>
+
+
       </div>
       <div className="text-start pt-4">
         <h3 className="text-md mb-2 uppercase font-medium text-gray-800">
@@ -58,6 +63,16 @@ const Sidebar = () => {
           </p>
         </h3>
 
+      </div>
+      <div className="flex flex-wrap justify-center">
+        <a
+          href="https://drive.google.com/uc?export=download&id=1u77bwkRw_8286H98vi5ZCHpHdLjmbW-C"
+          className="bg-purple-200 text-white py-2 px-4 rounded-md mt-4 hover:bg-purple-500 group"
+          title='Download Resume'
+        >
+          <FaDownload className="inline-block mr-2 group-hover:animate-pulse" />
+          Download Resume
+        </a>
       </div>
     </aside>
   );
@@ -72,7 +87,7 @@ interface SocialProps {
     link: string;
   };
 }
-const SocialIcon = ( props: SocialProps  ) => {
+const SocialIcon = ( props: SocialProps ) => {
   const { icon, link } = props.social;
   return (
     <li className="m-2">
