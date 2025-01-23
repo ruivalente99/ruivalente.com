@@ -1,8 +1,14 @@
 {
   "certificates": [
     {
+      "name": "Burns & Scalds First Aid",
+      "issuer": "Obi-Wan Kenobi",
+      "year": "32 BBY",
+      "url": "https://www.starwars.com/databank/first-aid"
+    },
+    {
       "name": "Jedi Knight Certification",
-      "issuer": "Jedi Council",
+      "issuer": "Jedi Council (kinda)",
       "year": "22 BBY",
       "url": "https://www.starwars.com/databank/jedi-order"
     },

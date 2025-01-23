@@ -1,8 +1,9 @@
 {
   "experiences": [
+
     {
       "id": "sith-lord",
-      "year": "19 BBY - Present",
+      "year": "19 BBY - 💀",
       "role": "Sith Lord",
       "company": "Galactic Empire",
       "companyUrl": "https://www.starwars.com/databank/galactic-empire",
@@ -10,9 +11,25 @@
         "Established dominion over the galaxy through fear and intimidation",
         "Constructed the Death Star, the ultimate weapon of destruction",
         "Hunted down remaining Jedi across the galaxy",
-        "Mastered the dark side of the Force"
+        "Mastered the dark side of the Force",
+        "Defeated by son, Luke Skywalker",
+        "Redeemed by love for son, Anakin Skywalker"
       ],
       "content": "# Rise of Darth Vader\n\nAfter embracing the dark side, became the most feared enforcer of the Emperor's will. Led the purge of the Jedi Order and established Imperial rule across the galaxy."
+    },
+    {
+      "id": "sith-apprentice",
+      "year": "32 BBY - 22 BBY",
+      "role": "Sith Apprentice",
+      "company": "Darth Sidious (Emperor Palpatine)",
+      "companyUrl": "https://www.starwars.com/databank/darth-sidious",
+      "achievements": [
+        "Defeated Jedi Master Qui-Gon Jinn",
+        "Apprenticed to Darth Sidious, Dark Lord of the Sith",
+        "Survived the Battle of Naboo",
+        "Constructed first lightsaber"
+      ],
+      "content": "# Path to the Dark Side\n\nDiscovered by Darth Sidious on Tatooine, trained in the ways of the Sith. Proved to be a powerful Force user with great potential."
     },
     {
       "id": "jedi-knight",
@@ -24,7 +41,8 @@
         "Youngest member ever appointed to the Jedi Council",
         "Led clone trooper armies in the Clone Wars",
         "Trained Padawan Ahsoka Tano",
-        "Mastered advanced lightsaber combat forms"
+        "Mastered advanced lightsaber combat forms",
+        "Married Padmé Amidala and fathered twins"
       ],
       "content": "# The Chosen One\n\nServed as a General in the Clone Wars, demonstrating exceptional skill in battle and leadership. Known for unorthodox tactics and powerful connection to the Force."
     }

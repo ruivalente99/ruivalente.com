@@ -12,11 +12,6 @@ export const SECRET_COMMANDS = [
     action: () => document.body.style.transform = 'rotate(180deg)'
   },
   {
-    command: 'rainbow',
-    description: 'Enable rainbow mode',
-    action: () => document.documentElement.classList.add('rainbow-mode')
-  },
-  {
     command: 'reset',
     description: 'Reset all effects',
     action: () => {

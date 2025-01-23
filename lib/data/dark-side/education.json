@@ -1,6 +1,12 @@
 {
   "education": [
     {
+      "id": "sith-academy",
+      "degree": "Sith Lord Training",
+      "school": "Sith Academy",
+      "year": "19 BBY"
+    },
+    {
       "id": "jedi-temple",
       "degree": "Jedi Knight Training",
       "school": "Jedi Temple Academy",

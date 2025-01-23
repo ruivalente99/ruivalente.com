@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, LucideIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
@@ -31,6 +31,7 @@ import {
 } from "react-icons/si";
 import { DiLinux } from 'react-icons/di';
 import { VscVscode } from 'react-icons/vsc';
+import { useIconMap } from '@/lib/hooks/useIconMap';
 
 interface TechItem {
   name: string;
@@ -44,31 +45,10 @@ interface TechCategory {
   items: TechItem[];
 }
 
-const iconMap = {
-  react: SiReact,
-  nextjs: SiNextdotjs,
-  typescript: SiTypescript,
-  tailwindcss: SiTailwindcss,
-  bootstrap: SiBootstrap,
-  ionic: SiIonic,
-  angular: SiAngular,
-  javascript: SiJavascript,
-  nodejs: SiNodedotjs,
-  graphql: SiGraphql,
-  rest: SiServerless,
-  jira: SiJira,
-  gitkraken: SiGitkraken,
-  docker: SiDocker,
-  aws: SiAmazon,
-  sonarqube: SiSonarqube,
-  jest: SiJest,
-  vscode: VscVscode,
-  dbeaver: SiDbeaver,
-  linux: DiLinux,
-  jenkins: SiJenkins,
-};
 export default function StackPage() {
   const router = useRouter();
+  const iconMap = useIconMap();
+
   const { data: stack, isLoading } = useData<TechCategory[]>('/api/stack');
 
   if (isLoading) {
@@ -88,14 +68,14 @@ export default function StackPage() {
           </Button>
           <h1 className="text-2xl font-bold">Tech Stack</h1>
         </div>
-
+x
         <div className="space-y-8">
           {stack?.map((category) => (
             <section key={category.category}>
               <h2 className="text-xl font-semibold mb-4">{category.category}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {category.items.map((tech) => {
-                  const Icon = iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon;
+                  const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
                   
                   return (
                     <motion.div
