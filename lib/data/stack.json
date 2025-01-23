@@ -1,0 +1,150 @@
+{
+  "stack": [
+    {
+      "category": "Frontend",
+      "items": [
+        {
+          "name": "React",
+          "icon": "react",
+          "description": "JavaScript library for building user interfaces",
+          "reason": "Used extensively for designing and maintaining frontend architecture at Openvia and Neocoption."
+        },
+        {
+          "name": "Next.js",
+          "icon": "nextjs",
+          "description": "React framework for building server-side rendered applications",
+          "reason": "Used for developing scalable and maintainable frontend applications at Openvia."
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescript",
+          "description": "Strongly typed programming language that builds on JavaScript",
+          "reason": "Used for developing scalable and maintainable frontend applications at Openvia."
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss",
+          "description": "Utility-first CSS framework",
+          "reason": "Quick and easy way to style components."
+        },
+        {
+          "name": "Bootstrap",
+          "icon": "bootstrap",
+          "description": "CSS framework for responsive web design",
+          "reason": "Used for creating and customizing views at Openvia."
+        },
+        {
+          "name": "Ionic",
+          "icon": "ionic",
+          "description": "Framework for building cross-platform mobile applications",
+          "reason": "Used for maintaining legacy projects at Openvia."
+        },
+        {
+          "name": "Angular",
+          "icon": "angular",
+          "description": "Platform for building web applications",
+          "reason": "Used for maintaining legacy projects at Openvia."
+        },
+        {
+          "name": "JavaScript",
+          "icon": "javascript",
+          "description": "Programming language for web development",
+          "reason": "Used for web-based projects at Neocoption and legacy projects at Openvia."
+        }
+      ]
+    },
+    {
+      "category": "Backend/APIs",
+      "items": [
+        {
+          "name": "GraphQL",
+          "icon": "graphql",
+          "description": "Query language for APIs",
+          "reason": "Used for connecting frontends with APIs at Openvia."
+        },
+        {
+          "name": "Node.js",
+          "icon": "nodejs",
+          "description": "JavaScript runtime for building APIs",
+          "reason": "Used for developing scalable and maintainable backend services at Openvia."
+        },
+        {
+          "name": "REST APIs",
+          "icon": "rest",
+          "description": "Architectural style for web services",
+          "reason": "Used for connecting frontends with backend services at Openvia."
+        }
+      ]
+    },
+    {
+      "category": "Tools & DevOps",
+      "items": [
+        {
+          "name": "Jira",
+          "icon": "jira",
+          "description": "Project management tool",
+          "reason": "Used for task management and tracking at both Openvia and Neocoption."
+        },
+        {
+          "name": "GitKraken",
+          "icon": "gitkraken",
+          "description": "Git client for version control",
+          "reason": "Used for version control at Openvia."
+        },
+        {
+          "name": "Docker",
+          "icon": "docker",
+          "description": "Containerization platform",
+          "reason": "Used for deploying and managing applications at Openvia."
+        },
+        {
+          "name": "AWS",
+          "icon": "aws",
+          "description": "Cloud computing platform",
+          "reason": "Used for keeping projects live at Openvia."
+        },
+        {
+          "name": "Jenkins",
+          "icon": "jenkins",
+          "description": "Automation server for CI/CD",
+          "reason": "Used for continuous integration and deployment at Openvia."
+        },
+        {
+          "name": "Sonarqube",
+          "icon": "sonarqube",
+          "description": "Code quality and security tool",
+          "reason": "Used for ensuring code quality and preventing bugs at Openvia."
+        },
+        {
+          "name": "Jest",
+          "icon": "jest",
+          "description": "JavaScript testing framework",
+          "reason": "Used for unit testing and ensuring code coverage at Openvia."
+        }
+      ]
+    },
+    {
+      "category": "Other",
+      "items": [
+        {
+          "name": "Visual Studio Code",
+          "icon": "vscode",
+          "description": "Code editor",
+          "reason": "Primary code editor with over 90+ extensions for development."
+        },
+        {
+          "name": "DBeaver",
+          "icon": "dbeaver",
+          "description": "Database tool",
+          "reason": "Used for database management and queries."
+        },
+        {
+          "name": "Linux",
+          "icon": "linux",
+          "description": "Operating system",
+          "reason": "Primary operating system for development."
+        }
+      ]
+    }
+  ]
+}

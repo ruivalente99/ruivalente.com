@@ -1,0 +1,219 @@
+.dark-side {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 3%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 3%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 5%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 5%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 0 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 100% 50%;
+}
+
+/* Dark Side specific effects */
+.dark-side body {
+  background-color: #000000;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.05) 0%, transparent 50%),
+    linear-gradient(to bottom, rgba(255, 0, 0, 0.02) 0%, transparent 100%);
+  background-attachment: fixed;
+}
+
+/* Force glow effect */
+.dark-side .force-glow {
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  transition: text-shadow 0.3s ease;
+}
+
+.dark-side .force-glow:hover {
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+/* Links */
+.dark-side a:not(.force-glow) {
+  color: hsl(0 0% 90%);
+  transition: color 0.2s ease;
+}
+
+.dark-side a:hover:not(.force-glow) {
+  color: hsl(0 100% 60%);
+}
+
+/* Buttons */
+.dark-side button {
+  transition: all 0.2s ease;
+}
+
+/* Ghost button */
+.dark-side button[class*="variant-ghost"] {
+  color: hsl(0 0% 90%);
+}
+
+.dark-side button[class*="variant-ghost"]:hover {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 100%);
+}
+
+/* Outline button */
+.dark-side button[class*="variant-outline"] {
+  border-color: hsl(0 0% 30%);
+  color: hsl(0 0% 90%);
+}
+
+.dark-side button[class*="variant-outline"]:hover {
+  background-color: hsl(0 0% 15%);
+  border-color: hsl(0 0% 40%);
+  color: hsl(0 0% 100%);
+}
+
+/* Default button */
+.dark-side button[class*="variant-default"] {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 100%);
+}
+
+.dark-side button[class*="variant-default"]:hover {
+  background-color: hsl(0 0% 20%);
+}
+
+/* Icon button */
+.dark-side button[class*="size-icon"] {
+  color: hsl(0 0% 90%);
+}
+
+.dark-side button[class*="size-icon"]:hover {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 100%);
+}
+
+/* Active states */
+.dark-side button:active {
+  transform: translateY(1px);
+}
+
+/* Disabled states */
+.dark-side button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Cards */
+.dark-side .card {
+  transition: all 0.3s ease;
+  border-color: hsl(0 0% 15%);
+}
+
+.dark-side .card:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+  border-color: hsl(0 100% 30%);
+  background-color: hsl(0 0% 5%);
+}
+
+/* Scrollbar */
+.dark-side ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark-side ::-webkit-scrollbar-track {
+  background: hsl(0 0% 5%);
+}
+
+.dark-side ::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 20%);
+  border-radius: 4px;
+}
+
+.dark-side ::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 100% 30%);
+}
+
+/* Selection */
+.dark-side ::selection {
+  background: hsl(0 100% 30%);
+  color: hsl(0 0% 100%);
+}
+
+/* Focus outline */
+.dark-side :focus-visible {
+  outline: 2px solid hsl(0 100% 40%);
+  outline-offset: 2px;
+}
+
+/* Form elements */
+.dark-side input, 
+.dark-side textarea {
+  background-color: hsl(0 0% 5%);
+  border-color: hsl(0 0% 20%);
+  color: hsl(0 0% 90%);
+}
+
+.dark-side input:focus,
+.dark-side textarea:focus {
+  border-color: hsl(0 100% 40%);
+  box-shadow: 0 0 0 2px hsla(0, 100%, 50%, 0.2);
+}
+
+/* Dropdowns and popovers */
+.dark-side [role="listbox"],
+.dark-side [role="menu"],
+.dark-side [role="dialog"] {
+  background-color: hsl(0 0% 5%);
+  border: 1px solid hsl(0 0% 20%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-side [role="option"]:hover,
+.dark-side [role="menuitem"]:hover {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 100%);
+}
+
+/* Command menu */
+.dark-side [cmdk-root] {
+  background-color: hsl(0 0% 5%);
+}
+
+.dark-side [cmdk-item][data-selected="true"] {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 100%);
+}
+
+.dark-side [cmdk-item]:hover {
+  background-color: hsl(0 0% 10%);
+  color: hsl(0 0% 100%);
+}
+
+/* Navigation */
+.dark-side nav a:hover {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 100%);
+}
+
+/* Loading states */
+.dark-side .loading,
+.dark-side progress {
+  background: hsl(0 0% 10%);
+}
+
+.dark-side .loading::after,
+.dark-side progress::-webkit-progress-value {
+  background: hsl(0 100% 40%);
+}
+
+/* Tooltips */
+.dark-side [role="tooltip"] {
+  background-color: hsl(0 0% 5%);
+  border: 1px solid hsl(0 0% 20%);
+  color: hsl(0 0% 90%);
+}

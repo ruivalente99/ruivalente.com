@@ -1,0 +1,21 @@
+.forest {
+  --background: 150 40% 8%;
+  --foreground: 150 40% 90%;
+  --card: 150 40% 10%;
+  --card-foreground: 150 40% 90%;
+  --popover: 150 40% 10%;
+  --popover-foreground: 150 40% 90%;
+  --primary: 142 77% 40%;
+  --primary-foreground: 150 40% 8%;
+  --secondary: 150 40% 15%;
+  --secondary-foreground: 150 40% 90%;
+  --muted: 150 40% 15%;
+  --muted-foreground: 150 40% 65%;
+  --accent: 150 40% 15%;
+  --accent-foreground: 150 40% 90%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 150 40% 90%;
+  --border: 150 40% 20%;
+  --input: 150 40% 20%;
+  --ring: 142 77% 40%;
+}

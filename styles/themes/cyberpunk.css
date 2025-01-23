@@ -1,0 +1,21 @@
+.cyberpunk {
+  --background: 240 85% 8%;
+  --foreground: 180 100% 50%;
+  --card: 240 85% 10%;
+  --card-foreground: 180 100% 50%;
+  --popover: 240 85% 10%;
+  --popover-foreground: 180 100% 50%;
+  --primary: 300 100% 50%;
+  --primary-foreground: 240 85% 8%;
+  --secondary: 240 85% 15%;
+  --secondary-foreground: 180 100% 50%;
+  --muted: 240 85% 15%;
+  --muted-foreground: 180 100% 40%;
+  --accent: 240 85% 15%;
+  --accent-foreground: 180 100% 50%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 180 100% 50%;
+  --border: 240 85% 20%;
+  --input: 240 85% 20%;
+  --ring: 300 100% 50%;
+}

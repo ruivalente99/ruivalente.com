@@ -1,0 +1,14 @@
+{
+  "hobbies": {
+    "playlist": {
+      "title": "coding playlist",
+      "url": "https://open.spotify.com/playlist/43lDJvKW5jErZiHlaCSWdy?si=85bba35b463c41ec",
+      "description": "my focus mode soundtrack"
+    },
+    "watching": {
+      "title": "currently watching",
+      "url": "https://www.imdb.com/title/tt14833612/?ref_=ext_shr_lnk",
+      "description": "Castlevania: Nocturne" 
+    }
+  }
+}

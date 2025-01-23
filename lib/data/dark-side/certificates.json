@@ -1,0 +1,28 @@
+{
+  "certificates": [
+    {
+      "name": "Jedi Knight Certification",
+      "issuer": "Jedi Council",
+      "year": "22 BBY",
+      "url": "https://www.starwars.com/databank/jedi-order"
+    },
+    {
+      "name": "Advanced Force Mastery",
+      "issuer": "Jedi Temple",
+      "year": "21 BBY",
+      "url": "https://www.starwars.com/databank/force"
+    },
+    {
+      "name": "Sith Lord Initiation",
+      "issuer": "Darth Sidious",
+      "year": "19 BBY",
+      "url": "https://www.starwars.com/databank/sith"
+    },
+    {
+      "name": "Imperial Military Command",
+      "issuer": "Galactic Empire",
+      "year": "19 BBY",
+      "url": "https://www.starwars.com/databank/galactic-empire"
+    }
+  ]
+}

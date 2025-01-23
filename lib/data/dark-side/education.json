@@ -1,0 +1,20 @@
+{
+  "education": [
+    {
+      "id": "jedi-temple",
+      "degree": "Jedi Knight Training",
+      "school": "Jedi Temple Academy",
+      "year": "22 BBY",
+      "url": "https://www.starwars.com/databank/jedi-temple",
+      "content": "# Jedi Training\n\nCompleted advanced Force training and lightsaber combat under the guidance of the Jedi Council. Specialized in Form V: Djem So combat style."
+    },
+    {
+      "id": "obi-wan-training",
+      "degree": "Padawan Training",
+      "school": "Under Obi-Wan Kenobi",
+      "year": "32-22 BBY",
+      "url": "https://www.starwars.com/databank/obi-wan-kenobi",
+      "content": "# Apprenticeship under Obi-Wan Kenobi\n\nReceived one-on-one training in the ways of the Force and Jedi philosophy. Developed strong bond with master despite frequent disagreements."
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import themes */
+@import "../styles/themes/light.css";
+@import "../styles/themes/dark.css";
+@import "../styles/themes/dark-side.css";
+@import "../styles/themes/pink.css";
+@import "../styles/themes/dracula.css";
+@import "../styles/themes/retro.css";
+@import "../styles/themes/cyberpunk.css";
+@import "../styles/themes/forest.css";
+@import "../styles/themes/sunset.css";
+@import "../styles/themes/terminal.css";
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Easter Egg Effects */
+.matrix-effect::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 0, 0) 0%,
+    rgba(0, 255, 0, 0.2) 50%,
+    rgba(0, 255, 0, 0) 100%
+  );
+  animation: matrix-scan 2s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes matrix-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.glitch-effect {
+  animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  25% { transform: translate(-2px, 2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, -2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+.crt-effect::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  animation: crt-scan 10s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes crt-scan {
+  0% { background-position: 0 -100vh; }
+  100% { background-position: 0 100vh; }
+}
+
+.pixel-effect {
+  image-rendering: pixelated;
+}
+
+.pixel-effect * {
+  image-rendering: pixelated !important;
+}
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted)) transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+.scroll-hover:hover .custom-scroll::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground));
+}
