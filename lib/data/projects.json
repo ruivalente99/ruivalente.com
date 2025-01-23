@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "id": "lazy-life",
+      "title": "Lazy Life",
+      "description": "A project to help bachelor's students explore the adoption of electric mobility solutions and green initiatives to reduce carbon emissions and promote a cleaner, more sustainable planet.",
+      "image": "/projects/lazylife.png",
+      "demo": "https://lazylife.pt",
+      "github": "https://github.com/ruivalente99/lazy-life",
+      "content": "# Lazy Life\n\n## Project Overview\nLazy Life is a project designed to assist bachelor's students in exploring the adoption of electric mobility solutions and robust green initiatives. The goal is to demonstrate how these solutions can significantly reduce carbon emissions and contribute to a cleaner, more sustainable planet.\n\n## Key Features\n- Focuses on electric mobility solutions and green initiatives.\n- Aims to reduce carbon emissions and promote sustainability.\n- Designed as an educational tool for bachelor's students.\n\n## Technologies Used\n- Not specified (based on the GitHub repository, additional details can be added).\n\n## GitHub Repository\n- [Lazy Life GitHub Repository](https://github.com/ruivalente99/lazy-life)"
+    },
+    {
+      "id": "cass",
+      "title": "CASS",
+      "description": "Transforming Small and Medium Enterprises with Customized AI Solutions. At CASS, we offer tailor-made AI solutions to optimize processes and drive growth.",
+      "image": "/projects/cass.png",
+      "demo": "https://cass.world/",
+      "github": "https://github.com/ruivalente99/cass",
+      "content": "# CASS\n\n## Project Overview\nCASS is a project focused on transforming Small and Medium Enterprises (SMEs) by providing customized AI solutions. The goal is to optimize business processes and drive growth through tailor-made AI technologies.\n\n## Key Features\n- Offers customized AI solutions for SMEs.\n- Aims to optimize business processes and drive growth.\n- Provides scalable and efficient AI-driven tools.\n\n## Technologies Used\n- Not specified (based on the GitHub repository, additional details can be added).\n\n## Demo\n- [CASS Website](https://cass.world/)\n\n## GitHub Repository\n- [CASS GitHub Repository](https://github.com/ruivalente99/cass)"
+    }
+  ]
+}

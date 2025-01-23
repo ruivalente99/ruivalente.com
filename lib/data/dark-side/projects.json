@@ -1,0 +1,31 @@
+{
+  "projects": [
+    {
+      "id": "death-star",
+      "title": "Death Star",
+      "description": "Ultimate battle station capable of destroying entire planets",
+      "image": "/projects/deathstar.png",
+      "demo": "https://www.starwars.com/databank/death-star",
+      "github": "https://github.com/empire/death-star",
+      "content": "# Death Star\n\nThe Empire's ultimate weapon of destruction.\n\n## Features\n- Planet-destroying superlaser\n- Advanced defense systems\n- Massive troop capacity\n- Complete mobile command center"
+    },
+    {
+      "id": "tie-fighter",
+      "title": "TIE Fighter Program",
+      "description": "Mass production of advanced Imperial starfighters",
+      "image": "/projects/tiefighter.png",
+      "demo": "https://www.starwars.com/databank/tie-fighter",
+      "github": "https://github.com/empire/tie-fighter",
+      "content": "# TIE Fighter Program\n\nStandardized Imperial starfighter production.\n\n## Features\n- Twin ion engines\n- Solar panel wings\n- Advanced targeting systems\n- Mass production capabilities"
+    },
+    {
+      "id": "order-66",
+      "title": "Order 66",
+      "description": "Systematic elimination of the Jedi Order",
+      "image": "/projects/order66.png",
+      "demo": "https://www.starwars.com/databank/order-66",
+      "github": "https://github.com/empire/order-66",
+      "content": "# Order 66\n\nCoordinated operation to eliminate the Jedi Order.\n\n## Features\n- Clone trooper programming\n- Synchronized execution\n- Galaxy-wide implementation\n- Complete Jedi database"
+    }
+  ]
+}

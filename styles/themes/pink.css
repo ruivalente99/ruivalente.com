@@ -1,0 +1,21 @@
+.pink {
+  --background: 330 100% 95%;
+  --foreground: 330 80% 15%;
+  --card: 330 100% 98%;
+  --card-foreground: 330 80% 15%;
+  --popover: 330 100% 98%;
+  --popover-foreground: 330 80% 15%;
+  --primary: 330 100% 75%;
+  --primary-foreground: 330 80% 15%;
+  --secondary: 330 50% 90%;
+  --secondary-foreground: 330 80% 15%;
+  --muted: 330 50% 90%;
+  --muted-foreground: 330 50% 40%;
+  --accent: 330 50% 90%;
+  --accent-foreground: 330 80% 15%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 330 80% 90%;
+  --border: 330 50% 85%;
+  --input: 330 50% 85%;
+  --ring: 330 100% 75%;
+}

@@ -1,0 +1,14 @@
+{
+  "hobbies": {
+    "playlist": {
+      "title": "imperial march",
+      "url": "https://open.spotify.com/track/2bw1pPrmcXQ4kHVrMZtvC6",
+      "description": "the empire's anthem"
+    },
+    "watching": {
+      "title": "currently watching",
+      "url": "https://www.starwars.com/films/star-wars-episode-5-the-empire-strikes-back",
+      "description": "Episode V: The Empire Strikes Back"
+    }
+  }
+}

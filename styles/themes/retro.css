@@ -1,0 +1,21 @@
+.retro {
+  --background: 90 10% 92%;
+  --foreground: 150 20% 8%;
+  --card: 90 10% 95%;
+  --card-foreground: 150 20% 8%;
+  --popover: 90 10% 95%;
+  --popover-foreground: 150 20% 8%;
+  --primary: 142 77% 51%;
+  --primary-foreground: 150 20% 8%;
+  --secondary: 90 10% 85%;
+  --secondary-foreground: 150 20% 8%;
+  --muted: 90 10% 85%;
+  --muted-foreground: 150 20% 30%;
+  --accent: 90 10% 85%;
+  --accent-foreground: 150 20% 8%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 90 10% 95%;
+  --border: 90 10% 80%;
+  --input: 90 10% 80%;
+  --ring: 142 77% 51%;
+}

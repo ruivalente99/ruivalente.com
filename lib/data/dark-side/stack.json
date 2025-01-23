@@ -1,0 +1,61 @@
+{
+  "stack": [
+    {
+      "category": "Combat",
+      "items": [
+        {
+          "name": "Lightsaber",
+          "icon": "lightsaber",
+          "description": "Elegant weapon for a more civilized age",
+          "reason": "Versatile combat tool with both offensive and defensive capabilities"
+        },
+        {
+          "name": "Force Choke",
+          "icon": "hand",
+          "description": "Remote force manipulation",
+          "reason": "Effective method of asserting dominance and maintaining order"
+        },
+        {
+          "name": "Force Lightning",
+          "icon": "cloud-lightning",
+          "description": "Dark side energy projection",
+          "reason": "Powerful offensive ability that channels dark side energy"
+        }
+      ]
+    },
+    {
+      "category": "Command",
+      "items": [
+        {
+          "name": "Fleet Command",
+          "icon": "anchor",
+          "description": "Star Destroyer management",
+          "reason": "Efficient control of Imperial naval forces"
+        },
+        {
+          "name": "Battle Meditation",
+          "icon": "brain",
+          "description": "Force-enhanced strategy",
+          "reason": "Coordinates large-scale military operations through the Force"
+        }
+      ]
+    },
+    {
+      "category": "Dark Side",
+      "items": [
+        {
+          "name": "Force Rage",
+          "icon": "flame",
+          "description": "Channeling anger and hatred",
+          "reason": "Amplifies combat abilities through dark side emotions"
+        },
+        {
+          "name": "Sith Alchemy",
+          "icon": "flask",
+          "description": "Dark side manifestation",
+          "reason": "Creates and enhances dark side artifacts and creatures"
+        }
+      ]
+    }
+  ]
+}

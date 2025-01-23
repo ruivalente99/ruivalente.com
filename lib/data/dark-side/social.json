@@ -1,0 +1,16 @@
+{
+  "social": [
+    {
+      "icon": "Github",
+      "url": "https://github.com/empire/vader"
+    },
+    {
+      "icon": "Globe",
+      "url": "https://www.starwars.com/databank/darth-vader"
+    },
+    {
+      "icon": "Briefcase",
+      "url": "https://www.starwars.com/databank/galactic-empire"
+    }
+  ]
+}
