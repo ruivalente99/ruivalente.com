@@ -13,7 +13,7 @@ import { StackSection } from "@/components/stack-section";
 export default function Home() {
   return (
     <div className="bg-background text-foreground p-4">
-      <BentoGrid className="mt-20">
+      <BentoGrid className="">
         {/* Profile Section */}
         <BentoItem colSpan={3}>
           <Card className="p-6">

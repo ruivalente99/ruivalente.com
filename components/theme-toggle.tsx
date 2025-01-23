@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun, Laptop, Palette, Terminal, Bomb } from "lucide-react";
+import { Moon, Sun, Laptop, Palette, Terminal, Bomb, LucideIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +14,9 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { useData } from "@/lib/hooks/useData";
+import { GiDeathStar } from 'react-icons/gi';
+import React from 'react';
+import { getIcon } from '@/lib/hooks/useIconMap';
 
 interface Theme {
   name: string;
@@ -28,18 +31,6 @@ interface Theme {
   hidden?: boolean;
 }
 
-const getIcon = (iconName: string) => {
-  switch (iconName) {
-    case 'Sun': return Sun;
-    case 'Moon': return Moon;
-    case 'Laptop': return Laptop;
-    case 'Terminal': return Terminal;
-    case 'Palette': return Palette;
-    case 'Bomb': return Bomb;
-    default: return Palette;
-  }
-};
-
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const { data: themesData, isLoading } = useData<{ themes: Theme[] }>('/api/themes');
@@ -48,7 +39,7 @@ export function ThemeToggle() {
   const getCurrentThemeIcon = () => {
     if (!themesData?.themes) return Sun;
     const currentTheme = themesData.themes.find(t => t.value === theme) || themesData.themes[0];
-    return getIcon(currentTheme.icon);
+    return getIcon(currentTheme.icon) as LucideIcon;
   };
 
   const CurrentIcon = getCurrentThemeIcon();
@@ -68,7 +59,7 @@ export function ThemeToggle() {
           {!isLoading && themesData?.themes
             .filter(t => !t.hidden)
             .map(({ name, value, icon, description, preview }) => {
-              const Icon = getIcon(icon);
+              const Icon = getIcon(icon) as LucideIcon;
               return (
                 <DropdownMenuItem
                   key={value}

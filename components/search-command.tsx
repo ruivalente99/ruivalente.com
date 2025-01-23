@@ -22,6 +22,7 @@ import {
   Terminal,
   Sparkles,
   Wand2,
+  LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,6 +37,7 @@ import {
 import { DialogTitle } from "@/components/ui/dialog";
 import { useData } from "@/lib/hooks/useData";
 import { useToast } from "@/components/ui/use-toast";
+import { getIcon } from '@/lib/hooks/useIconMap';
 
 interface SearchableData {
   projects?: Array<{ id: string; title: string; description: string }>;
@@ -60,17 +62,6 @@ interface Theme {
   hidden?: boolean;
 }
 
-const getIcon = (iconName: string) => {
-  switch (iconName) {
-    case 'Sun': return Sun;
-    case 'Moon': return Moon;
-    case 'Laptop': return Laptop;
-    case 'Terminal': return Terminal;
-    case 'Palette': return Palette;
-    default: return Palette;
-  }
-};
-
 export function SearchCommand() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -93,6 +84,7 @@ export function SearchCommand() {
 
   const handleThemeChange = (value: string) => {
     setTheme(value);
+    console.log(value);
     if (value === 'terminal') {
       toast({
         title: "Easter Egg Found!",
@@ -100,6 +92,18 @@ export function SearchCommand() {
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-green-500" />
             <span>Welcome to terminal mode. Type &apos;help&apos; in the command bar for available commands.</span>
+          </div>
+        ),
+        duration: 5000,
+      });
+    }
+    if(value === 'dark-side') {
+      toast({
+        title: "Easter Egg Found!",
+        description: (
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-red-500" />
+            <span>Welcome to the dark side. May the force be with you.</span>
           </div>
         ),
         duration: 5000,
@@ -168,7 +172,7 @@ export function SearchCommand() {
               </div>
             </CommandItem>
             <CommandItem onSelect={() => {
-              window.open('https://github.com/username', '_blank');
+              window.open('https://github.com/ruivalente99', '_blank');
               setOpen(false);
             }}>
               <Github className="mr-2 h-4 w-4" />
@@ -195,7 +199,7 @@ export function SearchCommand() {
           {!themesLoading && themesData?.themes && (
             <CommandGroup heading="Appearance">
               {themesData.themes.map(({ name, value, icon, description, hidden }) => {
-                const Icon = getIcon(icon);
+                const Icon = getIcon(icon) as LucideIcon;
                 // Special handling for terminal theme
                 if (value === 'terminal') {
                   return (

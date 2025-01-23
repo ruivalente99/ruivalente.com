@@ -11,7 +11,7 @@
         },
         {
           "name": "Force Choke",
-          "icon": "hand",
+          "icon": "choke",
           "description": "Remote force manipulation",
           "reason": "Effective method of asserting dominance and maintaining order"
         },
@@ -28,13 +28,13 @@
       "items": [
         {
           "name": "Fleet Command",
-          "icon": "anchor",
+          "icon": "fleet",
           "description": "Star Destroyer management",
           "reason": "Efficient control of Imperial naval forces"
         },
         {
           "name": "Battle Meditation",
-          "icon": "brain",
+          "icon": "army",
           "description": "Force-enhanced strategy",
           "reason": "Coordinates large-scale military operations through the Force"
         }
@@ -45,13 +45,13 @@
       "items": [
         {
           "name": "Force Rage",
-          "icon": "flame",
+          "icon": "force",
           "description": "Channeling anger and hatred",
           "reason": "Amplifies combat abilities through dark side emotions"
         },
         {
           "name": "Sith Alchemy",
-          "icon": "flask",
+          "icon": "sith",
           "description": "Dark side manifestation",
           "reason": "Creates and enhances dark side artifacts and creatures"
         }

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useData } from '@/lib/hooks/useData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LucideIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { 
   SiReact, 
@@ -27,13 +27,16 @@ import {
   SiJira,
   SiGitkraken,
   SiSonarqube,
-  SiVsco,
   SiDbeaver,
-  SiJenkins
+  SiJenkins,
+  SiDarkreader
 } from "react-icons/si";
 import { DiLinux } from "react-icons/di";
+import { GiLightSabers, GiSpaceship, GiMeepleArmy, GiMightyForce } from "react-icons/gi";
+import { FaFistRaised } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useIconMap } from '@/lib/hooks/useIconMap';
 
 interface TechItem {
   name: string;
@@ -47,33 +50,10 @@ interface TechCategory {
   items: TechItem[];
 }
 
-const iconMap = {
-  react: SiReact,
-  nextjs: SiNextdotjs,
-  typescript: SiTypescript,
-  tailwindcss: SiTailwindcss,
-  bootstrap: SiBootstrap,
-  ionic: SiIonic,
-  angular: SiAngular,
-  javascript: SiJavascript,
-  nodejs: SiNodedotjs,
-  graphql: SiGraphql,
-  rest: SiServerless,
-  jira: SiJira,
-  gitkraken: SiGitkraken,
-  docker: SiDocker,
-  aws: SiAmazon,
-  sonarqube: SiSonarqube,
-  jest: SiJest,
-  vscode: VscVscode,
-  dbeaver: SiDbeaver,
-  linux: DiLinux,
-  jenkins: SiJenkins
-};
-
 export function StackSection() {
   const router = useRouter();
   const { theme } = useTheme();
+  const iconMap = useIconMap();
   const isDarkSide = theme === 'dark-side';
   const { data: stack, isLoading } = useData<TechCategory[]>('/api/stack');
 
@@ -101,7 +81,7 @@ export function StackSection() {
         <TooltipProvider>
           {stack.flatMap(category => 
             category.items.slice(0, 4).map((tech) => {
-              const Icon = iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon;
+              const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
               
               return (
                 <Tooltip key={tech.name}>
