@@ -23,3 +23,9 @@ export async function GET(
     );
   }
 }
+
+export async function generateStaticParams() {
+  return educationData.education.map((education) => ({
+    slug: education.id,
+  }));
+}

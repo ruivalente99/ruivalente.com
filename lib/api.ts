@@ -1,4 +1,4 @@
-import { projects, experiences, education, certifications, hobbies } from './data';
+import { projects, experiences, education, certificates, hobbies } from './data';
 import { Project, Experience, Education, Certification, Hobby } from './types';
 
 // Projects
@@ -33,11 +33,11 @@ export async function getEducation(): Promise<Education[]> {
 // Certifications
 export async function getCertifications(): Promise<Certification[]> {
   await new Promise(resolve => setTimeout(resolve, 100));
-  return certifications;
+  return certificates;
 }
 
 // Hobbies
 export async function getHobbies(): Promise<Hobby[]> {
   await new Promise(resolve => setTimeout(resolve, 100));
-  return hobbies;
+  return Object.values(hobbies);
 }

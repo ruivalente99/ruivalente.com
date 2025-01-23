@@ -23,3 +23,9 @@ export async function GET(
     );
   }
 }
+
+export async function generateStaticParams() {
+  return projectsData.projects.map((project) => ({
+    slug: project.id,
+  }));
+}
