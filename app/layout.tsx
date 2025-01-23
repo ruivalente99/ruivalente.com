@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Space_Mono } from 'next/font/google';
-import localFont from 'next/font/local'; // Import local font
+import { Space_Mono, VT323 } from 'next/font/google';
 import dynamic from 'next/dynamic';
 import { Footer } from "@/components/footer";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -11,12 +10,10 @@ import { Providers } from './providers';
 // Dynamically import components with loading fallbacks
 const EasterEggs = dynamic(
   () => import('@/components/easter-eggs').then(mod => ({ default: mod.EasterEggs })),
-  { ssr: false }
 );
 
 const DarkSideLoading = dynamic(
   () => import('@/components/dark-side-loading').then(mod => ({ default: mod.DarkSideLoading })),
-  { ssr: false }
 );
 
 // Optimize font loading
@@ -28,11 +25,12 @@ const spaceMono = Space_Mono({
   preload: true,
 });
 
-// Load the VT323 font locally
-const vt323 = localFont({
-  src: '../public/fonts/VT323-Regular.ttf', // Path to the font file
+const vt323 = VT323({
+  weight: '400',
+  subsets: ['latin'],
   variable: '--font-vt323',
   display: 'swap',
+  preload: true,
 });
 
 export const metadata: Metadata = {
