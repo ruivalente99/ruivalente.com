@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { QueryClient, QueryClientProvider, HydrationBoundary } from '@tanstack/react-query';
+import { Analytics } from "@vercel/analytics/react"
 import { ThemeProvider } from "@/components/theme-provider";
 import dynamic from 'next/dynamic';
 
@@ -48,6 +49,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         >
           {children}
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </HydrationBoundary>
     </QueryClientProvider>
