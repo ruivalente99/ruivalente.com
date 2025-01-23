@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Space_Mono, VT323 } from 'next/font/google';
+import { Space_Mono } from 'next/font/google';
+import localFont from 'next/font/local'; // Import local font
 import dynamic from 'next/dynamic';
 import { Footer } from "@/components/footer";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -27,12 +28,11 @@ const spaceMono = Space_Mono({
   preload: true,
 });
 
-const vt323 = VT323({
-  weight: '400',
-  subsets: ['latin'],
+// Load the VT323 font locally
+const vt323 = localFont({
+  src: '../public/fonts/VT323-Regular.ttf', // Path to the font file
   variable: '--font-vt323',
   display: 'swap',
-  preload: true,
 });
 
 export const metadata: Metadata = {
