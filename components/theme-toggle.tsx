@@ -15,7 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { useData } from "@/lib/hooks/useData";
 import { GiDeathStar } from 'react-icons/gi';
-import React from 'react';
+import { getIcon } from '@/lib/hooks/useIconMap';
 import { getIcon } from '@/lib/hooks/useIconMap';
 
 interface Theme {
