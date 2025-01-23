@@ -48,7 +48,7 @@ export function DarkSideLoading() {
                 initial={{ x: "-100%" }}
                 animate={{ x: "100%" }}
                 transition={{ duration: 2, ease: "linear", repeat: 1 }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent"
+                className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent"
               />
             </motion.div>
 

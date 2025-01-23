@@ -78,7 +78,6 @@ export function useData<T>(url: string): FetchState<T> {
     queryKey: [apiUrl, theme],
     queryFn: () => fetchData(apiUrl),
     staleTime: 1000 * 60 * 5, // 5 minutes
-    cacheTime: 1000 * 60 * 30, // 30 minutes
     retry: (failureCount, error) => {
       // Don't retry aborted or timeout requests
       if (
@@ -96,7 +95,7 @@ export function useData<T>(url: string): FetchState<T> {
   });
 
   return {
-    data: data || null,
+    data: (data as T) || null,
     isLoading,
     error: error as Error | null,
   };

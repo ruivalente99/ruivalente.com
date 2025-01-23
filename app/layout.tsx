@@ -10,12 +10,10 @@ import { Providers } from './providers';
 // Dynamically import components with loading fallbacks
 const EasterEggs = dynamic(
   () => import('@/components/easter-eggs').then(mod => ({ default: mod.EasterEggs })),
-  { ssr: false }
 );
 
 const DarkSideLoading = dynamic(
   () => import('@/components/dark-side-loading').then(mod => ({ default: mod.DarkSideLoading })),
-  { ssr: false }
 );
 
 // Optimize font loading
@@ -54,7 +52,7 @@ export default function RootLayout({
       <body className={`${spaceMono.variable} ${vt323.variable} font-sans overflow-y-auto`}>
         <Providers>
           <div className="min-h-[100dvh] flex flex-col">
-            <header className="fixed top-0 right-0 left-0 z-50 p-4 flex justify-end gap-2 bg-background/80 backdrop-blur">
+            <header className="fixed top-0 right-0 left-0 z-50 p-4 flex justify-end gap-2 bg-background/80 backdrop-blur-sm">
               <SearchCommand />
               <ThemeToggle />
             </header>

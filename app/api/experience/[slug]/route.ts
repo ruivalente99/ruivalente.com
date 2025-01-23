@@ -23,3 +23,9 @@ export async function GET(
     );
   }
 }
+
+export async function generateStaticParams() {
+  return experienceData.experiences.map((experience) => ({
+    slug: experience.id,
+  }));
+}

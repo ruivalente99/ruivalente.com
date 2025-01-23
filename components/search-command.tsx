@@ -57,6 +57,7 @@ interface Theme {
     foreground: string;
     accent: string;
   };
+  hidden?: boolean;
 }
 
 const getIcon = (iconName: string) => {
@@ -94,13 +95,13 @@ export function SearchCommand() {
     setTheme(value);
     if (value === 'terminal') {
       toast({
-        title: (
+        title: "Easter Egg Found!",
+        description: (
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-green-500" />
-            <span>Easter Egg Found!</span>
+            <span>Welcome to terminal mode. Type &apos;help&apos; in the command bar for available commands.</span>
           </div>
         ),
-        description: "Welcome to terminal mode. Type 'help' in the command bar for available commands.",
         duration: 5000,
       });
     }

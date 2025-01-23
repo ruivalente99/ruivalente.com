@@ -305,7 +305,7 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent outline-none text-foreground"
+                className="flex-1 bg-transparent outline-hidden text-foreground"
                 autoFocus
               />
             </div>

@@ -23,3 +23,9 @@ export async function GET(
     );
   }
 }
+
+export function generateStaticParams() {
+  return projectsData.projects.map((exp) => ({
+    slug: exp.id,
+  }));
+}

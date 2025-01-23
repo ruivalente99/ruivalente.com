@@ -11,7 +11,7 @@ export function isMobile() {
   return window.innerWidth <= 768;
 }
 
-export function getSocialIcon(name: string): LucideIcon {
+export function getSocialIcon(name: string): typeof LucideIcon {
   switch (name) {
     case 'Github':
       return Github;

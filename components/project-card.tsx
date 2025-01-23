@@ -19,7 +19,7 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="bg-background/50 backdrop-blur-sm rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col"
+      className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col"
     >
       <div className="h-24 overflow-hidden">
         <img

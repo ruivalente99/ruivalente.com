@@ -56,7 +56,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-background/50 backdrop-blur-sm rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col group"
+                className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col group"
               >
                 <div className="h-24 overflow-hidden">
                   <img
@@ -104,7 +104,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           variant="ghost"
           size="icon"
           onClick={prev}
-          className="h-8 w-8 rounded-full bg-background/50 backdrop-blur-sm"
+          className="h-8 w-8 rounded-full bg-background/50 backdrop-blur-xs"
         >
           <ChevronLeft className="h-4 w-4" />
         </Button>
@@ -115,7 +115,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           variant="ghost"
           size="icon"
           onClick={next}
-          className="h-8 w-8 rounded-full bg-background/50 backdrop-blur-sm"
+          className="h-8 w-8 rounded-full bg-background/50 backdrop-blur-xs"
         >
           <ChevronRight className="h-4 w-4" />
         </Button>

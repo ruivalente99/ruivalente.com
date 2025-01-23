@@ -43,6 +43,6 @@ export interface Hobby {
 }
 
 export interface SocialLink {
-  icon: LucideIcon;
+  icon: typeof LucideIcon;
   url: string;
 }
