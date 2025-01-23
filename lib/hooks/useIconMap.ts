@@ -32,50 +32,49 @@ type IconMap = {
   [key: string]: React.ComponentType;
 };
 
-export const useIconMap = (): IconMap => {
-  return {
-    react: SiReact,
-    nextjs: SiNextdotjs,
-    typescript: SiTypescript,
-    tailwindcss: SiTailwindcss,
-    bootstrap: SiBootstrap,
-    ionic: SiIonic,
-    angular: SiAngular,
-    javascript: SiJavascript,
-    nodejs: SiNodedotjs,
-    graphql: SiGraphql,
-    rest: SiServerless,
-    jira: SiJira,
-    gitkraken: SiGitkraken,
-    docker: SiDocker,
-    aws: SiAmazon,
-    sonarqube: SiSonarqube,
-    jest: SiJest,
-    vscode: VscVscode,
-    dbeaver: SiDbeaver,
-    linux: DiLinux,
-    jenkins: SiJenkins,
-    lightsaber: GiLightSabers,
-    choke: FaFistRaised,
-    fleet: GiSpaceship,
-    army: GiMeepleArmy,
-    force: GiMightyForce,
-    sith: SiDarkreader,
-    deathstar: GiDeathStar,
-    sun: Sun,
-    moon: Moon,
-    laptop: Laptop,
-    terminal: Terminal,
-    palette: Palette,
-    sparkles: Sparkles,
-    wand: Wand2,
-    dracula: GiVampireDracula,
-    retro: SiRetroarch
-  };
+const map: IconMap = {
+  react: SiReact,
+  nextjs: SiNextdotjs,
+  typescript: SiTypescript,
+  tailwindcss: SiTailwindcss,
+  bootstrap: SiBootstrap,
+  ionic: SiIonic,
+  angular: SiAngular,
+  javascript: SiJavascript,
+  nodejs: SiNodedotjs,
+  graphql: SiGraphql,
+  rest: SiServerless,
+  jira: SiJira,
+  gitkraken: SiGitkraken,
+  docker: SiDocker,
+  aws: SiAmazon,
+  sonarqube: SiSonarqube,
+  jest: SiJest,
+  vscode: VscVscode,
+  dbeaver: SiDbeaver,
+  linux: DiLinux,
+  jenkins: SiJenkins,
+  lightsaber: GiLightSabers,
+  choke: FaFistRaised,
+  fleet: GiSpaceship,
+  army: GiMeepleArmy,
+  force: GiMightyForce,
+  sith: SiDarkreader,
+  deathstar: GiDeathStar,
+  sun: Sun,
+  moon: Moon,
+  laptop: Laptop,
+  terminal: Terminal,
+  palette: Palette,
+  sparkles: Sparkles,
+  wand: Wand2,
+  dracula: GiVampireDracula,
+  retro: SiRetroarch
+};
+export const useIconMap = () => {
+  return map;
 };
 
 export const getIcon = (iconName: string) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const iconMap = useIconMap();
-    return iconMap[iconName] || Palette;
+    return map[iconName] || Palette;
 }

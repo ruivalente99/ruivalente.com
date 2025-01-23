@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun, Laptop, Palette, Terminal, Bomb, LucideIcon } from "lucide-react";
+import { Sun, LucideIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,8 +14,6 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { useData } from "@/lib/hooks/useData";
-import { GiDeathStar } from 'react-icons/gi';
-import { getIcon } from '@/lib/hooks/useIconMap';
 import { getIcon } from '@/lib/hooks/useIconMap';
 
 interface Theme {
@@ -35,7 +33,6 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const { data: themesData, isLoading } = useData<{ themes: Theme[] }>('/api/themes');
 
-  // Get the current theme's icon
   const getCurrentThemeIcon = () => {
     if (!themesData?.themes) return Sun;
     const currentTheme = themesData.themes.find(t => t.value === theme) || themesData.themes[0];
