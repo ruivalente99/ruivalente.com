@@ -1,29 +1,42 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { notFound, useRouter } from 'next/navigation';
+import { useEffect } from "react";
+import { notFound, useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
-import MarkdownIt from 'markdown-it';
-import { experiences } from '@/lib/data';
+import { motion } from "framer-motion";
+import { ArrowLeft, ExternalLink } from "lucide-react";
+import MarkdownIt from "markdown-it";
+import { experiences } from "@/lib/data";
+import { useQuery } from "@tanstack/react-query";
 
 const md = new MarkdownIt({
   html: true,
   linkify: true,
-  typographer: true
+  typographer: true,
 });
 
 export function ExperienceContent({ slug }: { slug: string }) {
-  const [htmlContent, setHtmlContent] = useState('');
   const router = useRouter();
-  const experience = experiences.find(exp => exp.id === slug);
+  const experience = experiences.find((exp) => exp.id === slug);
+
+  const { data: markdownContent, isLoading, error } = useQuery({
+    queryKey: ["markdownContent", slug],
+    queryFn: async () => {
+      if (!experience?.contentPath) {
+        throw new Error("Content path not found.");
+      }
+      const response = await fetch(experience.contentPath);
+      if (!response.ok) {
+        throw new Error("Failed to fetch Markdown content.");
+      }
+      return response.text();
+    },
+    enabled: !!experience?.contentPath, // Ensure the query only runs if the contentPath exists
+  });
 
   useEffect(() => {
-    if (experience?.content) {
-      setHtmlContent(md.render(experience.content));
-    } else {
+    if (!experience) {
       notFound();
     }
   }, [experience]);
@@ -49,17 +62,29 @@ export function ExperienceContent({ slug }: { slug: string }) {
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-2xl font-bold">{experience.role}</h1>
-            <p className="text-muted-foreground">{experience.company} • {experience.year}</p>
+            <p className="text-muted-foreground">
+              {experience.company} • {experience.year}
+            </p>
           </div>
           <Button variant="outline" size="sm" asChild>
-            <a href={experience.companyUrl} target="_blank" rel="noopener noreferrer">
+            <a
+              href={experience.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ExternalLink className="w-4 h-4 mr-2" /> Company
             </a>
           </Button>
         </div>
       </div>
       <Card className="p-8 prose dark:prose-invert max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        {isLoading ? (
+          <p>Loading content...</p>
+        ) : error ? (
+          <p>Error loading content: {error.message}</p>
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: md.render(markdownContent!) }} />
+        )}
       </Card>
     </motion.div>
   );
