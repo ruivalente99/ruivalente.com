@@ -16,8 +16,7 @@ export interface Experience {
   role: string;
   company: string;
   companyUrl: string;
-  achievements: string[];
-  content: string;
+  contentPath: string;
 }
 
 export interface Education {
