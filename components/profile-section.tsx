@@ -69,7 +69,7 @@ export function ProfileSection() {
   const currentRole = experiences[0];
 
   const handleResumeDownload = () => {
-    const resumeUrl = '/resume.pdf';
+    const resumeUrl = 'https://github.com/ruivalente99/resume/raw/main/resume.pdf';
     window.open(resumeUrl, '_blank');
   };
 
