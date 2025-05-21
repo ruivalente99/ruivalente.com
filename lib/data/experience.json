@@ -6,15 +6,7 @@
       "role": "Frontend Engineer",
       "company": "Openvia",
       "companyUrl": "https://openvia.io",
-      "achievements": [
-        "Designed, created, and maintained architecture for various projects using React and Typescript.",
-        "Connected frontends with GraphQL or REST APIs.",
-        "Created views using Bootstrap and customized styling for Openvia.",
-        "Maintained legacy projects using Ionic, Angular, Vanilla JS, HTML, CSS, and Ajax.",
-        "Worked using agile methodology and ensured code quality with Sonarqube and Jest.",
-        "Used Jenkins, Docker, and AWS to keep projects live and developed projects from scratch."
-      ],
-      "content": "# Frontend Engineer at Openvia\n\n## Role Overview\nAs a Frontend Engineer at Openvia, I have been responsible for designing, creating, and maintaining architecture for various projects using React and Typescript, from the initial commit until deployment.\n\n## Key Achievements\n\n### Project Development\n- Designed and maintained project architecture using React and Typescript.\n- Connected frontends with GraphQL or REST APIs.\n- Created views using Bootstrap and customized styling.\n\n### Legacy Maintenance\n- Maintained legacy projects using Ionic, Angular, Vanilla JS, HTML, CSS, and Ajax.\n\n### Agile and Quality Assurance\n- Worked using agile methodology.\n- Ensured code quality with Sonarqube and Jest.\n\n### DevOps\n- Used Jenkins, Docker, and AWS to keep projects live.\n- Developed projects from scratch."
+      "contentPath": "/content/openvia.md"
     },
     {
       "id": "neoception-2021",
@@ -22,13 +14,7 @@
       "role": "Software Engineer (Trainee)",
       "company": "Neoception",
       "companyUrl": "https://www.neoception.com/",
-      "achievements": [
-        "Gained experience working on a web-based project using React and JavaScript.",
-        "Became proficient in unit testing, code reviews, and utilizing React component libraries like Material UI.",
-        "Created new features and attended meetings with project clients using Jira tickets on a Kanban board.",
-        "Developed software engineering and communication skills, while improving English language proficiency."
-      ],
-      "content": "# Software Engineer (Trainee) at Neoception\n\n## Role Overview\nAs a Junior Software Engineer at Neoception, I gained experience working on a web-based project using React and JavaScript.\n\n## Key Achievements\n\n### Project Development\n- Worked on a web-based project using React and JavaScript.\n- Created new features and attended client meetings using Jira tickets on a Kanban board.\n\n### Skill Development\n- Became proficient in unit testing and code reviews.\n- Utilized React component libraries like Material UI.\n- Improved software engineering and communication skills.\n- Enhanced English language proficiency."
+      "contentPath": "/content/neoception.md"
     }
   ]
 }
