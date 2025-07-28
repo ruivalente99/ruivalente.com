@@ -1,0 +1,101 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Rui Valente -- Software Engineer, Frontend Developer
+    Contact: email [at] ruivalente.com
+    Twitter: @ruivalente99
+    GitHub: @ruivalente99
+    LinkedIn: linkedin.com/in/ruivalente99
+    Location: Portugal
+
+# TECHNOLOGY COLOPHON
+
+    ## Frontend
+    React, TypeScript, Next.js, JavaScript
+    HTML5, CSS3, Tailwind CSS, Bootstrap
+    Framer Motion, Responsive Design
+
+    ## Backend & APIs
+    Node.js, GraphQL, REST APIs
+    Serverless Architecture
+
+    ## Tools & Development
+    Git, Docker, AWS, CI/CD
+    VS Code, Jest, Jenkins
+    SonarQube, Performance Optimization
+
+    ## Practices
+    Agile Development, Code Reviews
+    Test-Driven Development
+    Performance Optimization
+    Accessibility (WCAG)
+
+# SITE
+
+    Last update: 2025/07/28
+    Language: English
+    Doctype: HTML5
+    IDE: Visual Studio Code
+    Standards: HTML5, CSS3, Accessibility
+    Components: React, TypeScript, Next.js
+    Deployment: Vercel
+    Analytics: Privacy-focused
+    Fonts: Space Mono, VT323 (Google Fonts)
+
+# DEVELOPER INFORMATION
+
+    Name: Rui Valente
+    Role: Software Engineer
+    Current Company: Openvia (Frontend Engineer, 2022-Present)
+    Previous: Neoception (Software Engineer Trainee, 2021-2022)
+    
+    Specialization: React, TypeScript, Next.js
+    Focus Areas: Frontend Architecture, Performance Optimization, Team Mentoring
+    
+    Notable Projects:
+    - Lazy Life: AI-powered sustainability platform
+    - EV Charging Management Platform
+    - Various React/TypeScript applications
+    
+    Bio: "Drink bugs and solve coffee" - Passionate about clean code, 
+         sustainable technology, and mentoring developers.
+
+# AI CHATBOT CONTEXT
+
+    This portfolio showcases Rui Valente's expertise in modern web development,
+    particularly React, TypeScript, and Next.js. He's a Frontend Engineer at
+    Openvia with experience in scalable application development, performance
+    optimization, and team leadership. Known for rapid career progression and
+    focus on sustainable technology solutions.
+
+# CONTACT & COLLABORATION
+
+    Open to: Frontend development opportunities, React/TypeScript projects,
+            mentoring opportunities, sustainable technology initiatives
+    
+    Available for: Freelance projects, consulting, speaking engagements,
+                   technical writing, open source contributions
+    
+    Preferred communication: Email, LinkedIn, GitHub
+    Response time: Usually within 24-48 hours
+    Time zone: WET (Western European Time)
+
+                              .-.
+                             /   \
+                        _..-'     '-._
+                     .-'               '-.
+                   .'                     '.
+                  /    ____       ____     \
+                 |    /    \     /    \     |
+                 |   |      |   |      |    |
+                 |    \____/     \____/     |
+                 |                          |
+                  \          ________      /
+                   '.       \        \   .'
+                     '-.      ~~~~~~~~ .-'
+                        '-._         _.-'
+                            '~~~~~~~'
+
+    /* Made with ❤️ by Rui Valente */

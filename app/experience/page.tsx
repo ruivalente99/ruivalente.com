@@ -29,18 +29,59 @@ export default function ExperiencePage() {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground p-4">
-      <div className="max-w-3xl mx-auto">
-        <div className="mb-8">
-          <Button
-            variant="ghost"
-            onClick={() => router.back()}
-            className="mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" /> Back
-          </Button>
-          <h1 className="text-2xl font-bold">Experience</h1>
-        </div>
+    <>
+      {/* Hidden AI Context for Experience */}
+      <div className="sr-only" aria-hidden="true">
+        <h1>Rui Valente Professional Experience</h1>
+        <section>
+          <h2>Career Summary</h2>
+          <p>Software engineer with progressive experience in frontend development, currently serving as Frontend Engineer at Openvia since 2022, with previous trainee experience at Neoception from 2021-2022.</p>
+          
+          <h3>Current Role: Frontend Engineer at Openvia (2022 - Present)</h3>
+          <ul>
+            <li>Leading modern web application development with React and TypeScript</li>
+            <li>Implementing scalable architecture and optimal user experience</li>
+            <li>Working with cutting-edge technologies: React, TypeScript, Bootstrap, GraphQL, REST APIs</li>
+            <li>Achieving significant performance improvements through code optimization</li>
+            <li>Maintaining comprehensive code coverage with testing practices</li>
+            <li>Implementing zero-downtime deployments using advanced CI/CD strategies</li>
+            <li>Mentoring junior developers and establishing code review standards</li>
+            <li>Contributing to agile process improvements increasing team velocity</li>
+          </ul>
+          
+          <h3>Previous Role: Software Engineer Trainee at Neoception (2021 - 2022)</h3>
+          <ul>
+            <li>Completed comprehensive program combining hands-on development with professional skills training</li>
+            <li>Built strong foundation in software engineering and workplace competencies</li>
+            <li>Learned programming fundamentals, object-oriented programming, and design patterns</li>
+            <li>Developed web applications with HTML5, CSS3, JavaScript, and React basics</li>
+            <li>Gained experience with database concepts, SQL fundamentals, and data modeling</li>
+            <li>Mastered version control with Git workflows and collaborative development</li>
+            <li>Successfully delivered first production deployment to client</li>
+            <li>Maintained excellent project completion rates with tasks completed on schedule</li>
+            <li>Achieved business-level English communication proficiency</li>
+          </ul>
+          
+          <h3>Professional Development</h3>
+          <p>Transformed from programming novice to confident frontend engineer with both technical skills and professional competencies including time management, goal orientation, adaptability, and effective collaboration in cross-functional environments.</p>
+        </section>
+      </div>
+
+      <main className="min-h-screen bg-background text-foreground p-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-8">
+            <Button
+              variant="ghost"
+              onClick={() => router.back()}
+              className="mb-4"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" /> Back
+            </Button>
+            <h1 className="text-2xl font-bold">Professional Experience</h1>
+            <p className="text-muted-foreground mt-2">
+              Progressive software engineering career with expertise in React, TypeScript, and modern web development
+            </p>
+          </div>
 
         <div className="space-y-6">
           {experiences?.map((exp) => (
@@ -96,6 +137,7 @@ export default function ExperiencePage() {
         </div>
       </div>
     </main>
+    </>
   );
 }
 

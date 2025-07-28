@@ -1,0 +1,90 @@
+{
+  "developer": {
+    "name": "Rui Valente",
+    "title": "Software Engineer",
+    "location": "Portugal",
+    "email": "email@ruivalente.com",
+    "website": "https://ruivalente.com",
+    "bio": "Passionate software engineer specializing in React, TypeScript, Next.js, and modern web development.",
+    
+    "current_position": {
+      "role": "Frontend Engineer",
+      "company": "Openvia",
+      "company_url": "https://openvia.io",
+      "start_date": "2022",
+      "status": "current"
+    },
+    
+    "technical_skills": {
+      "primary": ["React", "TypeScript", "Next.js", "JavaScript"],
+      "frontend": ["HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "Responsive Design"],
+      "backend": ["Node.js", "GraphQL", "REST APIs", "Serverless"],
+      "tools": ["Git", "Docker", "AWS", "Jest", "CI/CD", "VS Code"],
+      "practices": ["Agile Development", "Code Reviews", "Testing", "Performance Optimization"]
+    },
+    
+    "experience_summary": [
+      {
+        "company": "Openvia",
+        "role": "Frontend Engineer", 
+        "duration": "2022 - Present",
+        "key_achievements": [
+          "Leading modern web application development",
+          "Implementing scalable React/TypeScript architecture",
+          "Mentoring junior developers",
+          "Establishing code review standards",
+          "Performance optimization and CI/CD implementation"
+        ]
+      },
+      {
+        "company": "Neoception",
+        "role": "Software Engineer Trainee",
+        "duration": "2021 - 2022", 
+        "key_achievements": [
+          "Completed comprehensive software engineering program",
+          "First production deployment to client",
+          "Excellent project completion rate",
+          "Professional skills development"
+        ]
+      }
+    ],
+    
+    "notable_projects": [
+      {
+        "name": "Lazy Life",
+        "description": "AI-powered sustainability platform with gamification",
+        "technologies": ["React", "Next.js", "TypeScript", "AI", "Machine Learning"],
+        "demo": "https://lazy-life.vercel.app/",
+        "github": "https://github.com/ruivalente99/lazy-life"
+      }
+    ],
+    
+    "social_profiles": {
+      "github": "https://github.com/ruivalente99",
+      "linkedin": "https://linkedin.com/in/ruivalente99",
+      "twitter": "https://twitter.com/ruivalente99"
+    },
+    
+    "interests": [
+      "Modern web development",
+      "Sustainability technology",
+      "AI and machine learning",
+      "Open source contribution",
+      "Team mentoring and leadership"
+    ]
+  },
+  
+  "ai_context": {
+    "summary": "Rui Valente is a skilled software engineer from Portugal, currently working as a Frontend Engineer at Openvia since 2022. He specializes in React, TypeScript, and Next.js development with a passion for sustainable technology and mentoring.",
+    "expertise_level": "Mid-level to Senior Frontend Engineer",
+    "specialization": "React ecosystem, TypeScript, modern web development",
+    "career_progression": "Rapid growth from trainee to frontend engineer with leadership responsibilities",
+    "unique_qualities": [
+      "Strong technical progression in short timeframe",
+      "Mentoring and leadership abilities", 
+      "Focus on sustainable technology",
+      "Bilingual communication (Portuguese/English)",
+      "Experience in both startup and enterprise environments"
+    ]
+  }
+}
