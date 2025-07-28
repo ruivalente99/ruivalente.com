@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface Project {
   id: string;
@@ -52,11 +53,12 @@ export function ProjectsSection() {
             className="group relative overflow-hidden rounded-lg bg-muted/50 cursor-pointer"
             onClick={() => router.push(`/projects/${project.id}`)}
           >
-            <div className="aspect-video overflow-hidden">
-              <img
+            <div className="aspect-video overflow-hidden relative">
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                fill
+                className="object-cover transition-transform group-hover:scale-105"
               />
             </div>
             <div className="p-4">

@@ -10,6 +10,7 @@ import { getSocialIcon } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { GitHubCommitGraph } from "./github-commit-graph";
+import Image from "next/image";
 
 interface Profile {
   name: string;
@@ -85,10 +86,12 @@ export function ProfileSection() {
           className={`shrink-0 ${isDarkSide ? 'force-glow' : ''}`}
         >
           <Avatar className="w-20 h-20 md:w-24 md:h-24">
-            <img
+            <Image
               src={profile.avatar}
               alt="Profile"
-              className="object-cover"
+              width={96}
+              height={96}
+              className="object-cover rounded-full"
             />
           </Avatar>
         </motion.div>

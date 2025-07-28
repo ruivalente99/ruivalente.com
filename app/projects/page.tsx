@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function ProjectsPage() {
   const router = useRouter();
@@ -42,11 +43,12 @@ export default function ProjectsPage() {
               className="flex-none w-[300px]"
             >
               <Card className="overflow-hidden h-full">
-                <div className="aspect-video overflow-hidden">
-                  <img
+                <div className="aspect-video overflow-hidden relative">
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
                 <div className="p-6">

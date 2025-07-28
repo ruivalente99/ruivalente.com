@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Globe, Github, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface Project {
   id: string;
@@ -58,11 +59,12 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 transition={{ delay: index * 0.1 }}
                 className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col group"
               >
-                <div className="h-24 overflow-hidden">
-                  <img
+                <div className="h-24 overflow-hidden relative">
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-1">

@@ -5,6 +5,7 @@ import { Github, Globe, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import type { Project } from "@/lib/types";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -21,11 +22,12 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
       transition={{ delay }}
       className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col"
     >
-      <div className="h-24 overflow-hidden">
-        <img
+      <div className="h-24 overflow-hidden relative">
+        <Image
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
       </div>
       <div className="p-4 flex flex-col flex-1">
