@@ -1,12 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Experience {
   id: string;
@@ -14,8 +16,8 @@ interface Experience {
   company: string;
   year: string;
   companyUrl: string;
-  achievements: string[];
-  content: string;
+  skills: string[];
+  contentPath: string;
 }
 
 export default function ExperiencePage() {
@@ -48,33 +50,47 @@ export default function ExperiencePage() {
               animate={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.02 }}
             >
-              <Card className="p-6">
-                <h2 className="text-lg font-semibold mb-2">{exp.role}</h2>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <p className="text-muted-foreground">{exp.company}</p>
-                    <p className="text-sm text-muted-foreground">{exp.year}</p>
+              <Link href={`/experience/${exp.id}`}>
+                <Card className="p-6 cursor-pointer hover:shadow-lg transition-shadow">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex-1">
+                      <h2 className="text-lg font-semibold mb-2">{exp.role}</h2>
+                      <div className="flex items-center gap-4">
+                        <p className="text-muted-foreground">{exp.company}</p>
+                        <p className="text-sm text-muted-foreground">{exp.year}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={exp.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                      <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                    </div>
                   </div>
-                  <a
-                    href={exp.companyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-sm font-medium">Key Achievements:</h3>
-                  <ul className="list-disc list-inside space-y-1">
-                    {exp.achievements.map((achievement, index) => (
-                      <li key={index} className="text-sm text-muted-foreground">
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Card>
+                  
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium">Skills & Technologies:</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills?.slice(0, 6).map((skill, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                      {exp.skills?.length > 6 && (
+                        <Badge variant="outline" className="text-xs">
+                          +{exp.skills.length - 6} more
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>

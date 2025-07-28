@@ -68,7 +68,6 @@ export default function StackPage() {
           </Button>
           <h1 className="text-2xl font-bold">Tech Stack</h1>
         </div>
-x
         <div className="space-y-8">
           {stack?.map((category) => (
             <section key={category.category}>

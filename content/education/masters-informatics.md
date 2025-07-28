@@ -1,0 +1,5 @@
+# Master's Degree in Informatics Engineering
+
+This advanced computer science program focused on leadership, innovation, and cutting-edge technologies through a comprehensive research-based curriculum. The program covered advanced software engineering including software architecture and design patterns, distributed systems and cloud computing, artificial intelligence and machine learning, data science and statistical modeling, cybersecurity and cryptography, and modern web and mobile frameworks.
+
+The program included specialization areas in software development with programming paradigms and enterprise architecture, AI & Data Science with machine learning algorithms and big data technologies, and cybersecurity with network security and digital forensics. The curriculum culminated in an independent thesis project with industry collaboration opportunities, preparing graduates for technical leadership roles in software engineering, AI/ML engineering, research and development positions, and technology entrepreneurship.

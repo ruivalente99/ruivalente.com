@@ -1,0 +1,32 @@
+{
+  "experiences": [
+    {
+      "id": "openvia-2022",
+      "year": "2022 — Present",
+      "role": "Frontend Engineer",
+      "company": "Openvia",
+      "companyUrl": "https://openvia.io",
+      "contentPath": "/content/experience/openvia-2022.md",
+      "achievements": [
+        "Led development of 5+ major projects from conception to production",
+        "Achieved 40% performance improvement through optimization",
+        "Maintained 85%+ code coverage with comprehensive testing",
+        "Implemented modern React patterns and TypeScript architecture"
+      ]
+    },
+    {
+      "id": "neoception-2021",
+      "year": "2021 — 2022",
+      "role": "Software Engineer (Trainee)",
+      "company": "Neoception",
+      "companyUrl": "https://www.neoception.com/",
+      "contentPath": "/content/experience/neoception-2021.md",
+      "achievements": [
+        "Completed comprehensive 12-month software engineering program",
+        "Achieved business-level English proficiency",
+        "Delivered first production project successfully",
+        "Developed professional communication and teamwork skills"
+      ]
+    }
+  ]
+}

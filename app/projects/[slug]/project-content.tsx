@@ -1,20 +1,11 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { notFound, useRouter } from 'next/navigation';
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from 'framer-motion';
-import { ArrowLeft, Github, Globe } from 'lucide-react';
-import MarkdownIt from 'markdown-it';
+import { notFound } from 'next/navigation';
 import { useTheme } from "next-themes";
 import { useData } from "@/lib/hooks/useData";
-
-const md = new MarkdownIt({
-  html: true,
-  linkify: true,
-  typographer: true
-});
+import { getMarkdownContentAction } from '@/lib/markdown-actions';
+import { DetailLayout, createProjectActions, createProjectMetadata } from '@/components/detail-layout';
 
 interface Project {
   id: string;
@@ -23,80 +14,74 @@ interface Project {
   image: string;
   demo: string;
   github: string;
-  content: string;
+  contentPath: string;
+  technologies?: string[];
 }
 
 export function ProjectContent({ slug }: { slug: string }) {
   const [htmlContent, setHtmlContent] = useState('');
-  const router = useRouter();
+  const [contentLoading, setContentLoading] = useState(true);
   const { theme } = useTheme();
   
-  // Use the appropriate API endpoint based on theme
-  const endpoint = theme === 'dark-side' ? `/api/dark-side/projects` : '/api/projects';
-  const { data: projects, isLoading } = useData<Project[]>(endpoint);
+  const endpoint = theme === 'dark-side' 
+    ? '/api/dark-side/projects' 
+    : '/api/projects';
   
-  const project = projects?.find(p => p.id === slug);
+  const { data: projects, isLoading } = useData<Project[]>(endpoint);
+  const project = projects?.find((p: Project) => p.id === slug);
 
   useEffect(() => {
-    if (project?.content) {
-      setHtmlContent(md.render(project.content));
-    } else if (!isLoading && !project) {
-      notFound();
+    async function loadContent() {
+      if (project?.contentPath) {
+        try {
+          const content = await getMarkdownContentAction(project.contentPath);
+          setHtmlContent(content);
+        } catch (error) {
+          console.error('Error loading markdown content:', error);
+          setHtmlContent('<p>Error loading content</p>');
+        }
+      }
+      setContentLoading(false);
     }
-  }, [project, isLoading]);
 
-  if (isLoading) {
-    return (
-      <div className="container mx-auto py-8 px-4">
-        <div className="p-8 animate-pulse bg-card rounded-lg">
-          <div className="h-8 bg-muted rounded w-1/3 mb-4"></div>
-          <div className="space-y-3">
-            <div className="h-4 bg-muted rounded w-full"></div>
-            <div className="h-4 bg-muted rounded w-5/6"></div>
-            <div className="h-4 bg-muted rounded w-4/6"></div>
-          </div>
-        </div>
-      </div>
-    );
+    loadContent();
+  }, [project]);
+
+  if (isLoading || contentLoading) {
+    return <DetailLayout isLoading={true} title="" type="project" />;
   }
 
   if (!project) {
     notFound();
   }
 
+  // Extract technologies for tags (prioritize technologies array, then description)
+  const extractTechnologiesFromDescription = (text: string): string[] => {
+    const techKeywords = [
+      'React', 'Next.js', 'TypeScript', 'JavaScript', 'Node.js', 'Python', 'AI', 
+      'Machine Learning', 'PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'Kubernetes',
+      'GraphQL', 'REST', 'API', 'Frontend', 'Backend', 'Full Stack', 'Mobile',
+      'Web Development', 'Cloud', 'DevOps', 'CI/CD', 'Testing', 'Agile'
+    ];
+    
+    return techKeywords.filter(tech => 
+      text.toLowerCase().includes(tech.toLowerCase())
+    ).slice(0, 6);
+  };
+
+  const technologies = project?.technologies || 
+    extractTechnologiesFromDescription(project?.description || '');
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="container mx-auto py-8 px-4"
-    >
-      <div className="mb-8">
-        <Button
-          variant="ghost"
-          onClick={() => router.back()}
-          className="mb-4"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" /> Back
-        </Button>
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold">{project.title}</h1>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm" asChild>
-              <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                <Globe className="w-4 h-4 mr-2" /> Demo
-              </a>
-            </Button>
-            <Button variant="outline" size="sm" asChild>
-              <a href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="w-4 h-4 mr-2" /> Source
-              </a>
-            </Button>
-          </div>
-        </div>
-      </div>
-      <Card className="p-8 prose dark:prose-invert max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-      </Card>
-    </motion.div>
+    <DetailLayout
+      title={project.title}
+      subtitle={project.description}
+      tags={technologies}
+      actions={createProjectActions(project.demo, project.github)}
+      metadata={createProjectMetadata(technologies)}
+      content={htmlContent}
+      isLoading={false}
+      type="project"
+    />
   );
 }

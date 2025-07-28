@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getSocialIcon } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { GitHubCommitGraph } from "./github-commit-graph";
 
 interface Profile {
   name: string;
@@ -74,88 +75,95 @@ export function ProfileSection() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center gap-6">
-      <motion.div 
-        whileHover={{ scale: 1.05 }} 
-        className={`shrink-0 ${isDarkSide ? 'force-glow' : ''}`}
-      >
-        <Avatar className="w-24 h-24">
-          <img
-            src={profile.avatar}
-            alt="Profile"
-            className="object-cover"
-          />
-        </Avatar>
-      </motion.div>
+    <div className="relative">
+      {/* GitHub commit graph background */}
+      <GitHubCommitGraph username="ruivalente99" className="z-0" opacity={0.35} />
       
-      <div className="flex-1 text-center md:text-left">
-        <h1 className={`text-2xl font-bold mb-1 ${isDarkSide ? 'force-glow' : ''}`}>
-          {profile.name}
-        </h1>
-        <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm mb-4">
-          <span className="text-muted-foreground">{profile.role}</span>
-          <span className="text-muted-foreground">@</span>
-          <a
-            href={currentRole.companyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline"
-          >
-            {currentRole.company}
-          </a>
-        </div>
-        <p className="text-muted-foreground mb-4">{profile.bio}</p>
-        <div className="flex flex-wrap gap-2 justify-center md:justify-start items-center">
-          <div className="flex gap-2 flex-wrap items-center">
-            {socialLinks.map((link, index) => {
-              const Icon = getSocialIcon(link.icon);
-              return (
-                <motion.div 
-                  key={index} 
-                  whileHover={{ scale: 1.1 }}
-                  className={isDarkSide ? 'force-glow' : ''}
-                >
-                  <Button variant="ghost" size="icon" asChild>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  </Button>
-                </motion.div>
-              );
-            })}
-            <motion.div 
-              whileHover={{ scale: 1.1 }}
-              className={isDarkSide ? 'force-glow' : ''}
+      <div className="relative z-10 flex flex-col md:flex-row items-center gap-4 md:gap-6">
+        <motion.div 
+          whileHover={{ scale: 1.05 }} 
+          className={`shrink-0 ${isDarkSide ? 'force-glow' : ''}`}
+        >
+          <Avatar className="w-20 h-20 md:w-24 md:h-24">
+            <img
+              src={profile.avatar}
+              alt="Profile"
+              className="object-cover"
+            />
+          </Avatar>
+        </motion.div>
+        
+        <div className="flex-1 text-center md:text-left space-y-3 md:space-y-4">
+          <h1 className={`text-xl md:text-2xl font-bold ${isDarkSide ? 'force-glow' : ''}`}>
+            {profile.name}
+          </h1>
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-1 md:gap-2 text-xs md:text-sm">
+            <span className="text-muted-foreground">{profile.role}</span>
+            <span className="text-muted-foreground">@</span>
+            <a
+              href={currentRole.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
             >
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
+              {currentRole.company}
+            </a>
+          </div>
+          <p className="text-sm md:text-base text-muted-foreground">{profile.bio}</p>
+          <div className="flex flex-wrap gap-1 md:gap-2 justify-center md:justify-start items-center">
+            <div className="flex gap-1 md:gap-2 flex-wrap items-center justify-center md:justify-start">
+              {socialLinks.map((link, index) => {
+                const Icon = getSocialIcon(link.icon);
+                return (
+                  <motion.div 
+                    key={index} 
+                    whileHover={{ scale: 1.1 }}
+                    className={isDarkSide ? 'force-glow' : ''}
+                  >
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary"
+                      >
+                        <Icon className="w-3 h-3 md:w-4 md:h-4" />
+                      </a>
+                    </Button>
+                  </motion.div>
+                );
+              })}
+              <motion.div 
+                whileHover={{ scale: 1.1 }}
+                className={isDarkSide ? 'force-glow' : ''}
               >
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="hover:text-primary"
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 w-8 p-0"
+                  asChild
                 >
-                  <Mail className="w-4 h-4" />
-                </a>
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleResumeDownload}
-                className={`gap-2 ${isDarkSide ? 'force-glow' : ''}`}
-              >
-                <FileText className="w-4 h-4" />
-                download boring resume
-              </Button>
-            </motion.div>
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="hover:text-primary"
+                  >
+                    <Mail className="w-3 h-3 md:w-4 md:h-4" />
+                  </a>
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleResumeDownload}
+                  className={`gap-1 md:gap-2 text-xs md:text-sm h-8 ${isDarkSide ? 'force-glow' : ''}`}
+                >
+                  <FileText className="w-3 h-3 md:w-4 md:h-4" />
+                  <span className="hidden sm:inline">download boring resume</span>
+                  <span className="sm:hidden">resume</span>
+                </Button>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
