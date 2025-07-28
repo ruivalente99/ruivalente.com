@@ -1,4 +1,4 @@
-import { DivideIcon as LucideIcon } from 'lucide-react';
+import { DivideIcon as LucideIcon } from "lucide-react";
 
 export interface Project {
   id: string;
@@ -7,7 +7,8 @@ export interface Project {
   image: string;
   demo: string;
   github: string;
-  content: string;
+  content?: string;
+  contentPath?: string;
 }
 
 export interface Experience {
@@ -16,8 +17,9 @@ export interface Experience {
   role: string;
   company: string;
   companyUrl: string;
-  achievements: string[];
-  content: string;
+  achievements?: string[];
+  content?: string;
+  contentPath?: string;
 }
 
 export interface Education {
@@ -26,7 +28,8 @@ export interface Education {
   school: string;
   year: string;
   url: string;
-  content: string;
+  content?: string;
+  contentPath?: string;
 }
 
 export interface Certification {
@@ -34,6 +37,8 @@ export interface Certification {
   issuer: string;
   year: string;
   url: string;
+  content?: string;
+  contentPath?: string;
 }
 
 export interface Hobby {
