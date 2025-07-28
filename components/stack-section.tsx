@@ -64,20 +64,21 @@ export function StackSection() {
   if (!stack) return null;
 
   return (
-    <Card className="h-full p-4">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-sm font-bold">tech stack</h2>
+    <Card className="h-full p-4" role="region" aria-labelledby="tech-stack-heading">
+      <header className="flex items-center justify-between mb-4">
+        <h2 id="tech-stack-heading" className="text-sm font-bold">tech stack</h2>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/stack')}
           className="text-xs"
+          aria-label="View all technologies and tools"
         >
-          view all <ArrowRight className="w-3 h-3 ml-1" />
+          view all <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
-      </div>
+      </header>
       
-      <div className="grid grid-cols-6 md:grid-cols-8 gap-4">
+      <div className="grid grid-cols-6 md:grid-cols-8 gap-4" role="list" aria-label="Technology icons">
         <TooltipProvider>
           {stack.flatMap(category => 
             category.items.slice(0, 4).map((tech) => {
@@ -93,8 +94,13 @@ export function StackSection() {
                           ? 'hover:bg-red-950/50 text-white hover:text-red-500' 
                           : 'hover:bg-accent'
                       }`}
+                      role="listitem"
+                      aria-label={`${tech.name}: ${tech.description}`}
                     >
-                      <Icon className={`w-6 h-6 ${isDarkSide ? 'force-glow' : ''}`} />
+                      <Icon 
+                        className={`w-6 h-6 ${isDarkSide ? 'force-glow' : ''}`} 
+                        aria-hidden="true"
+                      />
                     </motion.div>
                   </TooltipTrigger>
                   <TooltipContent 

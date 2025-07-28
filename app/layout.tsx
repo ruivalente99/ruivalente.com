@@ -35,7 +35,25 @@ const vt323 = VT323({
 
 export const metadata: Metadata = {
   title: '.rui',
-  description: 'rui valente',
+  description: 'rui valente - software developer portfolio showcasing projects, experience, and technical skills',
+  keywords: 'Rui Valente, software developer, web developer, portfolio, programming, technology, projects',
+  authors: [{ name: 'Rui Valente' }],
+  creator: 'Rui Valente',
+  openGraph: {
+    title: '.rui',
+    description: 'rui valente - software developer portfolio',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '.rui',
+    description: 'rui valente - software developer portfolio',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -43,11 +61,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rui Valente",
+    "jobTitle": "Software Developer",
+    "description": "Portfolio of Rui Valente, showcasing software development projects and experience",
+    "url": "https://ruivalente.com",
+    "sameAs": [
+      "https://github.com/ruivalente99",
+      "https://linkedin.com/in/ruivalente99"
+    ]
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       <body className={`${spaceMono.variable} ${vt323.variable} font-sans overflow-y-auto`}>
         <Providers>

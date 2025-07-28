@@ -32,27 +32,40 @@ export function ProjectsSection() {
   const featuredProjects = projects.slice(0, 3);
 
   return (
-    <Card className="h-full p-4">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-sm font-bold">featured projects</h2>
+    <Card className="h-full p-4" role="region" aria-labelledby="featured-projects-heading">
+      <header className="flex items-center justify-between mb-4">
+        <h2 id="featured-projects-heading" className="text-sm font-bold">featured projects</h2>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/projects')}
           className="text-xs"
+          aria-label="View all projects"
         >
-          view all <ArrowRight className="w-3 h-3 ml-1" />
+          view all <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
-      </div>
+      </header>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4" role="list">
         {featuredProjects.map((project) => (
-          <motion.div
+          <article
             key={project.id}
-            whileHover={{ scale: 1.02 }}
-            className="group relative overflow-hidden rounded-lg bg-muted/50 cursor-pointer"
-            onClick={() => router.push(`/projects/${project.id}`)}
+            role="listitem"
           >
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="group relative overflow-hidden rounded-lg bg-muted/50 cursor-pointer"
+              onClick={() => router.push(`/projects/${project.id}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  router.push(`/projects/${project.id}`);
+                }
+              }}
+              aria-label={`View project: ${project.title}`}
+            >
             <div className="aspect-video overflow-hidden relative">
               <Image
                 src={project.image}
@@ -77,8 +90,9 @@ export function ProjectsSection() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`View live demo of ${project.title}`}
                   >
-                    <Globe className="w-3 h-3 mr-1" /> demo
+                    <Globe className="w-3 h-3 mr-1" aria-hidden="true" /> demo
                   </a>
                 </Button>
                 <Button 
@@ -91,14 +105,16 @@ export function ProjectsSection() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`View source code for ${project.title} on GitHub`}
                   >
-                    <Github className="w-3 h-3 mr-1" /> github
+                    <Github className="w-3 h-3 mr-1" aria-hidden="true" /> github
                   </a>
                 </Button>
-                <ArrowRight className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
               </div>
             </div>
-          </motion.div>
+            </motion.div>
+          </article>
         ))}
       </div>
     </Card>

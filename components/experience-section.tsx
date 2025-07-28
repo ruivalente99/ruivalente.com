@@ -28,21 +28,22 @@ export function ExperienceSection() {
   if (!experiences) return null;
 
   return (
-    <Card className="h-full p-4">
-      <div className="flex items-center justify-between mb-4">
+    <Card className="h-full p-4" role="region" aria-labelledby="experience-heading">
+      <header className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Briefcase className="w-4 h-4" />
-          <h2 className="text-sm font-bold">experience</h2>
+          <Briefcase className="w-4 h-4" aria-hidden="true" />
+          <h2 id="experience-heading" className="text-sm font-bold">experience</h2>
         </div>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/experience')}
           className="text-xs"
+          aria-label="View all work experience"
         >
-          view all <ArrowRight className="w-3 h-3 ml-1" />
+          view all <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
-      </div>
+      </header>
       <div className="space-y-3">
         {experiences.slice(0, 2).map((exp) => (
           <motion.div

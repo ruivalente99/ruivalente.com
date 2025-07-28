@@ -12,7 +12,8 @@ import { StackSection } from "@/components/stack-section";
 
 export default function Home() {
   return (
-    <div className="bg-background text-foreground p-4">
+    <main className="bg-background text-foreground p-4">
+      <h1 className="sr-only">rui valente - software developer portfolio</h1>
       <BentoGrid className="">
         {/* Profile Section */}
         <BentoItem colSpan={3}>
@@ -47,6 +48,6 @@ export default function Home() {
           <ProjectsSection />
         </BentoItem>
       </BentoGrid>
-    </div>
+    </main>
   );
 }
