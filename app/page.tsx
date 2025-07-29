@@ -47,8 +47,11 @@ export default function Home() {
       </div>
       
       {/* AI Chatbot Context Prompts */}
-      <script type="application/ld+json" style={{display: 'none'}} suppressHydrationWarning>
-        {JSON.stringify({
+      <script 
+        type="application/ld+json" 
+        style={{display: 'none'}} 
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfilePage",
           "mainEntity": {
@@ -90,8 +93,8 @@ export default function Home() {
               }
             }
           }
-        })}
-      </script>
+        }) }}
+      />
 
       <main className="bg-background text-foreground p-4">
         <h1 className="sr-only">Rui Valente - Software Engineer Portfolio</h1>
