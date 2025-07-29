@@ -36,8 +36,8 @@ const vt323 = VT323({
 export const metadata: Metadata = {
   metadataBase: new URL('https://ruivalente.com'),
   title: {
-    default: 'Rui Valente - Software Engineer Portfolio',
-    template: '%s | Rui Valente'
+    default: '.rui',
+    template: '%s.rui'
   },
   description: 'Rui Valente is a passionate software engineer specializing in React, TypeScript, Next.js, and modern web development. Explore my projects, experience at Openvia and Neoception, and technical expertise in full-stack development.',
   keywords: [
