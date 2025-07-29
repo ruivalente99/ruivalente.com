@@ -28,6 +28,26 @@ export default function ExperiencePage() {
     return <ExperienceSkeleton />;
   }
 
+  if (!experiences || experiences.length === 0) {
+    return (
+      <div className="min-h-[100dvh] bg-background text-foreground p-4">
+        <div className="max-w-3xl mx-auto">
+          <Button
+            variant="ghost"
+            onClick={() => router.back()}
+            className="mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" /> Back
+          </Button>
+          <div className="text-center py-12">
+            <h2 className="text-xl font-semibold mb-2">No experience data found</h2>
+            <p className="text-muted-foreground">Experience information will appear here when available.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Hidden AI Context for Experience */}

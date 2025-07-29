@@ -17,7 +17,26 @@ export default function ProjectsPage() {
     return <ProjectsSkeleton />;
   }
 
-  if (!projects) return null;
+  if (!projects || projects.length === 0) {
+    return (
+      <div className="min-h-[100dvh] bg-background text-foreground p-4">
+        <div className="max-w-7xl mx-auto">
+          <Button
+            variant="ghost"
+            onClick={() => router.back()}
+            className="mb-4"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back
+          </Button>
+          <div className="text-center py-12">
+            <h2 className="text-xl font-semibold mb-2">No projects found</h2>
+            <p className="text-muted-foreground">Projects will appear here when available.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
