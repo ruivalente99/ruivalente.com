@@ -6,7 +6,7 @@
       "school": "Universidade de Tras-os-Montes e Alto Douro",
       "year": "2022 — 2024",
       "url": "https://www.utad.pt",
-      "contentPath": "/content/education/masters-informatics.md",
+      "contentPath": "/content/education/masters-informatics-2022.md",
       "skills": ["Software Architecture", "Design Patterns", "Best Practices", "Software Engineering", "Project Management", "Code Quality", "Professional Development", "AI", "Machine Learning", "Web Development", "Quality Assurance", "Development Methodologies"]
     },
     {
@@ -15,7 +15,7 @@
       "school": "Universidade de Tras-os-Montes e Alto Douro",
       "year": "2018 — 2022",
       "url": "https://www.utad.pt",
-      "contentPath": "/content/education/bachelors-informatics.md",
+      "contentPath": "/content/education/bachelors-informatics-2018.md",
       "skills": ["C", "C++", "C#", "MATLAB", "Python", "Software Engineering", "Algebra", "Calculus", "Discrete Mathematics", "Statistics", "Design Patterns", "Development Methodologies", "Mathematical Modeling", "System Design", "Testing"]
     }
   ]

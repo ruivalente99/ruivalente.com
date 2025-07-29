@@ -6,7 +6,7 @@
       "role": "Frontend Engineer",
       "company": "Openvia",
       "companyUrl": "https://openvia.io",
-      "contentPath": "/content/experience/openvia.md",
+      "contentPath": "/content/experience/openvia-2022.md",
       "skills": ["React", "Next.js", "TypeScript", "JavaScript", "Node.js", "GraphQL", "AWS", "Docker", "Tailwind CSS", "Git", "Jest", "Cypress", "CI/CD", "Performance Optimization"]
     },
     {
@@ -15,7 +15,7 @@
       "role": "Software Engineer (Trainee)",
       "company": "Neoception",
       "companyUrl": "https://www.neoception.com/",
-      "contentPath": "/content/experience/neoception.md",
+      "contentPath": "/content/experience/neoception-2021.md",
       "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git", "VS Code", "npm", "Responsive Design", "Mobile-First", "Testing", "Code Reviews", "Team Collaboration"]
     }
   ]

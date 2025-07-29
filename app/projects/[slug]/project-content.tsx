@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import { useTheme } from "next-themes";
 import { useData } from "@/lib/hooks/useData";
-import { getMarkdownContentAction } from '@/lib/markdown-actions';
 import { DetailLayout, createProjectActions, createProjectMetadata } from '@/components/detail-layout';
 
 interface Project {
@@ -32,10 +31,26 @@ export function ProjectContent({ slug }: { slug: string }) {
 
   useEffect(() => {
     async function loadContent() {
-      if (project?.contentPath) {
+      if (project?.id) {
         try {
-          const content = await getMarkdownContentAction(project.contentPath);
-          setHtmlContent(content);
+          // Use API route instead of server action for better compatibility
+          const response = await fetch(`/api/projects/${project.id}/content`);
+          if (response.ok) {
+            const data = await response.json();
+            // Process markdown content using markdown-it on client side
+            const MarkdownIt = (await import('markdown-it')).default;
+            const md = new MarkdownIt({
+              html: true,
+              breaks: true,
+              linkify: true,
+              typographer: true,
+            });
+            const html = md.render(data.content);
+            setHtmlContent(html);
+          } else {
+            console.error('Failed to load content:', response.status);
+            setHtmlContent('<p>Content not found</p>');
+          }
         } catch (error) {
           console.error('Error loading markdown content:', error);
           setHtmlContent('<p>Error loading content</p>');
