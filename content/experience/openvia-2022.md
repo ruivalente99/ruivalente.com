@@ -1,10 +1,3 @@
----
-title: "Frontend Engineer"
-company: "Openvia"
-year: "2022 — Present"
-companyUrl: "https://openvia.io"
----
-
 # Frontend Engineer at Openvia
 
 As a Frontend Engineer at Openvia, I led modern web application development with React and TypeScript, focusing on full-stack development from concept to deployment with scalable architecture and optimal user experience. I worked with cutting-edge technologies including React and TypeScript for modern component-based architecture, Bootstrap and custom CSS for responsive design systems, and GraphQL & REST APIs for efficient data fetching and state management.

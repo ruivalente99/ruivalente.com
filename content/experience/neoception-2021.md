@@ -1,10 +1,3 @@
----
-title: "Software Engineer (Trainee)"
-company: "Neoception"
-year: "2021 — 2022"
-companyUrl: "https://www.neoception.com/"
----
-
 # Software Engineer Trainee at Neoception
 
 As a Software Engineer Trainee at Neoception, I completed a comprehensive program combining hands-on development experience with professional skills training, building a strong foundation in software engineering while developing essential workplace competencies. The program focused on technical skills progression including programming fundamentals with object-oriented programming and design patterns, web development with HTML5, CSS3, and JavaScript, framework introduction with React basics and component-based architecture, database concepts with SQL fundamentals and data modeling principles, and version control with Git workflows and collaborative development practices.

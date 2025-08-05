@@ -84,7 +84,7 @@ export function EducationSection() {
 
         {/* Certificates */}
         <div className="space-y-3">
-          {certificates.slice(0, 2).map((cert, index) => (
+          {certificates.slice(0, 1).map((cert, index) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.02 }}

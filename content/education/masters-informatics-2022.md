@@ -1,10 +1,3 @@
----
-title: "Master's Degree in Informatics Engineering"
-school: "Universidade de Trás-os-Montes e Alto Douro"
-year: "2022 — 2024"
-url: "https://www.utad.pt"
----
-
 # Master's Degree in Informatics Engineering
 
 This advanced program builds upon the bachelor's foundation with emphasis on software engineering best practices, design patterns, and professional development methodologies rather than focusing purely on new technologies. The curriculum deepens understanding of software architecture principles, advanced design patterns, code quality practices, project management methodologies, and professional software development workflows, creating a continuous learning path from undergraduate studies.

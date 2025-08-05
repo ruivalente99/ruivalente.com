@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useData } from '@/lib/hooks/useData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useRouter } from "next/navigation";
-import { ArrowRight, LucideIcon } from "lucide-react";
+import { ArrowRight, LucideIcon, Sparkles } from "lucide-react";
 import { useTheme } from "next-themes";
 import { 
   SiReact, 
@@ -47,6 +47,7 @@ interface TechItem {
 
 interface TechCategory {
   category: string;
+  hideInWidget?: boolean;
   items: TechItem[];
 }
 
@@ -80,8 +81,11 @@ export function StackSection() {
       
       <div className="grid grid-cols-6 md:grid-cols-8 gap-4" role="list" aria-label="Technology icons">
         <TooltipProvider>
-          {stack.flatMap(category => 
-            category.items.slice(0, 4).map((tech) => {
+          {stack
+            .filter(category => !category.hideInWidget)
+            .flatMap(category => 
+              category.items.slice(0, 3)
+            ).map((tech) => {
               const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
               
               return (
@@ -117,8 +121,41 @@ export function StackSection() {
                   </TooltipContent>
                 </Tooltip>
               );
-            })
-          )}
+            })}
+          
+          {/* AI Button - minimalistic with sparkle */}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <motion.div
+                className={`flex items-center justify-center p-2 rounded-lg cursor-pointer transition-colors ${
+                  isDarkSide 
+                    ? 'hover:bg-red-950/50 text-white hover:text-red-500' 
+                    : 'hover:bg-accent'
+                }`}
+                whileHover={{ scale: 1.2 }}
+                onClick={() => router.push('/stack')}
+                role="button"
+                aria-label="View AI Stack"
+              >
+                <Sparkles 
+                  className={`w-6 h-6 ${isDarkSide ? 'force-glow text-purple-400' : 'text-purple-600'}`} 
+                  aria-hidden="true"
+                />
+              </motion.div>
+            </TooltipTrigger>
+            <TooltipContent 
+              className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
+            >
+              <p className={`font-medium ${isDarkSide ? 'text-red-500' : ''}`}>
+                AI Stack
+              </p>
+              <p className={`text-xs ${
+                isDarkSide ? 'text-red-400/70' : 'text-muted-foreground'
+              }`}>
+                AI tools for development
+              </p>
+            </TooltipContent>
+          </Tooltip>
         </TooltipProvider>
       </div>
     </Card>
