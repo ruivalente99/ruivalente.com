@@ -1,6 +1,48 @@
 {
   "stack": [
     {
+      "category": "AI Stack",
+      "hideInWidget": true,
+      "items": [
+        {
+          "name": "GitHub Copilot",
+          "icon": "githubcopilot",
+          "description": "AI-powered code completion and assistance",
+          "reason": "Essential for daily development workflow, providing intelligent code suggestions and accelerating development speed."
+        },
+        {
+          "name": "Kiro",
+          "icon": "kiro",
+          "description": "AI assistant for project specifications",
+          "reason": "Helps generate detailed project specs and requirements, streamlining project planning and documentation."
+        },
+        {
+          "name": "Warp Terminal",
+          "icon": "warp",
+          "description": "AI-enhanced terminal with smart completions",
+          "reason": "Modern terminal with AI-powered command suggestions and workflow automation for improved productivity."
+        },
+        {
+          "name": "GitKraken AI",
+          "icon": "gitkraken",
+          "description": "AI-powered Git management and conflict resolution",
+          "reason": "Simplifies complex Git operations and helps resolve merge conflicts with intelligent suggestions."
+        },
+        {
+          "name": "Lovable",
+          "icon": "lovable",
+          "description": "AI-powered rapid prototyping platform",
+          "reason": "Perfect for quick vibe coding projects and rapid prototyping when inspiration strikes."
+        },
+        {
+          "name": "Gemini",
+          "icon": "gemini",
+          "description": "Google's AI assistant for daily conversations",
+          "reason": "My go-to AI companion for brainstorming, problem-solving, and general technical discussions."
+        }
+      ]
+    },
+    {
       "category": "Frontend",
       "items": [
         {

@@ -1,10 +1,3 @@
----
-title: "Bachelor's Degree in Informatics Engineering"
-school: "Universidade de Trás-os-Montes e Alto Douro"
-year: "2018 — 2022"
-url: "https://www.utad.pt"
----
-
 # Bachelor's Degree in Informatics Engineering
 
 This undergraduate program built essential skills in programming, mathematics, and software engineering fundamentals, preparing students for modern software development careers. The comprehensive curriculum focused heavily on programming languages including C, C++, C#, MATLAB, and Python, with strong emphasis on software engineering principles, design patterns, and development methodologies, supported by extensive mathematical foundations including algebra, calculus, discrete mathematics, and statistical analysis.

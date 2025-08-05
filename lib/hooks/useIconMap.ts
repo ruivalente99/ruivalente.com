@@ -20,13 +20,16 @@ import {
   SiDbeaver,
   SiJenkins,
   SiDarkreader,
-  SiRetroarch
+  SiRetroarch,
+  SiGithubcopilot,
+  SiGooglegemini,
+  SiWarp
 } from "react-icons/si";
 import { DiLinux } from "react-icons/di";
 import { GiLightSabers, GiSpaceship, GiMeepleArmy, GiMightyForce, GiDeathStar, GiVampireDracula } from "react-icons/gi";
 import { FaFistRaised } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
-import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2 } from "lucide-react";
+import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart } from "lucide-react";
 
 type IconMap = {
   [key: string]: React.ComponentType;
@@ -69,7 +72,15 @@ const map: IconMap = {
   sparkles: Sparkles,
   wand: Wand2,
   dracula: GiVampireDracula,
-  retro: SiRetroarch
+  retro: SiRetroarch,
+  // AI Tools
+  githubcopilot: SiGithubcopilot,
+  gemini: SiGooglegemini,
+  warp: SiWarp,
+  kiro: Bot,
+  lovable: Heart,
+  bot: Bot,
+  ai: Zap
 };
 export const useIconMap = () => {
   return map;
