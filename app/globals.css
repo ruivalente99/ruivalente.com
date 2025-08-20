@@ -10,6 +10,7 @@
 @import '../styles/themes/cyberpunk.css' layer(utilities);
 @import '../styles/themes/forest.css' layer(utilities);
 @import '../styles/themes/sunset.css' layer(utilities);
+@import '../styles/themes/liquid-glass.css' layer(utilities);
 @import '../styles/themes/terminal.css' layer(utilities);
 
 @custom-variant dark (&:is(.dark *));

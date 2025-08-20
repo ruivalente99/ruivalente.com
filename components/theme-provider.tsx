@@ -18,6 +18,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
         "cyberpunk",
         "forest",
         "sunset",
+        "liquid-glass",
         "terminal",
         "system"
       ]}

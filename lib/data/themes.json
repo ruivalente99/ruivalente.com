@@ -96,6 +96,17 @@
       }
     },
     {
+      "name": "Liquid Glass",
+      "value": "liquid-glass",
+      "icon": "Droplets",
+      "description": "Apple-inspired translucent glass design",
+      "preview": {
+        "background": "#f0f8ff",
+        "foreground": "#0f172a",
+        "accent": "#42a5f5"
+      }
+    },
+    {
       "name": "Terminal",
       "value": "terminal",
       "icon": "Terminal",
