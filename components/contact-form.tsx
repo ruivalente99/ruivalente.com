@@ -54,20 +54,33 @@ export function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      // Simulate form submission - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
       
       toast({
         title: "Message sent successfully!",
-        description: "Thank you for your message. I&apos;ll get back to you soon.",
+        description: "Thank you for your message. I'll get back to you soon.",
       });
       
       form.reset();
       setOpen(false);
     } catch (error) {
+      console.error('Contact form error:', error);
+      
       toast({
         title: "Failed to send message",
-        description: "Something went wrong. Please try again later.",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again later.",
         variant: "destructive",
       });
     } finally {
