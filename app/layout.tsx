@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import { Footer } from "@/components/footer";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SearchCommand } from "@/components/search-command";
+import { ContactForm } from "@/components/contact-form";
+import { Toaster } from "@/components/ui/toaster";
 import { Providers } from './providers';
 
 // Dynamically import components with loading fallbacks
@@ -280,6 +282,7 @@ export default function RootLayout({
           <div className="min-h-[100dvh] flex flex-col">
             <header className="fixed top-0 right-0 left-0 z-50 p-4 flex justify-end gap-2 bg-background/80 backdrop-blur-sm">
               <SearchCommand />
+              <ContactForm />
               <ThemeToggle />
             </header>
             <main className="flex-1 pt-16">
@@ -289,6 +292,7 @@ export default function RootLayout({
           </div>
           <EasterEggs />
           <DarkSideLoading />
+          <Toaster />
         </Providers>
       </body>
     </html>
