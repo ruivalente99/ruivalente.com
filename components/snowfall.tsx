@@ -32,6 +32,8 @@ export function Snowfall() {
   }, []);
 
   // Generate snowflakes with useMemo for consistent rendering
+  // Empty dependency array is intentional - random values are generated once on mount
+  // and remain stable for the component's lifetime
   const snowflakes = useMemo<Snowflake[]>(() => {
     return Array.from({ length: 50 }, (_, i) => ({
       id: i,

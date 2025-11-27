@@ -200,17 +200,17 @@
   box-shadow: 0 0 12px 2px hsla(0, 80%, 50%, 0.3);
 }
 
-/* Winter theme card frost effect */
-.winter [class*="card"] {
+/* Winter theme card frost effect - targeting bg-card class */
+.winter .bg-card {
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.winter [class*="card"]:hover {
+.winter .bg-card:hover {
   box-shadow: 0 4px 20px hsla(200, 60%, 85%, 0.4);
 }
 
 /* Winter theme link underline effect */
-.winter a:not([class*="button"]):hover {
+.winter a:hover {
   text-decoration-color: hsl(0, 80%, 50%);
 }
 
