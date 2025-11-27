@@ -11,6 +11,7 @@
 @import '../styles/themes/forest.css' layer(utilities);
 @import '../styles/themes/sunset.css' layer(utilities);
 @import '../styles/themes/terminal.css' layer(utilities);
+@import '../styles/themes/winter.css' layer(utilities);
 
 @custom-variant dark (&:is(.dark *));
 
@@ -182,4 +183,41 @@
 
 .scroll-hover:hover .custom-scroll::-webkit-scrollbar-thumb {
   background-color: hsl(var(--muted-foreground));
+}
+
+/* Winter Theme Effects */
+.winter {
+  transition: background-color 0.5s ease-in-out, color 0.3s ease-in-out;
+}
+
+.winter a:hover,
+.winter button:hover {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Winter theme festive button hover glow */
+.winter button:hover:not(:disabled) {
+  box-shadow: 0 0 12px 2px hsla(0, 80%, 50%, 0.3);
+}
+
+/* Winter theme card frost effect */
+.winter [class*="card"] {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.winter [class*="card"]:hover {
+  box-shadow: 0 4px 20px hsla(200, 60%, 85%, 0.4);
+}
+
+/* Winter theme link underline effect */
+.winter a:not([class*="button"]):hover {
+  text-decoration-color: hsl(0, 80%, 50%);
+}
+
+/* Reduced motion preference - disable winter animations */
+@media (prefers-reduced-motion: reduce) {
+  .winter * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

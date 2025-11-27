@@ -1,0 +1,30 @@
+.winter {
+  --background: 210 60% 98%;
+  --foreground: 210 80% 15%;
+  --card: 210 50% 100%;
+  --card-foreground: 210 80% 15%;
+  --popover: 210 50% 100%;
+  --popover-foreground: 210 80% 15%;
+  --primary: 0 80% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 94%;
+  --secondary-foreground: 210 80% 15%;
+  --muted: 210 30% 92%;
+  --muted-foreground: 210 30% 40%;
+  --accent: 142 60% 35%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 85% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 210 30% 88%;
+  --input: 210 30% 88%;
+  --ring: 0 80% 50%;
+  --radius: 0.5rem;
+
+  /* Winter theme specific custom properties */
+  --winter-snow: 210 40% 98%;
+  --winter-ice: 200 80% 85%;
+  --winter-holly-red: 0 80% 50%;
+  --winter-pine: 142 60% 35%;
+  --winter-gold: 45 90% 55%;
+  --winter-frost: 200 60% 95%;
+}

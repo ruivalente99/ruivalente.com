@@ -106,6 +106,17 @@
         "accent": "#00ff00"
       },
       "hidden": true
+    },
+    {
+      "name": "Winter",
+      "value": "winter",
+      "icon": "snowflake",
+      "description": "Festive winter wonderland",
+      "preview": {
+        "background": "#f5f9fc",
+        "foreground": "#1a3a4a",
+        "accent": "#d42626"
+      }
     }
   ]
 }

@@ -19,6 +19,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
         "forest",
         "sunset",
         "terminal",
+        "winter",
         "system"
       ]}
     >

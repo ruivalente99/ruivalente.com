@@ -29,7 +29,7 @@ import { DiLinux } from "react-icons/di";
 import { GiLightSabers, GiSpaceship, GiMeepleArmy, GiMightyForce, GiDeathStar, GiVampireDracula } from "react-icons/gi";
 import { FaFistRaised } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
-import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart } from "lucide-react";
+import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart, Snowflake } from "lucide-react";
 
 type IconMap = {
   [key: string]: React.ComponentType;
@@ -80,7 +80,8 @@ const map: IconMap = {
   kiro: Bot,
   lovable: Heart,
   bot: Bot,
-  ai: Zap
+  ai: Zap,
+  snowflake: Snowflake
 };
 export const useIconMap = () => {
   return map;

@@ -18,6 +18,10 @@ const DarkSideLoading = dynamic(
   () => import('@/components/dark-side-loading').then(mod => ({ default: mod.DarkSideLoading })),
 );
 
+const Snowfall = dynamic(
+  () => import('@/components/snowfall').then(mod => ({ default: mod.Snowfall })),
+);
+
 // Optimize font loading
 const spaceMono = Space_Mono({
   subsets: ['latin'],
@@ -292,6 +296,7 @@ export default function RootLayout({
           </div>
           <EasterEggs />
           <DarkSideLoading />
+          <Snowfall />
           <Toaster />
         </Providers>
       </body>
