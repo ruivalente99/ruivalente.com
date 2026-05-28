@@ -1,8 +1,17 @@
 {
   "experiences": [
     {
+      "id": "xelerate-2025",
+      "year": "2025 — Present",
+      "role": "Frontend Engineer",
+      "company": "Xelerate | Techem",
+      "companyUrl": "https://www.xelerate.tech/",
+      "contentPath": "/content/experience/xelerate-2025.md",
+      "skills": ["Next.js", "Tailwind CSS", "TypeScript", "Azure", "GitLab", "Jest", "Monorepo", "React", "CI/CD"]
+    },
+    {
       "id": "openvia-2022",
-      "year": "2022 — Present",
+      "year": "2022 — 2025",
       "role": "Frontend Engineer",
       "company": "Openvia",
       "companyUrl": "https://openvia.io",
