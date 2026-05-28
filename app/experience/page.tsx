@@ -55,18 +55,27 @@ export default function ExperiencePage() {
         <h1>Rui Valente Professional Experience</h1>
         <section>
           <h2>Career Summary</h2>
-          <p>Software engineer with progressive experience in frontend development, currently serving as Frontend Engineer at Openvia since 2022, with previous trainee experience at Neoception from 2021-2022.</p>
+          <p>Software engineer with progressive experience in frontend development, currently serving as Frontend Engineer at Xelerate | Techem since December 2025, with previous experience at Openvia from 2022-2025 and trainee experience at Neoception from 2021-2022.</p>
           
-          <h3>Current Role: Frontend Engineer at Openvia (2022 - Present)</h3>
+          <h3>Current Role: Frontend Engineer at Xelerate | Techem (Dec 2025 - Present)</h3>
           <ul>
-            <li>Leading modern web application development with React and TypeScript</li>
-            <li>Implementing scalable architecture and optimal user experience</li>
-            <li>Working with cutting-edge technologies: React, TypeScript, Bootstrap, GraphQL, REST APIs</li>
-            <li>Achieving significant performance improvements through code optimization</li>
-            <li>Maintaining comprehensive code coverage with testing practices</li>
-            <li>Implementing zero-downtime deployments using advanced CI/CD strategies</li>
-            <li>Mentoring junior developers and establishing code review standards</li>
-            <li>Contributing to agile process improvements increasing team velocity</li>
+            <li>Building and maintaining modern web applications within a monorepo architecture</li>
+            <li>Developing with Next.js and TypeScript for scalable frontend solutions</li>
+            <li>Applying Tailwind CSS for consistent and responsive design systems</li>
+            <li>Ensuring code reliability through comprehensive testing with Jest</li>
+            <li>Leveraging Azure for cloud infrastructure and GitLab for CI/CD pipelines</li>
+          </ul>
+
+          <h3>Previous Role: Frontend Engineer at Openvia (2022 - 2025)</h3>
+          <ul>
+            <li>Led modern web application development with React and TypeScript</li>
+            <li>Implemented scalable architecture and optimal user experience</li>
+            <li>Worked with cutting-edge technologies: React, TypeScript, Bootstrap, GraphQL, REST APIs</li>
+            <li>Achieved significant performance improvements through code optimization</li>
+            <li>Maintained comprehensive code coverage with testing practices</li>
+            <li>Implemented zero-downtime deployments using advanced CI/CD strategies</li>
+            <li>Mentored junior developers and established code review standards</li>
+            <li>Contributed to agile process improvements increasing team velocity</li>
           </ul>
           
           <h3>Previous Role: Software Engineer Trainee at Neoception (2021 - 2022)</h3>
@@ -99,7 +108,7 @@ export default function ExperiencePage() {
             </Button>
             <h1 className="text-2xl font-bold">Professional Experience</h1>
             <p className="text-muted-foreground mt-2">
-              Progressive software engineering career with expertise in React, TypeScript, and modern web development
+              Progressive software engineering career with expertise in Next.js, React, TypeScript, and modern web development
             </p>
           </div>
 
