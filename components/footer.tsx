@@ -13,6 +13,7 @@ export function Footer() {
     { name: "Experience", path: "/experience" },
     { name: "Education", path: "/education" },
     { name: "Stack", path: "/stack" },
+    { name: "Terminal", path: "/terminal" },
   ];
 
   return (

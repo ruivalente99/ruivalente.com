@@ -1,0 +1,126 @@
+/* Terminal view — themed via CSS variables set inline by the Terminal component */
+
+.term-root {
+  background: var(--t-bg);
+  color: var(--t-fg);
+  font-family: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.term-root ::selection {
+  background: var(--t-selection);
+  color: var(--t-fg);
+}
+
+.t-dim { color: var(--t-dim); }
+.t-acc { color: var(--t-accent); }
+.t-ok { color: var(--t-green); }
+.t-err { color: var(--t-red); }
+.t-warn { color: var(--t-yellow); }
+.t-cyan { color: var(--t-cyan); }
+.t-mag { color: var(--t-magenta); }
+
+.t-link {
+  color: var(--t-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.t-link:hover { color: var(--t-accent); }
+
+.term-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--t-fg);
+  caret-color: var(--t-accent);
+  font: inherit;
+  width: 100%;
+}
+
+.term-block-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.15em;
+  vertical-align: text-bottom;
+  background: var(--t-accent);
+  animation: term-blink 1.1s steps(1) infinite;
+}
+
+@keyframes term-blink {
+  50% { opacity: 0; }
+}
+
+/* ---- effects ---- */
+
+.term-crt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+.term-crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 41;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.term-flip {
+  transform: rotate(180deg);
+}
+
+.term-glitch {
+  animation: term-glitch-anim 0.25s steps(2) infinite;
+}
+@keyframes term-glitch-anim {
+  0% { transform: translate(0, 0) skewX(0deg); filter: none; }
+  25% { transform: translate(-3px, 1px) skewX(-1deg); filter: hue-rotate(90deg); }
+  50% { transform: translate(3px, -1px) skewX(1deg); filter: invert(0.1); }
+  75% { transform: translate(-1px, 2px); filter: hue-rotate(-60deg); }
+  100% { transform: translate(0, 0); filter: none; }
+}
+
+/* steam locomotive (sl) */
+.term-sl-track {
+  position: relative;
+  overflow: hidden;
+  height: 11rem;
+}
+.term-sl-train {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  animation: term-sl-ride 6s linear forwards;
+  white-space: pre;
+}
+@keyframes term-sl-ride {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100vw - 60ch)); }
+}
+
+/* vim cursor */
+.vim-cursor {
+  background: var(--t-accent);
+  color: var(--t-bg);
+}
+.vim-cursor-insert {
+  box-shadow: inset 2px 0 0 var(--t-accent);
+}
+
+.term-scrollbar::-webkit-scrollbar { width: 8px; }
+.term-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.term-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--t-selection);
+  border-radius: 4px;
+}
+.term-scrollbar { scrollbar-width: thin; scrollbar-color: var(--t-selection) transparent; }
