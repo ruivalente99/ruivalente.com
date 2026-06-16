@@ -1,0 +1,22 @@
+/* Solarized — the classic, opinionated low-contrast dark palette */
+.solarized {
+  --background: 192 100% 11%;
+  --foreground: 186 8% 60%;
+  --card: 192 81% 14%;
+  --card-foreground: 186 12% 70%;
+  --popover: 192 81% 14%;
+  --popover-foreground: 186 12% 70%;
+  --primary: 205 69% 49%;
+  --primary-foreground: 192 100% 11%;
+  --secondary: 192 70% 16%;
+  --secondary-foreground: 186 12% 70%;
+  --muted: 192 70% 16%;
+  --muted-foreground: 194 14% 45%;
+  --accent: 175 74% 37%;
+  --accent-foreground: 192 100% 11%;
+  --destructive: 1 71% 52%;
+  --destructive-foreground: 186 12% 90%;
+  --border: 192 55% 18%;
+  --input: 192 55% 18%;
+  --ring: 205 69% 49%;
+}

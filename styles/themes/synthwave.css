@@ -1,0 +1,53 @@
+/* Synthwave — retro neon, outrun grids and glowing pinks */
+.synthwave {
+  --background: 265 40% 12%;
+  --foreground: 60 30% 96%;
+  --card: 265 38% 16%;
+  --card-foreground: 60 30% 96%;
+  --popover: 265 38% 16%;
+  --popover-foreground: 60 30% 96%;
+  --primary: 322 100% 75%;
+  --primary-foreground: 265 40% 10%;
+  --secondary: 265 30% 22%;
+  --secondary-foreground: 60 30% 96%;
+  --muted: 265 30% 22%;
+  --muted-foreground: 280 18% 72%;
+  --accent: 181 95% 60%;
+  --accent-foreground: 265 40% 10%;
+  --destructive: 354 99% 63%;
+  --destructive-foreground: 60 30% 96%;
+  --border: 265 40% 28%;
+  --input: 265 40% 28%;
+  --ring: 322 100% 75%;
+}
+
+/* Outrun horizon + grid backdrop */
+.synthwave body {
+  background-color: hsl(265 40% 12%);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, hsla(322, 100%, 60%, 0.22) 0px, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, hsla(181, 95%, 55%, 0.16) 0px, transparent 55%),
+    linear-gradient(hsla(322, 100%, 70%, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(181, 95%, 60%, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+}
+
+/* Neon glow on headings and the brand */
+.synthwave h1,
+.synthwave h2,
+.synthwave .force-glow {
+  text-shadow: 0 0 8px hsla(322, 100%, 75%, 0.6), 0 0 24px hsla(322, 100%, 60%, 0.3);
+}
+
+.synthwave .bg-card,
+.synthwave [class*="bg-card"] {
+  border: 1px solid hsla(322, 100%, 75%, 0.25);
+  box-shadow:
+    0 0 0 1px hsla(181, 95%, 60%, 0.08),
+    0 8px 32px hsla(265, 80%, 4%, 0.5);
+}
+
+.synthwave ::selection {
+  background: hsla(322, 100%, 75%, 0.4);
+}

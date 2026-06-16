@@ -29,7 +29,7 @@ import { DiLinux } from "react-icons/di";
 import { GiLightSabers, GiSpaceship, GiMeepleArmy, GiMightyForce, GiDeathStar, GiVampireDracula } from "react-icons/gi";
 import { FaFistRaised } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
-import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart } from "lucide-react";
+import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart, Droplets, MoonStar, Snowflake, Mountain, SunMedium } from "lucide-react";
 
 type IconMap = {
   [key: string]: React.ComponentType;
@@ -73,6 +73,13 @@ const map: IconMap = {
   wand: Wand2,
   dracula: GiVampireDracula,
   retro: SiRetroarch,
+  // Theme icons
+  droplets: Droplets,
+  moonstar: MoonStar,
+  snowflake: Snowflake,
+  mountain: Mountain,
+  sunmedium: SunMedium,
+  zap: Zap,
   // AI Tools
   githubcopilot: SiGithubcopilot,
   gemini: SiGooglegemini,

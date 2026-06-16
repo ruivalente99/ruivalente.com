@@ -11,6 +11,8 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       themes={[
         "light",
         "dark",
+        "glass",
+        "midnight",
         "dark-side",
         "pink",
         "dracula",
@@ -18,6 +20,10 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
         "cyberpunk",
         "forest",
         "sunset",
+        "nord",
+        "gruvbox",
+        "solarized",
+        "synthwave",
         "terminal",
         "system"
       ]}

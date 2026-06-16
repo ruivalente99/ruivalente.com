@@ -19,6 +19,28 @@
       "description": "Easy on the eyes"
     },
     {
+      "name": "Liquid Glass",
+      "value": "glass",
+      "icon": "droplets",
+      "description": "iOS-style frosted, glossy surfaces",
+      "preview": {
+        "background": "#eef5fc",
+        "foreground": "#11203a",
+        "accent": "#007aff"
+      }
+    },
+    {
+      "name": "Midnight",
+      "value": "midnight",
+      "icon": "moonstar",
+      "description": "Dark glass with a blue aurora",
+      "preview": {
+        "background": "#0b1120",
+        "foreground": "#e8eefc",
+        "accent": "#3b82f6"
+      }
+    },
+    {
       "name": "Dark Side",
       "value": "dark-side",
       "icon": "deathstar",
@@ -93,6 +115,50 @@
         "background": "#fff9f5",
         "foreground": "#331400",
         "accent": "#ff6b1a"
+      }
+    },
+    {
+      "name": "Nord",
+      "value": "nord",
+      "icon": "snowflake",
+      "description": "Cold arctic frost",
+      "preview": {
+        "background": "#2e3440",
+        "foreground": "#d8dee9",
+        "accent": "#88c0d0"
+      }
+    },
+    {
+      "name": "Gruvbox",
+      "value": "gruvbox",
+      "icon": "mountain",
+      "description": "Warm retro earth tones",
+      "preview": {
+        "background": "#282828",
+        "foreground": "#ebdbb2",
+        "accent": "#fe8019"
+      }
+    },
+    {
+      "name": "Solarized",
+      "value": "solarized",
+      "icon": "sunmedium",
+      "description": "The classic low-contrast dark",
+      "preview": {
+        "background": "#002b36",
+        "foreground": "#839496",
+        "accent": "#268bd2"
+      }
+    },
+    {
+      "name": "Synthwave",
+      "value": "synthwave",
+      "icon": "zap",
+      "description": "Retro neon outrun vibes",
+      "preview": {
+        "background": "#241b2f",
+        "foreground": "#f8f8f2",
+        "accent": "#ff7edb"
       }
     },
     {

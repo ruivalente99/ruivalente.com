@@ -20,7 +20,7 @@ import {
   completePath,
   file as makeFile,
 } from "@/lib/terminal/filesystem";
-import { TERM_THEMES, DEFAULT_THEME, getTheme } from "@/lib/terminal/themes";
+import { TERM_THEMES, DEFAULT_THEME, getTheme, termThemeForSite } from "@/lib/terminal/themes";
 import { BANNER } from "@/lib/terminal/ascii";
 import { COMMANDS, GAMES, execute } from "./run-command";
 import { VimEditor } from "./vim";
@@ -132,6 +132,14 @@ export function Terminal({ initialFs }: { initialFs: VDir }) {
       if (Array.isArray(unlocked)) unlockedRef.current = unlocked;
       if (saved && TERM_THEMES.some((t) => t.name === saved && (!t.hidden || unlocked.includes(saved)))) {
         setThemeName(saved);
+      } else {
+        // No explicit terminal choice yet — inherit the look picked on the
+        // classic site (next-themes persists under the "theme" key).
+        const mapped = termThemeForSite(localStorage.getItem("theme"));
+        if (TERM_THEMES.some((t) => t.name === mapped)) {
+          themeRef.current = mapped;
+          _setThemeName(mapped);
+        }
       }
       const hist = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
       if (Array.isArray(hist)) historyRef.current = hist.slice(-100);

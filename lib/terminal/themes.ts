@@ -163,6 +163,134 @@ export const TERM_THEMES: TermTheme[] = [
     },
   },
   {
+    name: "light",
+    desc: "clean daylight, neutral and crisp",
+    colors: {
+      bg: "#fbfbfb",
+      fg: "#1a1a1a",
+      dim: "#8a8a8a",
+      accent: "#0a0a0a",
+      green: "#1a7f37",
+      red: "#cf222e",
+      yellow: "#9a6700",
+      cyan: "#0969da",
+      magenta: "#8250df",
+      selection: "#e6e6e6",
+    },
+  },
+  {
+    name: "dark",
+    desc: "neutral dark, easy on the eyes",
+    colors: {
+      bg: "#0a0a0a",
+      fg: "#fafafa",
+      dim: "#8a8a8a",
+      accent: "#ffffff",
+      green: "#3fb950",
+      red: "#ff7b72",
+      yellow: "#d29922",
+      cyan: "#79c0ff",
+      magenta: "#d2a8ff",
+      selection: "#2a2a2a",
+    },
+  },
+  {
+    name: "glass",
+    desc: "ios liquid glass, frosted and bright",
+    colors: {
+      bg: "#f0f6ff",
+      fg: "#11203a",
+      dim: "#6b7a90",
+      accent: "#007aff",
+      green: "#28a745",
+      red: "#ff3b30",
+      yellow: "#ff9500",
+      cyan: "#32ade6",
+      magenta: "#af52de",
+      selection: "#d6e6fb",
+    },
+  },
+  {
+    name: "midnight",
+    desc: "dark glass, blue aurora",
+    colors: {
+      bg: "#0b1120",
+      fg: "#e8eefc",
+      dim: "#5a6b8c",
+      accent: "#3b82f6",
+      green: "#34d399",
+      red: "#f87171",
+      yellow: "#fbbf24",
+      cyan: "#38bdf8",
+      magenta: "#a78bfa",
+      selection: "#1e293b",
+    },
+  },
+  {
+    name: "pink",
+    desc: "playful and vibrant",
+    colors: {
+      bg: "#fff0f7",
+      fg: "#4a0025",
+      dim: "#b06a8a",
+      accent: "#ff4fa3",
+      green: "#2fa45a",
+      red: "#e0245e",
+      yellow: "#c98a00",
+      cyan: "#2bb3c0",
+      magenta: "#ff80bf",
+      selection: "#ffd6ea",
+    },
+  },
+  {
+    name: "retro",
+    desc: "90s green phosphor on cream",
+    colors: {
+      bg: "#ebf1e9",
+      fg: "#0e1f13",
+      dim: "#5d7a63",
+      accent: "#2f9e44",
+      green: "#2f9e44",
+      red: "#c92a2a",
+      yellow: "#9a7d0a",
+      cyan: "#0c8599",
+      magenta: "#9c36b5",
+      selection: "#d3e6d6",
+    },
+  },
+  {
+    name: "forest",
+    desc: "natural and calming",
+    colors: {
+      bg: "#0c1f14",
+      fg: "#b8e6cc",
+      dim: "#4f7a63",
+      accent: "#2d9d5d",
+      green: "#40c463",
+      red: "#e5534b",
+      yellow: "#d9a441",
+      cyan: "#3fb6a8",
+      magenta: "#b07cc6",
+      selection: "#163827",
+    },
+  },
+  {
+    name: "sunset",
+    desc: "warm and inviting",
+    colors: {
+      bg: "#fff4ec",
+      fg: "#331400",
+      dim: "#a8744f",
+      accent: "#ff6b1a",
+      green: "#2f9e44",
+      red: "#e8590c",
+      yellow: "#f08c00",
+      cyan: "#1098ad",
+      magenta: "#d6336c",
+      selection: "#ffe0cc",
+    },
+  },
+  {
     name: "sith",
     desc: "the dark side of the force",
     hidden: true,
@@ -202,4 +330,34 @@ export const DEFAULT_THEME = "matrix";
 
 export function getTheme(name: string): TermTheme {
   return TERM_THEMES.find((t) => t.name === name) || TERM_THEMES[0];
+}
+
+/**
+ * Maps a site-wide (next-themes) theme value to the terminal color scheme
+ * that matches it, so the terminal view inherits whatever look the visitor
+ * picked on the classic site.
+ */
+export const SITE_TO_TERM: Record<string, string> = {
+  light: "light",
+  dark: "dark",
+  glass: "glass",
+  midnight: "midnight",
+  "dark-side": "sith",
+  pink: "pink",
+  dracula: "dracula",
+  retro: "retro",
+  cyberpunk: "cyberpunk",
+  forest: "forest",
+  sunset: "sunset",
+  nord: "nord",
+  gruvbox: "gruvbox",
+  solarized: "solarized",
+  synthwave: "synthwave",
+  terminal: "matrix",
+  system: "matrix",
+};
+
+export function termThemeForSite(site?: string | null): string {
+  if (!site) return DEFAULT_THEME;
+  return SITE_TO_TERM[site] ?? DEFAULT_THEME;
 }

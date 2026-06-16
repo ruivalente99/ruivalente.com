@@ -1,0 +1,70 @@
+/* Liquid Glass — iOS 26 inspired light theme with frosted, glossy surfaces */
+.glass {
+  --background: 210 60% 98%;
+  --foreground: 220 45% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 45% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 45% 12%;
+  --primary: 211 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 94%;
+  --secondary-foreground: 220 45% 18%;
+  --muted: 210 35% 92%;
+  --muted-foreground: 215 20% 42%;
+  --accent: 211 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 4 90% 58%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 32% 88%;
+  --input: 214 32% 88%;
+  --ring: 211 100% 50%;
+  --radius: 1rem;
+}
+
+/* Animated liquid backdrop */
+.glass body {
+  background-color: hsl(210 60% 98%);
+  background-image:
+    radial-gradient(at 18% 18%, hsla(211, 100%, 70%, 0.20) 0px, transparent 50%),
+    radial-gradient(at 82% 12%, hsla(280, 90%, 78%, 0.18) 0px, transparent 50%),
+    radial-gradient(at 75% 85%, hsla(190, 95%, 70%, 0.20) 0px, transparent 50%),
+    radial-gradient(at 25% 80%, hsla(330, 90%, 80%, 0.16) 0px, transparent 50%);
+  background-attachment: fixed;
+  background-size: 200% 200%;
+  animation: glass-drift 24s ease-in-out infinite;
+}
+
+/* Frosted glass surfaces */
+.glass .bg-card,
+.glass [class*="bg-card"] {
+  background-color: hsla(0, 0%, 100%, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid hsla(0, 0%, 100%, 0.6);
+  box-shadow:
+    0 8px 32px hsla(214, 60%, 40%, 0.12),
+    inset 0 1px 0 hsla(0, 0%, 100%, 0.7);
+}
+
+.glass header {
+  background-color: hsla(210, 60%, 98%, 0.6) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.5);
+}
+
+.glass [role="menu"],
+.glass [role="dialog"],
+.glass [role="listbox"],
+.glass [cmdk-root] {
+  background-color: hsla(0, 0%, 100%, 0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid hsla(0, 0%, 100%, 0.6);
+}
+
+.glass button[class*="variant-default"],
+.glass button[class*="variant-default"]:not(:disabled) {
+  box-shadow: 0 4px 16px hsla(211, 100%, 50%, 0.35);
+}
