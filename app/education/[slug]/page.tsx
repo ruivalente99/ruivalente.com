@@ -9,7 +9,8 @@ export function generateStaticParams() {
   }));
 }
 
-export default function EducationPage({ params }: { params: { slug: string } }) {
+export default async function EducationPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   return (
     <Suspense fallback={
       <DetailLayout
@@ -19,7 +20,7 @@ export default function EducationPage({ params }: { params: { slug: string } }) 
         <div />
       </DetailLayout>
     }>
-      <EducationContent slug={params.slug} />
+      <EducationContent slug={slug} />
     </Suspense>
   );
 }

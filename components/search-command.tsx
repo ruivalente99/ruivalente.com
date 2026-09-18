@@ -24,6 +24,7 @@ import {
   Wand2,
   LucideIcon,
 } from "lucide-react";
+import { Kbd } from "@ruivalente99/bibliotheca/ui";
 import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
@@ -152,9 +153,9 @@ export function SearchCommand() {
       >
         <Search className="mr-2 h-4 w-4" />
         <span>Search...</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-          <span className="text-xs">⌘</span>K
-        </kbd>
+        <div className="pointer-events-none absolute right-1.5 top-1.5 hidden sm:flex items-center">
+          <Kbd keys={["mod", "k"]} size="xs" variant="default" />
+        </div>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <DialogTitle className="sr-only">Search commands and navigation</DialogTitle>
