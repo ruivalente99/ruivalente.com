@@ -67,7 +67,7 @@ export function StackSection() {
   return (
     <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="tech-stack-heading">
       <header className="flex items-center justify-between mb-3">
-        <h2 id="tech-stack-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+        <h2 id="tech-stack-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           tech stack
         </h2>
         <Button 
@@ -81,7 +81,7 @@ export function StackSection() {
         </Button>
       </header>
       
-      <div className="grid grid-cols-6 md:grid-cols-8 gap-2.5 my-auto" role="list" aria-label="Technology icons">
+      <ul className="grid grid-cols-6 md:grid-cols-8 gap-2.5 my-auto list-none p-0 m-0" aria-label="Technology icons">
         <TooltipProvider>
           {stack
             .filter(category => !category.hideInWidget)
@@ -91,74 +91,77 @@ export function StackSection() {
               const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
               
               return (
-                <Tooltip key={tech.name}>
-                  <TooltipTrigger asChild>
-                    <button
-                      type="button"
-                      className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-all duration-150 active:scale-[0.94] shadow-2xs border cursor-pointer mx-auto ${
-                        isDarkSide 
-                          ? 'bg-red-950/20 hover:bg-red-950/40 border-red-900/40 text-red-400 hover:text-red-300' 
-                          : 'bg-muted/30 hover:bg-muted/80 border-border/50 text-foreground/80 hover:text-foreground'
-                      }`}
-                      role="listitem"
-                      aria-label={`${tech.name}: ${tech.description}`}
+                <li key={tech.name} className="flex justify-center list-none">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-all duration-150 active:scale-[0.94] shadow-2xs border cursor-pointer mx-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                          isDarkSide 
+                            ? 'bg-red-950/20 hover:bg-red-950/40 border-red-900/40 text-red-400 hover:text-red-300' 
+                            : 'bg-muted/30 hover:bg-muted/80 border-border/50 text-foreground/80 hover:text-foreground'
+                        }`}
+                        aria-label={`${tech.name}: ${tech.description}`}
+                      >
+                        <Icon 
+                          className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent 
+                      className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
                     >
-                      <Icon 
-                        className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
-                        aria-hidden="true"
-                      />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent 
-                    className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
-                  >
-                    <p className={`font-medium ${isDarkSide ? 'text-red-500' : ''}`}>
-                      {tech.name}
-                    </p>
-                    <p className={`text-xs ${
-                      isDarkSide ? 'text-red-400/70' : 'text-muted-foreground'
-                    }`}>
-                      {tech.description}
-                    </p>
-                  </TooltipContent>
-                </Tooltip>
+                      <p className={`font-medium ${isDarkSide ? 'text-red-500' : ''}`}>
+                        {tech.name}
+                      </p>
+                      <p className={`text-xs ${
+                        isDarkSide ? 'text-red-400/70' : 'text-muted-foreground'
+                      }`}>
+                        {tech.description}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </li>
               );
             })}
           
           {/* AI Button - minimalistic with sparkle */}
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-all duration-150 active:scale-[0.94] shadow-2xs border cursor-pointer mx-auto ${
-                  isDarkSide 
-                    ? 'bg-purple-950/30 hover:bg-purple-950/50 border-purple-800/50 text-purple-400' 
-                    : 'bg-purple-500/10 hover:bg-purple-500/20 border-purple-500/30 text-purple-600 dark:text-purple-400'
-                }`}
-                onClick={() => router.push('/stack')}
-                aria-label="View AI Stack"
+          <li className="flex justify-center list-none">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-all duration-150 active:scale-[0.94] shadow-2xs border cursor-pointer mx-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                    isDarkSide 
+                      ? 'bg-purple-950/30 hover:bg-purple-950/50 border-purple-800/50 text-purple-400' 
+                      : 'bg-purple-500/10 hover:bg-purple-500/20 border-purple-500/30 text-purple-600 dark:text-purple-400'
+                  }`}
+                  onClick={() => router.push('/stack')}
+                  aria-label="View AI Stack"
+                >
+                  <Sparkles 
+                    className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
+                    aria-hidden="true"
+                  />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent 
+                className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
               >
-                <Sparkles 
-                  className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
-                  aria-hidden="true"
-                />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent 
-              className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
-            >
-              <p className={`font-medium ${isDarkSide ? 'text-red-500' : ''}`}>
-                AI Stack
-              </p>
-              <p className={`text-xs ${
-                isDarkSide ? 'text-red-400/70' : 'text-muted-foreground'
-              }`}>
-                AI tools for development
-              </p>
-            </TooltipContent>
-          </Tooltip>
+                <p className={`font-medium ${isDarkSide ? 'text-red-500' : ''}`}>
+                  AI Stack
+                </p>
+                <p className={`text-xs ${
+                  isDarkSide ? 'text-red-400/70' : 'text-muted-foreground'
+                }`}>
+                  Explore the full AI tooling and workflows
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </li>
         </TooltipProvider>
-      </div>
+      </ul>
     </Card>
   );
 }

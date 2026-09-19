@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Experience {
   id: string;
@@ -32,7 +33,7 @@ export function ExperienceSection() {
       <header className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Briefcase className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-          <h2 id="experience-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">experience</h2>
+          <h2 id="experience-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">experience</h2>
         </div>
         <Button 
           variant="ghost" 
@@ -48,12 +49,16 @@ export function ExperienceSection() {
         {experiences.slice(0, 2).map((exp) => (
           <div
             key={exp.id}
-            onClick={() => router.push(`/experience/${exp.id}`)}
-            className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 active:scale-[0.98] cursor-pointer group shadow-2xs"
+            className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 active:scale-[0.98] group shadow-2xs relative"
           >
             <div className="flex items-center justify-between mb-1.5">
-              <h3 className="text-xs font-semibold tracking-tight text-foreground">{exp.role}</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-muted-foreground border border-border/40 shrink-0 ml-2">
+              <h3 className="text-xs font-semibold tracking-tight text-foreground">
+                <Link href={`/experience/${exp.id}`} className="focus:outline-none focus-visible:underline">
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  {exp.role}
+                </Link>
+              </h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-foreground/85 border border-border/40 shrink-0 ml-2 relative z-10">
                 {exp.year}
               </span>
             </div>
@@ -65,11 +70,10 @@ export function ExperienceSection() {
                 href={exp.companyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground p-0.5"
-                onClick={(e) => e.stopPropagation()}
-                aria-label={`Visit ${exp.company} website`}
+                className="text-muted-foreground hover:text-foreground p-0.5 relative z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                aria-label={`Visit ${exp.company} website (opens in new tab)`}
               >
-                <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true" />
               </a>
             </div>
           </div>

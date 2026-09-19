@@ -99,10 +99,12 @@ export function ProfileSection() {
             {/* Live status badge indicator */}
             <span 
               className="absolute bottom-1 right-1 flex h-3.5 w-3.5" 
+              role="status"
+              aria-label="Status: Active & Available"
               title="Active & Available"
             >
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 m-[1px] bg-emerald-500 ring-2 ring-background" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" aria-hidden="true" />
+              <span className="relative inline-flex rounded-full h-3 w-3 m-[1px] bg-emerald-500 ring-2 ring-background" aria-hidden="true" />
             </span>
           </div>
         </motion.div>
@@ -119,8 +121,8 @@ export function ProfileSection() {
                 href={currentRole.companyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground hover:underline font-semibold flex items-center gap-0.5"
-                aria-label={`Current company: ${currentRole.company}`}
+                className="text-foreground hover:underline font-semibold flex items-center gap-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs"
+                aria-label={`Current company: ${currentRole.company} (opens in new tab)`}
               >
                 {currentRole.company}
               </a>
@@ -139,29 +141,29 @@ export function ProfileSection() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`h-8 w-8 rounded-lg flex items-center justify-center bg-muted/30 hover:bg-muted/70 border border-border/50 text-muted-foreground hover:text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs ${isDarkSide ? 'force-glow' : ''}`}
-                    aria-label={`Visit ${link.icon} profile`}
+                    className={`h-8 w-8 rounded-lg flex items-center justify-center bg-muted/30 hover:bg-muted/70 border border-border/50 text-muted-foreground hover:text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isDarkSide ? 'force-glow' : ''}`}
+                    aria-label={`Visit ${link.icon} profile (opens in new tab)`}
                   >
-                    <Icon className="w-3.5 h-3.5" />
+                    <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                     <span className="sr-only">{link.icon}</span>
                   </a>
                 );
               })}
               <a
                 href={`mailto:${profile.email}`}
-                className={`h-8 w-8 rounded-lg flex items-center justify-center bg-muted/30 hover:bg-muted/70 border border-border/50 text-muted-foreground hover:text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs ${isDarkSide ? 'force-glow' : ''}`}
+                className={`h-8 w-8 rounded-lg flex items-center justify-center bg-muted/30 hover:bg-muted/70 border border-border/50 text-muted-foreground hover:text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isDarkSide ? 'force-glow' : ''}`}
                 aria-label={`Send email to ${profile.email}`}
               >
-                <Mail className="w-3.5 h-3.5" />
+                <Mail className="w-3.5 h-3.5" aria-hidden="true" />
                 <span className="sr-only">Email</span>
               </a>
               <button
                 type="button"
                 onClick={handleResumeDownload}
-                className={`h-8 px-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 border border-border/60 text-xs font-medium flex items-center gap-1.5 text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs cursor-pointer hover:border-foreground/20 ${isDarkSide ? 'force-glow' : ''}`}
-                aria-label="Download resume as PDF"
+                className={`h-8 px-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 border border-border/60 text-xs font-medium flex items-center gap-1.5 text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs cursor-pointer hover:border-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isDarkSide ? 'force-glow' : ''}`}
+                aria-label="Download resume as PDF (opens in new tab)"
               >
-                <FileText className="w-3.5 h-3.5 opacity-70" />
+                <FileText className="w-3.5 h-3.5 opacity-70" aria-hidden="true" />
                 <span className="hidden sm:inline">download boring resume</span>
                 <span className="sm:hidden">resume</span>
               </button>

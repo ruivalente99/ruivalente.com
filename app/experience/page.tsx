@@ -111,27 +111,31 @@ export default function ExperiencePage() {
               animate={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.02 }}
             >
-              <Link href={`/experience/${exp.id}`}>
-                <Card className="p-6 cursor-pointer hover:shadow-lg transition-shadow">
+                <Card className="p-6 relative group hover:shadow-lg transition-shadow">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex-1">
-                      <h2 className="text-lg font-semibold mb-2">{exp.role}</h2>
+                      <h2 className="text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+                        <Link href={`/experience/${exp.id}`} className="focus:outline-none focus-visible:underline">
+                          <span className="absolute inset-0" aria-hidden="true" />
+                          {exp.role}
+                        </Link>
+                      </h2>
                       <div className="flex items-center gap-4">
                         <p className="text-muted-foreground">{exp.company}</p>
                         <p className="text-sm text-muted-foreground">{exp.year}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 relative z-10">
                       <a
                         href={exp.companyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary"
-                        onClick={(e) => e.stopPropagation()}
+                        className="text-muted-foreground hover:text-primary p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                        aria-label={`Visit ${exp.company} website (opens in new tab)`}
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-4 h-4" aria-hidden="true" />
                       </a>
-                      <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                      <ChevronRight className="w-4 h-4 text-muted-foreground pointer-events-none" aria-hidden="true" />
                     </div>
                   </div>
                   
@@ -151,7 +155,6 @@ export default function ExperiencePage() {
                     </div>
                   </div>
                 </Card>
-              </Link>
             </motion.div>
           ))}
         </div>

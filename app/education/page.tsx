@@ -69,9 +69,10 @@ export default function EducationPage() {
                         href={edu.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary"
+                        className="text-muted-foreground hover:text-primary p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                        aria-label={`Visit ${edu.school} website (opens in new tab)`}
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-4 h-4" aria-hidden="true" />
                       </a>
                     </div>
                   </Card>
@@ -102,9 +103,10 @@ export default function EducationPage() {
                         href={cert.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary"
+                        className="text-muted-foreground hover:text-primary p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                        aria-label={`View ${cert.name} certificate (opens in new tab)`}
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-4 h-4" aria-hidden="true" />
                       </a>
                     </div>
                   </Card>

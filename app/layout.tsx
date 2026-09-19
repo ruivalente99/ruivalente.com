@@ -122,7 +122,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://ruivalente.com',
     languages: {
-      'en-US': 'https://ruivalente.com',
+      'en': 'https://ruivalente.com',
+      'x-default': 'https://ruivalente.com',
     },
   },
 };
@@ -201,7 +202,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

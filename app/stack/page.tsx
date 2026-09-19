@@ -101,7 +101,7 @@ export default function StackPage() {
                               <Card className="p-6 h-full transition-all duration-300 border-2 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-500/20">
                                 <div className="flex items-center gap-3 mb-3">
                                   <div className="p-2 rounded-lg bg-gradient-to-r from-blue-100 to-purple-100 group-hover:from-blue-200 group-hover:to-purple-200">
-                                    <Icon className="w-6 h-6 text-purple-600" />
+                                    <Icon className="w-6 h-6 text-purple-600" aria-hidden="true" />
                                   </div>
                                   <h3 className="text-lg font-semibold">{tech.name}</h3>
                                 </div>
@@ -136,7 +136,7 @@ export default function StackPage() {
                         >
                           <Card className="p-6">
                             <div className="flex items-center gap-3 mb-3">
-                              <Icon className="w-6 h-6 text-foreground" />
+                              <Icon className="w-6 h-6 text-foreground" aria-hidden="true" />
                               <h3 className="text-lg font-semibold">{tech.name}</h3>
                             </div>
                             <p className="text-sm text-muted-foreground mb-3">

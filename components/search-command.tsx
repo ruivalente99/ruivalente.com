@@ -149,12 +149,12 @@ export function SearchCommand() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="relative h-8 w-full justify-start text-xs text-muted-foreground sm:pr-12 md:w-40 lg:w-56 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 transition-all duration-150 flex items-center px-2.5 gap-2 cursor-pointer active:scale-[0.98] shadow-2xs"
+        className="relative h-8 w-full justify-start text-xs text-muted-foreground sm:pr-12 md:w-40 lg:w-56 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 transition-all duration-150 flex items-center px-2.5 gap-2 cursor-pointer active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Open command palette"
       >
-        <Search className="h-3.5 w-3.5 opacity-60" />
+        <Search className="h-3.5 w-3.5 opacity-60" aria-hidden="true" />
         <span className="font-normal truncate">Search...</span>
-        <div className="pointer-events-none absolute right-1.5 top-1.5 hidden sm:flex items-center">
+        <div className="pointer-events-none absolute right-1.5 top-1.5 hidden sm:flex items-center" aria-hidden="true">
           <Kbd keys={["mod", "k"]} size="xs" variant="default" />
         </div>
       </button>

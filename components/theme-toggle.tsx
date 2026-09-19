@@ -46,10 +46,10 @@ export function ThemeToggle() {
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="relative h-8 w-8 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 text-muted-foreground hover:text-foreground transition-all duration-150 flex items-center justify-center cursor-pointer active:scale-[0.96] shadow-2xs"
+          className="relative h-8 w-8 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 text-muted-foreground hover:text-foreground transition-all duration-150 flex items-center justify-center cursor-pointer active:scale-[0.96] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label="Toggle theme"
         >
-          <CurrentIcon className="h-3.5 w-3.5" />
+          <CurrentIcon className="h-3.5 w-3.5" aria-hidden="true" />
           <span className="sr-only">Toggle theme</span>
         </button>
       </DropdownMenuTrigger>

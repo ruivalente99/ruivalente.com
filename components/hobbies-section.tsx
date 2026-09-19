@@ -30,7 +30,7 @@ export function HobbiesSection() {
   return (
     <section className="p-4 flex flex-col justify-between h-full" aria-labelledby="hobbies-heading">
       <header className="mb-3">
-        <h2 id="hobbies-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+        <h2 id="hobbies-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           hobbies
         </h2>
       </header>
@@ -40,8 +40,8 @@ export function HobbiesSection() {
             href={hobbies.playlist.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block rounded-xl p-3 bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group active:scale-[0.98] shadow-2xs"
-            aria-label={`Listen to ${hobbies.playlist.title}`}
+            className="block rounded-xl p-3 bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label={`Listen to ${hobbies.playlist.title} (opens in new tab)`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
@@ -67,8 +67,8 @@ export function HobbiesSection() {
             href={hobbies.watching.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block rounded-xl p-3 bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group active:scale-[0.98] shadow-2xs"
-            aria-label={`Watch ${hobbies.watching.title}`}
+            className="block rounded-xl p-3 bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label={`Watch ${hobbies.watching.title} (opens in new tab)`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
