@@ -76,7 +76,7 @@ export function ProfileSection() {
   };
 
   return (
-    <section className="relative" aria-label="Profile Information">
+    <section className="relative h-full flex flex-col justify-center" aria-label="Profile Information">
       {/* GitHub commit graph background */}
       <GitHubCommitGraph username="ruivalente99" className="z-0" opacity={0.28} />
       

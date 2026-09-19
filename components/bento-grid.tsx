@@ -37,7 +37,7 @@ export function BentoItem({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className={cn(
-        "rounded-xl",
+        "rounded-xl w-full h-full flex flex-col",
         colSpan === 2 && "md:col-span-2",
         colSpan === 3 && "md:col-span-3",
         colSpan === 4 && "md:col-span-4",

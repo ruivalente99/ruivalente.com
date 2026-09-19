@@ -88,8 +88,8 @@ export function EducationSection() {
           </div>
         ))}
 
-        {/* Certificate item */}
-        {certificates.slice(0, 1).map((cert, index) => (
+        {/* Certificate items */}
+        {certificates.slice(0, 2).map((cert, index) => (
           <div
             key={index}
             className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group shadow-2xs"

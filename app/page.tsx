@@ -103,16 +103,14 @@ export default function Home() {
         <BentoGrid className="">
           {/* Profile Section */}
           <BentoItem colSpan={3}>
-            <Card className="p-6">
+            <Card className="p-6 h-full flex flex-col justify-center">
               <ProfileSection />
             </Card>
           </BentoItem>
 
           {/* Hobbies Section */}
           <BentoItem colSpan={1}>
-            <Card className="h-full">
-              <HobbiesSection />
-            </Card>
+            <HobbiesSection />
           </BentoItem>
 
           {/* Tech Stack Section */}

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Music, Tv } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -28,13 +29,13 @@ export function HobbiesSection() {
   if (!hobbies) return null;
 
   return (
-    <section className="p-4 flex flex-col justify-between h-full" aria-labelledby="hobbies-heading">
+    <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="hobbies-heading">
       <header className="mb-3">
         <h2 id="hobbies-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           hobbies
         </h2>
       </header>
-      <div className="space-y-2.5 flex-1 flex flex-col justify-around">
+      <div className="space-y-2.5 my-auto">
         <article>
           <a
             href={hobbies.playlist.url}
@@ -84,13 +85,13 @@ export function HobbiesSection() {
           </a>
         </article>
       </div>
-    </section>
+    </Card>
   );
 }
 
 function HobbiesSkeleton() {
   return (
-    <div className="p-4">
+    <Card className="h-full p-4">
       <Skeleton className="h-4 w-24 mb-4" />
       <div className="space-y-4">
         {[1, 2].map((i) => (
@@ -103,6 +104,6 @@ function HobbiesSkeleton() {
           </div>
         ))}
       </div>
-    </div>
+    </Card>
   );
 }

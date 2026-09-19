@@ -7,25 +7,23 @@ import {
   FileText,
   Github,
   Sun,
-  Moon,
-  Laptop,
-  Palette,
   Search,
   GraduationCap,
   Briefcase,
   Code,
   FolderGit,
-  Boxes,
-  Wrench,
-  Library,
+  Award,
+  Home,
+  Copy,
+  Mail,
   Check,
   Terminal,
   Sparkles,
   Wand2,
+  ExternalLink,
   LucideIcon,
 } from "lucide-react";
 import { Kbd } from "@ruivalente99/bibliotheca/ui";
-import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -38,12 +36,13 @@ import {
 import { DialogTitle } from "@/components/ui/dialog";
 import { useData } from "@/lib/hooks/useData";
 import { useToast } from "@/components/ui/use-toast";
-import { getIcon } from '@/lib/hooks/useIconMap';
+import { getIcon } from "@/lib/hooks/useIconMap";
 
 interface SearchableData {
-  projects?: Array<{ id: string; title: string; description: string }>;
-  experiences?: Array<{ id: string; role: string; company: string }>;
+  projects?: Array<{ id: string; title: string; description: string; skills?: string[] }>;
+  experiences?: Array<{ id: string; role: string; company: string; skills?: string[] }>;
   education?: Array<{ id: string; degree: string; school: string }>;
+  certificates?: Array<{ name: string; issuer: string; year: string; url: string }>;
   categories?: Array<{
     name: string;
     items: Array<{ name: string; description: string }>;
@@ -68,8 +67,8 @@ export function SearchCommand() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
-  const { data: searchData, isLoading: searchLoading } = useData<SearchableData>('/api/search');
-  const { data: themesData, isLoading: themesLoading } = useData<{ themes: Theme[] }>('/api/themes');
+  const { data: searchData, isLoading: searchLoading } = useData<SearchableData>("/api/search");
+  const { data: themesData, isLoading: themesLoading } = useData<{ themes: Theme[] }>("/api/themes");
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -83,10 +82,34 @@ export function SearchCommand() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
+  const navigateTo = (path: string) => {
+    router.push(path);
+    setOpen(false);
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      const url = typeof window !== "undefined" ? window.location.origin : "https://ruivalente.com";
+      await navigator.clipboard.writeText(url);
+      toast({
+        title: "Link Copied!",
+        description: "Portfolio URL copied to clipboard.",
+        duration: 3000,
+      });
+    } catch {
+      toast({
+        title: "Copy Failed",
+        description: "Could not copy link to clipboard.",
+        variant: "destructive",
+        duration: 3000,
+      });
+    }
+    setOpen(false);
+  };
+
   const handleThemeChange = (value: string) => {
     setTheme(value);
-    console.log(value);
-    if (value === 'terminal') {
+    if (value === "terminal") {
       toast({
         title: "Easter Egg Found!",
         description: (
@@ -98,7 +121,7 @@ export function SearchCommand() {
         duration: 5000,
       });
     }
-    if(value === 'dark-side') {
+    if (value === "dark-side") {
       toast({
         title: "Easter Egg Found!",
         description: (
@@ -114,34 +137,43 @@ export function SearchCommand() {
   };
 
   const handleResumeDownload = () => {
-    const resumeUrl = '/resume.pdf';
-    window.open(resumeUrl, '_blank');
+    const resumeUrl = "https://github.com/ruivalente99/resume/raw/main/resume.pdf";
+    window.open(resumeUrl, "_blank");
     setOpen(false);
   };
 
   const handleSpecialEffect = (effect: string) => {
     switch (effect) {
-      case 'matrix':
-        document.documentElement.classList.toggle('matrix-effect');
+      case "matrix":
+        document.documentElement.classList.toggle("matrix-effect");
         break;
-      case 'flip':
-        document.body.style.transform = document.body.style.transform ? '' : 'rotate(180deg)';
+      case "flip":
+        document.body.style.transform = document.body.style.transform ? "" : "rotate(180deg)";
         break;
-      case 'glitch':
-        document.documentElement.classList.toggle('glitch-effect');
+      case "glitch":
+        document.documentElement.classList.toggle("glitch-effect");
         break;
-      case 'crt':
-        document.documentElement.classList.toggle('crt-effect');
+      case "crt":
+        document.documentElement.classList.toggle("crt-effect");
         break;
-      case 'pixel':
-        document.documentElement.classList.toggle('pixel-effect');
+      case "pixel":
+        document.documentElement.classList.toggle("pixel-effect");
         break;
-      case 'reset':
-        document.documentElement.classList.remove('matrix-effect', 'glitch-effect', 'crt-effect', 'pixel-effect');
-        document.body.style.transform = '';
+      case "reset":
+        document.documentElement.classList.remove("matrix-effect", "glitch-effect", "crt-effect", "pixel-effect");
+        document.body.style.transform = "";
         break;
     }
     setOpen(false);
+  };
+
+  const renderThemeIcon = (iconName: string) => {
+    const Icon = getIcon(iconName) as React.ComponentType<{ className?: string; role?: string; 'aria-hidden'?: string | boolean }>;
+    return (
+      <span aria-hidden="true" className="mr-2 h-4 w-4 shrink-0 flex items-center justify-center">
+        <Icon role="presentation" aria-hidden="true" className="h-4 w-4 text-muted-foreground" />
+      </span>
+    );
   };
 
   return (
@@ -149,97 +181,279 @@ export function SearchCommand() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="relative h-8 w-full justify-start text-xs text-muted-foreground sm:pr-12 md:w-40 lg:w-56 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 transition-all duration-150 flex items-center px-2.5 gap-2 cursor-pointer active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="relative h-8 w-full justify-start text-xs text-muted-foreground sm:pr-12 md:w-44 lg:w-60 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 transition-all duration-150 flex items-center px-2.5 gap-2 cursor-pointer active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Open command palette"
       >
-        <Search className="h-3.5 w-3.5 opacity-60" aria-hidden="true" />
-        <span className="font-normal truncate">Search...</span>
+        <Search className="h-3.5 w-3.5 opacity-60 shrink-0" aria-hidden="true" />
+        <span className="font-normal truncate">Search portfolio...</span>
         <div className="pointer-events-none absolute right-1.5 top-1.5 hidden sm:flex items-center" aria-hidden="true">
           <Kbd keys={["mod", "k"]} size="xs" variant="default" />
         </div>
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <DialogTitle className="sr-only">Search commands and navigation</DialogTitle>
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
+        <CommandInput placeholder="Type a command, search projects, stack, or navigate..." />
+        <CommandList className="max-h-[380px] p-1.5 custom-scroll">
           <CommandEmpty>No results found.</CommandEmpty>
-          
-          {/* Quick Actions */}
-          <CommandGroup heading="Quick Actions">
-            <CommandItem onSelect={handleResumeDownload}>
-              <FileText className="mr-2 h-4 w-4" />
+
+          {/* Navigation Links */}
+          <CommandGroup heading="Navigation">
+            <CommandItem value="Home portfolio overview bio start" onSelect={() => navigateTo("/")}>
+              <Home className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <div className="flex-1">
-                Download Resume
-                <p className="text-xs text-muted-foreground">Get a copy of my resume</p>
+                <span>Home</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Portfolio overview and profile</p>
               </div>
             </CommandItem>
-            <CommandItem onSelect={() => {
-              window.open('https://github.com/ruivalente99', '_blank');
-              setOpen(false);
-            }}>
-              <Github className="mr-2 h-4 w-4" />
+            <CommandItem value="Projects portfolio showcase apps work applications open source" onSelect={() => navigateTo("/projects")}>
+              <FolderGit className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <div className="flex-1">
-                View GitHub Profile
-                <p className="text-xs text-muted-foreground">Check out my code</p>
+                <span>Projects</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Featured applications and open source work</p>
               </div>
             </CommandItem>
-            <CommandItem onSelect={() => {
-              router.push('/easter-eggs');
-              setOpen(false);
-            }}>
-              <Sparkles className="mr-2 h-4 w-4 text-primary" />
+            <CommandItem value="Experience work history career jobs Openvia Neoception" onSelect={() => navigateTo("/experience")}>
+              <Briefcase className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <div className="flex-1">
-                Easter Eggs
-                <p className="text-xs text-muted-foreground">
-                  Discover hidden features and secrets
-                </p>
+                <span>Experience</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Work history at Openvia and Neoception</p>
+              </div>
+            </CommandItem>
+            <CommandItem value="Education university degrees academic UTAD informatics" onSelect={() => navigateTo("/education")}>
+              <GraduationCap className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <div className="flex-1">
+                <span>Education</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Degrees and academic qualifications</p>
+              </div>
+            </CommandItem>
+            <CommandItem value="Certificates courses certifications Frontend Masters Udemy HackerRank" onSelect={() => navigateTo("/certificates")}>
+              <Award className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <div className="flex-1">
+                <span>Certificates</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Professional certifications and courses</p>
+              </div>
+            </CommandItem>
+            <CommandItem value="Tech & AI Stack technologies languages frontend backend tools artificial intelligence" onSelect={() => navigateTo("/stack")}>
+              <Code className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <div className="flex-1">
+                <span>Tech & AI Stack</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Frameworks, languages, tools, and AI workflows</p>
+              </div>
+            </CommandItem>
+            <CommandItem value="Easter Eggs secrets interactive matrix dark side terminal" onSelect={() => navigateTo("/easter-eggs")}>
+              <Sparkles className="mr-2 h-4 w-4 text-primary" aria-hidden="true" />
+              <div className="flex-1">
+                <span>Easter Eggs</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Discover hidden interactive secrets</p>
               </div>
             </CommandItem>
           </CommandGroup>
 
-          {/* Theme Selection */}
+          <CommandSeparator />
+
+          {/* Quick Actions */}
+          <CommandGroup heading="Quick Actions">
+            <CommandItem value="Copy portfolio link share URL clipboard" onSelect={handleCopyLink}>
+              <Copy className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <div className="flex-1">
+                <span>Copy Portfolio Link</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Copy URL to share with others</p>
+              </div>
+            </CommandItem>
+            <CommandItem value="Download resume CV PDF document curriculum vitae" onSelect={handleResumeDownload}>
+              <FileText className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <div className="flex-1">
+                <span>Download Resume</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Get a PDF copy of my resume</p>
+              </div>
+            </CommandItem>
+            <CommandItem
+              value="View GitHub profile github.com/ruivalente99 open source code"
+              onSelect={() => {
+                window.open("https://github.com/ruivalente99", "_blank");
+                setOpen(false);
+              }}
+            >
+              <Github className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <div className="flex-1">
+                <span>View GitHub Profile</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">github.com/ruivalente99</p>
+              </div>
+            </CommandItem>
+            <CommandItem
+              value="Send email contact mailto rui.valente99@gmail.com message"
+              onSelect={() => {
+                window.location.href = "mailto:rui.valente99@gmail.com";
+                setOpen(false);
+              }}
+            >
+              <Mail className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <div className="flex-1">
+                <span>Send Email</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">rui.valente99@gmail.com</p>
+              </div>
+            </CommandItem>
+          </CommandGroup>
+
+          <CommandSeparator />
+
+          {/* Dynamic Search: Projects */}
+          {searchData?.projects && searchData.projects.length > 0 && (
+            <CommandGroup heading="Projects">
+              {searchData.projects.map((project) => (
+                <CommandItem
+                  key={project.id}
+                  value={`${project.title} ${project.description} ${(project.skills || []).join(" ")}`}
+                  onSelect={() => navigateTo(`/projects/${project.id}`)}
+                >
+                  <FolderGit className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                  <div className="flex-1">
+                    <span>{project.title}</span>
+                    <p className="text-xs text-foreground/75 dark:text-muted-foreground line-clamp-1">
+                      {project.description}
+                    </p>
+                  </div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+
+          {/* Dynamic Search: Experience */}
+          {searchData?.experiences && searchData.experiences.length > 0 && (
+            <CommandGroup heading="Experience">
+              {searchData.experiences.map((exp) => (
+                <CommandItem
+                  key={exp.id}
+                  value={`${exp.role} ${exp.company} ${(exp.skills || []).join(" ")}`}
+                  onSelect={() => navigateTo(`/experience/${exp.id}`)}
+                >
+                  <Briefcase className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                  <div className="flex-1">
+                    <span>{exp.role}</span>
+                    <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                      at {exp.company}
+                    </p>
+                  </div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+
+          {/* Dynamic Search: Education & Certifications */}
+          {searchData?.education && searchData.education.length > 0 && (
+            <CommandGroup heading="Education">
+              {searchData.education.map((edu) => (
+                <CommandItem
+                  key={edu.id}
+                  value={`${edu.degree} ${edu.school}`}
+                  onSelect={() => navigateTo(`/education/${edu.id}`)}
+                >
+                  <GraduationCap className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                  <div className="flex-1">
+                    <span>{edu.degree}</span>
+                    <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                      at {edu.school}
+                    </p>
+                  </div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+
+          {/* Dynamic Search: Certificates */}
+          {searchData?.certificates && searchData.certificates.length > 0 && (
+            <CommandGroup heading="Certificates">
+              {searchData.certificates.map((cert, index) => (
+                <CommandItem
+                  key={index}
+                  value={`${cert.name} ${cert.issuer} ${cert.year}`}
+                  onSelect={() => {
+                    if (cert.url) {
+                      window.open(cert.url, "_blank");
+                    } else {
+                      navigateTo("/certificates");
+                    }
+                    setOpen(false);
+                  }}
+                >
+                  <Award className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                  <div className="flex-1">
+                    <span>{cert.name}</span>
+                    <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                      {cert.issuer} • {cert.year}
+                    </p>
+                  </div>
+                  <ExternalLink className="ml-2 h-3.5 w-3.5 opacity-50" aria-hidden="true" />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+
+          {/* Dynamic Search: Tech Stack Categories */}
+          {searchData?.categories && searchData.categories.length > 0 && (
+            <CommandGroup heading="Tech Stack Categories">
+              {searchData.categories.map((category) => (
+                <CommandItem
+                  key={category.name}
+                  value={`${category.name} ${category.items.map(i => `${i.name} ${i.description}`).join(" ")}`}
+                  onSelect={() => navigateTo("/stack")}
+                >
+                  <Code className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                  <div className="flex-1">
+                    <span>{category.name}</span>
+                    <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                      {category.items.length} tools and technologies
+                    </p>
+                  </div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+
+          <CommandSeparator />
+
+          {/* Appearance & Themes */}
           {!themesLoading && themesData?.themes && (
             <CommandGroup heading="Appearance">
               {themesData.themes.map(({ name, value, icon, description, hidden }) => {
-                const Icon = getIcon(icon) as LucideIcon;
-                // Special handling for terminal theme
-                if (value === 'terminal') {
+                if (value === "terminal") {
                   return (
                     <CommandItem
                       key={value}
+                      value={`Theme Appearance ${name} ${value}`}
                       onSelect={() => handleThemeChange(value)}
                       className="relative"
                     >
-                      <Terminal className="mr-2 h-4 w-4 text-green-500" />
+                      <Terminal className="mr-2 h-4 w-4 text-green-500" aria-hidden="true" />
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          {name}
-                          <Sparkles className="w-3 h-3 text-green-500" />
+                          <span>{name}</span>
+                          <Sparkles className="w-3 h-3 text-green-500" aria-hidden="true" />
                         </div>
-                        <p className="text-xs text-muted-foreground">
-                          You found the secret theme! Welcome to the matrix.
+                        <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                          Secret retro terminal mode
                         </p>
                       </div>
                       {theme === value && (
-                        <Check className="ml-2 h-4 w-4 text-green-500" />
+                        <Check className="ml-2 h-4 w-4 text-green-500" aria-hidden="true" />
                       )}
                     </CommandItem>
                   );
                 }
-                // Regular themes
                 if (!hidden) {
                   return (
                     <CommandItem
                       key={value}
+                      value={`Theme Appearance ${name} ${value} ${description}`}
                       onSelect={() => handleThemeChange(value)}
                     >
-                      <Icon className="mr-2 h-4 w-4" />
+                      {renderThemeIcon(icon)}
                       <div className="flex-1">
-                        {name}
-                        <p className="text-xs text-muted-foreground">{description}</p>
+                        <span>{name}</span>
+                        <p className="text-xs text-foreground/75 dark:text-muted-foreground">{description}</p>
                       </div>
                       {theme === value && (
-                        <Check className="ml-2 h-4 w-4 text-primary" />
+                        <Check className="ml-2 h-4 w-4 text-primary" aria-hidden="true" />
                       )}
                     </CommandItem>
                   );
@@ -249,202 +463,73 @@ export function SearchCommand() {
             </CommandGroup>
           )}
 
-          {/* Special Effects - Only show when in terminal theme */}
-          {theme === 'terminal' && (
+          {/* Special Effects - When in terminal theme */}
+          {theme === "terminal" && (
             <CommandGroup heading="Special Effects">
-              <CommandItem onSelect={() => handleSpecialEffect('matrix')}>
+              <CommandItem onSelect={() => handleSpecialEffect("matrix")}>
                 <Wand2 className="mr-2 h-4 w-4 text-green-500" />
                 <div className="flex-1">
-                  Toggle Matrix Effect
-                  <p className="text-xs text-muted-foreground">
-                    Enter the digital rain
-                  </p>
+                  <span>Toggle Matrix Effect</span>
+                  <p className="text-xs text-muted-foreground">Enter the digital rain</p>
                 </div>
               </CommandItem>
-              <CommandItem onSelect={() => handleSpecialEffect('glitch')}>
+              <CommandItem onSelect={() => handleSpecialEffect("glitch")}>
                 <Wand2 className="mr-2 h-4 w-4 text-blue-500" />
                 <div className="flex-1">
-                  Toggle Glitch Effect
-                  <p className="text-xs text-muted-foreground">
-                    Add some digital distortion
-                  </p>
+                  <span>Toggle Glitch Effect</span>
+                  <p className="text-xs text-muted-foreground">Add digital distortion</p>
                 </div>
               </CommandItem>
-              <CommandItem onSelect={() => handleSpecialEffect('crt')}>
+              <CommandItem onSelect={() => handleSpecialEffect("crt")}>
                 <Wand2 className="mr-2 h-4 w-4 text-yellow-500" />
                 <div className="flex-1">
-                  Toggle CRT Effect
-                  <p className="text-xs text-muted-foreground">
-                    Old school monitor vibes
-                  </p>
+                  <span>Toggle CRT Effect</span>
+                  <p className="text-xs text-muted-foreground">Old school monitor scanlines</p>
                 </div>
               </CommandItem>
-              <CommandItem onSelect={() => handleSpecialEffect('pixel')}>
+              <CommandItem onSelect={() => handleSpecialEffect("pixel")}>
                 <Wand2 className="mr-2 h-4 w-4 text-purple-500" />
                 <div className="flex-1">
-                  Toggle Pixel Effect
-                  <p className="text-xs text-muted-foreground">
-                    8-bit everything
-                  </p>
+                  <span>Toggle Pixel Effect</span>
+                  <p className="text-xs text-muted-foreground">8-bit pixelation filter</p>
                 </div>
               </CommandItem>
-              <CommandItem onSelect={() => handleSpecialEffect('flip')}>
+              <CommandItem onSelect={() => handleSpecialEffect("flip")}>
                 <Wand2 className="mr-2 h-4 w-4 text-pink-500" />
                 <div className="flex-1">
-                  Flip UI
-                  <p className="text-xs text-muted-foreground">
-                    Turn everything upside down
-                  </p>
+                  <span>Flip UI</span>
+                  <p className="text-xs text-muted-foreground">Turn viewport upside down</p>
                 </div>
               </CommandItem>
-              <CommandItem onSelect={() => handleSpecialEffect('reset')}>
+              <CommandItem onSelect={() => handleSpecialEffect("reset")}>
                 <Wand2 className="mr-2 h-4 w-4 text-red-500" />
                 <div className="flex-1">
-                  Reset Effects
-                  <p className="text-xs text-muted-foreground">
-                    Clear all special effects
-                  </p>
-                </div>
-              </CommandItem>
-            </CommandGroup>
-          )}
-
-          <CommandSeparator />
-
-          {/* Navigation Sections */}
-          {searchData?.categories && searchData.categories.length > 0 && (
-            <CommandGroup heading="Tech Stack">
-              {searchData.categories.map((category) => (
-                <CommandItem
-                  key={category.name}
-                  onSelect={() => {
-                    router.push('/stack');
-                    setOpen(false);
-                  }}
-                >
-                  <Code className="mr-2 h-4 w-4" />
-                  <div className="flex-1">
-                    {category.name}
-                    <p className="text-xs text-muted-foreground">
-                      {category.items.length} tools and technologies
-                    </p>
-                  </div>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          )}
-
-          {/* Projects */}
-          {searchData?.projects && searchData.projects.length > 0 && (
-            <CommandGroup heading="Projects">
-              {searchData.projects.map((project) => (
-                <CommandItem
-                  key={project.id}
-                  onSelect={() => {
-                    router.push(`/projects/${project.id}`);
-                    setOpen(false);
-                  }}
-                >
-                  <FolderGit className="mr-2 h-4 w-4" />
-                  <div className="flex-1">
-                    {project.title}
-                    <p className="text-xs text-muted-foreground line-clamp-1">
-                      {project.description}
-                    </p>
-                  </div>
-                </CommandItem>
-              ))}
-              <CommandItem
-                onSelect={() => {
-                  router.push('/projects');
-                  setOpen(false);
-                }}
-              >
-                <Code className="mr-2 h-4 w-4" />
-                <div className="flex-1">
-                  View All Projects
-                  <p className="text-xs text-muted-foreground">
-                    Browse all projects
-                  </p>
-                </div>
-              </CommandItem>
-            </CommandGroup>
-          )}
-
-          {/* Experience */}
-          {searchData?.experiences && searchData.experiences.length > 0 && (
-            <CommandGroup heading="Experience">
-              {searchData.experiences.map((exp) => (
-                <CommandItem
-                  key={exp.id}
-                  onSelect={() => {
-                    router.push(`/experience/${exp.id}`);
-                    setOpen(false);
-                  }}
-                >
-                  <Briefcase className="mr-2 h-4 w-4" />
-                  <div className="flex-1">
-                    {exp.role}
-                    <p className="text-xs text-muted-foreground">
-                      at {exp.company}
-                    </p>
-                  </div>
-                </CommandItem>
-              ))}
-              <CommandItem
-                onSelect={() => {
-                  router.push('/experience');
-                  setOpen(false);
-                }}
-              >
-                <Briefcase className="mr-2 h-4 w-4" />
-                <div className="flex-1">
-                  View All Experience
-                  <p className="text-xs text-muted-foreground">
-                    See full work history
-                  </p>
-                </div>
-              </CommandItem>
-            </CommandGroup>
-          )}
-
-          {/* Education */}
-          {searchData?.education && searchData.education.length > 0 && (
-            <CommandGroup heading="Education">
-              {searchData.education.map((edu) => (
-                <CommandItem
-                  key={edu.id}
-                  onSelect={() => {
-                    router.push(`/education/${edu.id}`);
-                    setOpen(false);
-                  }}
-                >
-                  <GraduationCap className="mr-2 h-4 w-4" />
-                  <div className="flex-1">
-                    {edu.degree}
-                    <p className="text-xs text-muted-foreground">
-                      at {edu.school}
-                    </p>
-                  </div>
-                </CommandItem>
-              ))}
-              <CommandItem
-                onSelect={() => {
-                  router.push('/education');
-                  setOpen(false);
-                }}
-              >
-                <GraduationCap className="mr-2 h-4 w-4" />
-                <div className="flex-1">
-                  View All Education
-                  <p className="text-xs text-muted-foreground">
-                    See academic background
-                  </p>
+                  <span>Reset Effects</span>
+                  <p className="text-xs text-muted-foreground">Clear all special effects</p>
                 </div>
               </CommandItem>
             </CommandGroup>
           )}
         </CommandList>
+
+        {/* Command Palette Shortcuts Footer */}
+        <div className="border-t border-border/60 px-3.5 py-2.5 text-[11px] text-muted-foreground flex items-center justify-between bg-popover relative z-10 shrink-0 select-none">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1">
+              <Kbd keys={["up"]} size="xs" variant="default" />
+              <Kbd keys={["down"]} size="xs" variant="default" />
+              <span className="ml-0.5">Navigate</span>
+            </span>
+            <span className="flex items-center gap-1">
+              <Kbd keys={["enter"]} size="xs" variant="default" />
+              <span className="ml-0.5">Select</span>
+            </span>
+          </div>
+          <span className="flex items-center gap-1">
+            <Kbd keys={["esc"]} size="xs" variant="default" />
+            <span className="ml-0.5">Close</span>
+          </span>
+        </div>
       </CommandDialog>
     </>
   );
