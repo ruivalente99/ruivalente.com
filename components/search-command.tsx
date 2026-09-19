@@ -146,17 +146,18 @@ export function SearchCommand() {
 
   return (
     <>
-      <Button
-        variant="outline"
+      <button
+        type="button"
         onClick={() => setOpen(true)}
-        className="relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
+        className="relative h-8 w-full justify-start text-xs text-muted-foreground sm:pr-12 md:w-40 lg:w-56 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 transition-all duration-150 flex items-center px-2.5 gap-2 cursor-pointer active:scale-[0.98] shadow-2xs"
+        aria-label="Open command palette"
       >
-        <Search className="mr-2 h-4 w-4" />
-        <span>Search...</span>
+        <Search className="h-3.5 w-3.5 opacity-60" />
+        <span className="font-normal truncate">Search...</span>
         <div className="pointer-events-none absolute right-1.5 top-1.5 hidden sm:flex items-center">
           <Kbd keys={["mod", "k"]} size="xs" variant="default" />
         </div>
-      </Button>
+      </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <DialogTitle className="sr-only">Search commands and navigation</DialogTitle>
         <CommandInput placeholder="Type a command or search..." />

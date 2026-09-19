@@ -44,12 +44,16 @@ export function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
-          <CurrentIcon className="h-4 w-4" />
+        <button
+          type="button"
+          className="relative h-8 w-8 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 text-muted-foreground hover:text-foreground transition-all duration-150 flex items-center justify-center cursor-pointer active:scale-[0.96] shadow-2xs"
+          aria-label="Toggle theme"
+        >
+          <CurrentIcon className="h-3.5 w-3.5" />
           <span className="sr-only">Toggle theme</span>
-        </Button>
+        </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[240px]">
+      <DropdownMenuContent align="end" className="w-[240px] rounded-xl border border-border/80 bg-popover/90 backdrop-blur-md shadow-lg">
         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <ScrollArea className="h-[300px]">

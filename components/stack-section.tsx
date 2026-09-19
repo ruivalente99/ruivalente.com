@@ -65,21 +65,23 @@ export function StackSection() {
   if (!stack) return null;
 
   return (
-    <Card className="h-full p-4" role="region" aria-labelledby="tech-stack-heading">
-      <header className="flex items-center justify-between mb-4">
-        <h2 id="tech-stack-heading" className="text-sm font-bold">tech stack</h2>
+    <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="tech-stack-heading">
+      <header className="flex items-center justify-between mb-3">
+        <h2 id="tech-stack-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+          tech stack
+        </h2>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/stack')}
-          className="text-xs"
+          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
           aria-label="View all technologies and tools"
         >
           view all <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
       </header>
       
-      <div className="grid grid-cols-6 md:grid-cols-8 gap-4" role="list" aria-label="Technology icons">
+      <div className="grid grid-cols-6 md:grid-cols-8 gap-2.5 my-auto" role="list" aria-label="Technology icons">
         <TooltipProvider>
           {stack
             .filter(category => !category.hideInWidget)
@@ -91,21 +93,21 @@ export function StackSection() {
               return (
                 <Tooltip key={tech.name}>
                   <TooltipTrigger asChild>
-                    <motion.div
-                      whileHover={{ scale: 1.2 }}
-                      className={`flex items-center justify-center p-2 rounded-lg transition-colors ${
+                    <button
+                      type="button"
+                      className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-all duration-150 active:scale-[0.94] shadow-2xs border cursor-pointer mx-auto ${
                         isDarkSide 
-                          ? 'hover:bg-red-950/50 text-white hover:text-red-500' 
-                          : 'hover:bg-accent'
+                          ? 'bg-red-950/20 hover:bg-red-950/40 border-red-900/40 text-red-400 hover:text-red-300' 
+                          : 'bg-muted/30 hover:bg-muted/80 border-border/50 text-foreground/80 hover:text-foreground'
                       }`}
                       role="listitem"
                       aria-label={`${tech.name}: ${tech.description}`}
                     >
                       <Icon 
-                        className={`w-6 h-6 ${isDarkSide ? 'force-glow' : ''}`} 
+                        className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
                         aria-hidden="true"
                       />
-                    </motion.div>
+                    </button>
                   </TooltipTrigger>
                   <TooltipContent 
                     className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
@@ -126,22 +128,21 @@ export function StackSection() {
           {/* AI Button - minimalistic with sparkle */}
           <Tooltip>
             <TooltipTrigger asChild>
-              <motion.div
-                className={`flex items-center justify-center p-2 rounded-lg cursor-pointer transition-colors ${
+              <button
+                type="button"
+                className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-all duration-150 active:scale-[0.94] shadow-2xs border cursor-pointer mx-auto ${
                   isDarkSide 
-                    ? 'hover:bg-red-950/50 text-white hover:text-red-500' 
-                    : 'hover:bg-accent'
+                    ? 'bg-purple-950/30 hover:bg-purple-950/50 border-purple-800/50 text-purple-400' 
+                    : 'bg-purple-500/10 hover:bg-purple-500/20 border-purple-500/30 text-purple-600 dark:text-purple-400'
                 }`}
-                whileHover={{ scale: 1.2 }}
                 onClick={() => router.push('/stack')}
-                role="button"
                 aria-label="View AI Stack"
               >
                 <Sparkles 
-                  className={`w-6 h-6 ${isDarkSide ? 'force-glow text-purple-400' : 'text-purple-600'}`} 
+                  className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
                   aria-hidden="true"
                 />
-              </motion.div>
+              </button>
             </TooltipTrigger>
             <TooltipContent 
               className={isDarkSide ? 'border-red-900 bg-black/90' : ''}

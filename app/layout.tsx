@@ -277,12 +277,20 @@ export default function RootLayout({
         </div>
 
         <Providers>
-          <div className="min-h-[100dvh] flex flex-col">
-            <header className="fixed top-0 right-0 left-0 z-50 p-4 flex justify-end gap-2 bg-background/80 backdrop-blur-sm">
+          <div className="min-h-[100dvh] flex flex-col relative">
+            {/* Subtle atmospheric backdrop lighting */}
+            <div 
+              className="pointer-events-none fixed inset-0 z-0 opacity-50 dark:opacity-30 transition-opacity" 
+              style={{
+                background: 'radial-gradient(ellipse 80% 50% at 50% -10%, hsl(var(--primary) / 0.15), transparent 70%)'
+              }}
+              aria-hidden="true"
+            />
+            <header className="fixed top-0 right-0 left-0 z-50 px-4 py-3 sm:px-6 flex justify-end items-center gap-2 bg-background/75 backdrop-blur-md border-b border-border/40">
               <SearchCommand />
               <ThemeToggle />
             </header>
-            <main className="flex-1 pt-16">
+            <main className="flex-1 pt-16 relative z-10">
               {children}
             </main>
             <Footer />

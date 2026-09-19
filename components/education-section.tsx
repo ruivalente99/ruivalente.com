@@ -35,79 +35,81 @@ export function EducationSection() {
   if (!education || !certificates) return null;
 
   return (
-    <Card className="h-full p-4">
-      <div className="flex items-center justify-between mb-4">
+    <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="education-heading">
+      <header className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <GraduationCap className="w-4 h-4" />
-          <h2 className="text-sm font-bold">education & certificates</h2>
+          <GraduationCap className="w-3.5 h-3.5 text-foreground/80" />
+          <h2 id="education-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+            education & certs
+          </h2>
         </div>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/education')}
-          className="text-xs"
+          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
+          aria-label="View all education and certificates"
         >
           view all <ArrowRight className="w-3 h-3 ml-1" />
         </Button>
-      </div>
+      </header>
 
-      <div className="space-y-4">
-        {/* Education */}
-        <div className="space-y-3">
-          {education.slice(0, 2).map((edu) => (
-            <motion.div
-              key={edu.id}
-              whileHover={{ scale: 1.02 }}
-              onClick={() => router.push(`/education/${edu.id}`)}
-              className="p-2 rounded-lg bg-muted/50 cursor-pointer group relative"
-            >
-              <h3 className="text-sm font-semibold mb-1">{edu.degree}</h3>
-              <div className="flex items-center justify-between">
-                <p className="text-xs text-muted-foreground">{edu.school}</p>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted-foreground">{edu.year}</span>
-                  <a
-                    href={edu.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
-              <ArrowRight className="w-3 h-3 absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </motion.div>
-          ))}
-        </div>
+      <div className="space-y-2.5 my-auto">
+        {/* Education items */}
+        {education.slice(0, 2).map((edu) => (
+          <div
+            key={edu.id}
+            onClick={() => router.push(`/education/${edu.id}`)}
+            className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 active:scale-[0.98] cursor-pointer group shadow-2xs"
+          >
+            <div className="flex items-center justify-between mb-1.5">
+              <h3 className="text-xs font-semibold tracking-tight text-foreground truncate pr-2">{edu.degree}</h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-muted-foreground border border-border/40 shrink-0">
+                {edu.year}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors">{edu.school}</p>
+              <a
+                href={edu.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground p-0.5"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`Visit ${edu.school} website`}
+              >
+                <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+            </div>
+          </div>
+        ))}
 
-        {/* Certificates */}
-        <div className="space-y-3">
-          {certificates.slice(0, 1).map((cert, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.02 }}
-              className="p-2 rounded-lg bg-muted/50"
-            >
-              <h3 className="text-sm font-semibold mb-1">{cert.name}</h3>
-              <div className="flex items-center justify-between">
-                <p className="text-xs text-muted-foreground">{cert.issuer}</p>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted-foreground">{cert.year}</span>
-                  <a
-                    href={cert.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Certificate item */}
+        {certificates.slice(0, 1).map((cert, index) => (
+          <div
+            key={index}
+            className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group shadow-2xs"
+          >
+            <div className="flex items-center justify-between mb-1.5">
+              <h3 className="text-xs font-semibold tracking-tight text-foreground truncate pr-2">{cert.name}</h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-muted-foreground border border-border/40 shrink-0">
+                {cert.year}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors">{cert.issuer}</p>
+              <a
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground p-0.5"
+                aria-label={`Verify ${cert.name} certificate`}
+              >
+                <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </Card>
   );
