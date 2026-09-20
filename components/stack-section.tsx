@@ -8,6 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useRouter } from "next/navigation";
 import { ArrowRight, LucideIcon, Sparkles } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useI18n } from "@/lib/i18n/context";
 import { 
   SiReact, 
   SiNextdotjs, 
@@ -54,6 +55,7 @@ interface TechCategory {
 export function StackSection() {
   const router = useRouter();
   const { theme } = useTheme();
+  const { t } = useI18n();
   const iconMap = useIconMap();
   const isDarkSide = theme === 'dark-side';
   const { data: stack, isLoading } = useData<TechCategory[]>('/api/stack');
@@ -68,16 +70,16 @@ export function StackSection() {
     <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="tech-stack-heading">
       <header className="flex items-center justify-between mb-3">
         <h2 id="tech-stack-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          tech stack
+          {t.bento.stack.title}
         </h2>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/stack')}
           className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
-          aria-label="View all technologies and tools"
+          aria-label={t.bento.stack.viewAll}
         >
-          view all <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          {t.bento.stack.viewAll} <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
       </header>
       

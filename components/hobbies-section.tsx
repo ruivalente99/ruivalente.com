@@ -5,6 +5,7 @@ import { ExternalLink, Music, Tv } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useI18n } from "@/lib/i18n/context";
 
 interface Hobbies {
   playlist: {
@@ -20,6 +21,7 @@ interface Hobbies {
 }
 
 export function HobbiesSection() {
+  const { t } = useI18n();
   const { data: hobbies, isLoading } = useData<Hobbies>('/api/hobbies');
 
   if (isLoading) {
@@ -32,7 +34,7 @@ export function HobbiesSection() {
     <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="hobbies-heading">
       <header className="mb-3">
         <h2 id="hobbies-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          hobbies
+          {t.bento.hobbies.title}
         </h2>
       </header>
       <div className="space-y-2.5 my-auto">

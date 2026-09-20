@@ -30,13 +30,14 @@ import {
   SiTrpc,
   SiGit,
   SiGithubactions,
-  SiWebpack
+  SiWebpack,
+  SiAnthropic
 } from "react-icons/si";
 import { DiLinux } from "react-icons/di";
 import { GiLightSabers, GiSpaceship, GiMeepleArmy, GiMightyForce, GiDeathStar, GiVampireDracula } from "react-icons/gi";
 import { FaFistRaised } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
-import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart, Workflow, CheckSquare, MonitorSmartphone, Component, Network, RefreshCw } from "lucide-react";
+import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart, Workflow, CheckSquare, MonitorSmartphone, Component, Network, RefreshCw, Orbit } from "lucide-react";
 
 type IconMap = {
   [key: string]: React.ComponentType;
@@ -96,6 +97,8 @@ const map: IconMap = {
   restapi: Network,
   // AI Tools
   githubcopilot: SiGithubcopilot,
+  antigravity: Orbit,
+  claudecode: SiAnthropic,
   gemini: SiGooglegemini,
   warp: SiWarp,
   kiro: Bot,

@@ -8,6 +8,7 @@ import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n/context";
 
 interface Experience {
   id: string;
@@ -20,6 +21,7 @@ interface Experience {
 
 export function ExperienceSection() {
   const router = useRouter();
+  const { t } = useI18n();
   const { data: experiences, isLoading } = useData<Experience[]>('/api/experience');
 
   if (isLoading) {
@@ -33,16 +35,18 @@ export function ExperienceSection() {
       <header className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Briefcase className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-          <h2 id="experience-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">experience</h2>
+          <h2 id="experience-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            {t.bento.experience.title}
+          </h2>
         </div>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/experience')}
           className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
-          aria-label="View all work experience"
+          aria-label={t.bento.experience.viewAll}
         >
-          view all <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          {t.bento.experience.viewAll} <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
       </header>
       <div className="space-y-2.5 my-auto">

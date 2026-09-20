@@ -22,6 +22,8 @@ import {
   Wand2,
   ExternalLink,
   LucideIcon,
+  Languages,
+  Blocks,
 } from "lucide-react";
 import { Kbd } from "@ruivalente99/bibliotheca/ui";
 import {
@@ -37,6 +39,8 @@ import { DialogTitle } from "@/components/ui/dialog";
 import { useData } from "@/lib/hooks/useData";
 import { useToast } from "@/components/ui/use-toast";
 import { getIcon } from "@/lib/hooks/useIconMap";
+import { useI18n } from "@/lib/i18n/context";
+import { useAnimation } from "@/lib/animation/context";
 
 interface SearchableData {
   projects?: Array<{ id: string; title: string; description: string; skills?: string[] }>;
@@ -66,6 +70,8 @@ export function SearchCommand() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const { locale, toggleLocale, t } = useI18n();
+  const { animationsEnabled, toggleAnimations } = useAnimation();
   const { toast } = useToast();
   const { data: searchData, isLoading: searchLoading } = useData<SearchableData>("/api/search");
   const { data: themesData, isLoading: themesLoading } = useData<{ themes: Theme[] }>("/api/themes");
@@ -182,22 +188,24 @@ export function SearchCommand() {
         type="button"
         onClick={() => setOpen(true)}
         className="relative h-8 w-full justify-start text-xs text-muted-foreground sm:pr-12 md:w-44 lg:w-60 rounded-lg border border-border/60 bg-muted/30 hover:bg-muted/60 hover:border-border/80 transition-all duration-150 flex items-center px-2.5 gap-2 cursor-pointer active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        aria-label="Open command palette"
+        aria-label={t.header.search}
       >
         <Search className="h-3.5 w-3.5 opacity-60 shrink-0" aria-hidden="true" />
-        <span className="font-normal truncate">Search portfolio...</span>
+        <span className="font-normal truncate">
+          {locale === "pt" ? "Pesquisar portfólio..." : "Search portfolio..."}
+        </span>
         <div className="pointer-events-none absolute right-1.5 top-1.5 hidden sm:flex items-center" aria-hidden="true">
           <Kbd keys={["mod", "k"]} size="xs" variant="default" />
         </div>
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <DialogTitle className="sr-only">Search commands and navigation</DialogTitle>
-        <CommandInput placeholder="Type a command, search projects, stack, or navigate..." />
+        <DialogTitle className="sr-only">{t.command.searchPlaceholder}</DialogTitle>
+        <CommandInput placeholder={t.command.searchPlaceholder} />
         <CommandList className="max-h-[380px] p-1.5 custom-scroll">
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>{t.command.noResults}</CommandEmpty>
 
           {/* Navigation Links */}
-          <CommandGroup heading="Navigation">
+          <CommandGroup heading={t.command.navigation}>
             <CommandItem value="Home portfolio overview bio start" onSelect={() => navigateTo("/")}>
               <Home className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <div className="flex-1">
@@ -252,7 +260,43 @@ export function SearchCommand() {
           <CommandSeparator />
 
           {/* Quick Actions */}
-          <CommandGroup heading="Quick Actions">
+          <CommandGroup heading={t.command.actions}>
+            <CommandItem
+              value="Toggle switch language english portuguese idioma mudar"
+              onSelect={() => {
+                toggleLocale();
+                setOpen(false);
+              }}
+            >
+              <Languages className="mr-2 h-4 w-4 text-primary" aria-hidden="true" />
+              <div className="flex-1">
+                <span>{locale === "en" ? "Mudar Idioma para Português" : "Switch Language to English"}</span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                  {locale === "en" ? "Ativar tradução em Português" : "Set language to English"}
+                </p>
+              </div>
+            </CommandItem>
+            <CommandItem
+              value="Toggle block assembly entrance animations motion desativar animacoes"
+              onSelect={() => {
+                toggleAnimations();
+                setOpen(false);
+              }}
+            >
+              <Blocks className="mr-2 h-4 w-4 text-primary" aria-hidden="true" />
+              <div className="flex-1">
+                <span>
+                  {animationsEnabled
+                    ? (locale === "pt" ? "Desativar Animações de Blocos" : "Disable Block Animations")
+                    : (locale === "pt" ? "Ativar Animações de Blocos" : "Enable Block Animations")}
+                </span>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                  {animationsEnabled
+                    ? (locale === "pt" ? "Renderização imediata sem movimento" : "Instant rendering without motion")
+                    : (locale === "pt" ? "Montagem 3D dos blocos no ecrã" : "3D block assembly on screen")}
+                </p>
+              </div>
+            </CommandItem>
             <CommandItem value="Copy portfolio link share URL clipboard" onSelect={handleCopyLink}>
               <Copy className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <div className="flex-1">
@@ -299,7 +343,7 @@ export function SearchCommand() {
 
           {/* Dynamic Search: Projects */}
           {searchData?.projects && searchData.projects.length > 0 && (
-            <CommandGroup heading="Projects">
+            <CommandGroup heading={t.command.projects}>
               {searchData.projects.map((project) => (
                 <CommandItem
                   key={project.id}
@@ -414,7 +458,7 @@ export function SearchCommand() {
 
           {/* Appearance & Themes */}
           {!themesLoading && themesData?.themes && (
-            <CommandGroup heading="Appearance">
+            <CommandGroup heading={t.theme.appearance}>
               {themesData.themes.map(({ name, value, icon, description, hidden }) => {
                 if (value === "terminal") {
                   return (

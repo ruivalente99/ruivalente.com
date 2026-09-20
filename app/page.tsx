@@ -38,8 +38,8 @@ export default function Home() {
           <p>At Neoception GmbH (Aug 2021 — May 2022): Developed responsive web applications using React and JavaScript; implemented reusable component library with Material UI; collaborated in agile team with daily stand-ups and bi-weekly sprints; contributed to code reviews and unit testing.</p>
           
           <h3>Education & Certifications</h3>
-          <p>Master's Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2021 — Present)</p>
-          <p>Bachelor's Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2018 — 2021)</p>
+          <p>Master&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2021 — Present)</p>
+          <p>Bachelor&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2018 — 2021)</p>
           <p>Certifications: Fullstack TypeScript (GraphQL and Node.js), Complete Intro to React v9, Project Management: Beginner to PM, JavaScript (Intermediate), JavaScript (Basic), React (Basic), Secure Coding.</p>
         </section>
       </div>

@@ -1,6 +1,46 @@
 {
   "projects": [
     {
+      "id": "bibliotheca",
+      "title": "Bibliotheca",
+      "description": "Offline-first, business-agnostic component library and document editor core built with React 19, Tailwind CSS v4, Bun, and high-DPI vector PDF export.",
+      "image": "/projects/bibliotheca.svg",
+      "demo": "https://github.com/ruivalente99/bibliotheca",
+      "github": "https://github.com/ruivalente99/bibliotheca",
+      "contentPath": "/content/projects/bibliotheca.md",
+      "skills": ["React 19", "TypeScript", "Tailwind CSS v4", "Bun", "Storybook", "Playwright", "WCAG 2.1 AA", "Vector PDF", "Design Systems"]
+    },
+    {
+      "id": "papyrus",
+      "title": "PAPYRUS",
+      "description": "Dynamic multilingual resume and CV management platform with bi-directional LaTeX sync, real-time A4 PDF compiler, and ATS optimization.",
+      "image": "/projects/papyrus.png",
+      "demo": "https://cv.ruivalente.com",
+      "github": "https://github.com/ruivalente99/papyrus",
+      "contentPath": "/content/projects/papyrus.md",
+      "skills": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "LaTeX Engine", "jsPDF", "i18n", "ATS Optimization"]
+    },
+    {
+      "id": "sappientus",
+      "title": "Sappientus",
+      "description": "Intelligent digital document workflow and certificate generation platform featuring LibSQL edge storage, Better-Auth security, and automated PDF delivery.",
+      "image": "/projects/sappientus.png",
+      "demo": "https://github.com/ruivalente99/sappientus",
+      "github": "https://github.com/ruivalente99/sappientus",
+      "contentPath": "/content/projects/sappientus.md",
+      "skills": ["Next.js 16", "React 19", "TypeScript", "LibSQL", "Kysely", "Better-Auth", "Tailwind CSS", "PDF.js"]
+    },
+    {
+      "id": "imaguncula",
+      "title": "Imaguncula",
+      "description": "Offline-first SVG icon studio and vector sticker engine featuring automated border dilation algorithms and batch multi-resolution asset packaging.",
+      "image": "/projects/imaguncula.svg",
+      "demo": "https://github.com/ruivalente99/Imaguncula",
+      "github": "https://github.com/ruivalente99/Imaguncula",
+      "contentPath": "/content/projects/imaguncula.md",
+      "skills": ["Next.js 15", "React 19", "TypeScript", "SVG Pipeline", "Vector Dilation", "JSZip", "Bun"]
+    },
+    {
       "id": "lazy-life",
       "title": "Lazy Life",
       "description": "An innovative electric vehicle charging management platform designed to transform the EV charging experience with seamless booking, real-time insights, and payment solutions.",
@@ -8,17 +48,17 @@
       "demo": "https://lazylife.pt",
       "github": "https://github.com/ruivalente99/lazy-life",
       "contentPath": "/content/projects/lazylife.md",
-      "skills": ["React", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "Prisma ORM", "Payment Integration", "Real-time Data", "Route Optimization", "Mobile Development", "EV Technology", "Sustainable Energy"]
+      "skills": ["React", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "Prisma ORM", "Payment Integration"]
     },
     {
       "id": "cass",
       "title": "CASS",
-      "description": "Transforming Small and Medium Enterprises with Customized AI Solutions. At CASS, we offer tailor-made AI solutions to optimize processes and drive growth.",
+      "description": "Transforming Small and Medium Enterprises with Customized AI Solutions to automate processes, generate predictive insights, and drive business growth.",
       "image": "/projects/cass.png",
       "demo": "https://project-cass.vercel.app/",
       "github": "https://github.com/ruivalente99/cass",
       "contentPath": "/content/projects/cass.md",
-      "skills": ["Artificial Intelligence", "Machine Learning", "Natural Language Processing", "Computer Vision", "Python", "TensorFlow", "API Design", "Cloud Computing", "PostgreSQL", "Redis", "Microservices", "Docker", "Kubernetes", "Data Analytics", "Business Intelligence", "GDPR Compliance"]
+      "skills": ["Artificial Intelligence", "Machine Learning", "Natural Language Processing", "Python", "API Design", "PostgreSQL", "Docker"]
     }
   ]
 }

@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import { Footer } from "@/components/footer";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SearchCommand } from "@/components/search-command";
+import { LanguageToggle } from "@/components/language-toggle";
+import { AnimationToggle } from "@/components/animation-toggle";
 import { Providers } from './providers';
 
 // Dynamically import components with loading fallbacks
@@ -289,6 +291,8 @@ export default function RootLayout({
             />
             <header className="fixed top-0 right-0 left-0 z-50 px-4 py-3 sm:px-6 flex justify-end items-center gap-2 bg-background/75 backdrop-blur-md border-b border-border/40">
               <SearchCommand />
+              <LanguageToggle />
+              <AnimationToggle />
               <ThemeToggle />
             </header>
             <main className="flex-1 pt-16 relative z-10">

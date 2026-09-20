@@ -3,16 +3,18 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/lib/i18n/context";
 
 export function Footer() {
   const router = useRouter();
+  const { t } = useI18n();
   const currentYear = new Date().getFullYear();
 
   const navigation = [
-    { name: "Projects", path: "/projects" },
-    { name: "Experience", path: "/experience" },
-    { name: "Education", path: "/education" },
-    { name: "Stack", path: "/stack" },
+    { name: t.command.projects, path: "/projects" },
+    { name: t.command.experience, path: "/experience" },
+    { name: t.command.education, path: "/education" },
+    { name: t.command.stack, path: "/stack" },
   ];
 
   return (
@@ -24,7 +26,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            © {currentYear} All rights reserved.
+            © {currentYear} {t.footer.rights}.
           </div>
           
           <nav className="flex items-center gap-2">

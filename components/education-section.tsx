@@ -8,6 +8,7 @@ import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n/context";
 
 interface Education {
   id: string;
@@ -26,6 +27,7 @@ interface Certificate {
 
 export function EducationSection() {
   const router = useRouter();
+  const { t } = useI18n();
   const { data: education, isLoading: eduLoading } = useData<Education[]>('/api/education');
   const { data: certificates, isLoading: certLoading } = useData<Certificate[]>('/api/certificates');
 
@@ -41,7 +43,7 @@ export function EducationSection() {
         <div className="flex items-center gap-2">
           <GraduationCap className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
           <h2 id="education-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            education & certs
+            {t.bento.education.title}
           </h2>
         </div>
         <Button 
@@ -49,9 +51,9 @@ export function EducationSection() {
           size="sm"
           onClick={() => router.push('/education')}
           className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
-          aria-label="View all education and certificates"
+          aria-label={t.bento.education.viewAll}
         >
-          view all <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          {t.bento.education.viewAll} <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
       </header>
 

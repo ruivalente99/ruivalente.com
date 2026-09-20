@@ -11,6 +11,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { GitHubCommitGraph } from "./github-commit-graph";
 import Image from "next/image";
+import { useI18n } from "@/lib/i18n/context";
 
 interface Profile {
   name: string;
@@ -50,6 +51,7 @@ function ProfileSkeleton() {
 
 export function ProfileSection() {
   const { theme } = useTheme();
+  const { locale, t } = useI18n();
   const isDarkSide = theme === 'dark-side';
   
   // Use different API endpoints based on theme
@@ -115,7 +117,7 @@ export function ProfileSection() {
               {profile.name}
             </h1>
             <div className="inline-flex items-center justify-center md:justify-start gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted/60 border border-border/60 text-muted-foreground self-center md:self-auto">
-              <span>{profile.role}</span>
+              <span>{locale === 'pt' ? t.bento.profile.role : profile.role}</span>
               <span className="opacity-50">@</span>
               <a
                 href={currentRole.companyUrl}
@@ -164,8 +166,8 @@ export function ProfileSection() {
                 aria-label="Download resume as PDF (opens in new tab)"
               >
                 <FileText className="w-3.5 h-3.5 opacity-70" aria-hidden="true" />
-                <span className="hidden sm:inline">download boring resume</span>
-                <span className="sm:hidden">resume</span>
+                <span className="hidden sm:inline">{locale === 'pt' ? 'descarregar currículo' : 'download boring resume'}</span>
+                <span className="sm:hidden">{locale === 'pt' ? 'currículo' : 'resume'}</span>
               </button>
             </div>
           </nav>

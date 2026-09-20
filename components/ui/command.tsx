@@ -104,7 +104,6 @@ const CommandSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.Separator
     ref={ref}
-    role="none"
     aria-hidden="true"
     className={cn('-mx-1 h-px bg-border', className)}
     {...props}
