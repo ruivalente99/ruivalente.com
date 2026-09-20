@@ -2,21 +2,21 @@
   "experiences": [
     {
       "id": "openvia-2022",
-      "year": "2022 — Present",
+      "year": "Jun 2022 — Present",
       "role": "Frontend Engineer",
       "company": "Openvia",
       "companyUrl": "https://openvia.io",
       "contentPath": "/content/experience/openvia-2022.md",
-      "skills": ["React", "Next.js", "TypeScript", "JavaScript", "Node.js", "GraphQL", "AWS", "Docker", "Tailwind CSS", "Git", "Jest", "Cypress", "CI/CD", "Performance Optimization"]
+      "skills": ["React", "TypeScript", "Bootstrap", "GraphQL", "REST APIs", "Ionic", "Angular", "Jest", "Jenkins", "Docker", "CI/CD", "Next.js"]
     },
     {
       "id": "neoception-2021",
-      "year": "2021 — 2022",
-      "role": "Software Engineer (Trainee)",
-      "company": "Neoception",
+      "year": "Aug 2021 — May 2022",
+      "role": "Junior Software Engineer",
+      "company": "Neoception GmbH",
       "companyUrl": "https://www.neoception.com/",
       "contentPath": "/content/experience/neoception-2021.md",
-      "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git", "VS Code", "npm", "Responsive Design", "Mobile-First", "Testing", "Code Reviews", "Team Collaboration"]
+      "skills": ["React", "JavaScript", "Material UI", "Agile/Scrum", "Code Reviews", "Unit Testing", "HTML5", "CSS3", "Git"]
     }
   ]
 }

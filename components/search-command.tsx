@@ -281,16 +281,16 @@ export function SearchCommand() {
               </div>
             </CommandItem>
             <CommandItem
-              value="Send email contact mailto rui.valente99@gmail.com message"
+              value="Send email contact mailto email@ruivalente.com message"
               onSelect={() => {
-                window.location.href = "mailto:rui.valente99@gmail.com";
+                window.location.href = "mailto:email@ruivalente.com";
                 setOpen(false);
               }}
             >
               <Mail className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <div className="flex-1">
                 <span>Send Email</span>
-                <p className="text-xs text-foreground/75 dark:text-muted-foreground">rui.valente99@gmail.com</p>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">email@ruivalente.com</p>
               </div>
             </CommandItem>
           </CommandGroup>

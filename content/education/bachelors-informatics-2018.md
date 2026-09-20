@@ -1,5 +1,12 @@
-# Bachelor's Degree in Informatics Engineering
+**2018 — 2021 | University of Trás-os-Montes and Alto Douro (UTAD)**
 
-This undergraduate program built essential skills in programming, mathematics, and software engineering fundamentals, preparing students for modern software development careers. The comprehensive curriculum focused heavily on programming languages including C, C++, C#, MATLAB, and Python, with strong emphasis on software engineering principles, design patterns, and development methodologies, supported by extensive mathematical foundations including algebra, calculus, discrete mathematics, and statistical analysis.
+This undergraduate program established comprehensive foundational competencies in programming, mathematics, algorithms, and software engineering, preparing graduates for professional engineering careers.
 
-The program emphasized theoretical foundations and practical application through hands-on projects and coursework that developed core competencies in algorithmic thinking, system design principles, software architecture patterns, mathematical modeling and analysis, testing methodologies and quality assurance, and professional development practices, providing a solid foundation for advanced studies and software engineering careers with focus on fundamental principles and best practices.
+## Core Competencies
+
+- **Programming Fundamentals**: Extensive coursework and laboratory implementations in C, C++, C#, Python, and MATLAB.
+- **Mathematical Foundations**: Calculus, linear algebra, discrete mathematics, numerical methods, and statistical data analysis.
+- **Software Engineering**: System modeling, UML, object-oriented design patterns, testing methodologies, and agile principles.
+- **Systems & Architecture**: Operating systems, computer architectures, networking protocols, and relational database design.
+- **Volunteering & Community**: Volunteer at DSAI and TECH-EDU academic conferences and events (2020).
+

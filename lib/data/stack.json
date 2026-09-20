@@ -92,6 +92,30 @@
           "icon": "javascript",
           "description": "Programming language for web development",
           "reason": "Used for web-based projects at Neoception and legacy projects at Openvia."
+        },
+        {
+          "name": "Material UI",
+          "icon": "mui",
+          "description": "React component library",
+          "reason": "Used for developing reusable component libraries at Neoception."
+        },
+        {
+          "name": "HTML5",
+          "icon": "html5",
+          "description": "Markup language for the web",
+          "reason": "Semantic, accessible HTML structure across all web applications."
+        },
+        {
+          "name": "CSS3/SCSS",
+          "icon": "css3",
+          "description": "Stylesheets and modern styling",
+          "reason": "Responsive layouts, animations, and custom CSS styling."
+        },
+        {
+          "name": "tRPC",
+          "icon": "trpc",
+          "description": "End-to-end typesafe APIs",
+          "reason": "Used for type-safe client-server contract development."
         }
       ]
     },
@@ -162,6 +186,66 @@
           "icon": "jest",
           "description": "JavaScript testing framework",
           "reason": "Used for unit testing and ensuring code coverage at Openvia."
+        },
+        {
+          "name": "Git",
+          "icon": "git",
+          "description": "Distributed version control system",
+          "reason": "Standard version control system across all repositories and teams."
+        },
+        {
+          "name": "GitHub Actions",
+          "icon": "githubactions",
+          "description": "CI/CD and workflow automation",
+          "reason": "Automating continuous integration, linting, and automated checks."
+        },
+        {
+          "name": "Webpack",
+          "icon": "webpack",
+          "description": "Module bundler for JavaScript",
+          "reason": "Asset bundling, optimization, and code splitting."
+        }
+      ]
+    },
+    {
+      "category": "Methodologies",
+      "hideInWidget": true,
+      "items": [
+        {
+          "name": "Agile/Scrum",
+          "icon": "agile",
+          "description": "Iterative software development framework",
+          "reason": "Collaborating in agile teams with daily stand-ups and bi-weekly sprints."
+        },
+        {
+          "name": "CI/CD",
+          "icon": "cicd",
+          "description": "Continuous integration and continuous deployment",
+          "reason": "Automated pipelines for testing and deployment with Jenkins and Docker."
+        },
+        {
+          "name": "Test-Driven Development",
+          "icon": "tdd",
+          "description": "Quality-first development methodology",
+          "reason": "Writing tests to ensure regression-free features and maintainable architecture."
+        },
+        {
+          "name": "Responsive Design",
+          "icon": "responsive",
+          "description": "Fluid multi-device interfaces",
+          "reason": "Architecting applications optimized for mobile, tablet, and desktop screens."
+        },
+        {
+          "name": "Component-Driven Development",
+          "icon": "components",
+          "description": "Modular UI design methodology",
+          "reason": "Building reusable, composable, and accessible interface design systems."
+        },
+        {
+          "name": "RESTful API Design",
+          "icon": "restapi",
+          "description": "Clean API contract architecture",
+          "reason": "Designing robust, versioned, and intuitive data exchange patterns."
         }
       ]
     },

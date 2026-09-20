@@ -1,5 +1,20 @@
-# Frontend Engineer at Openvia
+**Jun 2022 — Present | Hybrid (Vila Real)**
 
-As a Frontend Engineer at Openvia, I led modern web application development with React and TypeScript, focusing on full-stack development from concept to deployment with scalable architecture and optimal user experience. I worked with cutting-edge technologies including React and TypeScript for modern component-based architecture, Bootstrap and custom CSS for responsive design systems, and GraphQL & REST APIs for efficient data fetching and state management.
+As a Frontend Engineer at Openvia, I lead the development and maintenance of customer-facing web applications, architecting responsive, high-performance interfaces with React, TypeScript, and modern component systems.
 
-My key achievements included delivering multiple major projects from conception to production, achieving significant performance improvements through code optimization and best practices, maintaining comprehensive code coverage with testing, and implementing zero-downtime deployments using advanced CI/CD strategies. I also mentored junior developers, established code review standards that improved team code quality, and contributed to agile process improvements that increased team velocity.
+## Key Highlights & Contributions
+
+- **Customer-Facing Application Leadership**: Led the development of a customer-facing web application that increased user engagement, leveraging React, TypeScript, and Bootstrap for robust interface delivery.
+- **Performance Optimization**: Improved application performance through the implementation of efficient component architecture, tree-shaking, and code-splitting techniques.
+- **API & State Integration**: Developed custom GraphQL queries and resilient RESTful API integrations for seamless client-server communication.
+- **Legacy Modernization**: Modernized legacy applications using Ionic and Angular, standardizing code patterns and user experience across platforms.
+- **Testing & Quality**: Implemented a comprehensive Jest testing suite to safeguard critical application flows and prevent regressions.
+- **CI/CD & DevOps Automation**: Established streamlined CI/CD deployment pipelines using Jenkins and Docker.
+
+## Technical Toolkit
+
+- **Core Technologies**: React, Next.js, TypeScript, JavaScript, Bootstrap, SCSS/CSS3, Ionic, Angular
+- **APIs & Data**: GraphQL, RESTful APIs, Node.js
+- **DevOps & Quality**: Jest, Jenkins, Docker, CI/CD, Sonarqube
+- **Development Tools**: Jira, GitKraken, VS Code, DBeaver
+

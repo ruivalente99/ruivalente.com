@@ -181,9 +181,9 @@ export function DetailLayout({
                   transition={{ delay: 0.5 }}
                   className="pt-6"
                 >
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">
+                  <h2 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">
                     Skills & Technologies
-                  </h3>
+                  </h2>
                   <div className="flex flex-wrap gap-2">
                     {tags.map((tag, index) => {
                       const getTagColor = () => {

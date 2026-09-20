@@ -74,7 +74,7 @@ export function EducationSection() {
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors">{edu.school}</p>
+              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors truncate pr-2">{edu.school}</p>
               <a
                 href={edu.url}
                 target="_blank"

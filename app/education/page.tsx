@@ -33,7 +33,7 @@ export default function EducationPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground p-4">
+    <div className="min-h-screen bg-background text-foreground p-4">
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">
           <Button
@@ -116,7 +116,7 @@ export default function EducationPage() {
           </section>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 
