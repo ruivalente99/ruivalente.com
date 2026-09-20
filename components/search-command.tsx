@@ -220,11 +220,11 @@ export function SearchCommand() {
                 <p className="text-xs text-foreground/75 dark:text-muted-foreground">Featured applications and open source work</p>
               </div>
             </CommandItem>
-            <CommandItem value="Experience work history career jobs Openvia Neoception" onSelect={() => navigateTo("/experience")}>
+            <CommandItem value="Experience work history career jobs Xelerate Techem Openvia Neoception" onSelect={() => navigateTo("/experience")}>
               <Briefcase className="mr-2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <div className="flex-1">
                 <span>Experience</span>
-                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Work history at Openvia and Neoception</p>
+                <p className="text-xs text-foreground/75 dark:text-muted-foreground">Work history at Xelerate | Techem, Openvia, and Neoception</p>
               </div>
             </CommandItem>
             <CommandItem value="Education university degrees academic UTAD informatics" onSelect={() => navigateTo("/education")}>

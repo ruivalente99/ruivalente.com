@@ -24,6 +24,8 @@ export function generatePageMetadata({
     'Next.js',
     'Web Developer',
     'Portugal',
+    'Xelerate',
+    'Techem',
     'Openvia',
     'Neoception'
   ];
@@ -80,8 +82,8 @@ export function generateStructuredData(pageType: string, pageData?: any) {
     },
     "worksFor": {
       "@type": "Organization",
-      "name": "Openvia",
-      "url": "https://openvia.io"
+      "name": "Xelerate | Techem",
+      "url": "https://www.techem.com"
     },
     "knowsAbout": [
       "React", "TypeScript", "Next.js", "JavaScript", "Node.js", 
@@ -128,10 +130,21 @@ export function generateStructuredData(pageType: string, pageData?: any) {
             "name": "Frontend Engineer",
             "occupationLocation": {
               "@type": "Organization",
+              "name": "Xelerate | Techem",
+              "url": "https://www.techem.com"
+            },
+            "startDate": "2025"
+          },
+          {
+            "@type": "Occupation",
+            "name": "Frontend Engineer",
+            "occupationLocation": {
+              "@type": "Organization",
               "name": "Openvia",
               "url": "https://openvia.io"
             },
-            "startDate": "2022"
+            "startDate": "2022",
+            "endDate": "2025"
           },
           {
             "@type": "Occupation", 
@@ -158,7 +171,7 @@ export function createAIContextPrompts(pageType: string, specificContext: string
     "ai-page-type": pageType,
     "ai-specific-context": specificContext,
     "ai-developer": "Rui Valente - Software Engineer specializing in React, TypeScript, Next.js",
-    "ai-current-role": "Frontend Engineer at Openvia (2022-Present)",
+    "ai-current-role": "Frontend Engineer at Xelerate | Techem (2025-Present)",
     "ai-expertise": "React, TypeScript, Next.js, JavaScript, Node.js, GraphQL, CSS, HTML, Bootstrap, Git, CI/CD",
     "ai-location": "Portugal",
     "ai-contact": "email@ruivalente.com",

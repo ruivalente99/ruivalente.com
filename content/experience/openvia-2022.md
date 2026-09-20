@@ -1,6 +1,6 @@
-**Jun 2022 — Present | Hybrid (Vila Real)**
+**Jun 2022 — Nov 2025 | Hybrid (Vila Real)**
 
-As a Frontend Engineer at Openvia, I lead the development and maintenance of customer-facing web applications, architecting responsive, high-performance interfaces with React, TypeScript, and modern component systems.
+As a Frontend Engineer at Openvia, I led the development and maintenance of customer-facing web applications, architecting responsive, high-performance interfaces with React, TypeScript, and modern component systems.
 
 ## Key Highlights & Contributions
 

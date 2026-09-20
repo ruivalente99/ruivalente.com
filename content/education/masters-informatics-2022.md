@@ -1,6 +1,6 @@
-**2021 — Present | University of Trás-os-Montes and Alto Douro (UTAD)**
+**2021 — 2026 (In Progress) | University of Trás-os-Montes and Alto Douro (UTAD)**
 
-This advanced master's program builds upon the undergraduate foundations of computer science, emphasizing scalable software engineering architectures, design patterns, quality assurance methodologies, and modern web systems.
+This advanced master's program (currently in progress, expected completion in 2026) builds upon the undergraduate foundations of computer science, emphasizing scalable software engineering architectures, design patterns, quality assurance methodologies, and modern web systems.
 
 ## Program Focus & Competencies
 

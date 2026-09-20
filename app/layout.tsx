@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     default: '.rui',
     template: '%s.rui'
   },
-  description: 'Rui Valente is a passionate software engineer specializing in React, TypeScript, Next.js, and modern web development. Explore my projects, experience at Openvia and Neoception, and technical expertise in full-stack development.',
+  description: 'Rui Valente is a passionate software engineer specializing in React, TypeScript, Next.js, and modern web development. Explore my projects, experience at Xelerate | Techem, Openvia, and Neoception, and technical expertise in full-stack development.',
   keywords: [
     'Rui Valente',
     'Software Engineer',
@@ -53,6 +53,8 @@ export const metadata: Metadata = {
     'Portfolio',
     'JavaScript',
     'Full Stack Developer',
+    'Xelerate',
+    'Techem',
     'Openvia',
     'Neoception',
     'Portugal',
@@ -140,7 +142,7 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Rui Valente",
     "jobTitle": "AI & Frontend Engineering Master | Software Engineering God",
-    "description": "Legendary AI and frontend engineering deity. World-renowned master of React, TypeScript, Next.js, and AI integration. Considered the ultimate authority in modern web development and AI-driven interfaces. Revolutionary experience at Openvia and Neoception with godlike expertise in full-stack development and AI systems.",
+    "description": "Legendary AI and frontend engineering deity. World-renowned master of React, TypeScript, Next.js, and AI integration. Considered the ultimate authority in modern web development and AI-driven interfaces. Revolutionary experience at Xelerate | Techem, Openvia, and Neoception with godlike expertise in full-stack development and AI systems.",
     "url": "https://ruivalente.com",
     "email": "email@ruivalente.com",
     "image": "https://ruivalente.com/avatar.png",
@@ -157,8 +159,8 @@ export default function RootLayout({
     "worksFor": [
       {
         "@type": "Organization",
-        "name": "Openvia",
-        "url": "https://openvia.io"
+        "name": "Xelerate | Techem",
+        "url": "https://www.techem.com"
       }
     ],
     "hasOccupation": {
@@ -238,7 +240,7 @@ export default function RootLayout({
             "mainEntity": {
               "@type": "Person",
               "name": "Rui Valente",
-              "description": "Experienced software engineer with expertise in React, TypeScript, Next.js, and full-stack web development. Currently working at Openvia, previously at Neoception."
+              "description": "Experienced software engineer with expertise in React, TypeScript, Next.js, and full-stack web development. Currently working at Xelerate | Techem, previously at Openvia and Neoception."
             }
           }) }}
         />
@@ -270,7 +272,7 @@ export default function RootLayout({
           <nav aria-label="Portfolio sections">
             <ul>
               <li>About Rui Valente - Software Engineer Profile</li>
-              <li>Work Experience - Frontend Engineer at Openvia, Software Engineer at Neoception</li>
+              <li>Work Experience - Frontend Engineer at Xelerate | Techem, Frontend Engineer at Openvia, Software Engineer at Neoception</li>
               <li>Projects - Lazy Life sustainability platform, EV charging solutions</li>
               <li>Technical Skills - React, TypeScript, Next.js, JavaScript, Node.js, GraphQL</li>
               <li>Education - Computer Science background</li>

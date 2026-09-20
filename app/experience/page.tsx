@@ -55,9 +55,17 @@ export default function ExperiencePage() {
         <h1>Rui Valente Professional Experience</h1>
         <section>
           <h2>Career Summary</h2>
-          <p>Software engineer with progressive experience in frontend development, currently serving as Frontend Engineer at Openvia since 2022, with previous trainee experience at Neoception from 2021-2022.</p>
+          <p>Software engineer with progressive experience in frontend development, currently serving as Frontend Engineer at Xelerate | Techem since December 2025, with previous frontend engineering experience at Openvia from 2022 to 2025 and trainee experience at Neoception from 2021-2022.</p>
           
-          <h3>Current Role: Frontend Engineer at Openvia (2022 - Present)</h3>
+          <h3>Current Role: Frontend Engineer at Xelerate | Techem (2025 - Present)</h3>
+          <ul>
+            <li>Architecting and developing modern responsive frontend applications with React and TypeScript</li>
+            <li>Engineering high-performance enterprise portals and component design systems</li>
+            <li>Collaborating across cross-functional distributed agile teams</li>
+            <li>Implementing scalable frontend architectures, state management, and API integrations</li>
+          </ul>
+          
+          <h3>Previous Role: Frontend Engineer at Openvia (2022 - 2025)</h3>
           <ul>
             <li>Leading modern web application development with React and TypeScript</li>
             <li>Implementing scalable architecture and optimal user experience</li>

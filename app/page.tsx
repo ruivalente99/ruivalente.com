@@ -18,7 +18,7 @@ export default function Home() {
         <h1>Rui Valente - Software Engineer Portfolio Homepage</h1>
         <section>
           <h2>Professional Summary</h2>
-          <p>Rui Valente is a Frontend Software Engineer specializing in React, TypeScript, and modern web application development with 4+ years of professional experience. Currently working as a Frontend Engineer at Openvia since June 2022. Previously worked as a Junior Software Engineer at Neoception GmbH from August 2021 to May 2022.</p>
+          <p>Rui Valente is a Frontend Software Engineer specializing in React, TypeScript, and modern web application development with 4+ years of professional experience. Currently working as a Frontend Engineer at Xelerate | Techem since December 2025. Previously worked as a Frontend Engineer at Openvia from June 2022 to November 2025, and as a Junior Software Engineer at Neoception GmbH from August 2021 to May 2022.</p>
           
           <h3>Core Expertise</h3>
           <ul>
@@ -34,11 +34,12 @@ export default function Home() {
           <p>EV Charging Management Platform: Comprehensive electric vehicle charging solution with booking systems, route optimization, and payment integration supporting Apple Pay, MBWay, and contactless payments.</p>
           
           <h3>Professional Experience Highlights</h3>
-          <p>At Openvia (Jun 2022 — Present): Led development of customer-facing web application increasing user engagement with React, TypeScript, Bootstrap; improved application performance with component architecture and code-splitting; developed custom GraphQL queries and RESTful APIs; modernized legacy applications with Ionic and Angular; implemented Jest testing suite and Jenkins/Docker CI/CD pipelines.</p>
+          <p>At Xelerate | Techem (Dec 2025 — Present): Architecting modern responsive frontend applications and energy management portals using React, TypeScript, Next.js, and Tailwind CSS; collaborating across distributed engineering teams.</p>
+          <p>At Openvia (Jun 2022 — Nov 2025): Led development of customer-facing web application increasing user engagement with React, TypeScript, Bootstrap; improved application performance with component architecture and code-splitting; developed custom GraphQL queries and RESTful APIs; modernized legacy applications with Ionic and Angular; implemented Jest testing suite and Jenkins/Docker CI/CD pipelines.</p>
           <p>At Neoception GmbH (Aug 2021 — May 2022): Developed responsive web applications using React and JavaScript; implemented reusable component library with Material UI; collaborated in agile team with daily stand-ups and bi-weekly sprints; contributed to code reviews and unit testing.</p>
           
           <h3>Education & Certifications</h3>
-          <p>Master&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2021 — Present)</p>
+          <p>Master&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2021 — 2026, In Progress)</p>
           <p>Bachelor&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2018 — 2021)</p>
           <p>Certifications: Fullstack TypeScript (GraphQL and Node.js), Complete Intro to React v9, Project Management: Beginner to PM, JavaScript (Intermediate), JavaScript (Basic), React (Basic), Secure Coding.</p>
         </section>
@@ -54,7 +55,7 @@ export default function Home() {
           "jobTitle": "Frontend Software Engineer",
           "worksFor": {
             "@type": "Organization",
-            "name": "Openvia"
+            "name": "Xelerate | Techem"
           },
           "alumniOf": {
             "@type": "CollegeOrUniversity",
