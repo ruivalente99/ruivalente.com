@@ -57,9 +57,9 @@ export function DarkSideLoading() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-red-600 text-center mt-4 font-bold text-lg"
+              className="text-red-600 text-center mt-4 font-bold text-lg lowercase"
             >
-              Embracing the Dark Side...
+              embracing the dark side...
             </motion.p>
 
             {/* Radial glow effect */}

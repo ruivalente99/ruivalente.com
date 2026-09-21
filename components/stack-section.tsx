@@ -94,7 +94,7 @@ export function StackSection() {
     .flatMap(category => category.items.slice(0, 3));
 
   return (
-    <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="tech-stack-heading">
+    <Card className="h-full p-4 flex flex-col justify-between lowercase" role="region" aria-labelledby="tech-stack-heading">
       <header className="flex items-center justify-between mb-3">
         <h2 id="tech-stack-heading" className="text-xs font-semibold lowercase tracking-wider text-muted-foreground">
           {t.bento.stack.title.toLowerCase()}
@@ -152,7 +152,7 @@ export function StackSection() {
       </header>
       
       {viewMode === 'icons' ? (
-        <ul className="grid grid-cols-6 md:grid-cols-8 gap-2.5 my-auto list-none p-0 m-0" aria-label="Technology icons">
+        <ul className="grid grid-cols-6 md:grid-cols-8 gap-2.5 my-auto list-none p-0 m-0" aria-label="technology icons">
           <TooltipProvider>
             {activeTechList.map((tech) => {
               const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
@@ -168,7 +168,7 @@ export function StackSection() {
                             ? 'bg-red-950/20 hover:bg-red-950/40 border-red-900/40 text-red-400 hover:text-red-300' 
                             : 'bg-muted/30 hover:bg-muted/80 border-border/50 text-foreground/80 hover:text-foreground'
                         }`}
-                        aria-label={`${tech.name}: ${tech.description}`}
+                        aria-label={`${tech.name.toLowerCase()}: ${tech.description.toLowerCase()}`}
                       >
                         <Icon 
                           className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
@@ -177,15 +177,15 @@ export function StackSection() {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent 
-                      className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
+                      className={cn("lowercase", isDarkSide ? 'border-red-900 bg-black/90' : '')}
                     >
                       <p className={`font-medium ${isDarkSide ? 'text-red-500' : ''}`}>
-                        {tech.name}
+                        {tech.name.toLowerCase()}
                       </p>
                       <p className={`text-xs ${
                         isDarkSide ? 'text-red-400/70' : 'text-muted-foreground'
                       }`}>
-                        {tech.description}
+                        {tech.description.toLowerCase()}
                       </p>
                     </TooltipContent>
                   </Tooltip>
@@ -205,7 +205,7 @@ export function StackSection() {
                         : 'bg-purple-500/10 hover:bg-purple-500/20 border-purple-500/30 text-purple-600 dark:text-purple-400'
                     }`}
                     onClick={() => router.push('/stack')}
-                    aria-label="View AI Stack"
+                    aria-label="view ai stack"
                   >
                     <Sparkles 
                       className={`w-5 h-5 ${isDarkSide ? 'force-glow' : ''}`} 
@@ -214,15 +214,15 @@ export function StackSection() {
                   </button>
                 </TooltipTrigger>
                 <TooltipContent 
-                  className={isDarkSide ? 'border-red-900 bg-black/90' : ''}
+                  className={cn("lowercase", isDarkSide ? 'border-red-900 bg-black/90' : '')}
                 >
                   <p className={`font-medium ${isDarkSide ? 'text-red-500' : ''}`}>
-                    AI Stack
+                    ai stack
                   </p>
                   <p className={`text-xs ${
                     isDarkSide ? 'text-red-400/70' : 'text-muted-foreground'
                   }`}>
-                    Explore the full AI tooling and workflows
+                    explore the full ai tooling and workflows
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -230,7 +230,7 @@ export function StackSection() {
           </TooltipProvider>
         </ul>
       ) : (
-        <ul className="flex flex-wrap gap-1.5 my-auto list-none p-0 m-0 max-h-[135px] overflow-y-auto custom-scroll" aria-label="Technology skills list">
+        <ul className="flex flex-wrap gap-1.5 my-auto list-none p-0 m-0 max-h-[135px] overflow-y-auto custom-scroll" aria-label="technology skills list">
           {activeTechList.map((tech) => (
             <li key={tech.name} className="list-none">
               <span

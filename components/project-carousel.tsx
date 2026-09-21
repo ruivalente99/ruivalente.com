@@ -57,7 +57,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col group"
+                className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col group lowercase"
               >
                 <div className="h-24 overflow-hidden relative">
                   <Image
@@ -69,17 +69,17 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <div className="flex justify-between items-start">
-                    <h3 className="text-sm font-bold mb-2">{project.title}</h3>
+                    <h3 className="text-sm font-bold mb-2 lowercase">{project.title}</h3>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity lowercase"
                       onClick={() => router.push(`/projects/${project.id}`)}
                     >
                       details <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
                   </div>
-                  <p className="text-xs text-muted-foreground flex-1">
+                  <p className="text-xs text-muted-foreground flex-1 lowercase">
                     {project.description}
                   </p>
                   <div className="flex gap-2 mt-4">

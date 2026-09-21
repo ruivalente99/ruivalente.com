@@ -38,7 +38,7 @@ export function EducationSection() {
   if (!education || !certificates) return null;
 
   return (
-    <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="education-heading">
+    <Card className="h-full p-4 flex flex-col justify-between lowercase" role="region" aria-labelledby="education-heading">
       <header className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <GraduationCap className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
@@ -65,24 +65,24 @@ export function EducationSection() {
             className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 active:scale-[0.98] group shadow-2xs relative"
           >
             <div className="flex items-center justify-between mb-1.5">
-              <h3 className="text-xs font-semibold tracking-tight text-foreground truncate pr-2">
+              <h3 className="text-xs font-semibold tracking-tight text-foreground truncate pr-2 lowercase">
                 <Link href={`/education/${edu.id}`} className="focus:outline-none focus-visible:underline">
                   <span className="absolute inset-0" aria-hidden="true" />
                   {edu.degree}
                 </Link>
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-foreground/85 border border-border/40 shrink-0 relative z-10">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-foreground/85 border border-border/40 shrink-0 relative z-10 lowercase">
                 {edu.year}
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors truncate pr-2">{edu.school}</p>
+              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors truncate pr-2 lowercase">{edu.school}</p>
               <a
                 href={edu.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground p-0.5 relative z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                aria-label={`Visit ${edu.school} website (opens in new tab)`}
+                aria-label={`visit ${edu.school.toLowerCase()} website (opens in new tab)`}
               >
                 <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true" />
               </a>
@@ -97,19 +97,19 @@ export function EducationSection() {
             className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group shadow-2xs"
           >
             <div className="flex items-center justify-between mb-1.5">
-              <h3 className="text-xs font-semibold tracking-tight text-foreground truncate pr-2">{cert.name}</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-foreground/85 border border-border/40 shrink-0">
+              <h3 className="text-xs font-semibold tracking-tight text-foreground truncate pr-2 lowercase">{cert.name}</h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-foreground/85 border border-border/40 shrink-0 lowercase">
                 {cert.year}
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors">{cert.issuer}</p>
+              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors lowercase">{cert.issuer}</p>
               <a
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                aria-label={`Verify ${cert.name} certificate (opens in new tab)`}
+                aria-label={`verify ${cert.name.toLowerCase()} certificate (opens in new tab)`}
               >
                 <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true" />
               </a>

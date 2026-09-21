@@ -37,8 +37,8 @@ const commands = [
 
 export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
   const [history, setHistory] = useState<TerminalLine[]>([
-    { content: "Welcome to terminal mode", type: 'info', timestamp: Date.now() },
-    { content: "Type 'help' for available commands", type: 'info', timestamp: Date.now() }
+    { content: "welcome to terminal mode", type: 'info', timestamp: Date.now() },
+    { content: "type 'help' for available commands", type: 'info', timestamp: Date.now() }
   ]);
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -55,8 +55,8 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
   useEffect(() => {
     if (isOpen && isMobile()) {
       toast({
-        title: "Mobile Device Detected",
-        description: "The terminal works better in desktop mode. Mobile mode is a work in progress.",
+        title: "mobile device detected",
+        description: "the terminal works better in desktop mode. mobile mode is a work in progress.",
         duration: 5000,
       });
     }
@@ -112,13 +112,13 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
           if (args[0] && ["light", "dark", "system"].includes(args[0])) {
             setTheme(args[0]);
             setHistory(prev => [...prev, { 
-              content: `Theme changed to ${args[0]}`, 
+              content: `theme changed to ${args[0]}`, 
               type: 'success',
               timestamp 
             }]);
           } else {
             setHistory(prev => [...prev, { 
-              content: "Available themes: light, dark, system", 
+              content: "available themes: light, dark, system", 
               type: 'info',
               timestamp 
             }]);
@@ -127,7 +127,7 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
 
         case "restart":
           setHistory(prev => [...prev, { 
-            content: "Restarting application...", 
+            content: "restarting application...", 
             type: 'info',
             timestamp 
           }]);
@@ -159,20 +159,20 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
           if (args[0] === "..") {
             setCurrentPath("/");
             setHistory(prev => [...prev, { 
-              content: "Returned to root directory", 
+              content: "returned to root directory", 
               type: 'info', 
               timestamp 
             }]);
           } else if (commandObj.subcommands?.includes(args[0])) {
             setCurrentPath(`/${args[0]}`);
             setHistory(prev => [...prev, { 
-              content: `Changed directory to ${args[0]}`, 
+              content: `changed directory to ${args[0]}`, 
               type: 'info', 
               timestamp 
             }]);
           } else {
             setHistory(prev => [...prev, { 
-              content: "Directory not found", 
+              content: "directory not found", 
               type: 'error', 
               timestamp 
             }]);
@@ -181,7 +181,7 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
 
         case "help":
           const helpContent = [
-            { content: "Available commands:", type: 'info' as const, timestamp },
+            { content: "available commands:", type: 'info' as const, timestamp },
             ...commands.map(cmd => ({
               content: `${cmd.name} - ${cmd.description}`,
               type: 'success' as const,
@@ -201,7 +201,7 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
       }
     } else {
       setHistory(prev => [...prev, { 
-        content: `Command not found: ${command}`, 
+        content: `command not found: ${command}`, 
         type: 'error',
         timestamp 
       }]);
@@ -258,8 +258,8 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[600px] border-none p-0 overflow-hidden">
-        <DialogTitle className="sr-only">Terminal Mode</DialogTitle>
+      <DialogContent className="sm:max-w-[600px] border-none p-0 overflow-hidden lowercase">
+        <DialogTitle className="sr-only">terminal mode</DialogTitle>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

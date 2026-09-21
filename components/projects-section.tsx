@@ -51,7 +51,7 @@ export function ProjectsSection() {
 
   return (
     <Card
-      className="h-full p-4 flex flex-col justify-between overflow-hidden"
+      className="h-full p-4 flex flex-col justify-between overflow-hidden lowercase"
       role="region"
       aria-labelledby="featured-projects-heading"
     >
@@ -124,7 +124,7 @@ export function ProjectsSection() {
               <div className="p-3 flex flex-col justify-between flex-1 min-h-0">
                 <div>
                   <div className="flex items-center justify-between gap-1 mb-1 h-5 shrink-0">
-                    <h3 className="text-sm font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors truncate">
+                    <h3 className="text-sm font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors truncate lowercase">
                       <Link
                         href={`/projects/${project.id}`}
                         className="focus:outline-none focus-visible:underline"
@@ -135,7 +135,7 @@ export function ProjectsSection() {
                     </h3>
                   </div>
 
-                  <p className="text-xs text-muted-foreground line-clamp-2 mb-2 leading-relaxed h-10 overflow-hidden">
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-2 leading-relaxed h-10 overflow-hidden lowercase">
                     {project.description}
                   </p>
 
@@ -143,7 +143,7 @@ export function ProjectsSection() {
                     {displaySkills.map((skill) => (
                       <span
                         key={skill}
-                        className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-muted/60 text-foreground/85 border border-border/30 shrink-0 truncate max-w-[120px]"
+                        className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-muted/60 text-foreground/85 border border-border/30 shrink-0 truncate max-w-[120px] lowercase"
                       >
                         {skill}
                       </span>

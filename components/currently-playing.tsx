@@ -37,9 +37,9 @@ export function CurrentlyPlaying() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center gap-2 text-xs text-muted-foreground animate-pulse">
+      <div className="flex items-center gap-2 text-xs text-muted-foreground animate-pulse lowercase">
         <Music className="w-4 h-4" />
-        <span>Loading...</span>
+        <span>loading...</span>
       </div>
     );
   }
@@ -50,14 +50,14 @@ export function CurrentlyPlaying() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex items-center gap-2"
+      className="flex items-center gap-2 lowercase"
     >
       <Music className="w-4 h-4" />
       <a
         href={track.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-xs text-muted-foreground hover:text-primary"
+        className="text-xs text-muted-foreground hover:text-primary lowercase"
       >
         {track.name} - {track.artist}
       </a>

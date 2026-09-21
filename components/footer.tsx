@@ -22,11 +22,11 @@ export function Footer() {
     <motion.footer 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="border-t bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
+      className="border-t bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60 lowercase"
     >
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground lowercase">
             © {currentYear} {t.footer.rights}.
           </div>
           
@@ -37,7 +37,7 @@ export function Footer() {
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push(item.path)}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground lowercase"
               >
                 {item.name}
               </Button>

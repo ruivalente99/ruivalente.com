@@ -20,19 +20,19 @@ export default function ProjectsPage() {
 
   if (!projects || projects.length === 0) {
     return (
-      <div className="min-h-[100dvh] bg-background text-foreground p-4">
+      <div className="min-h-[100dvh] bg-background text-foreground p-4 lowercase">
         <div className="max-w-7xl mx-auto">
           <Button
             variant="ghost"
             onClick={() => router.back()}
-            className="mb-4"
+            className="mb-4 lowercase"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
+            back
           </Button>
           <div className="text-center py-12">
-            <h2 className="text-xl font-semibold mb-2">No projects found</h2>
-            <p className="text-muted-foreground">Projects will appear here when available.</p>
+            <h2 className="text-xl font-semibold mb-2">no projects found</h2>
+            <p className="text-muted-foreground">projects will appear here when available.</p>
           </div>
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function ProjectsPage() {
                             className="flex items-center gap-1.5"
                           >
                             <Globe className="w-3.5 h-3.5 opacity-70" aria-hidden="true" />
-                            <span>Demo</span>
+                            <span>demo</span>
                           </a>
                         </Button>
                       )}
@@ -181,7 +181,7 @@ export default function ProjectsPage() {
                           variant="outline"
                           size="sm"
                           asChild
-                          className="h-8 px-2.5 text-xs font-medium rounded-lg border-border/70 active:scale-[0.96]"
+                          className="h-8 px-2.5 text-xs font-medium rounded-lg border-border/70 active:scale-[0.96] lowercase"
                         >
                           <a
                             href={project.github}
@@ -190,7 +190,7 @@ export default function ProjectsPage() {
                             className="flex items-center gap-1.5"
                           >
                             <Github className="w-3.5 h-3.5 opacity-70" aria-hidden="true" />
-                            <span>Source</span>
+                            <span>source</span>
                           </a>
                         </Button>
                       )}
@@ -201,10 +201,10 @@ export default function ProjectsPage() {
                         variant="ghost"
                         size="sm"
                         asChild
-                        className="h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground active:scale-[0.96]"
+                        className="h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
                       >
                         <Link href={`/projects/${project.id}`} className="flex items-center gap-1">
-                          <span>Details</span>
+                          <span>details</span>
                           <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                         </Link>
                       </Button>

@@ -27,10 +27,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").max(50, "Name must be less than 50 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters").max(100, "Subject must be less than 100 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters"),
+  name: z.string().min(2, "name must be at least 2 characters").max(50, "name must be less than 50 characters"),
+  email: z.string().email("please enter a valid email address"),
+  subject: z.string().min(5, "subject must be at least 5 characters").max(100, "subject must be less than 100 characters"),
+  message: z.string().min(10, "message must be at least 10 characters").max(1000, "message must be less than 1000 characters"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -65,12 +65,12 @@ export function ContactForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.error || 'failed to send message');
       }
       
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "message sent successfully!",
+        description: "thank you for your message. i'll get back to you soon.",
       });
       
       form.reset();
@@ -79,8 +79,8 @@ export function ContactForm() {
       console.error('Contact form error:', error);
       
       toast({
-        title: "Failed to send message",
-        description: error instanceof Error ? error.message : "Something went wrong. Please try again later.",
+        title: "failed to send message",
+        description: error instanceof Error ? error.message.toLowerCase() : "something went wrong. please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -91,16 +91,16 @@ export function ContactForm() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
+        <Button variant="outline" size="icon" className="relative" aria-label="contact me">
           <Mail className="h-4 w-4" />
-          <span className="sr-only">Contact me</span>
+          <span className="sr-only">contact me</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] lowercase">
         <DialogHeader>
-          <DialogTitle>Get in Touch</DialogTitle>
+          <DialogTitle>get in touch</DialogTitle>
           <DialogDescription>
-            Send me a message and I&apos;ll get back to you as soon as possible.
+            send me a message and i&apos;ll get back to you as soon as possible.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -110,9 +110,9 @@ export function ContactForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your name" {...field} />
+                    <Input placeholder="your name" className="lowercase" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,9 +123,9 @@ export function ContactForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>email</FormLabel>
                   <FormControl>
-                    <Input placeholder="your.email@example.com" type="email" {...field} />
+                    <Input placeholder="your.email@example.com" type="email" className="lowercase" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -136,9 +136,9 @@ export function ContactForm() {
               name="subject"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Subject</FormLabel>
+                  <FormLabel>subject</FormLabel>
                   <FormControl>
-                    <Input placeholder="What's this about?" {...field} />
+                    <Input placeholder="what's this about?" className="lowercase" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -149,11 +149,11 @@ export function ContactForm() {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Message</FormLabel>
+                  <FormLabel>message</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Tell me more about your project or question..."
-                      className="min-h-[100px]"
+                      placeholder="tell me more about your project or question..."
+                      className="min-h-[100px] lowercase"
                       {...field} 
                     />
                   </FormControl>
@@ -162,19 +162,19 @@ export function ContactForm() {
               )}
             />
             <div className="flex justify-end gap-2">
-              <Button type="button" variant="outline" onClick={() => setOpen(false)}>
-                Cancel
+              <Button type="button" variant="outline" onClick={() => setOpen(false)} className="lowercase">
+                cancel
               </Button>
-              <Button type="submit" disabled={isSubmitting}>
+              <Button type="submit" disabled={isSubmitting} className="lowercase">
                 {isSubmitting ? (
                   <>
                     <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-b-transparent" />
-                    Sending...
+                    sending...
                   </>
                 ) : (
                   <>
                     <Send className="mr-2 h-4 w-4" />
-                    Send Message
+                    send message
                   </>
                 )}
               </Button>

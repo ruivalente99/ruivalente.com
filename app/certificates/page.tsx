@@ -26,20 +26,20 @@ export default function CertificatesPage() {
 
   if (!certificates || certificates.length === 0) {
     return (
-      <div className="min-h-[100dvh] bg-background text-foreground p-4">
+      <div className="min-h-[100dvh] bg-background text-foreground p-4 lowercase">
         <div className="max-w-4xl mx-auto">
           <Button
             variant="ghost"
             onClick={() => router.back()}
-            className="mb-4"
+            className="mb-4 lowercase"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
+            back
           </Button>
           <div className="text-center py-12">
             <Award className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h2 className="text-xl font-semibold mb-2">No certificates found</h2>
-            <p className="text-muted-foreground">Certificates will appear here when available.</p>
+            <h2 className="text-xl font-semibold mb-2">no certificates found</h2>
+            <p className="text-muted-foreground">certificates will appear here when available.</p>
           </div>
         </div>
       </div>
@@ -69,16 +69,16 @@ export default function CertificatesPage() {
         </section>
       </div>
 
-      <div className="min-h-[100dvh] bg-background text-foreground p-4">
+      <div className="min-h-[100dvh] bg-background text-foreground p-4 lowercase">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
             <Button
               variant="ghost"
               onClick={() => router.back()}
-              className="mb-4"
+              className="mb-4 lowercase"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
+              back
             </Button>
             
             <motion.div
@@ -86,9 +86,9 @@ export default function CertificatesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-4xl font-bold mb-4">Certificates & Certifications</h1>
+              <h1 className="text-4xl font-bold mb-4">certificates &amp; certifications</h1>
               <p className="text-muted-foreground text-lg mb-8">
-                Professional development and continuous learning through industry-recognized certifications
+                professional development and continuous learning through industry-recognized certifications
               </p>
             </motion.div>
           </div>
@@ -106,26 +106,26 @@ export default function CertificatesPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
                         <Award className="h-5 w-5 text-primary" />
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-xs lowercase">
                           <Calendar className="h-3 w-3 mr-1" />
                           {certificate.year}
                         </Badge>
                       </div>
                       
-                      <h3 className="text-xl font-semibold mb-2">{certificate.name}</h3>
+                      <h3 className="text-xl font-semibold mb-2 lowercase">{certificate.name.toLowerCase()}</h3>
                       <p className="text-muted-foreground mb-3">
-                        Issued by <span className="font-medium text-foreground">{certificate.issuer}</span>
+                        issued by <span className="font-medium text-foreground lowercase">{certificate.issuer.toLowerCase()}</span>
                       </p>
                     </div>
                     
-                    <Button asChild variant="outline" size="sm">
+                    <Button asChild variant="outline" size="sm" className="lowercase">
                       <a 
                         href={certificate.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center gap-2"
                       >
-                        View Certificate
+                        view certificate
                         <ExternalLink className="h-3 w-3" />
                       </a>
                     </Button>

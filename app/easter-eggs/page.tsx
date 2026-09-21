@@ -78,19 +78,19 @@ export default function EasterEggsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-4">
+    <div className="min-h-screen bg-background text-foreground p-4 lowercase">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <Button
             variant="ghost"
             onClick={() => router.back()}
-            className="mb-4"
+            className="mb-4 lowercase"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" /> Back
+            <ArrowLeft className="w-4 h-4 mr-2" /> back
           </Button>
           <div className="flex items-center gap-2">
             <Sparkles className="w-6 h-6 text-primary" />
-            <h1 className="text-2xl font-bold">Easter Eggs</h1>
+            <h1 className="text-2xl font-bold">easter eggs</h1>
           </div>
         </div>
 
@@ -102,30 +102,30 @@ export default function EasterEggsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="p-6">
+              <Card className="p-6 lowercase">
                 <div className="flex items-center gap-3 mb-4">
                   <egg.icon className="w-6 h-6 text-primary" />
-                  <h2 className="text-xl font-semibold">{egg.title}</h2>
+                  <h2 className="text-xl font-semibold lowercase">{egg.title.toLowerCase()}</h2>
                 </div>
-                <p className="text-muted-foreground mb-4">{egg.description}</p>
+                <p className="text-muted-foreground mb-4 lowercase">{egg.description.toLowerCase()}</p>
                 <div className="space-y-2">
                   <p>
-                    <span className="font-semibold">Activation: </span>
-                    <code className="px-2 py-1 bg-muted rounded text-sm">
-                      {egg.sequence}
+                    <span className="font-semibold">activation: </span>
+                    <code className="px-2 py-1 bg-muted rounded text-sm lowercase">
+                      {egg.sequence.toLowerCase()}
                     </code>
                   </p>
                   
                   {egg.effect && (
                     <p>
-                      <span className="font-semibold">Effect: </span>
-                      {egg.effect}
+                      <span className="font-semibold">effect: </span>
+                      <span className="lowercase">{egg.effect.toLowerCase()}</span>
                     </p>
                   )}
 
                   {egg.effects && (
                     <div className="mt-4">
-                      <h3 className="font-semibold mb-2">Available Effects:</h3>
+                      <h3 className="font-semibold mb-2">available effects:</h3>
                       <div className="grid gap-2">
                         {egg.effects.map((effect) => (
                           <div
@@ -133,13 +133,13 @@ export default function EasterEggsPage() {
                             className="p-2 bg-muted/50 rounded-lg"
                           >
                             <div className="flex items-center justify-between mb-1">
-                              <span className="font-medium">{effect.name}</span>
-                              <code className="text-xs px-2 py-1 bg-background rounded">
-                                {effect.command}
+                              <span className="font-medium lowercase">{effect.name.toLowerCase()}</span>
+                              <code className="text-xs px-2 py-1 bg-background rounded lowercase">
+                                {effect.command.toLowerCase()}
                               </code>
                             </div>
-                            <p className="text-sm text-muted-foreground">
-                              {effect.description}
+                            <p className="text-sm text-muted-foreground lowercase">
+                              {effect.description.toLowerCase()}
                             </p>
                           </div>
                         ))}
@@ -149,10 +149,10 @@ export default function EasterEggsPage() {
 
                   {egg.features && (
                     <div className="mt-4">
-                      <h3 className="font-semibold mb-2">Features:</h3>
+                      <h3 className="font-semibold mb-2">features:</h3>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                         {egg.features.map((feature) => (
-                          <li key={feature}>{feature}</li>
+                          <li key={feature} className="lowercase">{feature.toLowerCase()}</li>
                         ))}
                       </ul>
                     </div>

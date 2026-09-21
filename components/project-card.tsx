@@ -20,7 +20,7 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col"
+      className="bg-background/50 backdrop-blur-xs rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[280px] flex flex-col lowercase"
     >
       <div className="h-24 overflow-hidden relative">
         <Image
@@ -31,8 +31,8 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
         />
       </div>
       <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-sm font-bold mb-2">{project.title}</h3>
-        <p className="text-xs text-muted-foreground flex-1">
+        <h3 className="text-sm font-bold mb-2 lowercase">{project.title}</h3>
+        <p className="text-xs text-muted-foreground flex-1 lowercase">
           {project.description}
         </p>
         <div className="flex gap-2 mt-4">

@@ -49,11 +49,11 @@ export function EducationContent({ slug }: { slug: string }) {
 
   // Generate subject tags from the degree title
   const subjectTags = [
-    'Computer Science',
-    'Software Engineering', 
-    'Programming',
-    'Web Development',
-    educationItem.degree.includes('Master') ? 'Advanced Studies' : 'Foundation'
+    'computer science',
+    'software engineering', 
+    'programming',
+    'web development',
+    educationItem.degree.toLowerCase().includes('master') ? 'advanced studies' : 'foundation'
   ];
 
   return (
@@ -75,17 +75,17 @@ function extractSubjectsFromDegree(degree: string): string[] {
   const subjects = [];
   
   if (degree.toLowerCase().includes('informatics') || degree.toLowerCase().includes('computer')) {
-    subjects.push('Computer Science', 'Software Engineering', 'Programming');
+    subjects.push('computer science', 'software engineering', 'programming');
   }
   
   if (degree.toLowerCase().includes('engineering')) {
-    subjects.push('Engineering', 'Mathematics', 'Problem Solving');
+    subjects.push('engineering', 'mathematics', 'problem solving');
   }
   
   if (degree.toLowerCase().includes('master')) {
-    subjects.push('Research', 'Advanced Studies');
+    subjects.push('research', 'advanced studies');
   } else if (degree.toLowerCase().includes('bachelor')) {
-    subjects.push('Fundamentals', 'Core Concepts');
+    subjects.push('fundamentals', 'core concepts');
   }
   
   return subjects.slice(0, 4);

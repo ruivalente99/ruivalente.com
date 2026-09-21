@@ -73,10 +73,10 @@ export function ProjectContent({ slug }: { slug: string }) {
   // Extract technologies for tags (prioritize technologies array, then description)
   const extractTechnologiesFromDescription = (text: string): string[] => {
     const techKeywords = [
-      'React', 'Next.js', 'TypeScript', 'JavaScript', 'Node.js', 'Python', 'AI', 
-      'Machine Learning', 'PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'Kubernetes',
-      'GraphQL', 'REST', 'API', 'Frontend', 'Backend', 'Full Stack', 'Mobile',
-      'Web Development', 'Cloud', 'DevOps', 'CI/CD', 'Testing', 'Agile'
+      'react', 'next.js', 'typescript', 'javascript', 'node.js', 'python', 'ai', 
+      'machine learning', 'postgresql', 'mongodb', 'aws', 'docker', 'kubernetes',
+      'graphql', 'rest', 'api', 'frontend', 'backend', 'full stack', 'mobile',
+      'web development', 'cloud', 'devops', 'ci/cd', 'testing', 'agile'
     ];
     
     return techKeywords.filter(tech => 

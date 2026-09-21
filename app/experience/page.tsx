@@ -30,18 +30,18 @@ export default function ExperiencePage() {
 
   if (!experiences || experiences.length === 0) {
     return (
-      <div className="min-h-[100dvh] bg-background text-foreground p-4">
+      <div className="min-h-[100dvh] bg-background text-foreground p-4 lowercase">
         <div className="max-w-3xl mx-auto">
           <Button
             variant="ghost"
             onClick={() => router.back()}
-            className="mb-4"
+            className="mb-4 lowercase"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" /> Back
+            <ArrowLeft className="w-4 h-4 mr-2" /> back
           </Button>
           <div className="text-center py-12">
-            <h2 className="text-xl font-semibold mb-2">No experience data found</h2>
-            <p className="text-muted-foreground">Experience information will appear here when available.</p>
+            <h2 className="text-xl font-semibold mb-2">no experience data found</h2>
+            <p className="text-muted-foreground">experience information will appear here when available.</p>
           </div>
         </div>
       </div>
@@ -179,7 +179,7 @@ export default function ExperiencePage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      aria-label={`Visit ${exp.company} website (opens in new tab)`}
+                      aria-label={`visit ${exp.company.toLowerCase()} website (opens in new tab)`}
                     >
                       <ExternalLink className="w-4 h-4" aria-hidden="true" />
                     </a>

@@ -78,7 +78,7 @@ export function ProfileSection() {
   };
 
   return (
-    <section className="relative h-full flex flex-col justify-center" aria-label="Profile Information">
+    <section className="relative h-full flex flex-col justify-center lowercase" aria-label="profile information">
       {/* GitHub commit graph background */}
       <GitHubCommitGraph username="ruivalente99" className="z-0" opacity={0.28} />
       
@@ -91,7 +91,7 @@ export function ProfileSection() {
             <Avatar className="w-20 h-20 md:w-24 md:h-24">
               <Image
                 src={profile.avatar}
-                alt={`${profile.name} - Profile Picture`}
+                alt={`${profile.name} - profile picture`}
                 width={96}
                 height={96}
                 className="object-cover rounded-full"
@@ -103,27 +103,27 @@ export function ProfileSection() {
         
         <div className="flex-1 text-center md:text-left space-y-2.5 md:space-y-3">
           <header className="flex flex-col md:flex-row md:items-center gap-2">
-            <h1 className={`text-2xl md:text-3xl font-bold tracking-tight ${isDarkSide ? 'force-glow' : ''}`}>
+            <h1 className={`text-2xl md:text-3xl font-bold tracking-tight lowercase ${isDarkSide ? 'force-glow' : ''}`}>
               {profile.name}
             </h1>
-            <div className="inline-flex items-center justify-center md:justify-start gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted/60 border border-border/60 text-muted-foreground self-center md:self-auto">
+            <div className="inline-flex items-center justify-center md:justify-start gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted/60 border border-border/60 text-muted-foreground self-center md:self-auto lowercase">
               <span>{locale === 'pt' ? t.bento.profile.role : profile.role}</span>
               <span className="opacity-50">@</span>
               <a
                 href={currentRole.companyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground hover:underline font-semibold flex items-center gap-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs"
-                aria-label={`Current company: ${currentRole.company} (opens in new tab)`}
+                className="text-foreground hover:underline font-semibold flex items-center gap-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs lowercase"
+                aria-label={`current company: ${currentRole.company.toLowerCase()} (opens in new tab)`}
               >
                 {currentRole.company}
               </a>
             </div>
           </header>
 
-          <p className="text-sm text-muted-foreground font-mono">{profile.bio}</p>
+          <p className="text-sm text-muted-foreground font-mono lowercase">{profile.bio}</p>
 
-          <nav aria-label="Social media and contact links">
+          <nav aria-label="social media and contact links">
             <div className="flex flex-wrap gap-1.5 md:gap-2 justify-center md:justify-start items-center pt-1">
               {socialLinks.map((link, index) => {
                 const Icon = getSocialIcon(link.icon);
@@ -134,26 +134,26 @@ export function ProfileSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`h-8 w-8 rounded-lg flex items-center justify-center bg-muted/30 hover:bg-muted/70 border border-border/50 text-muted-foreground hover:text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isDarkSide ? 'force-glow' : ''}`}
-                    aria-label={`Visit ${link.icon} profile (opens in new tab)`}
+                    aria-label={`visit ${link.icon.toLowerCase()} profile (opens in new tab)`}
                   >
                     <Icon className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span className="sr-only">{link.icon}</span>
+                    <span className="sr-only">{link.icon.toLowerCase()}</span>
                   </a>
                 );
               })}
               <a
                 href={`mailto:${profile.email}`}
                 className={`h-8 w-8 rounded-lg flex items-center justify-center bg-muted/30 hover:bg-muted/70 border border-border/50 text-muted-foreground hover:text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isDarkSide ? 'force-glow' : ''}`}
-                aria-label={`Send email to ${profile.email}`}
+                aria-label={`send email to ${profile.email}`}
               >
                 <Mail className="w-3.5 h-3.5" aria-hidden="true" />
-                <span className="sr-only">Email</span>
+                <span className="sr-only">email</span>
               </a>
               <button
                 type="button"
                 onClick={handleResumeDownload}
-                className={`h-8 px-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 border border-border/60 text-xs font-medium flex items-center gap-1.5 text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs cursor-pointer hover:border-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isDarkSide ? 'force-glow' : ''}`}
-                aria-label="Download resume as PDF (opens in new tab)"
+                className={`h-8 px-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 border border-border/60 text-xs font-medium flex items-center gap-1.5 text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs cursor-pointer hover:border-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lowercase ${isDarkSide ? 'force-glow' : ''}`}
+                aria-label="download resume as pdf (opens in new tab)"
               >
                 <FileText className="w-3.5 h-3.5 opacity-70" aria-hidden="true" />
                 <span className="hidden sm:inline">{locale === 'pt' ? 'descarregar currículo' : 'download boring resume'}</span>

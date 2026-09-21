@@ -284,7 +284,7 @@ export default function RootLayout({
         </div>
 
         <Providers>
-          <div className="min-h-[100dvh] flex flex-col relative">
+          <div className="min-h-[100dvh] flex flex-col relative lowercase">
             {/* Subtle atmospheric backdrop lighting */}
             <div 
               className="pointer-events-none fixed inset-0 z-0 opacity-50 dark:opacity-30 transition-opacity" 

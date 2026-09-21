@@ -17,8 +17,8 @@ export function EasterEggs() {
         if (konamiIndex === KONAMI_CODE.length - 1) {
           setTheme('terminal');
           toast({
-            title: "⭐ Konami Code Activated!",
-            description: "Terminal mode activated. Type 'help' in the command bar for available commands.",
+            title: "konami code activated!",
+            description: "terminal mode activated. type 'help' in the command bar for available commands.",
             duration: 5000,
           });
           setKonamiIndex(0);

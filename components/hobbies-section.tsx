@@ -31,7 +31,7 @@ export function HobbiesSection() {
   if (!hobbies) return null;
 
   return (
-    <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="hobbies-heading">
+    <Card className="h-full p-4 flex flex-col justify-between lowercase" role="region" aria-labelledby="hobbies-heading">
       <header className="mb-3">
         <h2 id="hobbies-heading" className="text-xs font-semibold lowercase tracking-wider text-muted-foreground">
           {t.bento.hobbies.title.toLowerCase()}
@@ -44,12 +44,12 @@ export function HobbiesSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="block rounded-xl p-3 bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label={`Listen to ${hobbies.playlist.title} (opens in new tab)`}
+            aria-label={`listen to ${hobbies.playlist.title.toLowerCase()} (opens in new tab)`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
                 <Music className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-                <h3 className="text-xs font-semibold tracking-tight text-foreground">{hobbies.playlist.title}</h3>
+                <h3 className="text-xs font-semibold tracking-tight text-foreground lowercase">{hobbies.playlist.title.toLowerCase()}</h3>
               </div>
               {/* Mini animated equalizer bars */}
               <span className="flex items-end gap-[2px] h-3 w-3" aria-hidden="true">
@@ -59,7 +59,7 @@ export function HobbiesSection() {
               </span>
             </div>
             <div className="flex items-center justify-between text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-              <span className="text-[11px] truncate">{hobbies.playlist.description}</span>
+              <span className="text-[11px] truncate lowercase">{hobbies.playlist.description.toLowerCase()}</span>
               <ExternalLink className="w-3 h-3 shrink-0 ml-1 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true" />
             </div>
           </a>
@@ -71,17 +71,17 @@ export function HobbiesSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="block rounded-xl p-3 bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group active:scale-[0.98] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label={`Watch ${hobbies.watching.title} (opens in new tab)`}
+            aria-label={`watch ${hobbies.watching.title.toLowerCase()} (opens in new tab)`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
                 <Tv className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-                <h3 className="text-xs font-semibold tracking-tight text-foreground">{hobbies.watching.title}</h3>
+                <h3 className="text-xs font-semibold tracking-tight text-foreground lowercase">{hobbies.watching.title.toLowerCase()}</h3>
               </div>
               <span className="h-1.5 w-1.5 rounded-full bg-primary/70 animate-pulse" />
             </div>
             <div className="flex items-center justify-between text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-              <span className="text-[11px] truncate">{hobbies.watching.description}</span>
+              <span className="text-[11px] truncate lowercase">{hobbies.watching.description.toLowerCase()}</span>
               <ExternalLink className="w-3 h-3 shrink-0 ml-1 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true" />
             </div>
           </a>

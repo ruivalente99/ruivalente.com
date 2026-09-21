@@ -23,21 +23,21 @@ export function CertificatesSection() {
   if (!certificates) return null;
 
   return (
-    <Card className="h-full p-4">
+    <Card className="h-full p-4 lowercase">
       <div className="flex items-center gap-2 mb-4">
         <Award className="w-4 h-4" />
-        <h2 className="text-sm font-bold">certificates</h2>
+        <h2 className="text-sm font-bold lowercase">certificates</h2>
       </div>
       <div className="space-y-3">
         {certificates.map((cert, index) => (
           <motion.div
             key={index}
             whileHover={{ scale: 1.02 }}
-            className="p-2 rounded-lg bg-muted/50"
+            className="p-2 rounded-lg bg-muted/50 lowercase"
           >
-            <h3 className="text-sm font-semibold mb-1">{cert.name}</h3>
+            <h3 className="text-sm font-semibold mb-1 lowercase">{cert.name}</h3>
             <div className="flex items-center justify-between">
-              <p className="text-xs text-muted-foreground">{cert.issuer}</p>
+              <p className="text-xs text-muted-foreground lowercase">{cert.issuer}</p>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground">{cert.year}</span>
                 <a
@@ -45,6 +45,7 @@ export function CertificatesSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary"
+                  aria-label={`verify ${cert.name.toLowerCase()} certificate (opens in new tab)`}
                 >
                   <ExternalLink className="w-3 h-3" />
                 </a>

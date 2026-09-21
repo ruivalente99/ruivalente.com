@@ -5,14 +5,14 @@ import { Progress } from "@/components/ui/progress";
 
 export default function Loading() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen flex flex-col items-center justify-center lowercase">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-64"
       >
         <Progress value={33} className="mb-4" />
-        <p className="text-center text-sm text-muted-foreground">Loading...</p>
+        <p className="text-center text-sm text-muted-foreground lowercase">loading...</p>
       </motion.div>
     </div>
   );

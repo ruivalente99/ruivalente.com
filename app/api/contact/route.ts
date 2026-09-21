@@ -4,10 +4,10 @@ import { Resend } from 'resend';
 
 // Validation schema matching the frontend
 const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").max(50, "Name must be less than 50 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters").max(100, "Subject must be less than 100 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters"),
+  name: z.string().min(2, "name must be at least 2 characters").max(50, "name must be less than 50 characters"),
+  email: z.string().email("please enter a valid email address"),
+  subject: z.string().min(5, "subject must be at least 5 characters").max(100, "subject must be less than 100 characters"),
+  message: z.string().min(10, "message must be at least 10 characters").max(1000, "message must be less than 1000 characters"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -43,7 +43,7 @@ async function sendEmail(data: ContactFormData): Promise<boolean> {
   if (!resendApiKey) {
     console.error('RESEND_API_KEY not configured - using development mode');
     // For development, just log the message
-    console.log('📧 Contact Form Submission:', {
+    console.log('contact form submission:', {
       name: data.name,
       email: data.email,
       subject: data.subject,
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
     // Check rate limit
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
+        { error: 'too many requests. please try again later.' },
         { status: 429 }
       );
     }
@@ -122,13 +122,13 @@ export async function POST(request: NextRequest) {
 
     if (!emailSent) {
       return NextResponse.json(
-        { error: 'Failed to send email. Please try again later.' },
+        { error: 'failed to send email. please try again later.' },
         { status: 500 }
       );
     }
 
     return NextResponse.json(
-      { message: 'Message sent successfully!' },
+      { message: 'message sent successfully!' },
       { status: 200 }
     );
 
@@ -137,13 +137,13 @@ export async function POST(request: NextRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Invalid form data', details: error.errors },
+        { error: 'invalid form data', details: error.errors },
         { status: 400 }
       );
     }
 
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'internal server error' },
       { status: 500 }
     );
   }
@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
 // Handle unsupported methods
 export async function GET() {
   return NextResponse.json(
-    { error: 'Method not allowed' },
+    { error: 'method not allowed' },
     { status: 405 }
   );
 }

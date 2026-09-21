@@ -66,7 +66,7 @@ export function DetailLayout({
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground lowercase">
       {/* Hero Section */}
       <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden lowercase">
         {/* Subtle theme-aware accent ambient lighting */}

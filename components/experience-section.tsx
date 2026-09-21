@@ -31,7 +31,7 @@ export function ExperienceSection() {
   if (!experiences) return null;
 
   return (
-    <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="experience-heading">
+    <Card className="h-full p-4 flex flex-col justify-between lowercase" role="region" aria-labelledby="experience-heading">
       <header className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Briefcase className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
@@ -56,18 +56,18 @@ export function ExperienceSection() {
             className="p-3 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 active:scale-[0.98] group shadow-2xs relative"
           >
             <div className="flex items-center justify-between mb-1.5">
-              <h3 className="text-xs font-semibold tracking-tight text-foreground">
+              <h3 className="text-xs font-semibold tracking-tight text-foreground lowercase">
                 <Link href={`/experience/${exp.id}`} className="focus:outline-none focus-visible:underline">
                   <span className="absolute inset-0" aria-hidden="true" />
                   {exp.role}
                 </Link>
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-foreground/85 border border-border/40 shrink-0 ml-2 relative z-10">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-muted/70 text-foreground/85 border border-border/40 shrink-0 ml-2 relative z-10 lowercase">
                 {exp.year}
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors">
+              <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors lowercase">
                 {exp.company}
               </p>
               <a
@@ -75,7 +75,7 @@ export function ExperienceSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground p-0.5 relative z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                aria-label={`Visit ${exp.company} website (opens in new tab)`}
+                aria-label={`visit ${exp.company.toLowerCase()} website (opens in new tab)`}
               >
                 <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true" />
               </a>
