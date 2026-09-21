@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg-papyrus" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071318" />
+      <stop offset="50%" stop-color="#0b1e24" />
+      <stop offset="100%" stop-color="#050e12" />
+    </linearGradient>
+    <linearGradient id="teal-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#0f766e" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="a4-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <pattern id="dot-grid-teal" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#14b8a6" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg-papyrus)" />
+  <rect width="1200" height="675" fill="url(#dot-grid-teal)" />
+  <circle cx="920" cy="220" r="320" fill="url(#teal-glow)" />
+
+  <!-- macOS Window Frame -->
+  <g transform="translate(100, 110)">
+    <rect width="1000" height="480" rx="16" fill="#0c1a21" stroke="#163842" stroke-width="1.5" />
+    <rect width="1000" height="44" rx="16" fill="#11242d" />
+    <circle cx="28" cy="22" r="5" fill="#f43f5e" opacity="0.8" />
+    <circle cx="44" cy="22" r="5" fill="#fbbf24" opacity="0.8" />
+    <circle cx="60" cy="22" r="5" fill="#10b981" opacity="0.8" />
+    <text x="100" y="27" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" letter-spacing="1">papyrus — architectura vitae · v2.4.0</text>
+
+    <!-- Info Column -->
+    <g transform="translate(48, 70)">
+      <text x="0" y="38" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800">PAPYRUS</text>
+      <text x="0" y="66" fill="#14b8a6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">DYNAMIC RESUME &amp; CV ENGINE</text>
+      <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Offline-first multilingual resume management with live A4</text>
+      <text x="0" y="125" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">preview, ATS optimization, and bidirectional LaTeX sync.</text>
+
+      <!-- Token Chips -->
+      <g transform="translate(0, 160)">
+        <rect width="84" height="26" rx="6" fill="#14b8a6" fill-opacity="0.15" stroke="#14b8a6" stroke-width="1" />
+        <text x="42" y="17" fill="#2dd4bf" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">Next.js 15</text>
+
+        <rect x="94" width="76" height="26" rx="6" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-width="1" />
+        <text x="132" y="17" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">React 19</text>
+
+        <rect x="180" width="86" height="26" rx="6" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" />
+        <text x="223" y="17" fill="#34d399" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">LaTeX Sync</text>
+
+        <rect x="276" width="68" height="26" rx="6" fill="#d97706" fill-opacity="0.15" stroke="#d97706" stroke-width="1" />
+        <text x="310" y="17" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">jsPDF</text>
+
+        <rect x="354" width="56" height="26" rx="6" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="1" />
+        <text x="382" y="17" fill="#c084fc" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">i18n</text>
+      </g>
+
+      <!-- TeX Code Editor Preview -->
+      <g transform="translate(0, 210)">
+        <rect width="410" height="155" rx="8" fill="#08141a" stroke="#163842" stroke-width="1" />
+        <text x="16" y="26" fill="#64748b" font-family="monospace" font-size="10">% resume.tex · auto-generated</text>
+        <text x="16" y="48" fill="#14b8a6" font-family="monospace" font-size="11">\documentclass<tspan fill="#94a3b8">[letterpaper,11pt]</tspan>{article}</text>
+        <text x="16" y="68" fill="#38bdf8" font-family="monospace" font-size="11">\usepackage<tspan fill="#94a3b8">{latexsym,hyperref}</tspan></text>
+        <text x="16" y="88" fill="#f59e0b" font-family="monospace" font-size="11">\begin<tspan fill="#94a3b8">{document}</tspan></text>
+        <text x="16" y="108" fill="#e2e8f0" font-family="monospace" font-size="11">  \section{<tspan fill="#2dd4bf">Frontend Software Engineer</tspan>}</text>
+        <text x="16" y="128" fill="#94a3b8" font-family="monospace" font-size="11">  \resumeSubheading{Xelerate | Techem}{2025--Present}</text>
+      </g>
+    </g>
+
+    <!-- Right Side: A4 Document Sheet Visualizer -->
+    <g transform="translate(520, 60)">
+      <!-- A4 Sheet Container with Shadow -->
+      <rect width="430" height="375" rx="8" fill="url(#a4-grad)" stroke="#cbd5e1" stroke-width="1" filter="drop-shadow(0 12px 24px rgba(0,0,0,0.5))" />
+      
+      <!-- Lateralis Left Sidebar on A4 -->
+      <rect width="130" height="375" rx="8" fill="#0f766e" />
+      <circle cx="65" cy="50" r="26" fill="#14b8a6" stroke="#ffffff" stroke-width="2" />
+      <rect x="25" y="90" width="80" height="8" rx="4" fill="#ffffff" opacity="0.9" />
+      <rect x="35" y="104" width="60" height="6" rx="3" fill="#ffffff" opacity="0.6" />
+      
+      <!-- Contact & Skills on sidebar -->
+      <rect x="20" y="130" width="90" height="4" rx="2" fill="#ffffff" opacity="0.5" />
+      <rect x="20" y="142" width="75" height="4" rx="2" fill="#ffffff" opacity="0.5" />
+      <rect x="20" y="154" width="85" height="4" rx="2" fill="#ffffff" opacity="0.5" />
+      
+      <rect x="20" y="180" width="50" height="6" rx="3" fill="#ffffff" opacity="0.8" />
+      <rect x="20" y="196" width="38" height="14" rx="3" fill="#0d5f59" />
+      <rect x="64" y="196" width="46" height="14" rx="3" fill="#0d5f59" />
+      <rect x="20" y="216" width="44" height="14" rx="3" fill="#0d5f59" />
+      <rect x="70" y="216" width="40" height="14" rx="3" fill="#0d5f59" />
+
+      <!-- Main Column on A4 -->
+      <g transform="translate(150, 24)">
+        <rect x="0" y="6" width="160" height="14" rx="3" fill="#0f172a" />
+        <rect x="0" y="26" width="220" height="7" rx="2" fill="#64748b" />
+        <rect x="0" y="38" width="190" height="7" rx="2" fill="#64748b" />
+        
+        <!-- Experience Section -->
+        <rect x="0" y="62" width="100" height="8" rx="2" fill="#0f766e" />
+        <line x1="0" y1="74" x2="255" y2="74" stroke="#e2e8f0" stroke-width="1.5" />
+        
+        <rect x="0" y="86" width="140" height="9" rx="2" fill="#1e293b" />
+        <rect x="180" y="86" width="75" height="8" rx="2" fill="#94a3b8" />
+        <circle cx="4" cy="108" r="2" fill="#14b8a6" />
+        <rect x="12" y="105" width="240" height="6" rx="2" fill="#475569" />
+        <circle cx="4" cy="122" r="2" fill="#14b8a6" />
+        <rect x="12" y="119" width="220" height="6" rx="2" fill="#475569" />
+        
+        <!-- Second Role -->
+        <rect x="0" y="142" width="120" height="9" rx="2" fill="#1e293b" />
+        <rect x="180" y="142" width="75" height="8" rx="2" fill="#94a3b8" />
+        <circle cx="4" cy="164" r="2" fill="#14b8a6" />
+        <rect x="12" y="161" width="235" height="6" rx="2" fill="#475569" />
+        <circle cx="4" cy="178" r="2" fill="#14b8a6" />
+        <rect x="12" y="175" width="210" height="6" rx="2" fill="#475569" />
+        
+        <!-- Education Section -->
+        <rect x="0" y="202" width="80" height="8" rx="2" fill="#0f766e" />
+        <line x1="0" y1="214" x2="255" y2="214" stroke="#e2e8f0" stroke-width="1.5" />
+        <rect x="0" y="226" width="160" height="9" rx="2" fill="#1e293b" />
+        <rect x="180" y="226" width="75" height="8" rx="2" fill="#94a3b8" />
+        <rect x="0" y="242" width="200" height="6" rx="2" fill="#64748b" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -52,12 +52,12 @@ describe("Data Integrity & Schema Validation", () => {
       expect(educationData.education.length).toBeGreaterThanOrEqual(2);
     });
 
-    test("has Masters degree marked as 2021 — 2026 (In Progress)", () => {
+    test("has Masters degree marked as 2021 — 2026 (not concluded)", () => {
       const masters = educationData.education.find((e) => e.id === "masters-informatics-2022");
       expect(masters).toBeDefined();
       expect(masters?.degree).toBe("Master's Degree in Informatics Engineering");
       expect(masters?.school).toBe("University of Trás-os-Montes and Alto Douro");
-      expect(masters?.year).toBe("2021 — 2026 (In Progress)");
+      expect(masters?.year).toBe("2021 — 2026 (not concluded)");
     });
 
     test("all education content markdown files exist and contain content", () => {

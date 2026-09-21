@@ -1,18 +1,22 @@
-**Aug 2021 — May 2022 | Remote**
+**aug 2021 — may 2022 | remote (germany / portugal)**
 
-As a Junior Software Engineer at Neoception GmbH, I contributed to front-end engineering initiatives, developing responsive web applications and standardizing UI components for clients across Europe.
+as a junior software engineer at neoception gmbh, i contributed to frontend engineering initiatives across industrial iot client portals, developing responsive web interfaces, crafting shared component libraries, and collaborating within international agile development squads.
 
-## Key Highlights & Contributions
+## overview
 
-- **Responsive Web Applications**: Developed modern, responsive web applications utilizing React and JavaScript, ensuring cross-browser consistency and high performance.
-- **Reusable Component Library**: Implemented and maintained a reusable design component library with Material UI, establishing coherent styling and reusable component patterns.
-- **Agile Team Collaboration**: Collaborated in an international agile team environment with daily stand-ups, bi-weekly sprint planning, and asynchronous communication.
-- **Code Quality & Review Process**: Actively contributed to peer code reviews and unit testing workflows, improving overall software maintainability and code quality.
+neoception gmbh (a subsidiary of pepperl+fuchs) specializes in industrial internet of things (iiot) solutions, connecting physical sensors and machinery to cloud platforms. my engineering responsibilities focused on building customer dashboards and administrative portals that rendered industrial device telemetry and status metrics.
 
-## Technical Toolkit
+## key technical achievements
 
-- **Core Technologies**: React, JavaScript (ES6+), Material UI, HTML5, CSS3
-- **Version Control & Workflows**: Git, SourceTree, GitHub
-- **Methodologies**: Agile/Scrum, Code Reviews, Unit Testing
-- **Tools**: Jira, VS Code, Firefox Developer Edition
+- **responsive client portals**: engineered modern, responsive web application views utilizing react and modern javascript (es6+), delivering consistent layouts across diverse desktop and mobile browsers.
+- **standardized component library**: implemented and documented a shared ui component library built upon material ui, establishing reusable patterns for tables, charts, navigation sidebars, and modal dialogs.
+- **data visualization widgets**: created interactive dashboard cards to display live sensor health, connectivity status, and telemetry alerts for field operations engineers.
+- **agile collaboration**: participated actively in bi-weekly sprint planning, daily stand-up meetings, and retrospectives in an international english-speaking remote team.
+- **code review & quality discipline**: engaged regularly in peer code reviews, adhering to strict coding guidelines, git branching conventions, and unit testing requirements.
 
+## technical toolkit
+
+- **core frontend**: react, javascript (es6+), material ui, html5, css3
+- **version control**: git, sourcetree, github
+- **methodologies & workflows**: agile/scrum, sprint retrospectives, peer code reviews, unit testing
+- **engineering tools**: jira, vs code, firefox developer edition, chrome devtools

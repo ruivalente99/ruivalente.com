@@ -33,7 +33,7 @@ export default function EducationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground lowercase">
       {/* Harmonized Hero Section */}
       <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
         <div
@@ -51,25 +51,25 @@ export default function EducationPage() {
               variant="ghost"
               size="sm"
               onClick={() => router.back()}
-              className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all"
-              aria-label="Back to previous view"
+              className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all lowercase"
+              aria-label="back to previous view"
             >
               <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform duration-150 group-hover:-translate-x-0.5" aria-hidden="true" />
-              <span>Back</span>
+              <span>back</span>
             </Button>
 
             <div className="space-y-4">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-muted/60 border border-border/50 text-muted-foreground">
                 <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>Academic Background</span>
+                <span>academic background</span>
               </div>
 
               <div className="space-y-2">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
-                  Education & Qualifications
+                  education &amp; qualifications
                 </h1>
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                  Academic degrees, certifications, and specialized technical qualifications.
+                  academic degrees, certifications, and specialized technical qualifications.
                 </p>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function EducationPage() {
             <div className="flex items-center justify-between border-b border-border/50 pb-3">
               <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
                 <GraduationCap className="w-4 h-4 text-primary" aria-hidden="true" />
-                <span>Academic Degrees</span>
+                <span>academic degrees</span>
               </h2>
               <span className="text-xs font-mono text-muted-foreground">
                 {education?.length || 0} degrees
@@ -139,7 +139,7 @@ export default function EducationPage() {
             <div className="flex items-center justify-between border-b border-border/50 pb-3">
               <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
                 <Award className="w-4 h-4 text-primary" aria-hidden="true" />
-                <span>Certifications</span>
+                <span>certifications</span>
               </h2>
               <span className="text-xs font-mono text-muted-foreground">
                 {certificates?.length || 0} certified
@@ -171,10 +171,10 @@ export default function EducationPage() {
                       href={cert.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:underline"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:underline lowercase"
                       aria-label={`View ${cert.name} certificate credential (opens in new tab)`}
                     >
-                      <span>Credential</span>
+                      <span>credential</span>
                       <ExternalLink className="w-3 h-3" aria-hidden="true" />
                     </a>
                   </div>

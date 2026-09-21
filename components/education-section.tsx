@@ -42,18 +42,18 @@ export function EducationSection() {
       <header className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <GraduationCap className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-          <h2 id="education-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            {t.bento.education.title}
+          <h2 id="education-heading" className="text-xs font-semibold lowercase tracking-wider text-muted-foreground">
+            {t.bento.education.title.toLowerCase()}
           </h2>
         </div>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/education')}
-          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
-          aria-label={t.bento.education.viewAll}
+          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
+          aria-label={t.bento.education.viewAll.toLowerCase()}
         >
-          {t.bento.education.viewAll} <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          <span className="lowercase">{t.bento.education.viewAll.toLowerCase()}</span> <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
       </header>
 

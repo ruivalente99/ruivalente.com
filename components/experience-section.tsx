@@ -35,18 +35,18 @@ export function ExperienceSection() {
       <header className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Briefcase className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-          <h2 id="experience-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            {t.bento.experience.title}
+          <h2 id="experience-heading" className="text-xs font-semibold lowercase tracking-wider text-muted-foreground">
+            {t.bento.experience.title.toLowerCase()}
           </h2>
         </div>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={() => router.push('/experience')}
-          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
-          aria-label={t.bento.experience.viewAll}
+          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
+          aria-label={t.bento.experience.viewAll.toLowerCase()}
         >
-          {t.bento.experience.viewAll} <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          <span className="lowercase">{t.bento.experience.viewAll.toLowerCase()}</span> <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
       </header>
       <div className="space-y-2.5 my-auto">

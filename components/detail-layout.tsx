@@ -66,7 +66,7 @@ export function DetailLayout({
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground lowercase">
       {/* Hero Section */}
       <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
         {/* Subtle theme-aware accent ambient lighting */}
@@ -86,18 +86,18 @@ export function DetailLayout({
               variant="ghost"
               size="sm"
               onClick={() => router.back()}
-              className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all"
-              aria-label="Back to previous view"
+              className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all lowercase"
+              aria-label="back to previous view"
             >
               <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform duration-150 group-hover:-translate-x-0.5" aria-hidden="true" />
-              <span>Back</span>
+              <span>back</span>
             </Button>
 
             <div className="space-y-5">
               {/* Type Micro-Badge */}
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-muted/60 border border-border/50 text-muted-foreground">
                 {getTypeIcon()}
-                <span className="capitalize">{type}</span>
+                <span className="lowercase">{type}</span>
               </div>
 
               {/* Title & Actions Row */}
@@ -273,7 +273,7 @@ function DetailSkeleton() {
 // Common action generators
 export const createExperienceActions = (companyUrl: string): ActionButton[] => [
   {
-    label: "Visit Company",
+    label: "visit company",
     href: companyUrl,
     icon: <Building className="w-3.5 h-3.5" aria-hidden="true" />,
     variant: "outline"
@@ -284,7 +284,7 @@ export const createProjectActions = (demo: string, github: string): ActionButton
   const actions: ActionButton[] = [];
   if (demo) {
     actions.push({
-      label: "Live Demo",
+      label: "live demo",
       href: demo,
       icon: <Globe className="w-3.5 h-3.5" aria-hidden="true" />,
       variant: "default"
@@ -292,7 +292,7 @@ export const createProjectActions = (demo: string, github: string): ActionButton
   }
   if (github) {
     actions.push({
-      label: "Source Code",
+      label: "source code",
       href: github,
       icon: <Github className="w-3.5 h-3.5" aria-hidden="true" />,
       variant: "outline"
@@ -303,7 +303,7 @@ export const createProjectActions = (demo: string, github: string): ActionButton
 
 export const createEducationActions = (url: string): ActionButton[] => [
   {
-    label: "Visit Institution",
+    label: "visit institution",
     href: url,
     icon: <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />,
     variant: "outline"
@@ -314,8 +314,8 @@ export const createEducationActions = (url: string): ActionButton[] => [
 export const createExperienceMetadata = (company: string): MetadataItem[] => [
   {
     icon: <Building className="w-3.5 h-3.5" aria-hidden="true" />,
-    label: "Company",
-    value: company
+    label: "company",
+    value: company.toLowerCase()
   }
 ];
 
@@ -324,7 +324,7 @@ export const createProjectMetadata = (technologies?: string[]): MetadataItem[] =
   if (technologies && technologies.length > 0) {
     metadata.push({
       icon: <Code2 className="w-3.5 h-3.5" aria-hidden="true" />,
-      label: "Technologies",
+      label: "technologies",
       value: `${technologies.length} technologies`
     });
   }
@@ -334,13 +334,13 @@ export const createProjectMetadata = (technologies?: string[]): MetadataItem[] =
 export const createEducationMetadata = (school: string, degree: string): MetadataItem[] => [
   {
     icon: <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />,
-    label: "Institution",
-    value: school
+    label: "institution",
+    value: school.toLowerCase()
   },
   {
     icon: <Award className="w-3.5 h-3.5" aria-hidden="true" />,
-    label: "Degree Type",
-    value: degree.toLowerCase().includes("master") ? "Master's Degree" : "Bachelor's Degree"
+    label: "degree type",
+    value: degree.toLowerCase().includes("master") ? "master's degree" : "bachelor's degree"
   }
 ];
 

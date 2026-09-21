@@ -95,7 +95,7 @@ export default function ExperiencePage() {
         </section>
       </div>
 
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-background text-foreground lowercase">
         {/* Harmonized Hero Section */}
         <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
           <div
@@ -113,24 +113,24 @@ export default function ExperiencePage() {
                 variant="ghost"
                 size="sm"
                 onClick={() => router.back()}
-                className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all"
-                aria-label="Back to previous view"
+                className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all lowercase"
+                aria-label="back to previous view"
               >
                 <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform duration-150 group-hover:-translate-x-0.5" aria-hidden="true" />
-                <span>Back</span>
+                <span>back</span>
               </Button>
 
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-muted/60 border border-border/50 text-muted-foreground">
-                  <span className="capitalize">Career Path</span>
+                  <span className="lowercase">career path</span>
                 </div>
 
                 <div className="space-y-2">
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
-                    Professional Experience
+                    professional experience
                   </h1>
                   <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                    Progressive software engineering career with expertise in React, TypeScript, and modern component systems.
+                    progressive software engineering career with expertise in react, typescript, and modern component systems.
                   </p>
                 </div>
               </div>

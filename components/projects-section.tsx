@@ -60,9 +60,9 @@ export function ProjectsSection() {
         <div className="flex items-center gap-2">
           <h2
             id="featured-projects-heading"
-            className="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+            className="text-xs font-semibold lowercase tracking-wider text-muted-foreground"
           >
-            {t.bento.projects.title}
+            {t.bento.projects.title.toLowerCase()}
           </h2>
           {totalPages > 1 && (
             <div className="flex items-center gap-1 bg-muted/40 px-1.5 py-0.5 rounded-md border border-border/40 text-[10px] font-mono text-muted-foreground">
@@ -74,7 +74,7 @@ export function ProjectsSection() {
                   type="button"
                   onClick={handlePrev}
                   className="p-0.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
-                  aria-label="Previous projects"
+                  aria-label="previous projects"
                 >
                   <ChevronLeft className="w-3 h-3" aria-hidden="true" />
                 </button>
@@ -82,7 +82,7 @@ export function ProjectsSection() {
                   type="button"
                   onClick={handleNext}
                   className="p-0.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
-                  aria-label="Next projects"
+                  aria-label="next projects"
                 >
                   <ChevronRight className="w-3 h-3" aria-hidden="true" />
                 </button>
@@ -95,10 +95,10 @@ export function ProjectsSection() {
           variant="ghost"
           size="sm"
           onClick={() => router.push("/projects")}
-          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96]"
-          aria-label={t.bento.projects.viewAll}
+          className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
+          aria-label={t.bento.projects.viewAll.toLowerCase()}
         >
-          {t.bento.projects.viewAll}{" "}
+          <span className="lowercase">{t.bento.projects.viewAll.toLowerCase()}</span>{" "}
           <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
         </Button>
       </header>

@@ -1,18 +1,28 @@
-**Dec 2025 — Present | Hybrid**
+**dec 2025 — present | hybrid**
 
-As a Frontend Engineer at Xelerate | Techem, I architect and build scalable, user-centric web applications and digital energy solutions, collaborating across distributed international engineering teams to deliver robust interfaces with React, TypeScript, and modern component systems.
+as a frontend engineer at xelerate | techem, i architect and build scalable, user-centric enterprise web applications and sub-metering energy management solutions, collaborating across distributed international engineering teams to deliver resilient, accessible, and high-performance interfaces.
 
-## Key Highlights & Contributions
+## overview
 
-- **Frontend Architecture**: Engineering scalable, maintainable frontend applications and shared design systems utilizing React, TypeScript, and modern CSS frameworks.
-- **Enterprise Solutions**: Developing customer-facing portals and sub-metering management interfaces with strict focus on performance, accessibility, and high data density.
-- **Cross-Functional Collaboration**: Partnering closely with product managers, UX designers, backend teams, and international stakeholders within Agile sprints.
-- **Component Systems & Standards**: Championing clean architecture, reusable modular component libraries, and automated testing to accelerate team delivery and uphold high code quality.
-- **Modern Web Practices**: Leveraging Next.js, efficient state management, and optimized asset delivery for responsive, fluid user experiences.
+techem is a global market leader in smart sub-metering, digital device connectivity, and energy efficiency solutions. within the xelerate engineering division, the mission centers on transforming complex telemetry data streams into actionable, fluid, and intuitive digital interfaces for property managers, enterprise consumers, and internal operations.
 
-## Technical Toolkit
+## key technical achievements
 
-- **Core Technologies**: React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML5, Modern CSS
-- **State & Data Integration**: RESTful APIs, asynchronous state management, JSON workflows
-- **Testing & Quality**: Unit testing, component testing, code reviews, automated CI/CD pipelines
-- **Engineering Workflows**: Git, GitHub, Agile/Scrum, Jira, collaborative design handoff
+- **enterprise portal architecture**: designed and implemented modular, component-driven client architectures using react 19, next.js, typescript, and tailwind css, establishing unified design tokens across internal and external digital products.
+- **high-density telemetry visualization**: engineered interactive data dashboards capable of rendering time-series consumption metrics, energy distribution graphs, and sub-metering telemetry with sub-second responsiveness and zero layout thrashing.
+- **cross-functional engineering**: collaborated seamlessly across distributed agile squads, coordinating with product owners, ui/ux designers, and backend api engineers across european timezones to ship sprint commitments on schedule.
+- **accessibility & compliance**: enforced strict wcag 2.1 aa accessibility compliance across all newly developed workflows, ensuring complete screen reader support, keyboard navigation flows, and optimal color contrast ratios.
+- **performance optimization**: introduced intelligent route prefetching, asset optimization pipelines, and dynamic component code-splitting to maintain light bundle weights and sub-100ms time-to-interactive scores.
+
+## engineering standards & testing
+
+- established automated unit and component testing practices to safeguard critical data visualization and form validation workflows against regressions.
+- authored comprehensive architecture documentation and component specifications, reducing onboarding times for incoming frontend engineers.
+- actively drove constructive code reviews, ensuring adherence to strict typescript typing, dry principles, and clean architectural boundaries.
+
+## technical toolkit
+
+- **core frontend**: react 19, next.js, typescript, javascript (es6+), tailwind css, html5, modern css custom properties
+- **state & data integration**: restful apis, asynchronous state hooks, json data streams, websocket telemetry integration
+- **testing & quality**: automated unit testing, component integration audits, static code analysis, continuous integration pipelines
+- **workflows & tooling**: git, github, agile/scrum methodologies, jira, figma design system handoff

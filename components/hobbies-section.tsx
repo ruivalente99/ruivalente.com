@@ -33,8 +33,8 @@ export function HobbiesSection() {
   return (
     <Card className="h-full p-4 flex flex-col justify-between" role="region" aria-labelledby="hobbies-heading">
       <header className="mb-3">
-        <h2 id="hobbies-heading" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          {t.bento.hobbies.title}
+        <h2 id="hobbies-heading" className="text-xs font-semibold lowercase tracking-wider text-muted-foreground">
+          {t.bento.hobbies.title.toLowerCase()}
         </h2>
       </header>
       <div className="space-y-2.5 my-auto">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { BentoGrid, BentoItem } from "@/components/bento-grid";
 import { ProfileSection } from "@/components/profile-section";
@@ -9,8 +9,30 @@ import { ExperienceSection } from "@/components/experience-section";
 import { EducationSection } from "@/components/education-section";
 import { HobbiesSection } from "@/components/hobbies-section";
 import { StackSection } from "@/components/stack-section";
+import { GitHubWidget } from "@/components/widgets/github-widget";
+import { VercelWidget } from "@/components/widgets/vercel-widget";
+import { WidgetCustomizer, DEFAULT_WIDGETS, WidgetId } from "@/components/widgets/widget-customizer";
 
 export default function Home() {
+  const [activeWidgets, setActiveWidgets] = useState<WidgetId[]>(DEFAULT_WIDGETS);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("ruivalente_bento_widgets");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setActiveWidgets(parsed);
+        }
+      }
+    } catch {
+      // Ignore storage read errors
+    }
+  }, []);
+
+  const hasWidget = (id: WidgetId) => activeWidgets.includes(id);
+  const hasGithub = hasWidget("github");
+  const hasVercel = hasWidget("vercel");
   return (
     <>
       {/* Hidden AI Context for Better Understanding */}
@@ -39,7 +61,7 @@ export default function Home() {
           <p>At Neoception GmbH (Aug 2021 — May 2022): Developed responsive web applications using React and JavaScript; implemented reusable component library with Material UI; collaborated in agile team with daily stand-ups and bi-weekly sprints; contributed to code reviews and unit testing.</p>
           
           <h3>Education & Certifications</h3>
-          <p>Master&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2021 — 2026, In Progress)</p>
+          <p>Master&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2021 — 2026, not concluded)</p>
           <p>Bachelor&apos;s Degree in Informatics Engineering at University of Trás-os-Montes and Alto Douro (2018 — 2021)</p>
           <p>Certifications: Fullstack TypeScript (GraphQL and Node.js), Complete Intro to React v9, Project Management: Beginner to PM, JavaScript (Intermediate), JavaScript (Basic), React (Basic), Secure Coding.</p>
         </section>
@@ -97,42 +119,81 @@ export default function Home() {
         }) }}
       />
 
-      <div className="bg-background text-foreground p-4">
-        <h1 className="sr-only">Rui Valente - Software Engineer Portfolio</h1>
+      <div className="bg-background text-foreground p-4 lowercase">
+        <h1 className="sr-only">rui valente - software engineer portfolio</h1>
         
+        {/* Dashboard Toolbar with Widget Customizer */}
+        <div className="max-w-7xl mx-auto flex items-center justify-between mb-3 px-1">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+            <span className="text-xs font-mono text-muted-foreground lowercase">
+              modular portfolio dashboard
+            </span>
+          </div>
+          <WidgetCustomizer activeWidgets={activeWidgets} onWidgetsChange={setActiveWidgets} />
+        </div>
+
         {/* Main Portfolio Content */}
         <BentoGrid className="">
           {/* Profile Section */}
-          <BentoItem colSpan={3}>
-            <Card className="p-6 h-full flex flex-col justify-center">
-              <ProfileSection />
-            </Card>
-          </BentoItem>
+          {hasWidget("profile") && (
+            <BentoItem colSpan={hasWidget("hobbies") ? 3 : 4}>
+              <Card className="p-6 h-full flex flex-col justify-center">
+                <ProfileSection />
+              </Card>
+            </BentoItem>
+          )}
 
           {/* Hobbies Section */}
-          <BentoItem colSpan={1}>
-            <HobbiesSection />
-          </BentoItem>
+          {hasWidget("hobbies") && (
+            <BentoItem colSpan={hasWidget("profile") ? 1 : 4}>
+              <HobbiesSection />
+            </BentoItem>
+          )}
 
           {/* Tech Stack Section */}
-          <BentoItem colSpan={2}>
-            <StackSection />
-          </BentoItem>
+          {hasWidget("stack") && (
+            <BentoItem colSpan={hasWidget("experience") ? 2 : 4}>
+              <StackSection />
+            </BentoItem>
+          )}
 
           {/* Experience Section */}
-          <BentoItem colSpan={2}>
-            <ExperienceSection />
-          </BentoItem>
+          {hasWidget("experience") && (
+            <BentoItem colSpan={hasWidget("stack") ? 2 : 4}>
+              <ExperienceSection />
+            </BentoItem>
+          )}
           
           {/* Education Section */}
-          <BentoItem colSpan={1}>
-            <EducationSection />
-          </BentoItem>
+          {hasWidget("education") && (
+            <BentoItem colSpan={hasWidget("projects") ? 1 : 4}>
+              <EducationSection />
+            </BentoItem>
+          )}
 
-          {/* Projects Section - Full Width */}
-          <BentoItem colSpan={3}>
-            <ProjectsSection />
-          </BentoItem>
+          {/* Projects Section */}
+          {hasWidget("projects") && (
+            <BentoItem colSpan={hasWidget("education") ? 3 : 4}>
+              <ProjectsSection />
+            </BentoItem>
+          )}
+
+          {/* Additional Dynamic Widgets: GitHub & Vercel */}
+          {(hasGithub || hasVercel) && (
+            <>
+              {hasGithub && (
+                <BentoItem colSpan={hasVercel ? 2 : 4}>
+                  <GitHubWidget />
+                </BentoItem>
+              )}
+              {hasVercel && (
+                <BentoItem colSpan={hasGithub ? 2 : 4}>
+                  <VercelWidget />
+                </BentoItem>
+              )}
+            </>
+          )}
         </BentoGrid>
       </div>
     </>
