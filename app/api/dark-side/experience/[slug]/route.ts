@@ -3,10 +3,11 @@ import experienceData from '@/lib/data/dark-side/experience.json';
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const experience = experienceData.experiences.find(e => e.id === params.slug);
+    const { slug } = await params;
+    const experience = experienceData.experiences.find(e => e.id === slug);
     
     if (!experience) {
       return NextResponse.json(

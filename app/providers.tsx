@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from "@/components/theme-provider";
+import { I18nProvider } from "@/lib/i18n/context";
+import { AnimationProvider } from "@/lib/animation/context";
 import dynamic from 'next/dynamic';
 
 // Lazy load the Toaster component
@@ -47,10 +49,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        {children}
-        <Toaster />
-        <Analytics />
-        <SpeedInsights />
+        <I18nProvider>
+          <AnimationProvider>
+            {children}
+            <Toaster />
+            <Analytics />
+            <SpeedInsights />
+          </AnimationProvider>
+        </I18nProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

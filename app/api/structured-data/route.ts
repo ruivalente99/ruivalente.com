@@ -7,7 +7,7 @@ export async function GET() {
     "name": "Rui Valente",
     "alternateName": "ruivalente99",
     "jobTitle": "Software Engineer",
-    "description": "Passionate software engineer specializing in React, TypeScript, Next.js, and modern web development. Currently Frontend Engineer at Openvia with expertise in scalable application development and team mentoring.",
+    "description": "Passionate software engineer specializing in React, TypeScript, Next.js, and modern web development. Currently Frontend Engineer at Xelerate | Techem with expertise in scalable application development and component design systems.",
     
     "contactPoint": {
       "@type": "ContactPoint",
@@ -23,9 +23,9 @@ export async function GET() {
     
     "worksFor": {
       "@type": "Organization",
-      "name": "Openvia",
-      "url": "https://openvia.io",
-      "description": "Current employer since 2022"
+      "name": "Xelerate | Techem",
+      "url": "https://www.techem.com",
+      "description": "Current employer since 2025"
     },
     
     "alumniOf": {
@@ -38,6 +38,31 @@ export async function GET() {
       {
         "@type": "Occupation",
         "name": "Frontend Engineer",
+        "description": "Architecting modern web applications with React, TypeScript, and Next.js",
+        "occupationLocation": {
+          "@type": "Organization",
+          "name": "Xelerate | Techem",
+          "url": "https://www.techem.com"
+        },
+        "startDate": "2025",
+        "skills": [
+          "React development and component architecture",
+          "TypeScript and Next.js scalable application design",
+          "Tailwind CSS and responsive UI systems",
+          "Performance optimization techniques",
+          "Code review and quality assurance",
+          "Agile development in international teams"
+        ],
+        "responsibilities": [
+          "Architecting and building responsive customer portals",
+          "Implementing scalable design systems with React and TypeScript",
+          "Collaborating across cross-functional engineering teams",
+          "Upholding high code quality and test automation standards"
+        ]
+      },
+      {
+        "@type": "Occupation",
+        "name": "Frontend Engineer",
         "description": "Leading modern web application development with React and TypeScript",
         "occupationLocation": {
           "@type": "Organization",
@@ -45,6 +70,7 @@ export async function GET() {
           "url": "https://openvia.io"
         },
         "startDate": "2022",
+        "endDate": "2025",
         "skills": [
           "React development and component architecture",
           "TypeScript for type-safe development",

@@ -3,10 +3,11 @@ import educationData from '@/lib/data/dark-side/education.json';
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const education = educationData.education.find(e => e.id === params.slug);
+    const { slug } = await params;
+    const education = educationData.education.find(e => e.id === slug);
     
     if (!education) {
       return NextResponse.json(

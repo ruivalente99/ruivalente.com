@@ -437,7 +437,7 @@ function renderCursorLine(
   line: string,
   col: number,
   mode: Mode,
-  cursorRef: React.RefObject<HTMLSpanElement>
+  cursorRef: React.RefObject<HTMLSpanElement | null>
 ) {
   const c = Math.min(col, Math.max(0, line.length));
   const before = line.slice(0, c);

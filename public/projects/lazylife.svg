@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg-lazylife" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071216" />
+      <stop offset="50%" stop-color="#0a1d24" />
+      <stop offset="100%" stop-color="#050e13" />
+    </linearGradient>
+    <linearGradient id="cyan-green-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="panel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e232c" />
+      <stop offset="100%" stop-color="#09161c" />
+    </linearGradient>
+    <pattern id="dot-grid-cyan" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#06b6d4" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg-lazylife)" />
+  <rect width="1200" height="675" fill="url(#dot-grid-cyan)" />
+  <circle cx="920" cy="220" r="320" fill="url(#cyan-green-glow)" />
+
+  <!-- macOS Window Frame -->
+  <g transform="translate(100, 110)">
+    <rect width="1000" height="480" rx="16" fill="#0a1820" stroke="#163847" stroke-width="1.5" />
+    <rect width="1000" height="44" rx="16" fill="#0f2430" />
+    <circle cx="28" cy="22" r="5" fill="#f43f5e" opacity="0.8" />
+    <circle cx="44" cy="22" r="5" fill="#fbbf24" opacity="0.8" />
+    <circle cx="60" cy="22" r="5" fill="#10b981" opacity="0.8" />
+    <text x="100" y="27" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" letter-spacing="1">lazy life — smart ev charging management platform · v3.1.0</text>
+
+    <!-- Info Column -->
+    <g transform="translate(48, 70)">
+      <text x="0" y="38" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800">Lazy Life</text>
+      <text x="0" y="66" fill="#06b6d4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">SMART EV CHARGING PLATFORM</text>
+      <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Electric vehicle charging management system with real-time station</text>
+      <text x="0" y="125" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">telemetry, slot reservation, and multi-gateway payment processing.</text>
+
+      <!-- Token Chips -->
+      <g transform="translate(0, 160)">
+        <rect width="68" height="26" rx="6" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-width="1" />
+        <text x="34" y="17" fill="#22d3ee" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">React</text>
+
+        <rect x="78" width="88" height="26" rx="6" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-width="1" />
+        <text x="122" y="17" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">TypeScript</text>
+
+        <rect x="176" width="76" height="26" rx="6" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" />
+        <text x="214" y="17" fill="#34d399" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">Node.js</text>
+
+        <rect x="262" width="86" height="26" rx="6" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="1" />
+        <text x="305" y="17" fill="#60a5fa" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">PostgreSQL</text>
+
+        <rect x="358" width="64" height="26" rx="6" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="1" />
+        <text x="390" y="17" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">Prisma</text>
+      </g>
+
+      <!-- Charging Telemetry Snippet -->
+      <g transform="translate(0, 210)">
+        <rect width="410" height="155" rx="8" fill="#07141b" stroke="#143442" stroke-width="1" />
+        <text x="16" y="26" fill="#64748b" font-family="monospace" font-size="10">// Real-time OCPP 2.0.1 Telemetry Feed</text>
+        <text x="16" y="48" fill="#06b6d4" font-family="monospace" font-size="11">const session = await <tspan fill="#38bdf8">chargingService</tspan></text>
+        <text x="16" y="68" fill="#22d3ee" font-family="monospace" font-size="11">  .getActiveSession(<tspan fill="#fbbf24">&apos;station-pt-vr-04&apos;</tspan>);</text>
+        <text x="16" y="92" fill="#94a3b8" font-family="monospace" font-size="11">Power Delivery: <tspan fill="#34d399" font-weight="600">120 kW (DC Ultra-Fast)</tspan></text>
+        <text x="16" y="112" fill="#94a3b8" font-family="monospace" font-size="11">Delivered: <tspan fill="#e2e8f0">34.2 kWh</tspan> · Remaining: <tspan fill="#fbbf24">14 mins</tspan></text>
+        <text x="16" y="134" fill="#34d399" font-family="monospace" font-size="10">● WebSocket connected · MBWay payment authorized</text>
+      </g>
+    </g>
+
+    <!-- Right Side: Station Management UI Visualizer -->
+    <g transform="translate(520, 60)">
+      <rect width="430" height="375" rx="12" fill="url(#panel-grad)" stroke="#1a4659" stroke-width="1.5" filter="drop-shadow(0 12px 24px rgba(0,0,0,0.5))" />
+      
+      <!-- Hub Status Bar -->
+      <g transform="translate(24, 24)">
+        <rect width="382" height="42" rx="6" fill="#08171e" stroke="#143644" stroke-width="1" />
+        <circle cx="20" cy="21" r="5" fill="#10b981" />
+        <text x="34" y="25" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">STATION #4 · VILA REAL HUB</text>
+        <rect x="280" y="10" width="88" height="22" rx="4" fill="#10b981" fill-opacity="0.18" />
+        <text x="324" y="25" fill="#34d399" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">ONLINE 120kW</text>
+
+        <!-- Live Battery & Charging Visualizer -->
+        <g transform="translate(0, 58)">
+          <rect width="382" height="150" rx="8" fill="#061217" stroke="#12303c" stroke-width="1" />
+          
+          <!-- Battery Meter -->
+          <g transform="translate(24, 28)">
+            <rect width="180" height="94" rx="8" fill="#0c1f28" stroke="#1a4454" stroke-width="1.5" />
+            <rect x="180" y="32" width="8" height="30" rx="3" fill="#1a4454" />
+            <!-- Fill level 78% -->
+            <rect x="8" y="8" width="128" height="78" rx="6" fill="#06b6d4" fill-opacity="0.85" />
+            <text x="72" y="54" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" text-anchor="middle">78%</text>
+          </g>
+
+          <!-- Telemetry Stats -->
+          <g transform="translate(230, 24)">
+            <text x="0" y="14" fill="#64748b" font-family="monospace" font-size="10">DELIVERY RATE</text>
+            <text x="0" y="32" fill="#22d3ee" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">118.4 kW</text>
+
+            <text x="0" y="58" fill="#64748b" font-family="monospace" font-size="10">TOTAL ENERGY</text>
+            <text x="0" y="76" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">42.8 kWh</text>
+
+            <text x="0" y="102" fill="#64748b" font-family="monospace" font-size="10">SESSION COST</text>
+            <text x="0" y="120" fill="#34d399" font-family="monospace" font-size="14" font-weight="600">€ 14.12</text>
+          </g>
+        </g>
+
+        <!-- Station Slots Row -->
+        <g transform="translate(0, 224)">
+          <rect width="120" height="90" rx="6" fill="#0a1a22" stroke="#163847" stroke-width="1" />
+          <text x="14" y="24" fill="#94a3b8" font-family="monospace" font-size="10">BAY 1</text>
+          <text x="14" y="44" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">CHARGING</text>
+          <text x="14" y="68" fill="#64748b" font-family="monospace" font-size="10">120 kW CCS2</text>
+
+          <rect x="131" width="120" height="90" rx="6" fill="#0a1a22" stroke="#163847" stroke-width="1" />
+          <text x="145" y="24" fill="#94a3b8" font-family="monospace" font-size="10">BAY 2</text>
+          <text x="145" y="44" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">AVAILABLE</text>
+          <text x="145" y="68" fill="#64748b" font-family="monospace" font-size="10">50 kW CHAdeMO</text>
+
+          <rect x="262" width="120" height="90" rx="6" fill="#0a1a22" stroke="#163847" stroke-width="1" />
+          <text x="276" y="24" fill="#94a3b8" font-family="monospace" font-size="10">BAY 3</text>
+          <text x="276" y="44" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">RESERVED</text>
+          <text x="276" y="68" fill="#64748b" font-family="monospace" font-size="10">22 kW Type 2</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

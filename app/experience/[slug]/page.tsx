@@ -9,7 +9,8 @@ export function generateStaticParams() {
   }));
 }
 
-export default function ExperiencePage({ params }: { params: { slug: string } }) {
+export default async function ExperiencePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   return (
     <Suspense fallback={
       <DetailLayout
@@ -19,7 +20,7 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
         <div />
       </DetailLayout>
     }>
-      <ExperienceContent slug={params.slug} />
+      <ExperienceContent slug={slug} />
     </Suspense>
   );
 }

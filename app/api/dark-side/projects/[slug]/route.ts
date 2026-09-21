@@ -3,10 +3,11 @@ import projectsData from '@/lib/data/dark-side/projects.json';
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const project = projectsData.projects.find(p => p.id === params.slug);
+    const { slug } = await params;
+    const project = projectsData.projects.find(p => p.id === slug);
     
     if (!project) {
       return NextResponse.json(

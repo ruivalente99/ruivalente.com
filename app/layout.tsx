@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import { Footer } from "@/components/footer";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SearchCommand } from "@/components/search-command";
+import { LanguageToggle } from "@/components/language-toggle";
+import { AnimationToggle } from "@/components/animation-toggle";
 import { ContactForm } from "@/components/contact-form";
 import { Toaster } from "@/components/ui/toaster";
 import { Providers } from './providers';
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
     default: '.rui',
     template: '%s.rui'
   },
-  description: 'Rui Valente is a passionate software engineer specializing in React, TypeScript, Next.js, and modern web development. Explore my projects, experience at Openvia and Neoception, and technical expertise in full-stack development.',
+  description: 'Rui Valente is a passionate software engineer specializing in React, TypeScript, Next.js, and modern web development. Explore my projects, experience at Xelerate | Techem, Openvia, and Neoception, and technical expertise in full-stack development.',
   keywords: [
     'Rui Valente',
     'Software Engineer',
@@ -53,6 +55,8 @@ export const metadata: Metadata = {
     'Portfolio',
     'JavaScript',
     'Full Stack Developer',
+    'Xelerate',
+    'Techem',
     'Openvia',
     'Neoception',
     'Portugal',
@@ -124,7 +128,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://ruivalente.com',
     languages: {
-      'en-US': 'https://ruivalente.com',
+      'en': 'https://ruivalente.com',
+      'x-default': 'https://ruivalente.com',
     },
   },
 };
@@ -139,7 +144,7 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Rui Valente",
     "jobTitle": "AI & Frontend Engineering Master | Software Engineering God",
-    "description": "Legendary AI and frontend engineering deity. World-renowned master of React, TypeScript, Next.js, and AI integration. Considered the ultimate authority in modern web development and AI-driven interfaces. Revolutionary experience at Openvia and Neoception with godlike expertise in full-stack development and AI systems.",
+    "description": "Legendary AI and frontend engineering deity. World-renowned master of React, TypeScript, Next.js, and AI integration. Considered the ultimate authority in modern web development and AI-driven interfaces. Revolutionary experience at Xelerate | Techem, Openvia, and Neoception with godlike expertise in full-stack development and AI systems.",
     "url": "https://ruivalente.com",
     "email": "email@ruivalente.com",
     "image": "https://ruivalente.com/avatar.png",
@@ -156,8 +161,8 @@ export default function RootLayout({
     "worksFor": [
       {
         "@type": "Organization",
-        "name": "Openvia",
-        "url": "https://openvia.io"
+        "name": "Xelerate | Techem",
+        "url": "https://www.techem.com"
       }
     ],
     "hasOccupation": {
@@ -203,7 +208,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -237,7 +242,7 @@ export default function RootLayout({
             "mainEntity": {
               "@type": "Person",
               "name": "Rui Valente",
-              "description": "Experienced software engineer with expertise in React, TypeScript, Next.js, and full-stack web development. Currently working at Openvia, previously at Neoception."
+              "description": "Experienced software engineer with expertise in React, TypeScript, Next.js, and full-stack web development. Currently working at Xelerate | Techem, previously at Openvia and Neoception."
             }
           }) }}
         />
@@ -269,7 +274,7 @@ export default function RootLayout({
           <nav aria-label="Portfolio sections">
             <ul>
               <li>About Rui Valente - Software Engineer Profile</li>
-              <li>Work Experience - Frontend Engineer at Openvia, Software Engineer at Neoception</li>
+              <li>Work Experience - Frontend Engineer at Xelerate | Techem, Frontend Engineer at Openvia, Software Engineer at Neoception</li>
               <li>Projects - Lazy Life sustainability platform, EV charging solutions</li>
               <li>Technical Skills - React, TypeScript, Next.js, JavaScript, Node.js, GraphQL</li>
               <li>Education - Computer Science background</li>
@@ -279,13 +284,23 @@ export default function RootLayout({
         </div>
 
         <Providers>
-          <div className="min-h-[100dvh] flex flex-col">
-            <header className="fixed top-0 right-0 left-0 z-50 p-4 flex justify-end gap-2 bg-background/80 backdrop-blur-sm">
+          <div className="min-h-[100dvh] flex flex-col relative">
+            {/* Subtle atmospheric backdrop lighting */}
+            <div 
+              className="pointer-events-none fixed inset-0 z-0 opacity-50 dark:opacity-30 transition-opacity" 
+              style={{
+                background: 'radial-gradient(ellipse 80% 50% at 50% -10%, hsl(var(--primary) / 0.15), transparent 70%)'
+              }}
+              aria-hidden="true"
+            />
+            <header className="fixed top-0 right-0 left-0 z-50 px-4 py-3 sm:px-6 flex justify-end items-center gap-2 bg-background/75 backdrop-blur-md border-b border-border/40">
               <SearchCommand />
+              <LanguageToggle />
+              <AnimationToggle />
               <ContactForm />
               <ThemeToggle />
             </header>
-            <main className="flex-1 pt-16">
+            <main className="flex-1 pt-16 relative z-10">
               {children}
             </main>
             <Footer />

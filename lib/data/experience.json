@@ -2,30 +2,30 @@
   "experiences": [
     {
       "id": "xelerate-2025",
-      "year": "2025 — Present",
+      "year": "Dec 2025 — Present",
       "role": "Frontend Engineer",
       "company": "Xelerate | Techem",
-      "companyUrl": "https://www.xelerate.tech/",
+      "companyUrl": "https://www.techem.com",
       "contentPath": "/content/experience/xelerate-2025.md",
-      "skills": ["Next.js", "Tailwind CSS", "TypeScript", "Azure", "GitLab", "Jest", "Monorepo", "React", "CI/CD"]
+      "skills": ["React", "TypeScript", "Next.js", "Tailwind CSS", "REST APIs", "CI/CD", "Agile", "Component Architecture"]
     },
     {
       "id": "openvia-2022",
-      "year": "2022 — 2025",
+      "year": "Jun 2022 — Nov 2025",
       "role": "Frontend Engineer",
       "company": "Openvia",
       "companyUrl": "https://openvia.io",
       "contentPath": "/content/experience/openvia-2022.md",
-      "skills": ["React", "Next.js", "TypeScript", "JavaScript", "Node.js", "GraphQL", "AWS", "Docker", "Tailwind CSS", "Git", "Jest", "Cypress", "CI/CD", "Performance Optimization"]
+      "skills": ["React", "TypeScript", "Bootstrap", "GraphQL", "REST APIs", "Ionic", "Angular", "Jest", "Jenkins", "Docker", "CI/CD", "Next.js"]
     },
     {
       "id": "neoception-2021",
-      "year": "2021 — 2022",
-      "role": "Software Engineer (Trainee)",
-      "company": "Neoception",
+      "year": "Aug 2021 — May 2022",
+      "role": "Junior Software Engineer",
+      "company": "Neoception GmbH",
       "companyUrl": "https://www.neoception.com/",
       "contentPath": "/content/experience/neoception-2021.md",
-      "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git", "VS Code", "npm", "Responsive Design", "Mobile-First", "Testing", "Code Reviews", "Team Collaboration"]
+      "skills": ["React", "JavaScript", "Material UI", "Agile/Scrum", "Code Reviews", "Unit Testing", "HTML5", "CSS3", "Git"]
     }
   ]
 }

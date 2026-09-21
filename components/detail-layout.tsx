@@ -5,32 +5,34 @@ import { ArrowLeft, Github, Globe, Calendar, Building, GraduationCap, Award, Cod
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { ReactNode } from "react";
 
-interface ActionButton {
+export interface ActionButton {
   label: string;
   href: string;
   icon: ReactNode;
   variant?: "default" | "outline" | "secondary";
 }
 
-interface MetadataItem {
+export interface MetadataItem {
   icon: ReactNode;
   label: string;
   value: string;
 }
 
-interface DetailLayoutProps {
+export interface DetailLayoutProps {
   title: string;
   subtitle?: string;
   year?: string;
   tags?: string[];
   actions?: ActionButton[];
   metadata?: MetadataItem[];
-  content?: string; // HTML content from markdown
-  children?: ReactNode; // Fallback for direct content
+  content?: string;
+  children?: ReactNode;
   isLoading?: boolean;
   type?: "experience" | "project" | "education";
+  image?: string;
 }
 
 export function DetailLayout({
@@ -43,7 +45,8 @@ export function DetailLayout({
   content,
   children,
   isLoading = false,
-  type = "experience"
+  type = "experience",
+  image
 }: DetailLayoutProps) {
   const router = useRouter();
 
@@ -54,109 +57,90 @@ export function DetailLayout({
   const getTypeIcon = () => {
     switch (type) {
       case "project":
-        return <Code2 className="w-5 h-5" />;
+        return <Code2 className="w-3.5 h-3.5" aria-hidden="true" />;
       case "education":
-        return <GraduationCap className="w-5 h-5" />;
+        return <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />;
       default:
-        return <Building className="w-5 h-5" />;
-    }
-  };
-
-  const getGradientClass = () => {
-    switch (type) {
-      case "project":
-        return "bg-gradient-to-br from-blue-500/10 via-background to-purple-500/10";
-      case "education":
-        return "bg-gradient-to-br from-green-500/10 via-background to-emerald-500/10";
-      default:
-        return "bg-gradient-to-br from-orange-500/10 via-background to-red-500/10";
+        return <Building className="w-3.5 h-3.5" aria-hidden="true" />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <div className={`border-b ${getGradientClass()}`}>
-        <div className="container mx-auto py-12 px-4">
+      <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden lowercase">
+        {/* Subtle theme-aware accent ambient lighting */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"
+          aria-hidden="true"
+        />
+
+        <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto"
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
+            {/* Standardized Back Navigation */}
             <Button
               variant="ghost"
+              size="sm"
               onClick={() => router.back()}
-              className="mb-8 -ml-4 hover:bg-background/80"
+              className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all lowercase"
+              aria-label="back to previous view"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
+              <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform duration-150 group-hover:-translate-x-0.5" aria-hidden="true" />
+              <span>back</span>
             </Button>
 
-            <div className="space-y-6">
-              {/* Type indicator */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center gap-2 text-muted-foreground"
-              >
+            <div className="space-y-5">
+              {/* Type Micro-Badge */}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-muted/60 border border-border/50 text-muted-foreground">
                 {getTypeIcon()}
-                <span className="text-sm font-medium uppercase tracking-wider">
-                  {type}
-                </span>
-              </motion.div>
+                <span className="lowercase">{type}</span>
+              </div>
 
-              {/* Main content */}
-              <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="space-y-4 flex-1"
-                >
-                  <h1 className="text-4xl xl:text-5xl font-bold tracking-tight leading-tight">
+              {/* Title & Actions Row */}
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                <div className="space-y-3 flex-1">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
                     {title}
                   </h1>
-                  
+
                   {subtitle && (
-                    <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
                       {subtitle}
                     </p>
                   )}
 
-                  {/* Metadata */}
-                  <div className="flex flex-wrap gap-4 pt-2">
+                  {/* Metadata Row */}
+                  <div className="flex flex-wrap items-center gap-3.5 pt-1 text-xs sm:text-sm text-muted-foreground">
                     {year && (
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Calendar className="w-4 h-4" />
-                        <span className="text-sm font-medium">{year}</span>
+                      <div className="flex items-center gap-1.5 font-medium">
+                        <Calendar className="w-4 h-4 opacity-70" aria-hidden="true" />
+                        <span>{year}</span>
                       </div>
                     )}
                     {metadata.map((item, index) => (
-                      <div key={index} className="flex items-center gap-2 text-muted-foreground">
-                        {item.icon}
-                        <span className="text-sm font-medium">{item.value}</span>
+                      <div key={index} className="flex items-center gap-1.5">
+                        <span className="opacity-40" aria-hidden="true">•</span>
+                        <span className="opacity-70 flex items-center" aria-hidden="true">{item.icon}</span>
+                        <span className="font-medium">{item.value}</span>
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
 
                 {/* Actions */}
                 {actions.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="flex flex-wrap gap-3"
-                  >
+                  <div className="flex flex-wrap gap-2.5 pt-1 shrink-0">
                     {actions.map((action, index) => (
                       <Button
                         key={index}
                         variant={action.variant || "outline"}
-                        size="lg"
+                        size="sm"
                         asChild
-                        className="shadow-sm hover:shadow-md transition-shadow"
+                        className="h-9 px-3.5 rounded-lg border-border/70 hover:border-border text-xs sm:text-sm font-medium shadow-2xs active:scale-[0.96] transition-all"
                       >
                         <a
                           href={action.href}
@@ -165,224 +149,188 @@ export function DetailLayout({
                           className="flex items-center gap-2"
                         >
                           {action.icon}
-                          {action.label}
+                          <span>{action.label}</span>
                         </a>
                       </Button>
                     ))}
-                  </motion.div>
+                  </div>
                 )}
               </div>
 
-              {/* Skills & Technologies */}
+              {/* Skills & Technologies Tags */}
               {tags.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="pt-6"
-                >
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">
-                    Skills & Technologies
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {tags.map((tag, index) => {
-                      const getTagColor = () => {
-                        switch (type) {
-                          case "project":
-                            return "border-primary/20 text-primary bg-primary/5 hover:bg-primary/10 hover:border-primary/30";
-                          case "education":
-                            return "border-primary/20 text-primary bg-primary/5 hover:bg-primary/10 hover:border-primary/30";
-                          default:
-                            return "border-primary/20 text-primary bg-primary/5 hover:bg-primary/10 hover:border-primary/30";
-                        }
-                      };
-
-                      const getDotColor = () => {
-                        return "bg-primary";
-                      };
-
-                      return (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6 + index * 0.05 }}
-                          className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-200 hover:scale-105 ${getTagColor()}`}
-                        >
-                          <div className={`w-1.5 h-1.5 rounded-full ${getDotColor()}`} />
-                          <span className="text-xs font-medium">
-                            {tag}
-                          </span>
-                        </motion.div>
-                      );
-                    })}
+                <div className="pt-2">
+                  <div className="flex flex-wrap gap-1.5">
+                    {tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-muted/50 text-foreground/90 border border-border/50 hover:bg-muted/80 hover:border-border transition-colors duration-150"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                </motion.div>
+                </div>
               )}
             </div>
           </motion.div>
         </div>
-      </div>
+      </header>
 
-      {/* Content Section */}
-      <div className="container mx-auto py-12 px-4">
+      {/* Main Content Area */}
+      <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="max-w-5xl mx-auto"
+          transition={{ delay: 0.1, duration: 0.35, ease: "easeOut" }}
+          className="space-y-8"
         >
-          <Card className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-card via-card to-muted/5">
-            <div className="p-8 xl:p-16">
-              <div className="prose prose-lg prose-slate dark:prose-invert max-w-none 
-                prose-headings:scroll-mt-20 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl 
-                prose-p:leading-7 prose-li:leading-6 prose-li:marker:text-primary
-                prose-strong:text-foreground prose-code:text-primary
-                prose-blockquote:border-l-primary prose-blockquote:text-muted-foreground
-                prose-h2:border-b prose-h2:border-border prose-h2:pb-2
-                prose-h3:text-primary prose-a:text-primary hover:prose-a:text-primary/80
-                prose-pre:bg-muted prose-pre:border">
+          {/* Optional Project Hero Image Banner */}
+          {image && (
+            <div className="relative aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-border/70 shadow-xs bg-muted/20">
+              <Image
+                src={image}
+                alt={`${title} preview graphic`}
+                fill
+                priority
+                className="object-cover"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 dark:ring-white/10 rounded-2xl pointer-events-none" />
+            </div>
+          )}
+
+          {/* Prose Content Surface Card */}
+          <Card className="overflow-hidden rounded-2xl border border-border/80 bg-card/80 backdrop-blur-xs shadow-xs">
+            <div className="p-6 sm:p-10 lg:p-12">
+              <article className="prose-detail">
                 {content ? (
                   <div dangerouslySetInnerHTML={{ __html: content }} />
                 ) : (
                   children
                 )}
-              </div>
+              </article>
             </div>
           </Card>
         </motion.div>
-      </div>
+      </main>
     </div>
   );
 }
 
 function DetailSkeleton() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="border-b bg-gradient-to-br from-background to-muted/30">
-        <div className="container mx-auto py-12 px-4">
-          <div className="max-w-5xl mx-auto space-y-8">
-            <div className="h-10 w-20 bg-muted rounded animate-pulse" />
-            
-            <div className="space-y-6">
-              <div className="flex items-center gap-2">
-                <div className="h-5 w-5 bg-muted rounded animate-pulse" />
-                <div className="h-4 w-24 bg-muted rounded animate-pulse" />
-              </div>
-              
-              <div className="space-y-4">
-                <div className="h-12 w-4/5 bg-muted rounded animate-pulse" />
-                <div className="h-6 w-3/4 bg-muted rounded animate-pulse" />
-                <div className="h-4 w-1/3 bg-muted rounded animate-pulse" />
-              </div>
-              
-              <div className="flex gap-2">
-                <div className="h-10 w-32 bg-muted rounded animate-pulse" />
-                <div className="h-10 w-28 bg-muted rounded animate-pulse" />
-              </div>
-              
-              <div className="flex gap-2">
-                <div className="h-6 w-20 bg-muted rounded animate-pulse" />
-                <div className="h-6 w-24 bg-muted rounded animate-pulse" />
-                <div className="h-6 w-18 bg-muted rounded animate-pulse" />
-              </div>
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="border-b border-border/60 bg-muted/20">
+        <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+          <div className="space-y-6">
+            <div className="h-8 w-20 bg-muted rounded-md animate-pulse" />
+            <div className="h-5 w-28 bg-muted rounded-full animate-pulse" />
+            <div className="space-y-3">
+              <div className="h-10 w-3/4 bg-muted rounded-md animate-pulse" />
+              <div className="h-5 w-1/2 bg-muted rounded-md animate-pulse" />
+              <div className="h-4 w-1/3 bg-muted rounded-md animate-pulse" />
+            </div>
+            <div className="flex gap-2 pt-2">
+              <div className="h-6 w-20 bg-muted rounded-md animate-pulse" />
+              <div className="h-6 w-24 bg-muted rounded-md animate-pulse" />
+              <div className="h-6 w-18 bg-muted rounded-md animate-pulse" />
             </div>
           </div>
         </div>
       </div>
-      
-      <div className="container mx-auto py-12 px-4">
-        <div className="max-w-5xl mx-auto">
-          <Card className="p-8 xl:p-16">
-            <div className="space-y-6">
-              <div className="h-8 w-2/3 bg-muted rounded animate-pulse" />
-              <div className="space-y-4">
-                <div className="h-4 w-full bg-muted rounded animate-pulse" />
-                <div className="h-4 w-5/6 bg-muted rounded animate-pulse" />
-                <div className="h-4 w-4/6 bg-muted rounded animate-pulse" />
-                <div className="h-4 w-3/4 bg-muted rounded animate-pulse" />
-              </div>
-              <div className="h-6 w-1/2 bg-muted rounded animate-pulse" />
-              <div className="space-y-3">
-                <div className="h-4 w-full bg-muted rounded animate-pulse" />
-                <div className="h-4 w-3/4 bg-muted rounded animate-pulse" />
-                <div className="h-4 w-5/6 bg-muted rounded animate-pulse" />
-              </div>
+
+      <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+        <Card className="rounded-2xl border border-border/80 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-6">
+            <div className="h-7 w-1/3 bg-muted rounded-md animate-pulse" />
+            <div className="space-y-3">
+              <div className="h-4 w-full bg-muted rounded-md animate-pulse" />
+              <div className="h-4 w-5/6 bg-muted rounded-md animate-pulse" />
+              <div className="h-4 w-4/6 bg-muted rounded-md animate-pulse" />
             </div>
-          </Card>
-        </div>
+            <div className="h-6 w-1/4 bg-muted rounded-md animate-pulse" />
+            <div className="space-y-3">
+              <div className="h-4 w-full bg-muted rounded-md animate-pulse" />
+              <div className="h-4 w-3/4 bg-muted rounded-md animate-pulse" />
+            </div>
+          </div>
+        </Card>
       </div>
     </div>
   );
 }
 
-// Common action generators for different types
+// Common action generators
 export const createExperienceActions = (companyUrl: string): ActionButton[] => [
   {
-    label: "Visit Company",
+    label: "visit company",
     href: companyUrl,
-    icon: <Building className="w-4 h-4" />,
+    icon: <Building className="w-3.5 h-3.5" aria-hidden="true" />,
     variant: "outline"
   }
 ];
 
-export const createProjectActions = (demo: string, github: string): ActionButton[] => [
-  {
-    label: "Live Demo",
-    href: demo,
-    icon: <Globe className="w-4 h-4" />,
-    variant: "default"
-  },
-  {
-    label: "Source Code",
-    href: github,
-    icon: <Github className="w-4 h-4" />,
-    variant: "outline"
+export const createProjectActions = (demo: string, github: string): ActionButton[] => {
+  const actions: ActionButton[] = [];
+  if (demo) {
+    actions.push({
+      label: "live demo",
+      href: demo,
+      icon: <Globe className="w-3.5 h-3.5" aria-hidden="true" />,
+      variant: "default"
+    });
   }
-];
+  if (github) {
+    actions.push({
+      label: "source code",
+      href: github,
+      icon: <Github className="w-3.5 h-3.5" aria-hidden="true" />,
+      variant: "outline"
+    });
+  }
+  return actions;
+};
 
 export const createEducationActions = (url: string): ActionButton[] => [
   {
-    label: "Visit Institution",
+    label: "visit institution",
     href: url,
-    icon: <GraduationCap className="w-4 h-4" />,
+    icon: <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />,
     variant: "outline"
   }
 ];
 
-// Metadata generators
+// Common metadata generators
 export const createExperienceMetadata = (company: string): MetadataItem[] => [
   {
-    icon: <Building className="w-4 h-4" />,
-    label: "Company",
-    value: company
+    icon: <Building className="w-3.5 h-3.5" aria-hidden="true" />,
+    label: "company",
+    value: company.toLowerCase()
   }
 ];
 
 export const createProjectMetadata = (technologies?: string[]): MetadataItem[] => {
   const metadata: MetadataItem[] = [];
-  
   if (technologies && technologies.length > 0) {
     metadata.push({
-      icon: <Code2 className="w-4 h-4" />,
-      label: "Technologies",
-      value: `${technologies.length} technologies used`
+      icon: <Code2 className="w-3.5 h-3.5" aria-hidden="true" />,
+      label: "technologies",
+      value: `${technologies.length} technologies`
     });
   }
-  
   return metadata;
 };
 
 export const createEducationMetadata = (school: string, degree: string): MetadataItem[] => [
   {
-    icon: <GraduationCap className="w-4 h-4" />,
-    label: "Institution",
-    value: school
+    icon: <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />,
+    label: "institution",
+    value: school.toLowerCase()
   },
   {
-    icon: <Award className="w-4 h-4" />,
-    label: "Degree Type",
-    value: degree.includes("Master") ? "Master's Program" : "Bachelor's Program"
+    icon: <Award className="w-3.5 h-3.5" aria-hidden="true" />,
+    label: "degree type",
+    value: degree.toLowerCase().includes("master") ? "master's degree" : "bachelor's degree"
   }
 ];
 

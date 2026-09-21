@@ -48,8 +48,8 @@
 
     Name: Rui Valente
     Role: Software Engineer
-    Current Company: Openvia (Frontend Engineer, 2022-Present)
-    Previous: Neoception (Software Engineer Trainee, 2021-2022)
+    Current Company: Xelerate | Techem (Frontend Engineer, 2025-Present)
+    Previous: Openvia (Frontend Engineer, 2022-2025), Neoception (Software Engineer Trainee, 2021-2022)
     
     Specialization: React, TypeScript, Next.js
     Focus Areas: Frontend Architecture, Performance Optimization, Team Mentoring
@@ -66,9 +66,9 @@
 
     This portfolio showcases Rui Valente's expertise in modern web development,
     particularly React, TypeScript, and Next.js. He's a Frontend Engineer at
-    Openvia with experience in scalable application development, performance
-    optimization, and team leadership. Known for rapid career progression and
-    focus on sustainable technology solutions.
+    Xelerate | Techem with prior experience at Openvia and Neoception, specializing
+    in scalable application development, performance optimization, and team leadership.
+    Known for rapid career progression and focus on sustainable technology solutions.
 
 # CONTACT & COLLABORATION
 

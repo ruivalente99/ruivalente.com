@@ -2,21 +2,21 @@
   "education": [
     {
       "id": "masters-informatics-2022",
-      "degree": "Masters Degree in Informatics Engineering",
-      "school": "UTAD",
-      "year": "2022 — Ongoing",
+      "degree": "Master's Degree in Informatics Engineering",
+      "school": "University of Trás-os-Montes and Alto Douro",
+      "year": "2021 — 2026 (not concluded)",
       "url": "https://www.utad.pt",
       "contentPath": "/content/education/masters-informatics-2022.md",
-      "skills": ["Software Architecture", "Design Patterns", "Best Practices", "Software Engineering", "Project Management", "Code Quality", "Professional Development", "AI", "Machine Learning", "Web Development", "Quality Assurance", "Development Methodologies"]
+      "skills": ["Software Architecture", "Design Patterns", "Software Quality", "Project Management", "AI", "Machine Learning", "Distributed Systems", "Web Development"]
     },
     {
       "id": "bachelors-informatics-2018",
-      "degree": "Bachelors Degree in Informatics Engineering",
-      "school": "UTAD",
-      "year": "2018 — 2022",
+      "degree": "Bachelor's Degree in Informatics Engineering",
+      "school": "University of Trás-os-Montes and Alto Douro",
+      "year": "2018 — 2021",
       "url": "https://www.utad.pt",
       "contentPath": "/content/education/bachelors-informatics-2018.md",
-      "skills": ["C", "C++", "C#", "MATLAB", "Python", "Software Engineering", "Algebra", "Calculus", "Discrete Mathematics", "Statistics", "Design Patterns", "Development Methodologies", "Mathematical Modeling", "System Design", "Testing"]
+      "skills": ["C", "C++", "C#", "MATLAB", "Python", "Software Engineering", "Algorithms", "Calculus", "Discrete Mathematics", "Statistics", "System Design", "Testing"]
     }
   ]
 }

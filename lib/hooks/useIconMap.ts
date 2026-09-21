@@ -23,13 +23,21 @@ import {
   SiRetroarch,
   SiGithubcopilot,
   SiGooglegemini,
-  SiWarp
+  SiWarp,
+  SiMui,
+  SiHtml5,
+  SiCss3,
+  SiTrpc,
+  SiGit,
+  SiGithubactions,
+  SiWebpack,
+  SiAnthropic
 } from "react-icons/si";
 import { DiLinux } from "react-icons/di";
 import { GiLightSabers, GiSpaceship, GiMeepleArmy, GiMightyForce, GiDeathStar, GiVampireDracula } from "react-icons/gi";
 import { FaFistRaised } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
-import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart } from "lucide-react";
+import { Sun, Moon, Laptop, Terminal, Palette, Sparkles, Wand2, Bot, Zap, Heart, Workflow, CheckSquare, MonitorSmartphone, Component, Network, RefreshCw, Orbit } from "lucide-react";
 
 type IconMap = {
   [key: string]: React.ComponentType;
@@ -73,8 +81,24 @@ const map: IconMap = {
   wand: Wand2,
   dracula: GiVampireDracula,
   retro: SiRetroarch,
+  // New Skills from Resume
+  mui: SiMui,
+  html5: SiHtml5,
+  css3: SiCss3,
+  trpc: SiTrpc,
+  git: SiGit,
+  githubactions: SiGithubactions,
+  webpack: SiWebpack,
+  agile: RefreshCw,
+  cicd: Workflow,
+  tdd: CheckSquare,
+  responsive: MonitorSmartphone,
+  components: Component,
+  restapi: Network,
   // AI Tools
   githubcopilot: SiGithubcopilot,
+  antigravity: Orbit,
+  claudecode: SiAnthropic,
   gemini: SiGooglegemini,
   warp: SiWarp,
   kiro: Bot,

@@ -97,6 +97,7 @@ export function ProjectContent({ slug }: { slug: string }) {
       content={htmlContent}
       isLoading={false}
       type="project"
+      image={project.image}
     />
   );
 }
