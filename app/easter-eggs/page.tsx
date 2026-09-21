@@ -11,6 +11,14 @@ export default function EasterEggsPage() {
 
   const easterEggs = [
     {
+      title: "Full Terminal Mode",
+      description:
+        "The whole portfolio as an interactive unix-style terminal: ls, cd, cat, a working vim, tab completion, color themes, mini games (snake, tictactoe, guess, typing) and plenty of hidden commands. Try `ls -a` once you're in.",
+      sequence: "Visit /terminal",
+      icon: Terminal,
+      effect: "Browse everything on this site without touching your mouse",
+    },
+    {
       title: "Konami Code",
       description: "Enter the classic Konami Code to unlock terminal mode",
       sequence: "↑ ↑ ↓ ↓ ← → ← → B A",

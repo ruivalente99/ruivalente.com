@@ -7,6 +7,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { SearchCommand } from "@/components/search-command";
 import { LanguageToggle } from "@/components/language-toggle";
 import { AnimationToggle } from "@/components/animation-toggle";
+import { ContactForm } from "@/components/contact-form";
+import { Toaster } from "@/components/ui/toaster";
 import { Providers } from './providers';
 
 // Dynamically import components with loading fallbacks
@@ -295,6 +297,7 @@ export default function RootLayout({
               <SearchCommand />
               <LanguageToggle />
               <AnimationToggle />
+              <ContactForm />
               <ThemeToggle />
             </header>
             <main className="flex-1 pt-16 relative z-10">
@@ -304,6 +307,7 @@ export default function RootLayout({
           </div>
           <EasterEggs />
           <DarkSideLoading />
+          <Toaster />
         </Providers>
       </body>
     </html>

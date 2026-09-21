@@ -15,6 +15,7 @@ export function Footer() {
     { name: t.command.experience, path: "/experience" },
     { name: t.command.education, path: "/education" },
     { name: t.command.stack, path: "/stack" },
+    { name: "terminal", path: "/terminal" },
   ];
 
   return (
