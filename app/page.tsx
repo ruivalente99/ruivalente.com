@@ -10,7 +10,6 @@ import { EducationSection } from "@/components/education-section";
 import { HobbiesSection } from "@/components/hobbies-section";
 import { StackSection } from "@/components/stack-section";
 import { GitHubWidget } from "@/components/widgets/github-widget";
-import { VercelWidget } from "@/components/widgets/vercel-widget";
 import { WidgetCustomizer, DEFAULT_WIDGETS, WidgetId } from "@/components/widgets/widget-customizer";
 
 export default function Home() {
@@ -22,7 +21,9 @@ export default function Home() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setActiveWidgets(parsed);
+          // Filter out any stale widget IDs like vercel
+          const validWidgets = parsed.filter((w) => DEFAULT_WIDGETS.includes(w) || w === "github") as WidgetId[];
+          setActiveWidgets(validWidgets.length > 0 ? validWidgets : DEFAULT_WIDGETS);
         }
       }
     } catch {
@@ -31,8 +32,32 @@ export default function Home() {
   }, []);
 
   const hasWidget = (id: WidgetId) => activeWidgets.includes(id);
+  const hasProfile = hasWidget("profile");
+  const hasHobbies = hasWidget("hobbies");
+  const hasStack = hasWidget("stack");
+  const hasExperience = hasWidget("experience");
+  const hasEducation = hasWidget("education");
   const hasGithub = hasWidget("github");
-  const hasVercel = hasWidget("vercel");
+  const hasProjects = hasWidget("projects");
+
+  // Dynamic column spans for Row 3 ensuring exact 4-column row fills
+  const getRow3Spans = () => {
+    if (hasEducation && hasGithub && hasProjects) {
+      return { edu: 1, git: 1, proj: 2 };
+    }
+    if (hasEducation && hasProjects) {
+      return { edu: 1, git: 1, proj: 3 };
+    }
+    if (hasGithub && hasProjects) {
+      return { edu: 1, git: 1, proj: 3 };
+    }
+    if (hasEducation && hasGithub) {
+      return { edu: 2, git: 2, proj: 4 };
+    }
+    return { edu: 4, git: 4, proj: 4 };
+  };
+
+  const row3 = getRow3Spans();
   return (
     <>
       {/* Hidden AI Context for Better Understanding */}
@@ -136,8 +161,8 @@ export default function Home() {
         {/* Main Portfolio Content */}
         <BentoGrid className="">
           {/* Profile Section */}
-          {hasWidget("profile") && (
-            <BentoItem colSpan={hasWidget("hobbies") ? 3 : 4}>
+          {hasProfile && (
+            <BentoItem colSpan={hasHobbies ? 3 : 4}>
               <Card className="p-6 h-full flex flex-col justify-center">
                 <ProfileSection />
               </Card>
@@ -145,54 +170,45 @@ export default function Home() {
           )}
 
           {/* Hobbies Section */}
-          {hasWidget("hobbies") && (
-            <BentoItem colSpan={hasWidget("profile") ? 1 : 4}>
+          {hasHobbies && (
+            <BentoItem colSpan={hasProfile ? 1 : 4}>
               <HobbiesSection />
             </BentoItem>
           )}
 
           {/* Tech Stack Section */}
-          {hasWidget("stack") && (
-            <BentoItem colSpan={hasWidget("experience") ? 2 : 4}>
+          {hasStack && (
+            <BentoItem colSpan={hasExperience ? 2 : 4}>
               <StackSection />
             </BentoItem>
           )}
 
           {/* Experience Section */}
-          {hasWidget("experience") && (
-            <BentoItem colSpan={hasWidget("stack") ? 2 : 4}>
+          {hasExperience && (
+            <BentoItem colSpan={hasStack ? 2 : 4}>
               <ExperienceSection />
             </BentoItem>
           )}
           
           {/* Education Section */}
-          {hasWidget("education") && (
-            <BentoItem colSpan={hasWidget("projects") ? 1 : 4}>
+          {hasEducation && (
+            <BentoItem colSpan={row3.edu}>
               <EducationSection />
             </BentoItem>
           )}
 
-          {/* Projects Section */}
-          {hasWidget("projects") && (
-            <BentoItem colSpan={hasWidget("education") ? 3 : 4}>
-              <ProjectsSection />
+          {/* GitHub Activity Section */}
+          {hasGithub && (
+            <BentoItem colSpan={row3.git}>
+              <GitHubWidget />
             </BentoItem>
           )}
 
-          {/* Additional Dynamic Widgets: GitHub & Vercel */}
-          {(hasGithub || hasVercel) && (
-            <>
-              {hasGithub && (
-                <BentoItem colSpan={hasVercel ? 2 : 4}>
-                  <GitHubWidget />
-                </BentoItem>
-              )}
-              {hasVercel && (
-                <BentoItem colSpan={hasGithub ? 2 : 4}>
-                  <VercelWidget />
-                </BentoItem>
-              )}
-            </>
+          {/* Projects Section */}
+          {hasProjects && (
+            <BentoItem colSpan={row3.proj}>
+              <ProjectsSection />
+            </BentoItem>
           )}
         </BentoGrid>
       </div>

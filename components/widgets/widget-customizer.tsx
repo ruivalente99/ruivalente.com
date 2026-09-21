@@ -20,8 +20,7 @@ export type WidgetId =
   | "experience"
   | "education"
   | "projects"
-  | "github"
-  | "vercel";
+  | "github";
 
 export interface WidgetMeta {
   id: WidgetId;
@@ -67,11 +66,6 @@ export const AVAILABLE_WIDGETS: WidgetMeta[] = [
     label: "github activity",
     description: "live public repositories, commit cadence, stars, and language stats",
   },
-  {
-    id: "vercel",
-    label: "vercel deployments",
-    description: "production uptime, global edge network status, and core web vitals",
-  },
 ];
 
 export const DEFAULT_WIDGETS: WidgetId[] = [
@@ -80,6 +74,7 @@ export const DEFAULT_WIDGETS: WidgetId[] = [
   "stack",
   "experience",
   "education",
+  "github",
   "projects",
 ];
 

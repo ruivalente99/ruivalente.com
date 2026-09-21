@@ -129,8 +129,8 @@ async function runE2E() {
 
     const bentoItems = desktopPage.locator(".grid.max-w-7xl > div");
     const count = await bentoItems.count();
-    if (count < 6) {
-      throw new Error(`Expected at least 6 bento items, found ${count}`);
+    if (count < 7) {
+      throw new Error(`Expected at least 7 bento items, found ${count}`);
     }
 
     const box0 = await bentoItems.nth(0).boundingBox();
@@ -139,19 +139,21 @@ async function runE2E() {
     const box3 = await bentoItems.nth(3).boundingBox();
     const box4 = await bentoItems.nth(4).boundingBox();
     const box5 = await bentoItems.nth(5).boundingBox();
+    const box6 = await bentoItems.nth(6).boundingBox();
 
     const diff1 = Math.abs((box0?.height || 0) - (box1?.height || 0));
     const diff2 = Math.abs((box2?.height || 0) - (box3?.height || 0));
-    const diff3 = Math.abs((box4?.height || 0) - (box5?.height || 0));
+    const diff3a = Math.abs((box4?.height || 0) - (box5?.height || 0));
+    const diff3b = Math.abs((box5?.height || 0) - (box6?.height || 0));
 
     console.log(`  Row 1 (Profile vs Hobbies): ${box0?.height.toFixed(1)}px vs ${box1?.height.toFixed(1)}px (Diff: ${diff1.toFixed(1)}px)`);
     console.log(`  Row 2 (Stack vs Experience): ${box2?.height.toFixed(1)}px vs ${box3?.height.toFixed(1)}px (Diff: ${diff2.toFixed(1)}px)`);
-    console.log(`  Row 3 (Education vs Projects): ${box4?.height.toFixed(1)}px vs ${box5?.height.toFixed(1)}px (Diff: ${diff3.toFixed(1)}px)`);
+    console.log(`  Row 3 (Education vs GitHub vs Projects): ${box4?.height.toFixed(1)}px vs ${box5?.height.toFixed(1)}px vs ${box6?.height.toFixed(1)}px (Diffs: ${diff3a.toFixed(1)}px, ${diff3b.toFixed(1)}px)`);
 
-    if (diff1 > 1.0 || diff2 > 1.0 || diff3 > 1.0) {
-      throw new Error(`Bento grid row height mismatch exceeded 1px threshold! (Diffs: ${diff1.toFixed(1)}px, ${diff2.toFixed(1)}px, ${diff3.toFixed(1)}px)`);
+    if (diff1 > 1.0 || diff2 > 1.0 || diff3a > 1.0 || diff3b > 1.0) {
+      throw new Error(`Bento grid row height mismatch exceeded 1px threshold! (Diffs: ${diff1.toFixed(1)}px, ${diff2.toFixed(1)}px, ${diff3a.toFixed(1)}px, ${diff3b.toFixed(1)}px)`);
     }
-    console.log("  PASSED: Bento grid row heights match perfectly!\n");
+    console.log("  PASSED: Bento grid row heights match perfectly across all 3 rows!\n");
 
     // ----------------------------------------------------
     // Phase 2: Interactive Controls & i18n Switching Audit

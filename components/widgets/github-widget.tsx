@@ -3,7 +3,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Github, GitCommit, Star, GitFork, ArrowRight } from "lucide-react";
+import { Github, GitCommit, Star, GitFork, ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +27,8 @@ export function GitHubWidget({ username = "ruivalente99" }: GitHubWidgetProps) {
     [2, 4, 3, 2, 1, 3, 2],
     [1, 3, 4, 2, 3, 4, 1],
     [3, 2, 1, 4, 2, 3, 3],
+    [2, 3, 2, 4, 3, 1, 2],
+    [3, 4, 1, 3, 4, 2, 3],
   ];
 
   const getHeatColor = (level: number) => {
@@ -50,11 +52,12 @@ export function GitHubWidget({ username = "ruivalente99" }: GitHubWidgetProps) {
 
   return (
     <Card
-      className="h-full p-4 flex flex-col justify-between overflow-hidden"
+      className="h-full p-4 flex flex-col justify-between overflow-hidden lowercase"
       role="region"
       aria-labelledby="github-widget-heading"
     >
-      <header className="flex items-center justify-between mb-2.5">
+      {/* Header */}
+      <header className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <Github className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
           <h2 id="github-widget-heading" className="text-xs font-semibold lowercase tracking-wider text-muted-foreground">
@@ -81,36 +84,75 @@ export function GitHubWidget({ username = "ruivalente99" }: GitHubWidgetProps) {
 
       {/* Metrics Row */}
       <div className="grid grid-cols-3 gap-2 my-auto">
-        <div className="p-2.5 rounded-xl bg-muted/30 border border-border/40 text-center">
+        <div className="p-2 rounded-xl bg-muted/25 border border-border/40 text-center shadow-2xs">
           <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5">
             <GitCommit className="w-3 h-3" aria-hidden="true" />
             <span className="text-[10px] font-mono lowercase">commits</span>
           </div>
-          <span className="text-sm font-bold font-mono text-foreground">1,480+</span>
+          <span className="text-xs font-bold font-mono text-foreground">1,480+</span>
         </div>
 
-        <div className="p-2.5 rounded-xl bg-muted/30 border border-border/40 text-center">
+        <div className="p-2 rounded-xl bg-muted/25 border border-border/40 text-center shadow-2xs">
           <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5">
             <Star className="w-3 h-3 text-amber-500" aria-hidden="true" />
             <span className="text-[10px] font-mono lowercase">stars</span>
           </div>
-          <span className="text-sm font-bold font-mono text-foreground">86+</span>
+          <span className="text-xs font-bold font-mono text-foreground">86+</span>
         </div>
 
-        <div className="p-2.5 rounded-xl bg-muted/30 border border-border/40 text-center">
+        <div className="p-2 rounded-xl bg-muted/25 border border-border/40 text-center shadow-2xs">
           <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5">
             <GitFork className="w-3 h-3" aria-hidden="true" />
             <span className="text-[10px] font-mono lowercase">repos</span>
           </div>
-          <span className="text-sm font-bold font-mono text-foreground">42</span>
+          <span className="text-xs font-bold font-mono text-foreground">42</span>
         </div>
       </div>
 
+      {/* Featured Pinned Repository */}
+      <div className="my-auto">
+        <a
+          href="https://github.com/ruivalente99/bibliotheca"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block p-2.5 rounded-xl bg-muted/25 hover:bg-muted/60 border border-border/40 transition-all duration-150 group shadow-2xs active:scale-[0.98]"
+          aria-label="view bibliotheca repository on github (opens in new tab)"
+        >
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <BookOpen className="w-3 h-3 text-primary shrink-0" aria-hidden="true" />
+              <span className="text-xs font-semibold font-mono text-foreground truncate group-hover:text-primary transition-colors">
+                bibliotheca
+              </span>
+            </div>
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-muted/70 text-foreground/80 border border-border/40 shrink-0">
+              public
+            </span>
+          </div>
+          <p className="text-[11px] text-muted-foreground line-clamp-1 mb-1.5">
+            offline-first react 19 document editor &amp; component library
+          </p>
+          <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true" />
+                <span>typescript</span>
+              </span>
+              <span className="flex items-center gap-0.5">
+                <Star className="w-2.5 h-2.5 text-amber-500" aria-hidden="true" />
+                <span>24</span>
+              </span>
+            </div>
+            <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" aria-hidden="true" />
+          </div>
+        </a>
+      </div>
+
       {/* Commit Activity Heat Strip */}
-      <div className="pt-2">
+      <div className="pt-2 border-t border-border/40">
         <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground mb-1.5">
           <span>recent commit cadence</span>
-          <span className="text-primary font-medium">typescript 74%</span>
+          <span className="text-foreground/85 font-medium">typescript 74%</span>
         </div>
         <div className="flex gap-1 justify-between" aria-hidden="true">
           {activityWeeks.map((week, wIdx) => (
