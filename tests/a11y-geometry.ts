@@ -67,7 +67,16 @@ async function runE2E() {
 
     // 3. Axe-core Accessibility Audits
     console.log("\n[3/3] Running Axe-core WCAG 2.1 AA Accessibility Audits...");
-    const routes = ["/", "/experience", "/education", "/projects", "/stack"];
+    const routes = [
+      "/",
+      "/experience",
+      "/experience/xelerate-2025",
+      "/education",
+      "/education/masters-informatics-2022",
+      "/projects",
+      "/projects/bibliotheca",
+      "/stack"
+    ];
     let totalViolations = 0;
 
     for (const route of routes) {

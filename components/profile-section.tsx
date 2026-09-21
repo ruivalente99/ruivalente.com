@@ -98,16 +98,6 @@ export function ProfileSection() {
                 priority
               />
             </Avatar>
-            {/* Live status badge indicator */}
-            <span 
-              className="absolute bottom-1 right-1 flex h-3.5 w-3.5" 
-              role="status"
-              aria-label="Status: Active & Available"
-              title="Active & Available"
-            >
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" aria-hidden="true" />
-              <span className="relative inline-flex rounded-full h-3 w-3 m-[1px] bg-emerald-500 ring-2 ring-background" aria-hidden="true" />
-            </span>
           </div>
         </motion.div>
         

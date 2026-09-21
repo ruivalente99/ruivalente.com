@@ -95,111 +95,140 @@ export default function ExperiencePage() {
         </section>
       </div>
 
-      <div className="min-h-screen bg-background text-foreground p-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-8">
-            <Button
-              variant="ghost"
-              onClick={() => router.back()}
-              className="mb-4"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" /> Back
-            </Button>
-            <h1 className="text-2xl font-bold">Professional Experience</h1>
-            <p className="text-muted-foreground mt-2">
-              Progressive software engineering career with expertise in React, TypeScript, and modern web development
-            </p>
-          </div>
+      <div className="min-h-screen bg-background text-foreground">
+        {/* Harmonized Hero Section */}
+        <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
+          <div
+            className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"
+            aria-hidden="true"
+          />
 
-        <div className="space-y-6">
-          {experiences?.map((exp) => (
+          <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
             <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
             >
-                <Card className="p-6 relative group hover:shadow-lg transition-shadow">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex-1">
-                      <h2 className="text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
-                        <Link href={`/experience/${exp.id}`} className="focus:outline-none focus-visible:underline">
-                          <span className="absolute inset-0" aria-hidden="true" />
-                          {exp.role}
-                        </Link>
-                      </h2>
-                      <div className="flex items-center gap-4">
-                        <p className="text-muted-foreground">{exp.company}</p>
-                        <p className="text-sm text-muted-foreground">{exp.year}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 relative z-10">
-                      <a
-                        href={exp.companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                        aria-label={`Visit ${exp.company} website (opens in new tab)`}
-                      >
-                        <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                      </a>
-                      <ChevronRight className="w-4 h-4 text-muted-foreground pointer-events-none" aria-hidden="true" />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium">Skills & Technologies:</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.skills?.slice(0, 6).map((skill, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                      {exp.skills?.length > 6 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{exp.skills.length - 6} more
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-                </Card>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.back()}
+                className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all"
+                aria-label="Back to previous view"
+              >
+                <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform duration-150 group-hover:-translate-x-0.5" aria-hidden="true" />
+                <span>Back</span>
+              </Button>
+
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-muted/60 border border-border/50 text-muted-foreground">
+                  <span className="capitalize">Career Path</span>
+                </div>
+
+                <div className="space-y-2">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
+                    Professional Experience
+                  </h1>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                    Progressive software engineering career with expertise in React, TypeScript, and modern component systems.
+                  </p>
+                </div>
+              </div>
             </motion.div>
-          ))}
-        </div>
+          </div>
+        </header>
+
+        <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+          <div className="space-y-5">
+            {experiences?.map((exp) => (
+              <motion.article
+                key={exp.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.2 }}
+                className="relative group rounded-2xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 p-6 md:p-7 shadow-2xs transition-all duration-200"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                  <div className="flex-1">
+                    <h2 className="text-lg md:text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                      <Link href={`/experience/${exp.id}`} className="focus:outline-none focus-visible:underline">
+                        <span className="absolute inset-0" aria-hidden="true" />
+                        {exp.role}
+                      </Link>
+                    </h2>
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground pt-0.5">
+                      <span className="font-medium text-foreground/80">{exp.company}</span>
+                      <span className="opacity-40" aria-hidden="true">•</span>
+                      <span>{exp.year}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 relative z-10 self-start sm:self-auto">
+                    <a
+                      href={exp.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      aria-label={`Visit ${exp.company} website (opens in new tab)`}
+                    >
+                      <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                    </a>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground pointer-events-none group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                  </div>
+                </div>
+
+                <div className="space-y-2 pt-2 border-t border-border/40">
+                  <div className="flex flex-wrap gap-1.5">
+                    {exp.skills?.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-mono bg-muted/50 text-foreground/90 border border-border/50"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </main>
       </div>
-    </div>
     </>
   );
 }
 
 function ExperienceSkeleton() {
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <div className="mb-8">
-        <Skeleton className="h-10 w-24 mb-4" />
-        <Skeleton className="h-8 w-48" />
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="border-b border-border/60 bg-muted/20">
+        <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+          <div className="space-y-6">
+            <div className="h-8 w-20 bg-muted rounded-md animate-pulse" />
+            <div className="h-5 w-28 bg-muted rounded-full animate-pulse" />
+            <div className="space-y-3">
+              <div className="h-10 w-3/4 bg-muted rounded-md animate-pulse" />
+              <div className="h-5 w-1/2 bg-muted rounded-md animate-pulse" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="space-y-6">
-        {[1, 2, 3].map((i) => (
-          <Card key={i} className="p-6">
-            <Skeleton className="h-6 w-3/4 mb-2" />
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <Skeleton className="h-4 w-48 mb-1" />
-                <Skeleton className="h-4 w-24" />
-              </div>
-              <Skeleton className="w-4 h-4" />
-            </div>
-            <div className="space-y-2">
-              <Skeleton className="h-4 w-32" />
-              <div className="space-y-1">
-                {[1, 2, 3].map((j) => (
-                  <Skeleton key={j} className="h-4 w-full" />
-                ))}
+
+      <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+        <div className="space-y-5">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="p-6 rounded-2xl border border-border/70 bg-card/60 space-y-4">
+              <Skeleton className="h-6 w-2/3" />
+              <Skeleton className="h-4 w-1/3" />
+              <div className="flex gap-2 pt-2">
+                <Skeleton className="h-5 w-16" />
+                <Skeleton className="h-5 w-20" />
+                <Skeleton className="h-5 w-16" />
               </div>
             </div>
-          </Card>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

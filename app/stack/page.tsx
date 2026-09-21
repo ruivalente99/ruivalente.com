@@ -1,37 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, LucideIcon } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { ArrowLeft, Layers, Sparkles, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
-import { 
-  SiReact, 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiTailwindcss,
-  SiNodedotjs,
-  SiGraphql,
-  SiDocker,
-  SiJest,
-  SiStackblitz as DefaultIcon,
-  SiAmazon,
-  SiAngular,
-  SiBootstrap,
-  SiDbeaver,
-  SiGitkraken,
-  SiIonic,
-  SiJavascript,
-  SiJenkins,
-  SiJira,
-  SiServerless,
-  SiSonarqube
-} from "react-icons/si";
-import { DiLinux } from 'react-icons/di';
-import { VscVscode } from 'react-icons/vsc';
-import { useIconMap } from '@/lib/hooks/useIconMap';
+import { SiStackblitz as DefaultIcon } from "react-icons/si";
+import { useIconMap } from "@/lib/hooks/useIconMap";
+import { cn } from "@/lib/utils";
 
 interface TechItem {
   name: string;
@@ -50,142 +27,199 @@ export default function StackPage() {
   const router = useRouter();
   const iconMap = useIconMap();
 
-  const { data: stack, isLoading } = useData<TechCategory[]>('/api/stack');
+  const { data: stack, isLoading } = useData<TechCategory[]>("/api/stack");
 
   if (isLoading) {
     return <StackSkeleton />;
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <Button
-            variant="ghost"
-            onClick={() => router.back()}
-            className="mb-4"
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Harmonized Hero Section */}
+      <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
+        {/* Subtle theme-aware accent ambient lighting */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"
+          aria-hidden="true"
+        />
+
+        <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            <ArrowLeft className="w-4 h-4 mr-2" /> Back
-          </Button>
-          <h1 className="text-2xl font-bold">Tech Stack</h1>
-        </div>
-        <div className="space-y-8">
-          {stack?.map((category) => (
-            <section key={category.category}>
-              {category.category === "AI Stack" ? (
-                <div className="relative">
-                  {/* AI Stack with special styling */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="relative rounded-xl p-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+            {/* Standardized Back Navigation */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.back()}
+              className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all"
+              aria-label="Back to previous view"
+            >
+              <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform duration-150 group-hover:-translate-x-0.5" aria-hidden="true" />
+              <span>Back</span>
+            </Button>
+
+            <div className="space-y-5">
+              {/* Type Micro-Badge */}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-muted/60 border border-border/50 text-muted-foreground">
+                <Layers className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>Engineering Stack</span>
+              </div>
+
+              {/* Title & Description */}
+              <div className="space-y-3">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
+                  Technical Arsenal & Tooling
+                </h1>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                  Curated frameworks, programming languages, system utilities, and autonomous AI agents driving my daily engineering practice.
+                </p>
+              </div>
+
+              {/* Category Quick Navigation Chips */}
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {stack?.map((cat) => (
+                  <a
+                    key={cat.category}
+                    href={`#${cat.category.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-muted/50 text-foreground/90 border border-border/50 hover:bg-muted/80 hover:border-border transition-colors duration-150"
                   >
-                    <div className="bg-background rounded-lg p-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                          {category.category}
-                        </h2>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {category.items.map((tech) => {
-                          const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
-                          
-                          return (
-                            <motion.div
-                              key={tech.name}
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              whileHover={{ scale: 1.02, y: -2 }}
-                              className="group"
-                            >
-                              <Card className="p-6 h-full transition-all duration-300 border-2 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-500/20">
-                                <div className="flex items-center gap-3 mb-3">
-                                  <div className="p-2 rounded-lg bg-gradient-to-r from-blue-100 to-purple-100 group-hover:from-blue-200 group-hover:to-purple-200">
-                                    <Icon className="w-6 h-6 text-purple-600" aria-hidden="true" />
-                                  </div>
-                                  <h3 className="text-lg font-semibold">{tech.name}</h3>
-                                </div>
-                                <p className="text-sm text-muted-foreground mb-3">
-                                  {tech.description}
-                                </p>
-                                <div className="text-sm">
-                                  <strong className="text-foreground">Why I use it: </strong>
-                                  <span className="text-muted-foreground">{tech.reason}</span>
-                                </div>
-                              </Card>
-                            </motion.div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              ) : (
-                <div>
-                  <h2 className="text-xl font-semibold mb-4">{category.category}</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {category.items.map((tech) => {
-                      const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
-                      
-                      return (
-                        <motion.div
-                          key={tech.name}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          whileHover={{ scale: 1.02 }}
-                        >
-                          <Card className="p-6">
-                            <div className="flex items-center gap-3 mb-3">
-                              <Icon className="w-6 h-6 text-foreground" aria-hidden="true" />
-                              <h3 className="text-lg font-semibold">{tech.name}</h3>
-                            </div>
-                            <p className="text-sm text-muted-foreground mb-3">
-                              {tech.description}
-                            </p>
-                            <div className="text-sm">
-                              <strong className="text-foreground">Why I use it: </strong>
-                              <span className="text-muted-foreground">{tech.reason}</span>
-                            </div>
-                          </Card>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </section>
-          ))}
+                    {cat.category}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+        <div className="space-y-12">
+          {stack?.map((category) => {
+            const isAi = category.category === "AI Stack";
+            const sectionId = category.category.toLowerCase().replace(/\s+/g, "-");
+
+            return (
+              <section key={category.category} id={sectionId} className="space-y-5 scroll-mt-20">
+                <div className="flex items-center justify-between border-b border-border/50 pb-3">
+                  <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                    {isAi && <Sparkles className="w-4 h-4 text-primary" aria-hidden="true" />}
+                    <span>{category.category}</span>
+                  </h2>
+                  <span className="text-xs font-mono text-muted-foreground">
+                    {category.items.length} {category.items.length === 1 ? "tool" : "tools"}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {category.items.map((tech) => {
+                    const Icon = (iconMap[tech.icon.toLowerCase() as keyof typeof iconMap] || DefaultIcon) as LucideIcon;
+
+                    return (
+                      <article
+                        key={tech.name}
+                        className={cn(
+                          "group relative p-5 rounded-xl transition-all duration-200 flex flex-col justify-between",
+                          isAi
+                            ? "border-2 border-primary/40 bg-gradient-to-br from-primary/5 via-card to-card shadow-2xs hover:border-primary/60"
+                            : "border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 shadow-2xs"
+                        )}
+                      >
+                        <div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div
+                              className={cn(
+                                "w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border transition-colors",
+                                isAi
+                                  ? "bg-primary/10 border-primary/30 text-primary"
+                                  : "bg-muted/60 border-border/50 text-foreground group-hover:bg-muted"
+                              )}
+                            >
+                              <Icon className="w-5 h-5" aria-hidden="true" />
+                            </div>
+                            <div>
+                              <h3 className="text-base font-semibold tracking-tight text-foreground">
+                                {tech.name}
+                              </h3>
+                              {isAi && (
+                                <span className="inline-block text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">
+                                  Autonomous Agent
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                            {tech.description}
+                          </p>
+                        </div>
+
+                        <div className="pt-3 border-t border-border/40 mt-auto">
+                          <p className="text-xs text-muted-foreground leading-normal">
+                            <span className="font-semibold text-foreground">Why I use it: </span>
+                            {tech.reason}
+                          </p>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      </main>
     </div>
   );
 }
 
 function StackSkeleton() {
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <div className="mb-8">
-        <Skeleton className="h-10 w-24 mb-4" />
-        <Skeleton className="h-8 w-48" />
-      </div>
-      <div className="space-y-8">
-        {[1, 2, 3].map((section) => (
-          <div key={section}>
-            <Skeleton className="h-6 w-32 mb-4" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <Card key={i} className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Skeleton className="w-6 h-6" />
-                    <Skeleton className="h-6 w-32" />
-                  </div>
-                  <Skeleton className="h-4 w-full mb-3" />
-                  <Skeleton className="h-4 w-3/4" />
-                </Card>
-              ))}
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="border-b border-border/60 bg-muted/20">
+        <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+          <div className="space-y-6">
+            <div className="h-8 w-20 bg-muted rounded-md animate-pulse" />
+            <div className="h-5 w-32 bg-muted rounded-full animate-pulse" />
+            <div className="space-y-3">
+              <div className="h-10 w-3/4 bg-muted rounded-md animate-pulse" />
+              <div className="h-5 w-1/2 bg-muted rounded-md animate-pulse" />
+            </div>
+            <div className="flex gap-2 pt-2">
+              <div className="h-6 w-20 bg-muted rounded-md animate-pulse" />
+              <div className="h-6 w-24 bg-muted rounded-md animate-pulse" />
+              <div className="h-6 w-20 bg-muted rounded-md animate-pulse" />
             </div>
           </div>
-        ))}
+        </div>
+      </div>
+
+      <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+        <div className="space-y-10">
+          {[1, 2, 3].map((section) => (
+            <div key={section} className="space-y-4">
+              <div className="h-6 w-36 bg-muted rounded animate-pulse" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="p-5 rounded-xl border border-border/70 bg-card/60 space-y-4">
+                    <div className="flex items-center gap-3">
+                      <Skeleton className="w-10 h-10 rounded-lg" />
+                      <Skeleton className="h-5 w-32" />
+                    </div>
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                    <div className="pt-3 border-t border-border/40">
+                      <Skeleton className="h-3 w-5/6" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

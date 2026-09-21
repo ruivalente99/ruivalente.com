@@ -8,6 +8,7 @@ import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProjectsPage() {
   const router = useRouter();
@@ -59,87 +60,161 @@ export default function ProjectsPage() {
         </section>
       </div>
 
-      <div className="min-h-[100dvh] bg-background text-foreground p-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <Button
-              variant="ghost"
-              onClick={() => router.back()}
-              className="mb-4"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" /> Back
-            </Button>
-            <h1 className="text-2xl font-bold">All Projects</h1>
-            <p className="text-muted-foreground mt-2">
-              A collection of software engineering projects showcasing modern web development with React, TypeScript, and Next.js
-            </p>
-          </div>
+      <div className="min-h-screen bg-background text-foreground">
+        {/* Harmonized Hero Section */}
+        <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
+          <div
+            className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"
+            aria-hidden="true"
+          />
 
-          <div className="flex flex-nowrap gap-6 overflow-x-auto custom-scroll scroll-hover pb-6">
-            {projects?.map((project) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.02 }}
-                className="flex-none w-[300px]"
+          <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.back()}
+                className="group mb-6 -ml-2 text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all"
+                aria-label="Back to previous view"
               >
-                <Card className="overflow-hidden h-full">
-                  <div className="aspect-video overflow-hidden relative">
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} - Software engineering project by Rui Valente`}
-                      fill
-                      className="object-cover"
-                    />
+                <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform duration-150 group-hover:-translate-x-0.5" aria-hidden="true" />
+                <span>Back</span>
+              </Button>
+
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-muted/60 border border-border/50 text-muted-foreground">
+                  <span className="capitalize">Featured Engineering</span>
+                </div>
+
+                <div className="space-y-2">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
+                    Flagship Software Projects
+                  </h1>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                    A comprehensive portfolio of production platforms, open-source systems, and developer tools built with React, TypeScript, and modern web frameworks.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </header>
+
+        <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects?.map((project) => {
+              const displaySkills = (project.skills || []).slice(0, 4);
+
+              return (
+                <motion.article
+                  key={project.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
+                  className="group rounded-2xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 overflow-hidden flex flex-col justify-between shadow-2xs transition-all duration-200"
+                >
+                  <div>
+                    <div className="aspect-video relative overflow-hidden bg-muted/30">
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} - Software engineering project by Rui Valente`}
+                        fill
+                        className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                      />
+                      <div className="absolute inset-0 ring-1 ring-inset ring-black/10 dark:ring-white/10 pointer-events-none" />
+                    </div>
+
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-2">
+                        <h2 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                          <Link href={`/projects/${project.id}`} className="focus:outline-none focus-visible:underline">
+                            {project.title}
+                          </Link>
+                        </h2>
+                      </div>
+
+                      <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed mb-4">
+                        {project.description}
+                      </p>
+
+                      {displaySkills.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {displaySkills.map((skill: string) => (
+                            <span
+                              key={skill}
+                              className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-mono bg-muted/50 text-foreground/90 border border-border/50"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <h2 className="text-lg font-semibold mb-2">{project.title}</h2>
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        asChild
-                      >
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
+
+                  <div className="p-6 pt-0 flex items-center justify-between gap-2 border-t border-border/40 mt-auto">
+                    <div className="flex items-center gap-2 pt-4">
+                      {project.demo && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className="h-8 px-2.5 text-xs font-medium rounded-lg border-border/70 active:scale-[0.96]"
                         >
-                          <Globe className="w-3 h-3 mr-1" /> Demo
-                        </a>
-                      </Button>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        asChild
-                      >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5"
+                          >
+                            <Globe className="w-3.5 h-3.5 opacity-70" aria-hidden="true" />
+                            <span>Demo</span>
+                          </a>
+                        </Button>
+                      )}
+                      {project.github && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className="h-8 px-2.5 text-xs font-medium rounded-lg border-border/70 active:scale-[0.96]"
                         >
-                          <Github className="w-3 h-3 mr-1" /> Source
-                        </a>
-                      </Button>
-                      <Button 
-                        variant="outline" 
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5"
+                          >
+                            <Github className="w-3.5 h-3.5 opacity-70" aria-hidden="true" />
+                            <span>Source</span>
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+
+                    <div className="pt-4">
+                      <Button
+                        variant="ghost"
                         size="sm"
-                        onClick={() => router.push(`/projects/${project.id}`)}
-                        className="ml-auto"
+                        asChild
+                        className="h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground active:scale-[0.96]"
                       >
-                        Details <ArrowRight className="w-3 h-3 ml-1" />
+                        <Link href={`/projects/${project.id}`} className="flex items-center gap-1">
+                          <span>Details</span>
+                          <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                        </Link>
                       </Button>
                     </div>
                   </div>
-                </Card>
-              </motion.div>
-            ))}
+                </motion.article>
+              );
+            })}
           </div>
-        </div>
+        </main>
       </div>
     </>
   );
@@ -147,29 +222,37 @@ export default function ProjectsPage() {
 
 function ProjectsSkeleton() {
   return (
-    <div className="max-w-7xl mx-auto p-4">
-      <div className="mb-8">
-        <Skeleton className="h-10 w-24 mb-4" />
-        <Skeleton className="h-8 w-48" />
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="border-b border-border/60 bg-muted/20">
+        <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+          <div className="space-y-6">
+            <div className="h-8 w-20 bg-muted rounded-md animate-pulse" />
+            <div className="h-5 w-36 bg-muted rounded-full animate-pulse" />
+            <div className="space-y-3">
+              <div className="h-10 w-3/4 bg-muted rounded-md animate-pulse" />
+              <div className="h-5 w-1/2 bg-muted rounded-md animate-pulse" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="flex gap-6 overflow-x-auto pb-6">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="flex-none w-[300px]">
-            <Card className="overflow-hidden">
+
+      <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="rounded-2xl border border-border/70 bg-card/60 overflow-hidden space-y-4">
               <Skeleton className="aspect-video" />
-              <div className="p-6">
-                <Skeleton className="h-6 w-3/4 mb-2" />
-                <Skeleton className="h-4 w-full mb-2" />
-                <Skeleton className="h-4 w-2/3 mb-4" />
-                <div className="flex gap-2">
+              <div className="p-6 space-y-3">
+                <Skeleton className="h-6 w-2/3" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-3/4" />
+                <div className="flex gap-2 pt-4">
                   <Skeleton className="h-8 w-20" />
                   <Skeleton className="h-8 w-20" />
-                  <Skeleton className="h-8 w-20 ml-auto" />
                 </div>
               </div>
-            </Card>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
