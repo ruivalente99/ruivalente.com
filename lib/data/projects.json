@@ -58,7 +58,7 @@
       "demo": "https://project-cass.vercel.app/",
       "github": "https://github.com/ruivalente99/cass",
       "contentPath": "/content/projects/cass.md",
-      "skills": ["Artificial Intelligence", "Machine Learning", "Natural Language Processing", "Python", "API Design", "PostgreSQL", "Docker"]
+      "skills": ["AI", "Machine Learning", "Python", "API Design", "PostgreSQL", "Docker"]
     }
   ]
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Github, Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -104,90 +103,86 @@ export function ProjectsSection() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 my-auto">
-        <AnimatePresence mode="wait" initial={false}>
-          {currentProjects.map((project) => {
-            const displaySkills = (project.skills || []).slice(0, 3);
+        {currentProjects.map((project) => {
+          const displaySkills = (project.skills || []).slice(0, 3);
 
-            return (
-              <article
-                key={project.id}
-                className="group relative overflow-hidden rounded-xl bg-muted/25 hover:bg-muted/55 border border-border/40 transition-all duration-200 active:scale-[0.99] shadow-2xs flex flex-col justify-between h-full"
-              >
-                <div className="aspect-[16/9] max-h-[170px] overflow-hidden relative rounded-t-xl bg-muted/40">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+          return (
+            <article
+              key={project.id}
+              className="group relative overflow-hidden rounded-xl bg-muted/25 hover:bg-muted/55 border border-border/40 transition-all duration-200 active:scale-[0.99] shadow-2xs flex flex-col justify-between h-full"
+            >
+              <div className="aspect-[16/9] w-full overflow-hidden relative rounded-t-xl bg-muted/40 shrink-0">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/10 dark:ring-white/10 rounded-t-xl pointer-events-none" />
+              </div>
+
+              <div className="p-3 flex flex-col justify-between flex-1 min-h-0">
+                <div>
+                  <div className="flex items-center justify-between gap-1 mb-1 h-5 shrink-0">
+                    <h3 className="text-sm font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors truncate">
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="focus:outline-none focus-visible:underline"
+                      >
+                        <span className="absolute inset-0" aria-hidden="true" />
+                        {project.title}
+                      </Link>
+                    </h3>
+                  </div>
+
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-2 leading-relaxed h-10 overflow-hidden">
+                    {project.description}
+                  </p>
+
+                  <div className="h-6 mb-2.5 flex items-center gap-1 overflow-hidden shrink-0">
+                    {displaySkills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-muted/60 text-foreground/85 border border-border/30 shrink-0 truncate max-w-[120px]"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-1.5 border-t border-border/30 shrink-0 h-8">
+                  <div className="flex items-center gap-1.5 relative z-10">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-6 px-2 rounded-lg bg-background/80 hover:bg-background border border-border/50 text-[11px] font-medium flex items-center gap-1 text-foreground/80 hover:text-foreground transition-all duration-150 active:scale-[0.94] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      aria-label={`View live demo of ${project.title} (opens in new tab)`}
+                    >
+                      <Globe className="w-3 h-3 opacity-70" aria-hidden="true" />
+                      <span>{t.bento.projects.demo}</span>
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-6 px-2 rounded-lg bg-background/80 hover:bg-background border border-border/50 text-[11px] font-medium flex items-center gap-1 text-foreground/80 hover:text-foreground transition-all duration-150 active:scale-[0.94] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      aria-label={`View source code for ${project.title} on GitHub (opens in new tab)`}
+                    >
+                      <Github className="w-3 h-3 opacity-70" aria-hidden="true" />
+                      <span>{t.bento.projects.source}</span>
+                    </a>
+                  </div>
+                  <ArrowRight
+                    className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-foreground pointer-events-none"
+                    aria-hidden="true"
                   />
-                  <div className="absolute inset-0 ring-1 ring-inset ring-black/10 dark:ring-white/10 rounded-t-xl pointer-events-none" />
                 </div>
-
-                <div className="p-3 flex flex-col justify-between flex-1">
-                  <div>
-                    <div className="flex items-center justify-between gap-1 mb-1">
-                      <h3 className="text-sm font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">
-                        <Link
-                          href={`/projects/${project.id}`}
-                          className="focus:outline-none focus-visible:underline"
-                        >
-                          <span className="absolute inset-0" aria-hidden="true" />
-                          {project.title}
-                        </Link>
-                      </h3>
-                    </div>
-
-                    <p className="text-xs text-muted-foreground line-clamp-2 mb-2 leading-relaxed">
-                      {project.description}
-                    </p>
-
-                    {displaySkills.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mb-2.5">
-                        {displaySkills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-muted/60 text-muted-foreground border border-border/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex items-center justify-between pt-1.5 border-t border-border/30">
-                    <div className="flex items-center gap-1.5 relative z-10">
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="h-6 px-2 rounded-lg bg-background/80 hover:bg-background border border-border/50 text-[11px] font-medium flex items-center gap-1 text-foreground/80 hover:text-foreground transition-all duration-150 active:scale-[0.94] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                        aria-label={`View live demo of ${project.title} (opens in new tab)`}
-                      >
-                        <Globe className="w-3 h-3 opacity-70" aria-hidden="true" />
-                        <span>{t.bento.projects.demo}</span>
-                      </a>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="h-6 px-2 rounded-lg bg-background/80 hover:bg-background border border-border/50 text-[11px] font-medium flex items-center gap-1 text-foreground/80 hover:text-foreground transition-all duration-150 active:scale-[0.94] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                        aria-label={`View source code for ${project.title} on GitHub (opens in new tab)`}
-                      >
-                        <Github className="w-3 h-3 opacity-70" aria-hidden="true" />
-                        <span>{t.bento.projects.source}</span>
-                      </a>
-                    </div>
-                    <ArrowRight
-                      className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-foreground pointer-events-none"
-                      aria-hidden="true"
-                    />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </AnimatePresence>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </Card>
   );

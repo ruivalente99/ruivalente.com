@@ -155,6 +155,29 @@ async function runE2E() {
     }
     console.log("  PASSED: Bento grid row heights match perfectly across all 3 rows!\n");
 
+    // Verify that paginating through projects maintains identical row heights with zero layout shift
+    const nextProjBtn = desktopPage.getByRole("button", { name: /next projects/i });
+    if (await nextProjBtn.isVisible()) {
+      for (let p = 1; p <= 2; p++) {
+        await nextProjBtn.click();
+        await desktopPage.waitForTimeout(300);
+        const pBox4 = await bentoItems.nth(4).boundingBox();
+        const pBox5 = await bentoItems.nth(5).boundingBox();
+        const pBox6 = await bentoItems.nth(6).boundingBox();
+        const pDiff3a = Math.abs((pBox4?.height || 0) - (pBox5?.height || 0));
+        const pDiff3b = Math.abs((pBox5?.height || 0) - (pBox6?.height || 0));
+        const pDiffPage = Math.abs((pBox6?.height || 0) - (box6?.height || 0));
+        console.log(`  Projects Page ${p} Row 3: Edu=${pBox4?.height.toFixed(1)}px, Git=${pBox5?.height.toFixed(1)}px, Proj=${pBox6?.height.toFixed(1)}px (Diff to page 0: ${pDiffPage.toFixed(1)}px)`);
+        if (pDiff3a > 1.0 || pDiff3b > 1.0 || pDiffPage > 1.0) {
+          throw new Error(`Projects pagination caused layout shift! Height diff between pages: ${pDiffPage.toFixed(1)}px`);
+        }
+      }
+      // Return to page 1
+      await nextProjBtn.click();
+      await desktopPage.waitForTimeout(200);
+      console.log("  PASSED: Projects pagination maintains 0px layout shift across all pages!\n");
+    }
+
     // ----------------------------------------------------
     // Phase 2: Interactive Controls & i18n Switching Audit
     // ----------------------------------------------------
