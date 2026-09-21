@@ -1,22 +1,20 @@
-**aug 2021 — may 2022 | remote (germany / portugal)**
+## Overview
 
-as a junior software engineer at neoception gmbh, i contributed to frontend engineering initiatives across industrial iot client portals, developing responsive web interfaces, crafting shared component libraries, and collaborating within international agile development squads.
+As a Junior Software Engineer at Neoception GmbH (a subsidiary of Pepperl+Fuchs), I contributed to frontend engineering initiatives across industrial IoT client portals, developing responsive web interfaces, crafting shared component libraries, and collaborating within international agile development squads.
 
-## overview
+Neoception specializes in Industrial Internet of Things (IIoT) solutions, connecting physical sensors and machinery to cloud platforms. My engineering responsibilities focused on building customer dashboards and administrative portals that rendered industrial device telemetry and status metrics.
 
-neoception gmbh (a subsidiary of pepperl+fuchs) specializes in industrial internet of things (iiot) solutions, connecting physical sensors and machinery to cloud platforms. my engineering responsibilities focused on building customer dashboards and administrative portals that rendered industrial device telemetry and status metrics.
+## Key Technical Achievements
 
-## key technical achievements
+- **Responsive Client Portals**: Engineered modern, responsive web application views utilizing React and modern JavaScript (ES6+), delivering consistent layouts across diverse desktop and mobile browsers.
+- **Standardized Component Library**: Implemented and documented a shared UI component library built upon Material UI, establishing reusable patterns for tables, charts, navigation sidebars, and modal dialogs.
+- **Data Visualization Widgets**: Created interactive dashboard cards to display live sensor health, connectivity status, and telemetry alerts for field operations engineers.
+- **Agile Collaboration**: Participated actively in bi-weekly sprint planning, daily stand-up meetings, and retrospectives in an international English-speaking remote team.
+- **Code Review & Quality Discipline**: Engaged regularly in peer code reviews, adhering to strict coding guidelines, Git branching conventions, and unit testing requirements.
 
-- **responsive client portals**: engineered modern, responsive web application views utilizing react and modern javascript (es6+), delivering consistent layouts across diverse desktop and mobile browsers.
-- **standardized component library**: implemented and documented a shared ui component library built upon material ui, establishing reusable patterns for tables, charts, navigation sidebars, and modal dialogs.
-- **data visualization widgets**: created interactive dashboard cards to display live sensor health, connectivity status, and telemetry alerts for field operations engineers.
-- **agile collaboration**: participated actively in bi-weekly sprint planning, daily stand-up meetings, and retrospectives in an international english-speaking remote team.
-- **code review & quality discipline**: engaged regularly in peer code reviews, adhering to strict coding guidelines, git branching conventions, and unit testing requirements.
+## Technical Toolkit
 
-## technical toolkit
-
-- **core frontend**: react, javascript (es6+), material ui, html5, css3
-- **version control**: git, sourcetree, github
-- **methodologies & workflows**: agile/scrum, sprint retrospectives, peer code reviews, unit testing
-- **engineering tools**: jira, vs code, firefox developer edition, chrome devtools
+- **Core Frontend**: React, JavaScript (ES6+), Material UI, HTML5, CSS3
+- **Version Control**: Git, Sourcetree, GitHub
+- **Methodologies & Workflows**: Agile/Scrum, sprint retrospectives, peer code reviews, unit testing
+- **Engineering Tools**: Jira, VS Code, Firefox Developer Edition, Chrome DevTools

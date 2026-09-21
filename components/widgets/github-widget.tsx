@@ -3,7 +3,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Github, GitCommit, Star, GitFork, ArrowRight, BookOpen, ExternalLink } from "lucide-react";
+import { Github, GitCommit, GitFork, ArrowRight, BookOpen, ExternalLink, Users } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
@@ -87,17 +87,9 @@ export function GitHubWidget({ username = "ruivalente99" }: GitHubWidgetProps) {
         <div className="p-2 rounded-xl bg-muted/25 border border-border/40 text-center shadow-2xs">
           <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5">
             <GitCommit className="w-3 h-3" aria-hidden="true" />
-            <span className="text-[10px] font-mono lowercase">commits</span>
+            <span className="text-[10px] font-mono lowercase">contribs</span>
           </div>
-          <span className="text-xs font-bold font-mono text-foreground">1,480+</span>
-        </div>
-
-        <div className="p-2 rounded-xl bg-muted/25 border border-border/40 text-center shadow-2xs">
-          <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5">
-            <Star className="w-3 h-3 text-amber-500" aria-hidden="true" />
-            <span className="text-[10px] font-mono lowercase">stars</span>
-          </div>
-          <span className="text-xs font-bold font-mono text-foreground">86+</span>
+          <span className="text-xs font-bold font-mono text-foreground">3,000+</span>
         </div>
 
         <div className="p-2 rounded-xl bg-muted/25 border border-border/40 text-center shadow-2xs">
@@ -105,7 +97,15 @@ export function GitHubWidget({ username = "ruivalente99" }: GitHubWidgetProps) {
             <GitFork className="w-3 h-3" aria-hidden="true" />
             <span className="text-[10px] font-mono lowercase">repos</span>
           </div>
-          <span className="text-xs font-bold font-mono text-foreground">42</span>
+          <span className="text-xs font-bold font-mono text-foreground">14</span>
+        </div>
+
+        <div className="p-2 rounded-xl bg-muted/25 border border-border/40 text-center shadow-2xs">
+          <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5">
+            <Users className="w-3 h-3" aria-hidden="true" />
+            <span className="text-[10px] font-mono lowercase">followers</span>
+          </div>
+          <span className="text-xs font-bold font-mono text-foreground">10</span>
         </div>
       </div>
 
@@ -138,10 +138,8 @@ export function GitHubWidget({ username = "ruivalente99" }: GitHubWidgetProps) {
                 <span className="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true" />
                 <span>typescript</span>
               </span>
-              <span className="flex items-center gap-0.5">
-                <Star className="w-2.5 h-2.5 text-amber-500" aria-hidden="true" />
-                <span>24</span>
-              </span>
+              <span className="text-muted-foreground/50">•</span>
+              <span>react 19</span>
             </div>
             <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" aria-hidden="true" />
           </div>

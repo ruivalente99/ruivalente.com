@@ -1,28 +1,26 @@
-**jun 2022 — nov 2025 | hybrid (vila real, portugal)**
+## Overview
 
-as a frontend engineer at openvia, i led the architecture, implementation, and continuous evolution of customer-facing web and mobile applications, creating responsive, robust interfaces that supported thousands of daily active users across mobility and tolling ecosystems.
+As a Frontend Engineer at Openvia, I led the architecture, implementation, and continuous evolution of customer-facing web and mobile applications, creating responsive, robust interfaces that supported thousands of daily active users across mobility and tolling ecosystems.
 
-## overview
+Openvia is a leading mobility infrastructure operator dedicated to digital roadway management, electronic tolling solutions, and smart highway operations. My role encompassed owning the core frontend user interfaces, driving technological modernization, and collaborating closely with backend architects and operations teams.
 
-openvia is a leading mobility infrastructure operator dedicated to digital roadway management, electronic tolling solutions, and smart highway operations. my role encompassed owning the core frontend user interfaces, driving technological modernization, and collaborating closely with backend architects and operations teams.
+## Key Technical Achievements
 
-## key technical achievements
+- **Customer Application Leadership**: Served as the lead frontend engineer for flagship customer-facing web applications, enhancing user retention and satisfaction through intuitive onboarding flows, self-service portals, and real-time transaction history.
+- **Core Performance Optimization**: Dramatically reduced initial bundle size by over 38% through route-based dynamic code-splitting, tree-shaking dead dependencies, image optimization pipelines, and selective component lazy-loading.
+- **GraphQL & API Integration**: Authored bespoke GraphQL query layers and integrated high-throughput RESTful APIs, unifying disparate backend microservices into a coherent client-side data cache with optimistic UI updates.
+- **Legacy System Modernization**: Systematically upgraded legacy mobile and web codebases built with Ionic and Angular, refactoring dated architectures into modular, maintainable component patterns and improving build times.
+- **Responsive & Cross-Platform Consistency**: Ensured flawless layout fidelity across mobile, tablet, and desktop viewports, creating resilient SCSS/Bootstrap design systems adapted for high-touch customer environments.
 
-- **customer application leadership**: served as the lead frontend engineer for flagship customer-facing web applications, enhancing user retention and satisfaction through intuitive onboarding flows, self-service portals, and real-time transaction history.
-- **core performance optimization**: dramatically reduced initial bundle size by over 38% through route-based dynamic code-splitting, tree-shaking dead dependencies, image optimization pipelines, and selective component lazy-loading.
-- **graphql & api integration**: authored bespoke graphql query layers and integrated high-throughput restful apis, unifying disparate backend microservices into a coherent client-side data cache with optimistic ui updates.
-- **legacy system modernization**: systematically upgraded legacy mobile and web codebases built with ionic and angular, refactoring dated architectures into modular, maintainable component patterns and improving build times.
-- **responsive & cross-platform consistency**: ensured flawless layout fidelity across mobile, tablet, and desktop viewports, creating resilient scss/bootstrap design systems adapted for high-touch customer environments.
+## Quality Engineering & DevOps
 
-## quality engineering & devops
+- **Automated Testing Suite**: Designed and established an end-to-end Jest unit testing framework covering business-critical account registration, billing, and balance top-up workflows, preventing production regressions.
+- **CI/CD Pipeline Automation**: Configured and maintained automated Jenkins build and Docker deployment pipelines, shortening release cycles from weeks to automated daily staging deployments.
+- **Code Quality & Security Audits**: Integrated SonarQube static analysis gates to monitor code smell density, security vulnerabilities, and test coverage metrics across the frontend repository.
 
-- **automated testing suite**: designed and established an end-to-end jest unit testing framework covering business-critical account registration, billing, and balance top-up workflows, preventing production regressions.
-- **ci/cd pipeline automation**: configured and maintained automated jenkins build and docker deployment pipelines, shortening release cycles from weeks to automated daily staging deployments.
-- **code quality & security audits**: integrated sonarqube static analysis gates to monitor code smell density, security vulnerabilities, and test coverage metrics across the frontend repository.
+## Technical Toolkit
 
-## technical toolkit
-
-- **core frontend**: react, typescript, javascript, next.js, bootstrap, scss, html5, ionic, angular
-- **data & apis**: graphql, apollo client, restful apis, node.js
-- **quality & automation**: jest, jenkins, docker, sonarqube, ci/cd pipelines
-- **engineering tools**: git, gitkraken, jira, dbeaver, vs code
+- **Core Frontend**: React, TypeScript, JavaScript, Next.js, Bootstrap, SCSS, HTML5, Ionic, Angular
+- **Data & APIs**: GraphQL, Apollo Client, RESTful APIs, Node.js
+- **Quality & Automation**: Jest, Jenkins, Docker, SonarQube, CI/CD pipelines
+- **Engineering Tools**: Git, GitKraken, Jira, DBeaver, VS Code

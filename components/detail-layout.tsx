@@ -66,9 +66,9 @@ export function DetailLayout({
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground lowercase">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
+      <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden lowercase">
         {/* Subtle theme-aware accent ambient lighting */}
         <div
           className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"
@@ -202,17 +202,7 @@ export function DetailLayout({
           {/* Prose Content Surface Card */}
           <Card className="overflow-hidden rounded-2xl border border-border/80 bg-card/80 backdrop-blur-xs shadow-xs">
             <div className="p-6 sm:p-10 lg:p-12">
-              <article className="prose prose-slate dark:prose-invert max-w-none
-                prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
-                prose-h2:text-2xl prose-h2:border-b prose-h2:border-border/60 prose-h2:pb-3 prose-h2:mt-8 prose-h2:mb-4
-                prose-h3:text-lg prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-2 prose-h3:text-foreground/90
-                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-4 prose-p:text-[15px]
-                prose-li:text-muted-foreground prose-li:leading-relaxed prose-li:text-[15px] prose-li:marker:text-primary
-                prose-strong:text-foreground prose-strong:font-semibold
-                prose-code:text-primary prose-code:bg-muted/60 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-xs prose-code:before:content-none prose-code:after:content-none
-                prose-blockquote:border-l-2 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-muted-foreground
-                prose-a:text-primary prose-a:underline hover:prose-a:text-primary/80
-                prose-pre:bg-muted/60 prose-pre:border prose-pre:border-border/60 prose-pre:rounded-lg">
+              <article className="prose-detail">
                 {content ? (
                   <div dangerouslySetInnerHTML={{ __html: content }} />
                 ) : (

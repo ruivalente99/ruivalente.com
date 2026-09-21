@@ -1,6 +1,6 @@
-**2021 — 2026 (not concluded) | University of Trás-os-Montes and Alto Douro (UTAD)**
+## Overview
 
-This advanced master's program (2021 — 2026, not concluded) builds upon the undergraduate foundations of computer science, emphasizing scalable software engineering architectures, design patterns, quality assurance methodologies, and modern web systems.
+This advanced Master's program (2021 — 2026, not concluded) builds upon the undergraduate foundations of computer science, emphasizing scalable software engineering architectures, design patterns, quality assurance methodologies, and modern web systems.
 
 ## Program Focus & Competencies
 
@@ -13,21 +13,22 @@ This advanced master's program (2021 — 2026, not concluded) builds upon the un
 ## Specialization Tracks
 
 ### Software Development & Architecture
-- Advanced programming paradigms (functional, reactive, object-oriented)
-- Enterprise architectural patterns and clean architecture
-- DevOps workflows, containerization, and continuous delivery pipelines
-- Performance optimization and profiling techniques
+- **Advanced Paradigms**: Functional, reactive, and modern object-oriented programming methodologies.
+- **Enterprise Patterns**: Clean architecture, domain-driven design, and hexagonal system architecture.
+- **DevOps Pipelines**: Modern container workflows, Docker, and continuous delivery automation.
+- **Performance Profiling**: Runtime optimization, latency minimization, and memory profiling techniques.
 
 ### Artificial Intelligence & Data Systems
-- Statistical modeling and machine learning algorithms
-- Data analytics, streaming architectures, and pipeline optimization
-- Computer vision, natural language processing, and neural network foundations
+- **Machine Learning**: Statistical modeling and predictive machine learning algorithms.
+- **Data Streaming**: Analytics pipelines, event-driven streaming architectures, and pipeline optimization.
+- **Neural Networks**: Computer vision, natural language processing, and deep learning foundations.
 
 ### Security & System Design
-- Secure software development lifecycle (SSDLC)
-- Information security principles, cryptographic protocols, and vulnerability analysis
-- System reliability, fault tolerance, and disaster recovery
+- **Secure SDLC**: Threat modeling, defensive coding, and secure development lifecycle practices.
+- **Information Security**: Cryptographic protocols, authentication mechanisms, and vulnerability analysis.
+- **System Reliability**: Fault tolerance, disaster recovery, and high availability design.
 
 ## Academic & Professional Engagement
-- Active participation in university research workshops and tech summit presentations.
-- Speaker at UTAD SUMMIT (2023, 2025) and SEI at University of Minho (2025).
+
+- **Research Workshops**: Active participation in university research workshops and tech summit presentations.
+- **Speaker & Presenter**: Speaker at UTAD SUMMIT (2023, 2025) and SEI at University of Minho (2025).
