@@ -49,7 +49,7 @@ export function HobbiesSection() {
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
                 <Music className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-                <h3 className="text-xs font-semibold tracking-tight">{hobbies.playlist.title}</h3>
+                <h3 className="text-xs font-semibold tracking-tight text-foreground">{hobbies.playlist.title}</h3>
               </div>
               {/* Mini animated equalizer bars */}
               <span className="flex items-end gap-[2px] h-3 w-3" aria-hidden="true">
@@ -76,7 +76,7 @@ export function HobbiesSection() {
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
                 <Tv className="w-3.5 h-3.5 text-foreground/80" aria-hidden="true" />
-                <h3 className="text-xs font-semibold tracking-tight">{hobbies.watching.title}</h3>
+                <h3 className="text-xs font-semibold tracking-tight text-foreground">{hobbies.watching.title}</h3>
               </div>
               <span className="h-1.5 w-1.5 rounded-full bg-primary/70 animate-pulse" />
             </div>
