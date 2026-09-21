@@ -40,6 +40,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { getIcon } from "@/lib/hooks/useIconMap";
 import { useI18n } from "@/lib/i18n/context";
 import { useAnimation } from "@/lib/animation/context";
+import { useTerminalWindow } from "@/components/terminal/terminal-window-context";
 import { cn } from "@/lib/utils";
 
 interface SearchableData {
@@ -75,6 +76,7 @@ export function SearchCommand() {
   const { theme, setTheme } = useTheme();
   const { locale, toggleLocale, t } = useI18n();
   const { animationsEnabled, toggleAnimations } = useAnimation();
+  const { openTerminal } = useTerminalWindow();
   const { toast } = useToast();
   const { data: searchData } = useData<SearchableData>("/api/search");
   const { data: themesData, isLoading: themesLoading } = useData<{ themes: Theme[] }>("/api/themes");
@@ -378,6 +380,21 @@ export function SearchCommand() {
                 <div className="flex-1">
                   <span>send email</span>
                   <p className="text-xs text-foreground/75 dark:text-muted-foreground">email@ruivalente.com</p>
+                </div>
+              </CommandItem>
+              <CommandItem
+                value="open terminal floating window multi tab shell vim snake prompt console"
+                onSelect={() => {
+                  openTerminal();
+                  setOpen(false);
+                }}
+              >
+                <Terminal className="mr-2 h-4 w-4 text-primary" aria-hidden="true" />
+                <div className="flex-1">
+                  <span>open floating terminal</span>
+                  <p className="text-xs text-foreground/75 dark:text-muted-foreground">
+                    interactive multi-tab window with vim, snake, and unix shell
+                  </p>
                 </div>
               </CommandItem>
             </CommandGroup>

@@ -9,6 +9,16 @@ import { I18nProvider } from "@/lib/i18n/context";
 import { AnimationProvider } from "@/lib/animation/context";
 import dynamic from 'next/dynamic';
 
+import { TerminalWindowProvider } from "@/components/terminal/terminal-window-context";
+
+const TerminalWindow = dynamic(
+  () => import('@/components/terminal/terminal-window').then(mod => mod.TerminalWindow),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+
 // Lazy load the Toaster component
 const Toaster = dynamic(
   () => import('@/components/ui/toaster').then(mod => mod.Toaster),
@@ -51,10 +61,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
       >
         <I18nProvider>
           <AnimationProvider>
-            {children}
-            <Toaster />
-            <Analytics />
-            <SpeedInsights />
+            <TerminalWindowProvider>
+              {children}
+              <TerminalWindow />
+              <Toaster />
+              <Analytics />
+              <SpeedInsights />
+            </TerminalWindowProvider>
           </AnimationProvider>
         </I18nProvider>
       </ThemeProvider>

@@ -62,11 +62,11 @@ export const COMMANDS: CmdSpec[] = [
   // games
   { name: "play", usage: "play [game]", desc: `mini games: ${GAMES.join(", ")}`, complete: "game" },
   { name: "snake", usage: "snake", desc: "the classic. arrows/wasd" },
-  { name: "tictactoe", usage: "tictactoe", desc: "you vs a smug AI" },
+  { name: "tictactoe", usage: "tictactoe", desc: "you vs a smug ai" },
   { name: "guess", usage: "guess", desc: "number guessing, 1-100" },
   { name: "typing", usage: "typing", desc: "wpm test" },
   // session
-  { name: "clear", usage: "clear", desc: "clear the screen (also Ctrl+L)" },
+  { name: "clear", usage: "clear", desc: "clear the screen (also ctrl+l)" },
   { name: "gui", usage: "gui [page]", desc: "back to the clickable website" },
   { name: "exit", usage: "exit", desc: "log out to ruivalente.com" },
   // hidden / easter eggs

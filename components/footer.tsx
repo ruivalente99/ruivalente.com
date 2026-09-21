@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n/context";
+import { useTerminalWindow } from "@/components/terminal/terminal-window-context";
 
 export function Footer() {
   const router = useRouter();
   const { t } = useI18n();
+  const { openTerminal } = useTerminalWindow();
   const currentYear = new Date().getFullYear();
 
   const navigation = [
@@ -15,7 +17,7 @@ export function Footer() {
     { name: t.command.experience, path: "/experience" },
     { name: t.command.education, path: "/education" },
     { name: t.command.stack, path: "/stack" },
-    { name: "terminal", path: "/terminal" },
+    { name: "terminal", path: "/terminal", action: () => openTerminal() },
   ];
 
   return (
@@ -36,7 +38,13 @@ export function Footer() {
                 key={item.path}
                 variant="ghost"
                 size="sm"
-                onClick={() => router.push(item.path)}
+                onClick={() => {
+                  if (item.action) {
+                    item.action();
+                  } else {
+                    router.push(item.path);
+                  }
+                }}
                 className="text-muted-foreground hover:text-foreground lowercase"
               >
                 {item.name}
