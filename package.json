@@ -46,7 +46,7 @@
     "@radix-ui/react-toggle-group": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@react-email/render": "^1.2.1",
-    "@ruivalente99/bibliotheca": "file:./packages/ruivalente99-bibliotheca-0.8.0.tgz",
+    "@ruivalente99/bibliotheca": "file:./packages/ruivalente99-bibliotheca-0.9.0.tgz",
     "@tailwindcss/postcss": "^4.0.9",
     "@tailwindcss/typography": "^0.5.16",
     "@tanstack/react-query": "^5.64.2",
