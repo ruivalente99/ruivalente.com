@@ -4,9 +4,6 @@ const withMDX = require('@next/mdx')();
 const nextConfig = {
   output: 'standalone',
   transpilePackages: ['@ruivalente99/bibliotheca'],
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: { unoptimized: true },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 };
