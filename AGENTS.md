@@ -14,6 +14,7 @@ All modifications, additions, and refactors must strictly adhere to these tenets
 - **Offline & Performance First**: Fast initial render, responsive across mobile (`375px`), tablet (`768px`), and desktop (`1280px`), with zero layout shifts.
 - **Theme Versatility**: Dual-mode theme system (`light`, `dark`, and secret `dark-side` easter egg) styled with Tailwind CSS variables.
 - **Bilingual Internationalization**: Dual-language support (English `en` default and Portuguese `pt` toggle) powered by `lib/i18n`.
+- **Strict Branching Policy**: Never push directly to `main`. Every task, feature, bug fix, refactor, or documentation update must be developed on a dedicated branch (`git checkout -b <type>/<description>`), pushed to the remote branch, and merged exclusively via Pull Request. Direct pushes to `main` are strictly forbidden.
 
 ---
 
@@ -173,3 +174,57 @@ git commit -m "feat(projects): add <id> showcase and case study"
 ```
 
 Never include emojis in commit titles or commit descriptions.
+
+---
+
+### Step 7: Push to Branch and Open Pull Request
+
+Push exclusively to the remote feature branch (NEVER push to `main`):
+```bash
+git push -u origin <branch-name>
+```
+
+Open a Pull Request for review:
+```bash
+gh pr create --fill
+```
+
+---
+
+## 4. Git Branching & Protection Policy
+
+AI agents and engineers operating in this repository must strictly obey these branching rules:
+
+1. **NEVER Push to `main`**:
+   - `git push origin main` is strictly prohibited.
+   - Any attempt to push directly to `main` violates repository governance and branch protection rules.
+2. **Always Create a Branch**:
+   - Before editing or creating files, check out a new branch from up-to-date `main`:
+     ```bash
+     git checkout main
+     git pull origin main
+     git checkout -b <type>/<short-description>
+     ```
+   - Standard branch prefixes:
+     - `feat/`: New features, components, or UI additions
+     - `fix/`: Bug fixes, alignment repairs, or a11y corrections
+     - `refactor/`: Code improvements without behavior changes
+     - `docs/`: Markdown documentation, AGENTS.md, or case studies
+     - `chore/`: Dependency updates, tooling, or config tweaks
+3. **Pre-Push Quality Verification**:
+   - Never push code that fails local validation:
+     ```bash
+     bun run quality
+     bun run test:e2e
+     bun run build
+     ```
+4. **Push Exclusively to the Remote Branch**:
+   - Always push to `origin <branch-name>`:
+     ```bash
+     git push -u origin <branch-name>
+     ```
+5. **Merge Exclusively via Pull Request**:
+   - Open a PR (`gh pr create --fill` or via GitHub UI) and merge only after CI checks pass and explicit user approval is provided.
+6. **Zero Emojis**:
+   - Commit messages, branch names, PR titles, and PR descriptions must never include emojis.
+
