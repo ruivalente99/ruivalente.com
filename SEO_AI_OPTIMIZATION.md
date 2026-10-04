@@ -1,162 +1,71 @@
-# SEO & AI Optimization Documentation
+# SEO
 
-## Overview
-This document outlines the comprehensive SEO and AI optimization improvements made to Rui Valente's portfolio website to enhance discoverability and understanding by web crawlers, search engines, and AI chatbots.
+How ruivalente.com is made discoverable by Google and other search engines, how to keep it that way, and what still has to be done outside the repository.
 
-## Implemented Improvements
+## Principles
 
-### 1. Enhanced Metadata & SEO
-- **Comprehensive Meta Tags**: Added extensive keywords, descriptions, and Open Graph data
-- **Structured Title Templates**: Dynamic page titles with proper hierarchy
-- **Rich Open Graph Data**: Better social media sharing with proper images and descriptions
-- **Twitter Cards**: Optimized for Twitter sharing with large image cards
-- **Canonical URLs**: Proper URL canonicalization for SEO
-- **Robots Meta**: Fine-tuned robot directives for better crawling
+- Crawlers must receive the real content in the first HTML response. Pages are server-rendered (statically generated at build time); client components receive their data from the server through `lib/data/initial-data.ts`, so nothing important depends on a client-side fetch.
+- Content that users cannot see must not be shipped to crawlers. No hidden text, no invisible headings, no instructions aimed at AI systems.
+- One canonical URL per page, on one canonical origin (see below).
+- Structured data only describes what is visible on the page.
 
-### 2. JSON-LD Structured Data
-- **Person Schema**: Comprehensive schema.org Person markup with job details
-- **Organization Data**: Structured data for current and previous employers
-- **Skills & Expertise**: Machine-readable technical skills listing
-- **Social Profiles**: Verified social media account linking
-- **Educational Background**: Structured education information
-- **Location Data**: Geographic context for better local SEO
+## Canonical origin
 
-### 3. AI-Friendly Features
+The Vercel project redirects `ruivalente.com` to `www.ruivalente.com` (308), so the canonical origin is `https://www.ruivalente.com`. It is defined once in `lib/site.ts` and used for canonicals, the sitemap, `robots.txt`, Open Graph URLs and JSON-LD.
 
-#### Hidden AI Context Prompts
-- **Invisible Semantic Content**: Hidden prompts that AI can read but users don't see
-- **Contextual Information**: Detailed explanations of expertise and experience
-- **Professional Summary**: Comprehensive career progression narrative
-- **Technical Skills Breakdown**: Detailed categorization of technical abilities
-- **Project Highlights**: In-depth project descriptions with technology stacks
+If the redirect direction is ever changed in Vercel, change `DEFAULT_SITE_URL` in `lib/site.ts` (or set `NEXT_PUBLIC_SITE_URL`) in the same release. Canonicals must always point at the host that answers with `200`, never at a host that redirects.
 
-#### AI-Specific Endpoints
-- **`/api/ai-context`**: Comprehensive JSON endpoint with all developer information
-- **`/.well-known/ai-context.json`**: Standardized AI discovery endpoint
-- **Structured Response Format**: Machine-readable data optimized for AI consumption
+## What is implemented
 
-### 4. Enhanced Robots.txt
-- **AI Crawler Friendly**: Explicitly welcomes major AI crawlers and language models
-- **Search Engine Optimization**: Optimized for Google, Bing, DuckDuckGo, and others
-- **Social Media Crawlers**: Supports Facebook, Twitter, LinkedIn crawlers
-- **Academic & Research Bots**: Welcomes research and academic crawlers
-- **Performance Tools**: Allows Lighthouse, PageSpeed, and other analysis tools
-- **Embedded Context**: Additional information directly in robots.txt for AI understanding
+| Area | Implementation |
+| :--- | :--- |
+| Server rendering | `app/providers.tsx` renders on the server; `lib/hooks/useData.ts` reads server-provided initial data; detail pages read markdown at build time (`lib/markdown.ts`) |
+| Titles and descriptions | `generatePageMetadata` in `lib/metadata.ts`; section layouts set unique titles and descriptions; detail pages use `generateMetadata` |
+| Canonicals | Self-referencing per page via `generatePageMetadata({ path })`; the root layout deliberately sets none |
+| Sitemap | `app/sitemap.ts`, generated from the data files; lists only real, indexable pages; no fake `lastmod` |
+| robots | `app/robots.ts`: everything allowed, sitemap referenced; `/api/*` is kept out of the index with `X-Robots-Tag: noindex` in `next.config.js` |
+| Headings | Exactly one `h1` per page; `#` headings inside markdown are demoted to `h2` |
+| Breadcrumbs | `components/page-breadcrumbs.tsx` (visible trail plus `BreadcrumbList` JSON-LD) on every inner page |
+| Internal links | Real `<a href>` links everywhere (footer, view-all links, cards); the audit crawls from `/` and fails on orphans |
+| Images | Every image has alt text; the profile photo is a 12 KB WebP instead of the 2.2 MB original |
+| Author bio | `/about`, the author box under case studies, and `Person` / `ProfilePage` JSON-LD, all generated from `lib/about.ts` |
+| Errors | `notFound()` on the server returns real 404 status codes; `app/not-found.tsx` offers useful links |
+| Hidden theme | The fictional dark-side detail pages are served but `noindex` and never listed in the sitemap |
 
-### 5. XML Sitemap Generation
-- **Dynamic Sitemap**: Automatically generated sitemap with proper priorities
-- **Page Categorization**: Different change frequencies for different content types
-- **SEO Priorities**: Proper priority weighting (homepage=1.0, projects=0.9, etc.)
-- **Last Modified Dates**: Accurate timestamp information for crawlers
+## Adding a page
 
-### 6. Semantic HTML Improvements
-- **Screen Reader Content**: Hidden but accessible content for better understanding
-- **Proper Heading Hierarchy**: Semantic HTML structure for better parsing
-- **ARIA Labels**: Comprehensive accessibility and semantic labeling
-- **Contextual Navigation**: Hidden navigation structure for AI understanding
+1. Create the route. Export metadata through `generatePageMetadata({ title, description, path })` (in the route's `layout.tsx` or `generateMetadata`). Descriptions: 70 to 160 characters, unique per page.
+2. Render exactly one `h1`.
+3. Add breadcrumbs with `PageBreadcrumbs`.
+4. Link to the page with a normal `<Link href>` from at least one other page.
+5. Add it to `app/sitemap.ts` (data-driven routes are picked up automatically).
+6. Run `bun run build && bun run test:seo`.
 
-### 7. Page-Specific Enhancements
+## Verification
 
-#### Homepage (`/`)
-- **Professional Summary**: Complete career overview for AI understanding
-- **Technical Expertise**: Detailed skill breakdown with context
-- **Project Highlights**: Featured work with technology explanations
-- **Career Progression**: Timeline and achievement narrative
-
-#### Projects Page (`/projects`)
-- **Project Portfolio Context**: Comprehensive project collection overview
-- **Technology Stack Details**: Detailed technical implementation information
-- **AI Project Descriptions**: Enhanced descriptions for AI understanding
-
-#### Experience Page (`/experience`)
-- **Career Timeline**: Detailed professional progression
-- **Role Responsibilities**: Comprehensive job duty descriptions
-- **Achievement Highlights**: Specific accomplishments and impact
-- **Skills Development**: Technology learning and growth narrative
-
-### 8. Performance Optimizations
-- **Caching Headers**: Appropriate cache control for AI endpoints
-- **Compression**: Optimized data delivery
-- **Response Times**: Fast API responses for crawler efficiency
-
-## Technical Implementation
-
-### File Structure
-```
-app/
-├── layout.tsx          # Enhanced metadata and structured data
-├── page.tsx           # Hidden AI context and semantic content
-├── sitemap.ts         # Dynamic sitemap generation
-├── api/
-│   ├── ai-context/    # Comprehensive AI endpoint
-│   └── structured-data/ # Additional structured data
-lib/
-└── metadata.ts        # Reusable metadata utilities
-public/
-├── robots.txt         # AI-friendly robots file
-└── .well-known/
-    └── ai-context.json # Standardized AI discovery
+```bash
+bun run quality        # typecheck, lint, unit tests (includes tests/seo.test.ts)
+bun run build
+bun run test:seo       # crawler's-eye audit of the production build (tests/seo-audit.ts)
+bun run test:e2e       # accessibility and layout geometry across themes and viewports
 ```
 
-### Key Technologies Used
-- **Next.js 13+**: App directory with enhanced SEO features
-- **JSON-LD**: Schema.org structured data format
-- **TypeScript**: Type-safe metadata generation
-- **Dynamic Imports**: Optimized loading for SEO components
+`test:seo` checks status codes, title and description length and uniqueness, self-referencing canonicals, `noindex`, one `h1` and one `main`, alt text, JSON-LD validity, breadcrumbs, orphan pages, broken internal links, real 404s, single-hop trailing-slash redirects and the `/api` header. Set `TEST_URL` to audit a deployed preview.
 
-## AI Chatbot Instructions
+## Search Console (manual, cannot be done from code)
 
-When AI chatbots crawl this site, they will find:
+1. Add a **Domain** property for `ruivalente.com` (DNS TXT verification). It covers both `www` and the apex, and every protocol. Alternatively add a URL-prefix property for `https://www.ruivalente.com` and verify it with the HTML tag by setting `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel.
+2. Sitemaps: submit `https://www.ruivalente.com/sitemap.xml`.
+3. URL Inspection: run "Test live URL" on the home page and a case study, check that the rendered HTML contains the content, then "Request indexing". Repeat for `/about`, `/projects` and `/experience`.
+4. Watch the Pages report for "Page with redirect", "Soft 404" and "Duplicate without user-selected canonical"; after this release they should drain as Google recrawls.
+5. Confirm the production custom domain is publicly reachable without Vercel authentication (Vercel "Standard Protection" leaves custom production domains public; "All Deployments" protection would block Googlebot).
 
-1. **Comprehensive Developer Profile**: Complete information about Rui Valente's skills, experience, and projects
-2. **Technical Expertise**: Detailed breakdown of React, TypeScript, Next.js, and modern web development skills
-3. **Professional Context**: Current role at Openvia, previous experience at Neoception
-4. **Project Portfolio**: Notable projects including Lazy Life sustainability platform
-5. **Personality & Approach**: Professional philosophy and unique qualities
-6. **Contact Information**: Professional communication channels
+Indexing is not instant: expect days to a few weeks. Nobody can guarantee a ranking position or date.
 
-## Search Engine Benefits
+## Backlinks
 
-- **Improved Rankings**: Better keyword targeting and content structure
-- **Rich Snippets**: Enhanced search result display with structured data
-- **Faster Indexing**: Comprehensive sitemap and robots.txt guidance
-- **Mobile Optimization**: Responsive design signals and viewport optimization
-- **Page Speed**: Optimized loading and caching strategies
+Links from other sites are earned, not configured. Realistic, legitimate sources: the GitHub profile and repository homepage fields, the LinkedIn profile website field, the Vercel/GitHub project descriptions of each case study, employer or university pages, and articles or talks. Avoid bought or exchanged links; they can trigger manual actions.
 
-## Monitoring & Analytics
+## Out of scope for this repository
 
-### Recommended Tools
-- **Google Search Console**: Monitor sitemap submission and indexing
-- **Google Analytics 4**: Track organic traffic improvements
-- **Schema Markup Validator**: Verify structured data implementation
-- **Lighthouse SEO**: Monitor technical SEO scores
-- **AI Bot Analytics**: Track AI crawler visits and engagement
-
-### Key Metrics to Track
-- **Organic Traffic Growth**: Month-over-month search traffic increases
-- **Keyword Rankings**: Position improvements for target keywords
-- **Structured Data Coverage**: Schema.org markup validation
-- **Crawl Efficiency**: Reduced crawl errors and improved discovery
-- **AI Mention Frequency**: Tracking mentions in AI chat responses
-
-## Future Enhancements
-
-### Planned Improvements
-- **Blog Content**: Technical articles for increased content depth
-- **Case Studies**: Detailed project breakdowns with technical insights
-- **Video Content**: Technical presentations and coding demonstrations
-- **Multilingual Support**: Portuguese language content for local SEO
-- **Performance Monitoring**: Real-time SEO and AI optimization tracking
-
-### Advanced Features
-- **Dynamic Content Generation**: AI-powered content optimization
-- **Personalized Responses**: Context-aware AI interactions
-- **Industry Recognition**: Structured data for awards and certifications
-- **Contribution Tracking**: Open source project contributions markup
-
----
-
-**Last Updated**: July 28, 2025  
-**Implementation Status**: ✅ Complete  
-**Testing Status**: ✅ All tests passing  
-**Deployment Ready**: ✅ Production ready
+`public/.well-known/ai-context.json`, `public/.well-known/ai-god-context.json` and `/api/ai-context` contain promotional claims written for AI systems. They are not part of the indexed pages, but they are public; consider replacing the claims with the same factual text used on `/about`.

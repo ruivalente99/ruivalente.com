@@ -12,7 +12,7 @@ Powered by shared design primitives and tokens from **`@ruivalente99/bibliotheca
    - High-density responsive grid displaying featured projects, work experience, technical stack, music activity, and contact interface.
    - Smooth paginated carousel with vector 16:9 preview cards.
 2. **Case Study Dynamic Route (`app/projects/[slug]/page.tsx`)**:
-   - Client-side markdown renderer consuming `/api/projects/[slug]/content`.
+   - Server-rendered markdown case studies with per-page metadata, breadcrumbs and a real 404 for unknown slugs.
    - Technical breakdown with architectural blueprints, key capabilities, and stack badges.
 3. **Interactive Terminal Emulator (`components/terminal/`)**:
    - Fully functional command line interface with simulated virtual filesystem, themes, and commands.
@@ -47,6 +47,9 @@ bun run quality
 
 # Run Playwright E2E and accessibility audits
 bun run test:e2e
+
+# Crawler's-eye SEO audit of the production build
+bun run test:seo
 
 # Build production bundle
 bun run build
