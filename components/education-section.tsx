@@ -6,7 +6,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n/context";
 
@@ -26,7 +25,6 @@ interface Certificate {
 }
 
 export function EducationSection() {
-  const router = useRouter();
   const { t } = useI18n();
   const { data: education, isLoading: eduLoading } = useData<Education[]>('/api/education');
   const { data: certificates, isLoading: certLoading } = useData<Certificate[]>('/api/certificates');
@@ -46,14 +44,15 @@ export function EducationSection() {
             {t.bento.education.title.toLowerCase()}
           </h2>
         </div>
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           size="sm"
-          onClick={() => router.push('/education')}
+          asChild
           className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
-          aria-label={t.bento.education.viewAll.toLowerCase()}
         >
-          <span className="lowercase">{t.bento.education.viewAll.toLowerCase()}</span> <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          <Link href="/education" aria-label={t.bento.education.viewAll.toLowerCase()}>
+            <span className="lowercase">{t.bento.education.viewAll.toLowerCase()}</span> <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          </Link>
         </Button>
       </header>
 

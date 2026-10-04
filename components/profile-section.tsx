@@ -7,10 +7,11 @@ import { Avatar } from "@/components/ui/avatar";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getSocialIcon } from "@/lib/utils";
-import { useTheme } from "next-themes";
+import { useIsDarkSide } from "@/lib/hooks/use-is-dark-side";
 import { useEffect, useState } from "react";
 import { GitHubCommitGraph } from "./github-commit-graph";
 import Image from "next/image";
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n/context";
 
 interface Profile {
@@ -50,9 +51,8 @@ function ProfileSkeleton() {
 }
 
 export function ProfileSection() {
-  const { theme } = useTheme();
   const { locale, t } = useI18n();
-  const isDarkSide = theme === 'dark-side';
+  const isDarkSide = useIsDarkSide();
   
   // Use different API endpoints based on theme
   const profileEndpoint = isDarkSide ? '/api/dark-side/profile' : '/api/profile';
@@ -149,6 +149,12 @@ export function ProfileSection() {
                 <Mail className="w-3.5 h-3.5" aria-hidden="true" />
                 <span className="sr-only">email</span>
               </a>
+              <Link
+                href="/about"
+                className={`h-8 px-3 rounded-lg bg-muted/30 hover:bg-muted/70 border border-border/50 text-xs font-medium flex items-center text-muted-foreground hover:text-foreground transition-all duration-150 active:scale-[0.96] shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lowercase ${isDarkSide ? 'force-glow' : ''}`}
+              >
+                {t.command.about}
+              </Link>
               <button
                 type="button"
                 onClick={handleResumeDownload}

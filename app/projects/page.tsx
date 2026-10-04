@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { ArrowLeft, Github, Globe, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -41,25 +41,6 @@ export default function ProjectsPage() {
 
   return (
     <>
-      {/* Hidden AI Context for Projects */}
-      <div className="sr-only" aria-hidden="true">
-        <h1>Rui Valente Software Engineering Projects</h1>
-        <section>
-          <h2>Featured Projects Overview</h2>
-          <p>A comprehensive collection of software engineering projects showcasing expertise in React, TypeScript, Next.js, and modern web development technologies.</p>
-          
-          <h3>Project Highlights</h3>
-          <ul>
-            <li>Lazy Life: AI-powered sustainability platform with gamification elements, built using React, Next.js, TypeScript, machine learning models, and real-time data processing</li>
-            <li>EV Charging Management Platform: Comprehensive electric vehicle charging solution with booking systems, route optimization, payment integration, and real-time availability tracking</li>
-            <li>Modern Web Applications: Various React and TypeScript applications demonstrating frontend architecture, responsive design, and performance optimization</li>
-          </ul>
-          
-          <h3>Technical Implementations</h3>
-          <p>Projects demonstrate proficiency in React ecosystem, TypeScript development, Next.js framework, responsive design with Tailwind CSS, API integration, performance optimization, progressive web app features, and modern development practices.</p>
-        </section>
-      </div>
-
       <div className="min-h-screen bg-background text-foreground lowercase">
         {/* Harmonized Hero Section */}
         <header className="relative border-b border-border/60 bg-gradient-to-b from-muted/30 via-background to-background overflow-hidden">
@@ -69,11 +50,14 @@ export default function ProjectsPage() {
           />
 
           <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            >
+            <div className="reveal-up">
+              <PageBreadcrumbs
+                className="mb-4"
+                crumbs={[
+                  { name: "Home", path: "/" },
+                  { name: "Projects", path: "/projects" },
+                ]}
+              />
               <Button
                 variant="ghost"
                 size="sm"
@@ -99,23 +83,19 @@ export default function ProjectsPage() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </header>
 
-        <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+        <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects?.map((project) => {
+            {projects?.map((project, index) => {
               const displaySkills = (project.skills || []).slice(0, 4);
 
               return (
-                <motion.article
+                <article
                   key={project.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.2 }}
-                  className="group rounded-2xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 overflow-hidden flex flex-col justify-between shadow-2xs transition-all duration-200"
+                  className="reveal-up hover:scale-[1.01] group rounded-2xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 overflow-hidden flex flex-col justify-between shadow-2xs transition-all duration-200"
                 >
                   <div>
                     <div className="aspect-video relative overflow-hidden bg-muted/30">
@@ -123,6 +103,7 @@ export default function ProjectsPage() {
                         src={project.image}
                         alt={`${project.title} - Software engineering project by Rui Valente`}
                         fill
+                        priority={index < 2}
                         className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
                       />
                       <div className="absolute inset-0 ring-1 ring-inset ring-black/10 dark:ring-white/10 pointer-events-none" />
@@ -210,11 +191,11 @@ export default function ProjectsPage() {
                       </Button>
                     </div>
                   </div>
-                </motion.article>
+                </article>
               );
             })}
           </div>
-        </main>
+        </div>
       </div>
     </>
   );

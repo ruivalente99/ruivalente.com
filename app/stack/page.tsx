@@ -1,7 +1,7 @@
 "use client";
 
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { ArrowLeft, Layers, Sparkles, LucideIcon, LayoutGrid, Type } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
@@ -66,11 +66,14 @@ export default function StackPage() {
         />
 
         <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-          >
+          <div className="reveal-up">
+            <PageBreadcrumbs
+              className="mb-4"
+              crumbs={[
+                { name: "Home", path: "/" },
+                { name: "Tech stack", path: "/stack" },
+              ]}
+            />
             {/* Standardized Back Navigation */}
             <Button
               variant="ghost"
@@ -154,12 +157,12 @@ export default function StackPage() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </header>
 
       {/* Main Content Area */}
-      <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+      <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
         <div className="space-y-12">
           {stack?.map((category) => {
             const isAi = category.category.toLowerCase().includes("ai");
@@ -260,7 +263,7 @@ export default function StackPage() {
             );
           })}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

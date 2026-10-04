@@ -1,29 +1,14 @@
-import { Metadata } from 'next';
+import type { Metadata } from "next";
+import { generatePageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: 'education',
-  description: 'Rui Valente\'s educational background and professional certifications. Computer Science degree and continuous learning in React, TypeScript, and modern web development technologies.',
-  keywords: [
-    'Rui Valente Education',
-    'Computer Science Degree',
-    'Frontend Masters Certificates',
-    'React Certification',
-    'TypeScript Training',
-    'Professional Development',
-    'Software Engineering Education',
-    'Programming Certifications'
-  ],
-  openGraph: {
-    title: 'education.rui',
-    description: 'Explore Rui Valente\'s educational journey and professional certifications in software engineering.',
-    url: 'https://ruivalente.com/education',
-  },
-};
+export const metadata: Metadata = generatePageMetadata({
+  title: "Education",
+  description:
+    "Education of Rui Valente: Informatics Engineering at UTAD, plus professional certificates in React, TypeScript, secure coding and project management.",
+  path: "/education",
+  additionalKeywords: ["Education", "Informatics Engineering", "UTAD"],
+});
 
-export default function EducationLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function EducationLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

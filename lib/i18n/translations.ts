@@ -77,9 +77,11 @@ export interface TranslationDictionary {
     themes: string;
     actions: string;
     home: string;
+    about: string;
     experience: string;
     education: string;
     stack: string;
+    certificates: string;
     allProjects: string;
     downloadResume: string;
     toggleLanguage: string;
@@ -174,9 +176,11 @@ export const translations: Record<Locale, TranslationDictionary> = {
       themes: "themes",
       actions: "actions",
       home: "home",
+      about: "about",
       experience: "experience",
       education: "education",
       stack: "tech stack",
+      certificates: "certificates",
       allProjects: "projects catalog",
       downloadResume: "download resume (pdf)",
       toggleLanguage: "switch language to portuguese",
@@ -269,9 +273,11 @@ export const translations: Record<Locale, TranslationDictionary> = {
       themes: "temas",
       actions: "ações",
       home: "início",
+      about: "sobre",
       experience: "experiência",
       education: "educação",
       stack: "stack tecnológica",
+      certificates: "certificados",
       allProjects: "catálogo de projetos",
       downloadResume: "descarregar currículo (pdf)",
       toggleLanguage: "mudar idioma para inglês",

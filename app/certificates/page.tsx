@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { ArrowLeft, ExternalLink, Award, Calendar } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -48,30 +48,16 @@ export default function CertificatesPage() {
 
   return (
     <>
-      {/* Hidden AI Context for Certificates */}
-      <div className="sr-only" aria-hidden="true">
-        <h1>Rui Valente Professional Certificates and Certifications</h1>
-        <section>
-          <h2>Professional Development</h2>
-          <p>Continuous learning and professional development through industry-recognized certifications and courses, demonstrating commitment to staying current with modern web development technologies and best practices.</p>
-          
-          <h3>Technical Certifications</h3>
-          <ul>
-            <li>Frontend Masters certifications in React and TypeScript development</li>
-            <li>Advanced JavaScript programming certificates</li>
-            <li>Project management and leadership training</li>
-            <li>Secure coding and application security certifications</li>
-            <li>Modern web development best practices</li>
-          </ul>
-          
-          <h3>Learning Focus Areas</h3>
-          <p>Specialized training in React ecosystem, TypeScript development, secure coding practices, project management methodologies, and full-stack web development techniques.</p>
-        </section>
-      </div>
-
       <div className="min-h-[100dvh] bg-background text-foreground p-4 lowercase">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
+            <PageBreadcrumbs
+              className="mb-4"
+              crumbs={[
+                { name: "Home", path: "/" },
+                { name: "Certificates", path: "/certificates" },
+              ]}
+            />
             <Button
               variant="ghost"
               onClick={() => router.back()}
@@ -81,25 +67,20 @@ export default function CertificatesPage() {
               back
             </Button>
             
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className="reveal-up">
               <h1 className="text-4xl font-bold mb-4">certificates &amp; certifications</h1>
               <p className="text-muted-foreground text-lg mb-8">
                 professional development and continuous learning through industry-recognized certifications
               </p>
-            </motion.div>
+            </div>
           </div>
 
           <div className="grid gap-6">
             {certificates.map((certificate, index) => (
-              <motion.div
+              <div
                 key={`${certificate.name}-${certificate.year}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="reveal-up"
+                style={{ animationDelay: `${index * 60}ms` }}
               >
                 <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                   <div className="flex items-start justify-between gap-4">
@@ -112,7 +93,7 @@ export default function CertificatesPage() {
                         </Badge>
                       </div>
                       
-                      <h3 className="text-xl font-semibold mb-2 lowercase">{certificate.name.toLowerCase()}</h3>
+                      <h2 className="text-xl font-semibold mb-2 lowercase">{certificate.name.toLowerCase()}</h2>
                       <p className="text-muted-foreground mb-3">
                         issued by <span className="font-medium text-foreground lowercase">{certificate.issuer.toLowerCase()}</span>
                       </p>
@@ -131,7 +112,7 @@ export default function CertificatesPage() {
                     </Button>
                   </div>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

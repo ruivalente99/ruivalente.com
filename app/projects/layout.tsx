@@ -1,30 +1,18 @@
-import { Metadata } from 'next';
+import type { Metadata } from "next";
+import { projects } from "@/lib/data";
+import { generatePageMetadata, truncateDescription } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: 'projects',
-  description: 'Rui Valente\'s software engineering projects and portfolio. Featuring Lazy Life sustainability platform, EV charging solutions, and cutting-edge React/TypeScript applications.',
-  keywords: [
-    'Rui Valente Projects',
-    'Lazy Life Project',
-    'AI Sustainability Platform',
-    'EV Charging Platform',
-    'React Projects',
-    'TypeScript Applications',
-    'Next.js Portfolio',
-    'Web Development Projects',
-    'Software Engineering Portfolio'
-  ],
-  openGraph: {
-    title: 'projects.rui',
-    description: 'Discover Rui Valente\'s innovative software projects including AI-powered platforms and modern web applications.',
-    url: 'https://ruivalente.com/projects',
-  },
-};
+const featured = projects.slice(0, 3).map((project) => project.title).join(", ");
 
-export default function ProjectsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const metadata: Metadata = generatePageMetadata({
+  title: "Projects",
+  description: truncateDescription(
+    `Software projects by Rui Valente: ${featured} and more. Case studies built with React, TypeScript, Next.js and Tailwind CSS.`
+  ),
+  path: "/projects",
+  additionalKeywords: ["Software Projects", "Case Studies", "Portfolio Projects"],
+});
+
+export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

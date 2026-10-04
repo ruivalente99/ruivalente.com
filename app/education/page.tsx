@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { ArrowLeft, ExternalLink, GraduationCap, Award, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
@@ -42,11 +42,14 @@ export default function EducationPage() {
         />
 
         <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-          >
+          <div className="reveal-up">
+            <PageBreadcrumbs
+              className="mb-4"
+              crumbs={[
+                { name: "Home", path: "/" },
+                { name: "Education", path: "/education" },
+              ]}
+            />
             <Button
               variant="ghost"
               size="sm"
@@ -73,11 +76,11 @@ export default function EducationPage() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </header>
 
-      <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+      <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
         <div className="space-y-12">
           {/* Education Section */}
           <section className="space-y-5">
@@ -93,13 +96,9 @@ export default function EducationPage() {
 
             <div className="space-y-4">
               {education?.map((edu) => (
-                <motion.article
+                <article
                   key={edu.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.2 }}
-                  className="relative group rounded-2xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 p-6 md:p-7 shadow-2xs transition-all duration-200"
+                  className="reveal-up hover:scale-[1.01] relative group rounded-2xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 p-6 md:p-7 shadow-2xs transition-all duration-200"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div className="flex-1">
@@ -129,7 +128,7 @@ export default function EducationPage() {
                       <ChevronRight className="w-4 h-4 text-muted-foreground pointer-events-none group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                     </div>
                   </div>
-                </motion.article>
+                </article>
               ))}
             </div>
           </section>
@@ -148,13 +147,9 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {certificates?.map((cert, index) => (
-                <motion.article
+                <article
                   key={index}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.2 }}
-                  className="rounded-xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 p-5 shadow-2xs transition-all duration-200 flex flex-col justify-between"
+                  className="reveal-up hover:scale-[1.01] rounded-xl border border-border/70 hover:border-border bg-card/60 hover:bg-card/90 p-5 shadow-2xs transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
                     <h3 className="text-base font-semibold tracking-tight text-foreground mb-1">
@@ -178,12 +173,12 @@ export default function EducationPage() {
                       <ExternalLink className="w-3 h-3" aria-hidden="true" />
                     </a>
                   </div>
-                </motion.article>
+                </article>
               ))}
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

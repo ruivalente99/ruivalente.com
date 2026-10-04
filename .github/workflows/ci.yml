@@ -37,3 +37,6 @@ jobs:
 
       - name: Next.js Production Build
         run: bun run build
+
+      - name: SEO audit (crawler view of the production build)
+        run: bun run test:seo

@@ -14,6 +14,7 @@ All modifications, additions, and refactors must strictly adhere to these tenets
 - **Offline & Performance First**: Fast initial render, responsive across mobile (`375px`), tablet (`768px`), and desktop (`1280px`), with zero layout shifts.
 - **Theme Versatility**: Dual-mode theme system (`light`, `dark`, and secret `dark-side` easter egg) styled with Tailwind CSS variables.
 - **Bilingual Internationalization**: Dual-language support (English `en` default and Portuguese `pt` toggle) powered by `lib/i18n`.
+- **Crawlable by Default**: Pages are server-rendered and never ship hidden text or AI-targeted instructions. The canonical origin lives in `lib/site.ts`; every page gets a unique title, description and self-referencing canonical via `generatePageMetadata`. See [SEO_AI_OPTIMIZATION.md](./SEO_AI_OPTIMIZATION.md).
 - **Strict Branching Policy**: Never push directly to `main`. Every task, feature, bug fix, refactor, or documentation update must be developed on a dedicated branch (`git checkout -b <type>/<description>`), pushed to the remote branch, and merged exclusively via Pull Request. Direct pushes to `main` are strictly forbidden.
 
 ---
@@ -25,8 +26,9 @@ Projects on ruivalente.com are showcased in two key areas:
    - Displays 2 featured projects per page with smooth paginated sliding animation.
    - Links to live demo (`Globe`), GitHub repository (`Github`), and the in-depth case study (`ArrowRight`).
 2. **Case Study Dynamic Route (`app/projects/[slug]/page.tsx`)**:
-   - Client-side markdown renderer (`project-content.tsx`) consuming `/api/projects/[slug]/content`.
+   - Server-rendered: the markdown case study is read and rendered at build time (`lib/markdown.ts`), with per-project `generateMetadata`, canonical URL, breadcrumbs and an author box.
    - Renders overview, capabilities, technical stack chips, and action links.
+   - Unknown slugs return a real 404; the sitemap (`app/sitemap.ts`) is generated from `lib/data/projects.json`, so it needs no manual update.
 
 ### File Dependency Map:
 ```
@@ -151,6 +153,9 @@ bun run quality
 
 # Run accessibility and layout geometry tests
 bun run test:e2e
+
+# Run the crawler's-eye SEO audit (needs a production build)
+bun run build && bun run test:seo
 ```
 
 #### What These Commands Check:

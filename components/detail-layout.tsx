@@ -1,12 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowLeft, Github, Globe, Calendar, Building, GraduationCap, Award, Code2 } from "lucide-react";
+import { ArrowLeft, Calendar, Building, GraduationCap, Code2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { ReactNode } from "react";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
+import { AuthorBio } from "@/components/author-bio";
+import type { Crumb } from "@/lib/structured-data";
 
 export interface ActionButton {
   label: string;
@@ -33,6 +36,12 @@ export interface DetailLayoutProps {
   isLoading?: boolean;
   type?: "experience" | "project" | "education";
   image?: string;
+  /** Breadcrumb trail, ending with the current page. */
+  crumbs?: Crumb[];
+  /** Author box under the content. Disable for the fictional dark-side pages. */
+  showAuthor?: boolean;
+  /** Internal links to sibling pages, rendered under the content. */
+  related?: { heading: string; links: { href: string; label: string }[] };
 }
 
 export function DetailLayout({
@@ -46,7 +55,10 @@ export function DetailLayout({
   children,
   isLoading = false,
   type = "experience",
-  image
+  image,
+  crumbs,
+  showAuthor = true,
+  related,
 }: DetailLayoutProps) {
   const router = useRouter();
 
@@ -76,11 +88,9 @@ export function DetailLayout({
         />
 
         <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-          >
+          <div className="reveal-up">
+            {crumbs && crumbs.length > 0 && <PageBreadcrumbs crumbs={crumbs} className="mb-4" />}
+
             {/* Standardized Back Navigation */}
             <Button
               variant="ghost"
@@ -173,18 +183,13 @@ export function DetailLayout({
                 </div>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
       </header>
 
       {/* Main Content Area */}
-      <main className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.35, ease: "easeOut" }}
-          className="space-y-8"
-        >
+      <div className="container max-w-5xl mx-auto py-10 md:py-14 px-4 sm:px-6">
+        <div className="space-y-8 reveal-up">
           {/* Optional Project Hero Image Banner */}
           {image && (
             <div className="relative aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-border/70 shadow-xs bg-muted/20">
@@ -211,8 +216,30 @@ export function DetailLayout({
               </article>
             </div>
           </Card>
-        </motion.div>
-      </main>
+
+          {showAuthor && <AuthorBio />}
+
+          {related && related.links.length > 0 && (
+            <nav aria-label={related.heading} className="space-y-3">
+              <h2 className="text-sm font-semibold tracking-tight text-muted-foreground lowercase">
+                {related.heading}
+              </h2>
+              <ul className="flex flex-wrap gap-2">
+                {related.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="inline-flex items-center rounded-lg border border-border/70 bg-card/60 px-3 py-1.5 text-xs font-medium text-foreground/90 transition-colors hover:border-border hover:bg-card lowercase"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -259,78 +286,3 @@ function DetailSkeleton() {
     </div>
   );
 }
-
-// Common action generators
-export const createExperienceActions = (companyUrl: string): ActionButton[] => [
-  {
-    label: "visit company",
-    href: companyUrl,
-    icon: <Building className="w-3.5 h-3.5" aria-hidden="true" />,
-    variant: "outline"
-  }
-];
-
-export const createProjectActions = (demo: string, github: string): ActionButton[] => {
-  const actions: ActionButton[] = [];
-  if (demo) {
-    actions.push({
-      label: "live demo",
-      href: demo,
-      icon: <Globe className="w-3.5 h-3.5" aria-hidden="true" />,
-      variant: "default"
-    });
-  }
-  if (github) {
-    actions.push({
-      label: "source code",
-      href: github,
-      icon: <Github className="w-3.5 h-3.5" aria-hidden="true" />,
-      variant: "outline"
-    });
-  }
-  return actions;
-};
-
-export const createEducationActions = (url: string): ActionButton[] => [
-  {
-    label: "visit institution",
-    href: url,
-    icon: <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />,
-    variant: "outline"
-  }
-];
-
-// Common metadata generators
-export const createExperienceMetadata = (company: string): MetadataItem[] => [
-  {
-    icon: <Building className="w-3.5 h-3.5" aria-hidden="true" />,
-    label: "company",
-    value: company.toLowerCase()
-  }
-];
-
-export const createProjectMetadata = (technologies?: string[]): MetadataItem[] => {
-  const metadata: MetadataItem[] = [];
-  if (technologies && technologies.length > 0) {
-    metadata.push({
-      icon: <Code2 className="w-3.5 h-3.5" aria-hidden="true" />,
-      label: "technologies",
-      value: `${technologies.length} technologies`
-    });
-  }
-  return metadata;
-};
-
-export const createEducationMetadata = (school: string, degree: string): MetadataItem[] => [
-  {
-    icon: <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />,
-    label: "institution",
-    value: school.toLowerCase()
-  },
-  {
-    icon: <Award className="w-3.5 h-3.5" aria-hidden="true" />,
-    label: "degree type",
-    value: degree.toLowerCase().includes("master") ? "master's degree" : "bachelor's degree"
-  }
-];
-

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { ArrowLeft, Sparkles, Keyboard, Terminal, Bomb } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -81,6 +81,13 @@ export default function EasterEggsPage() {
     <div className="min-h-screen bg-background text-foreground p-4 lowercase">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
+          <PageBreadcrumbs
+            className="mb-4"
+            crumbs={[
+              { name: "Home", path: "/" },
+              { name: "Easter eggs", path: "/easter-eggs" },
+            ]}
+          />
           <Button
             variant="ghost"
             onClick={() => router.back()}
@@ -96,11 +103,10 @@ export default function EasterEggsPage() {
 
         <div className="grid gap-6">
           {easterEggs.map((egg, index) => (
-            <motion.div
+            <div
               key={egg.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              className="reveal-up"
+              style={{ animationDelay: `${index * 60}ms` }}
             >
               <Card className="p-6 lowercase">
                 <div className="flex items-center gap-3 mb-4">
@@ -159,7 +165,7 @@ export default function EasterEggsPage() {
                   )}
                 </div>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -188,6 +188,29 @@
   background-color: hsl(var(--muted-foreground));
 }
 
+/* Entrance animation that runs from CSS alone, so server-rendered content is
+   visible without waiting for JavaScript to hydrate. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal-up {
+  animation: reveal-up 0.35s ease-out backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    animation: none;
+  }
+}
+
 /* ==========================================================================
    Editorial Detail Prose System (.prose-detail)
    Provides high-density, structured card layouts for experience, education,

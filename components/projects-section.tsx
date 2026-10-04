@@ -6,7 +6,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n/context";
@@ -23,7 +22,6 @@ interface Project {
 }
 
 export function ProjectsSection() {
-  const router = useRouter();
   const { data: projects, isLoading } = useData<Project[]>("/api/projects");
   const { t } = useI18n();
   const [pageIndex, setPageIndex] = useState(0);
@@ -93,12 +91,13 @@ export function ProjectsSection() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.push("/projects")}
+          asChild
           className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
-          aria-label={t.bento.projects.viewAll.toLowerCase()}
         >
-          <span className="lowercase">{t.bento.projects.viewAll.toLowerCase()}</span>{" "}
-          <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          <Link href="/projects" aria-label={t.bento.projects.viewAll.toLowerCase()}>
+            <span className="lowercase">{t.bento.projects.viewAll.toLowerCase()}</span>{" "}
+            <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          </Link>
         </Button>
       </header>
 
