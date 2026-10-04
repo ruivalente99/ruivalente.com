@@ -11,6 +11,7 @@
     "test": "bun test",
     "test:ci": "bun test",
     "test:e2e": "bun tests/a11y-geometry.ts",
+    "test:seo": "bun tests/seo-audit.ts",
     "quality": "bun run typecheck && bun run lint && bun run test"
   },
   "dependencies": {
