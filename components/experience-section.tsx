@@ -6,7 +6,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/lib/hooks/useData";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n/context";
 
@@ -20,7 +19,6 @@ interface Experience {
 }
 
 export function ExperienceSection() {
-  const router = useRouter();
   const { t } = useI18n();
   const { data: experiences, isLoading } = useData<Experience[]>('/api/experience');
 
@@ -39,14 +37,15 @@ export function ExperienceSection() {
             {t.bento.experience.title.toLowerCase()}
           </h2>
         </div>
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           size="sm"
-          onClick={() => router.push('/experience')}
+          asChild
           className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
-          aria-label={t.bento.experience.viewAll.toLowerCase()}
         >
-          <span className="lowercase">{t.bento.experience.viewAll.toLowerCase()}</span> <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          <Link href="/experience" aria-label={t.bento.experience.viewAll.toLowerCase()}>
+            <span className="lowercase">{t.bento.experience.viewAll.toLowerCase()}</span> <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+          </Link>
         </Button>
       </header>
       <div className="space-y-2.5 my-auto">

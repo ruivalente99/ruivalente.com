@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { useIsDarkSide } from "@/lib/hooks/use-is-dark-side";
 
 interface GitHubCommitData {
   date: string;
@@ -18,8 +18,7 @@ interface GitHubCommitGraphProps {
 export function GitHubCommitGraph({ username, className = "", opacity = 0.15 }: GitHubCommitGraphProps) {
   const [commitData, setCommitData] = useState<GitHubCommitData[]>([]);
   const [loading, setLoading] = useState(true);
-  const { theme } = useTheme();
-  const isDarkSide = theme === 'dark-side';
+  const isDarkSide = useIsDarkSide();
 
   useEffect(() => {
     const fetchCommitData = async () => {

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from "@/components/theme-provider";
 import { I18nProvider } from "@/lib/i18n/context";
+import { InitialDataProvider } from "@/lib/hooks/initial-data";
 import { AnimationProvider } from "@/lib/animation/context";
 import dynamic from 'next/dynamic';
 
@@ -28,8 +29,13 @@ const Toaster = dynamic(
   }
 );
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false);
+export function Providers({
+  children,
+  initialData = {},
+}: {
+  children: React.ReactNode;
+  initialData?: Record<string, unknown>;
+}) {
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
       queries: {
@@ -42,35 +48,28 @@ export function Providers({ children }: { children: React.ReactNode }) {
     },
   }));
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <I18nProvider>
-          <AnimationProvider>
-            <TerminalWindowProvider>
-              {children}
-              <TerminalWindow />
-              <Toaster />
-              <Analytics />
-              <SpeedInsights />
-            </TerminalWindowProvider>
-          </AnimationProvider>
-        </I18nProvider>
-      </ThemeProvider>
+      <InitialDataProvider value={initialData}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <I18nProvider>
+            <AnimationProvider>
+              <TerminalWindowProvider>
+                {children}
+                <TerminalWindow />
+                <Toaster />
+                <Analytics />
+                <SpeedInsights />
+              </TerminalWindowProvider>
+            </AnimationProvider>
+          </I18nProvider>
+        </ThemeProvider>
+      </InitialDataProvider>
     </QueryClientProvider>
   );
 }

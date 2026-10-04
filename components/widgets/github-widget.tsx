@@ -4,7 +4,7 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, GitCommit, GitFork, ArrowRight, BookOpen, ExternalLink, Users } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useIsDarkSide } from "@/lib/hooks/use-is-dark-side";
 import { cn } from "@/lib/utils";
 
 interface GitHubWidgetProps {
@@ -12,8 +12,7 @@ interface GitHubWidgetProps {
 }
 
 export function GitHubWidget({ username = "ruivalente99" }: GitHubWidgetProps) {
-  const { theme } = useTheme();
-  const isDarkSide = theme === "dark-side";
+  const isDarkSide = useIsDarkSide();
 
   // Activity density visualization (sample recent commit heat levels 0..4)
   const activityWeeks = [

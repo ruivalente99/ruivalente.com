@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { useData } from '@/lib/hooks/useData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { ArrowRight, LucideIcon, Sparkles, LayoutGrid, Type } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useIsDarkSide } from "@/lib/hooks/use-is-dark-side";
 import { useI18n } from "@/lib/i18n/context";
 import { cn } from "@/lib/utils";
 import { 
@@ -56,10 +57,9 @@ interface TechCategory {
 
 export function StackSection() {
   const router = useRouter();
-  const { theme } = useTheme();
   const { t } = useI18n();
   const iconMap = useIconMap();
-  const isDarkSide = theme === 'dark-side';
+  const isDarkSide = useIsDarkSide();
   const { data: stack, isLoading } = useData<TechCategory[]>('/api/stack');
   const [viewMode, setViewMode] = useState<'icons' | 'text'>('icons');
 
@@ -138,15 +138,16 @@ export function StackSection() {
               <span className="hidden sm:inline lowercase text-[10px]">text</span>
             </button>
           </div>
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             size="sm"
-            onClick={() => router.push('/stack')}
+            asChild
             className="text-xs h-7 px-2 text-muted-foreground hover:text-foreground active:scale-[0.96] lowercase"
-            aria-label={t.bento.stack.viewAll.toLowerCase()}
           >
-            <span className="lowercase">{t.bento.stack.viewAll.toLowerCase()}</span>
-            <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+            <Link href="/stack" aria-label={t.bento.stack.viewAll.toLowerCase()}>
+              <span className="lowercase">{t.bento.stack.viewAll.toLowerCase()}</span>
+              <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
+            </Link>
           </Button>
         </div>
       </header>

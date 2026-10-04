@@ -1,7 +1,8 @@
 "use client";
 
 import { useQuery } from '@tanstack/react-query';
-import { useTheme } from 'next-themes';
+import { useInitialData } from '@/lib/hooks/initial-data';
+import { useIsDarkSide } from '@/lib/hooks/use-is-dark-side';
 
 interface FetchState<T> {
   data: T | null;
@@ -66,17 +67,19 @@ const fetchData = async (url: string) => {
 };
 
 export function useData<T>(url: string): FetchState<T> {
-  const { theme } = useTheme();
-  
+  const isDarkSide = useIsDarkSide();
+  const initialData = useInitialData();
+
   // Handle theme-specific API URLs
-  const isDarkSide = theme === 'dark-side';
   const apiUrl = isDarkSide && !url.includes('/dark-side/') 
     ? url.replace('/api/', '/api/dark-side/') 
     : url;
 
   const { data, isLoading, error } = useQuery({
-    queryKey: [apiUrl, theme],
+    queryKey: [apiUrl],
     queryFn: () => fetchData(apiUrl),
+    // Server-provided payload (default theme only) so SSR renders real content
+    initialData: initialData[apiUrl],
     staleTime: 1000 * 60 * 5, // 5 minutes
     retry: (failureCount, error) => {
       // Don't retry aborted or timeout requests

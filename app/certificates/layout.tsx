@@ -1,29 +1,14 @@
-import { Metadata } from 'next';
+import type { Metadata } from "next";
+import { generatePageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: 'certificates',
-  description: 'Rui Valente\'s professional certificates and achievements. Certifications from Frontend Masters, Udemy, and other recognized platforms in React, TypeScript, project management, and secure coding.',
-  keywords: [
-    'Rui Valente Certificates',
-    'Frontend Masters Certification',
-    'React Certificate',
-    'TypeScript Certification',
-    'Project Management Certificate',
-    'Secure Coding Training',
-    'Professional Development',
-    'Software Engineering Achievements'
-  ],
-  openGraph: {
-    title: 'certificates.rui',
-    description: 'View Rui Valente\'s professional certificates and continuous learning achievements.',
-    url: 'https://ruivalente.com/certificates',
-  },
-};
+export const metadata: Metadata = generatePageMetadata({
+  title: "Certificates",
+  description:
+    "Certificates earned by Rui Valente from Frontend Masters, Udemy and HackerRank in React, TypeScript, JavaScript, secure coding and project management.",
+  path: "/certificates",
+  additionalKeywords: ["Certificates", "Certifications"],
+});
 
-export default function CertificatesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function CertificatesLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

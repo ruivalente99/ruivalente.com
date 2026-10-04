@@ -1,19 +1,45 @@
 import { Metadata } from 'next';
+import { SITE_URL, SITE_NAME, absoluteUrl } from './site';
 
 interface PageMetadata {
   title: string;
   description: string;
+  /** Site-relative path of the page (for example "/projects/papyrus"). Drives canonical and og:url. */
+  path?: string;
   additionalKeywords?: string[];
   ogImage?: string;
+  /** Explicit canonical URL; wins over `path`. */
   canonicalUrl?: string;
+  /** Keep a page out of the index. Never set this for pages that should rank. */
+  noIndex?: boolean;
+  /**
+   * Use `title` exactly as given, skipping the root "%s - Rui Valente" template.
+   * Needed below the section layouts: a layout that sets a plain string title
+   * resets the template for the routes under it.
+   */
+  absoluteTitle?: boolean;
 }
+
+/** Trim to a search-snippet friendly length at a word boundary. */
+export function truncateDescription(text: string, max = 158): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${cut.slice(0, lastSpace > 80 ? lastSpace : cut.length).replace(/[\s,;:.-]+$/, '')}...`;
+}
+
+export const DEFAULT_OG_IMAGE = '/og-image.png';
 
 export function generatePageMetadata({
   title,
   description,
+  path,
   additionalKeywords = [],
-  ogImage = '/avatar.png',
-  canonicalUrl
+  ogImage = DEFAULT_OG_IMAGE,
+  canonicalUrl,
+  noIndex = false,
+  absoluteTitle = false,
 }: PageMetadata): Metadata {
   const baseKeywords = [
     'Rui Valente',
@@ -31,36 +57,39 @@ export function generatePageMetadata({
   ];
 
   const allKeywords = [...baseKeywords, ...additionalKeywords];
+  const canonical = canonicalUrl ?? (path ? absoluteUrl(path) : undefined);
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords: allKeywords,
     openGraph: {
       title,
       description,
       type: 'website',
+      url: canonical,
+      siteName: SITE_NAME,
+      locale: 'en_US',
       images: [
         {
-          url: ogImage,
+          url: absoluteUrl(ogImage),
           width: 1200,
           height: 630,
-          alt: title,
+          alt: SITE_NAME,
         }
       ],
-      siteName: 'Rui Valente - Software Engineer',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [ogImage],
+      images: [absoluteUrl(ogImage)],
     },
     alternates: {
-      canonical: canonicalUrl,
+      canonical,
     },
     robots: {
-      index: true,
+      index: !noIndex,
       follow: true,
     },
   };
@@ -73,8 +102,8 @@ export function generateStructuredData(pageType: string, pageData?: any) {
     "@type": "Person",
     "name": "Rui Valente",
     "jobTitle": "Software Engineer",
-    "url": "https://ruivalente.com",
-    "image": "https://ruivalente.com/avatar.png",
+    "url": SITE_URL,
+    "image": absoluteUrl('/avatar-256.webp'),
     "email": "email@ruivalente.com",
     "address": {
       "@type": "Place",

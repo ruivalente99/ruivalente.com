@@ -20,5 +20,10 @@ export default function TerminalPage() {
 
   const root = buildFileSystem(contentMap);
 
-  return <Terminal initialFs={root} />;
+  return (
+    <>
+      <h1 className="sr-only">terminal view of the rui valente portfolio</h1>
+      <Terminal initialFs={root} />
+    </>
+  );
 }
